@@ -1,4 +1,4 @@
-import { Language } from '../interfaces'
+import { Language } from '@app/interfaces'
 
 export const en: Language = {
 	main: {
