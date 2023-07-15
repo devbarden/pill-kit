@@ -1,13 +1,13 @@
-import { FC, memo } from "react";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider } from 'native-base'
+import { FC, memo } from 'react'
 
-import { Home } from "./pages";
-import "./i18n";
+import './i18n'
+import { Home } from './pages'
 
 const App: FC = memo(() => (
-  <NativeBaseProvider>
-    <Home />
-  </NativeBaseProvider>
-));
+	<NativeBaseProvider>
+		<Home />
+	</NativeBaseProvider>
+))
 
-export default App;
+export default App

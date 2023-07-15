@@ -1,5 +1,5 @@
 export interface Language {
-  main: {
-    title: string;
-  };
+	main: {
+		title: string
+	}
 }

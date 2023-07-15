@@ -1,7 +1,7 @@
-import { Language } from "../interfaces";
+import { Language } from '../interfaces'
 
 export const ru: Language = {
-  main: {
-    title: "Заголовок",
-  },
-};
+	main: {
+		title: 'Заголовок',
+	},
+}

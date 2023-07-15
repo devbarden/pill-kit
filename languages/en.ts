@@ -1,7 +1,7 @@
-import { Language } from "../interfaces";
+import { Language } from '../interfaces'
 
 export const en: Language = {
-  main: {
-    title: "Title",
-  },
-};
+	main: {
+		title: 'Title',
+	},
+}
