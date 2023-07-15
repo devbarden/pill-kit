@@ -1,8 +1,8 @@
-import { NativeBaseProvider } from 'native-base'
 import { FC, memo } from 'react'
+import { NativeBaseProvider } from 'native-base'
 
-import '@app/i18n'
 import { Home } from '@app/pages'
+import '@app/i18n'
 
 const App: FC = memo(() => (
 	<NativeBaseProvider>

@@ -1,6 +1,6 @@
-import { Box, Button } from 'native-base'
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Box, Button } from 'native-base'
 
 export const Home: FC = memo(() => {
 	const { t, i18n } = useTranslation()
