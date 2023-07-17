@@ -1,7 +1,8 @@
 import { Language } from '@app/types'
 
 export const ru: Language = {
-	main: {
-		title: 'Заголовок',
+	home: {
+		addButton: 'Добавить',
+		emptyInfo: 'Лекарства не найдены',
 	},
 }

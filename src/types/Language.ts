@@ -1,5 +1,6 @@
 export interface Language {
-	main: {
-		title: string
+	home: {
+		addButton: string
+		emptyInfo: string
 	}
 }

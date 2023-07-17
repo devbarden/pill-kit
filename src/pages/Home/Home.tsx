@@ -1,27 +1,26 @@
-import { FC, memo, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Box, Button } from 'native-base'
+import { FC, memo } from 'react'
+import { Box } from 'native-base'
+import { isEmpty } from 'lodash'
 
 import { useMedicines } from '@app/hooks'
+import { Header, Content, Empty, Loader } from './sub-components'
+import { styles } from './Home.styles'
 
 export const Home: FC = memo(() => {
-	const { t, i18n } = useTranslation()
-	const { data, isLoading } = useMedicines()
+	const { data: medicines = [], isLoading } = useMedicines()
 
-	console.log(data, isLoading)
+	if (isLoading) {
+		return <Loader />
+	}
 
-	const languageHandler = useCallback(
-		(language: string) => {
-			i18n.changeLanguage(language)
-		},
-		[i18n],
-	)
+	if (isEmpty(medicines)) {
+		return <Empty />
+	}
 
 	return (
-		<Box>
-			<Button onPress={() => languageHandler('en')}>Switch To EN</Button>
-			<Button onPress={() => languageHandler('ru')}>Switch To RU</Button>
-			{t('main:title')}
+		<Box style={styles.wrapper}>
+			<Header />
+			<Content items={medicines} />
 		</Box>
 	)
 })

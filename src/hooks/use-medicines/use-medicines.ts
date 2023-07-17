@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 
-import { Medicine, PossibleMedicines } from '@app/types'
+import { Medicine } from '@app/types'
 import { getMedicines } from '@app/api'
 
 interface MedicinesState {
-	data: PossibleMedicines
+	data: Medicine[]
 	isLoading: boolean
 }
 
 export const useMedicines = () => {
 	const [state, setState] = useState<MedicinesState>({
-		data: null,
+		data: [],
 		isLoading: false,
 	})
 
