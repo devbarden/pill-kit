@@ -13,14 +13,12 @@ declare global {
 }
 
 const Stack = createNativeStackNavigator<StackTypes>()
-const screenOptions = { headerShown: false }
+const options = { headerShown: false }
 
 export const Navigator: FC = memo(() => (
 	<NavigationContainer>
-		<Stack.Navigator
-			initialRouteName={ROUTES.HOME}
-			screenOptions={screenOptions}>
-			{values(ROUTES).map((route: ROUTES, index) => (
+		<Stack.Navigator initialRouteName={ROUTES.HOME} screenOptions={options}>
+			{values(ROUTES).map((route, index) => (
 				<Stack.Screen key={index} name={route} component={PAGE_MAP[route]} />
 			))}
 		</Stack.Navigator>
