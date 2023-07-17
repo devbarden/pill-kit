@@ -1,0 +1,28 @@
+import { FC, memo } from 'react'
+import { values } from 'lodash'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+import * as PAGE_MAP from '@app/pages'
+import { ROUTES, StackTypes } from '@app/types'
+
+declare global {
+	namespace ReactNavigation {
+		interface RootParamList extends StackTypes {}
+	}
+}
+
+const Stack = createNativeStackNavigator<StackTypes>()
+const screenOptions = { headerShown: false }
+
+export const Navigator: FC = memo(() => (
+	<NavigationContainer>
+		<Stack.Navigator
+			initialRouteName={ROUTES.HOME}
+			screenOptions={screenOptions}>
+			{values(ROUTES).map((route: ROUTES, index) => (
+				<Stack.Screen key={index} name={route} component={PAGE_MAP[route]} />
+			))}
+		</Stack.Navigator>
+	</NavigationContainer>
+))

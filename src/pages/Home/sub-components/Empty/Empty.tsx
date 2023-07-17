@@ -1,16 +1,19 @@
 import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
+import { ROUTES } from '@app/types'
 import { styles } from './Empty.styles'
 
 export const Empty: FC = memo(() => {
 	const { t } = useTranslation()
+	const { navigate } = useNavigation()
 
 	const addHandler = useCallback(() => {
-		console.log('ADD')
-	}, [])
+		navigate(ROUTES.CREATE_MEDICINE)
+	}, [navigate])
 
 	return (
 		<Box style={styles.wrapper}>

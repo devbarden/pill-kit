@@ -36,7 +36,7 @@ export const getMedicineById = async (id: string) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
 		const medicine: PossibleMedicine =
-			medicines.find(item => item.id === id) ?? null
+			medicines.find((item) => item.id === id) ?? null
 
 		return medicine
 	} catch (error) {
@@ -61,7 +61,7 @@ export const setMedicine = async (newMedicine: Medicine) => {
 export const removeMedicineById = async (id: string) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
-		const newMedicines: Medicine[] = medicines.filter(item => item.id !== id)
+		const newMedicines: Medicine[] = medicines.filter((item) => item.id !== id)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)

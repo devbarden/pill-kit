@@ -1,5 +1,5 @@
 {
-	"arrowParens": "avoid",
+	"arrowParens": "always",
 	"bracketSpacing": true,
 	"bracketSameLine": true,
 	"printWidth": 80,
@@ -7,5 +7,6 @@
 	"singleQuote": true,
 	"tabWidth": 2,
 	"trailingComma": "all",
+	"endOfLine": "auto",
 	"useTabs": true
 }

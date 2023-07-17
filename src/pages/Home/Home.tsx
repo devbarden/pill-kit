@@ -3,7 +3,8 @@ import { Box } from 'native-base'
 import { isEmpty } from 'lodash'
 
 import { useMedicines } from '@app/hooks'
-import { Header, Content, Empty, Loader } from './sub-components'
+import { Loader } from '@app/components'
+import { Header, Content, Empty } from './sub-components'
 import { styles } from './Home.styles'
 
 export const Home: FC = memo(() => {

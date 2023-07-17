@@ -1,7 +1,8 @@
 import { FC, memo, useCallback } from 'react'
 import { Pressable, Text } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 
-import { Medicine } from '@app/types'
+import { Medicine, ROUTES } from '@app/types'
 import { styles } from './Card.styles'
 
 interface Props {
@@ -10,10 +11,11 @@ interface Props {
 
 export const Card: FC<Props> = memo(({ data }) => {
 	const { id, name } = data
+	const { navigate } = useNavigation()
 
 	const onCardPress = useCallback(() => {
-		console.log('CARD ', id)
-	}, [id])
+		navigate(ROUTES.EDIT_MEDICINE, { id })
+	}, [navigate, id])
 
 	return (
 		<Pressable style={styles.card} key={id} onPress={onCardPress}>

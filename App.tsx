@@ -1,24 +1,17 @@
 import { FC, memo } from 'react'
-import { NativeBaseProvider, Box } from 'native-base'
+import { NativeBaseProvider } from 'native-base'
 
-import { Home } from '@app/pages'
-import { useInitMedicines } from '@app/hooks'
 import '@app/i18n'
+import { Loader } from '@app/components'
+import { Navigator } from '@app/navigator'
+import { useInitMedicines } from '@app/hooks'
 
 const App: FC = memo(() => {
 	const { isLoading } = useInitMedicines()
 
-	if (isLoading) {
-		return (
-			<NativeBaseProvider>
-				<Box>The Storage is loading...</Box>
-			</NativeBaseProvider>
-		)
-	}
-
 	return (
 		<NativeBaseProvider>
-			<Home />
+			{isLoading ? <Loader /> : <Navigator />}
 		</NativeBaseProvider>
 	)
 })

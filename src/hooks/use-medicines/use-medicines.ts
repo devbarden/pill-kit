@@ -15,11 +15,11 @@ export const useMedicines = () => {
 	})
 
 	const loadMedicines = async () => {
-		setState(prev => ({ ...prev, isLoading: true }))
+		setState((prev) => ({ ...prev, isLoading: true }))
 
 		const medicines: Medicine[] = await getMedicines()
 
-		setState(prev => ({ ...prev, data: medicines, isLoading: false }))
+		setState((prev) => ({ ...prev, data: medicines, isLoading: false }))
 	}
 
 	useEffect(() => {
