@@ -1,19 +1,18 @@
 import { FC, memo } from 'react'
 import { NativeBaseProvider } from 'native-base'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import '@app/i18n'
-import { Loader } from '@app/components'
-import { Navigator } from '@app/navigator'
-import { useInitMedicines } from '@app/hooks'
+import { Main } from '@app/entry'
 
-const App: FC = memo(() => {
-	const { isLoading } = useInitMedicines()
+const queryClient = new QueryClient()
 
-	return (
+const App: FC = memo(() => (
+	<QueryClientProvider client={queryClient}>
 		<NativeBaseProvider>
-			{isLoading ? <Loader /> : <Navigator />}
+			<Main />
 		</NativeBaseProvider>
-	)
-})
+	</QueryClientProvider>
+))
 
 export default App

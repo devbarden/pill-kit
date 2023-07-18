@@ -3,6 +3,7 @@ import { Box } from 'native-base'
 import { nanoid } from 'nanoid'
 
 import { Medicine } from '@app/types'
+
 import { Card } from '../'
 import { styles } from './Content.styles'
 

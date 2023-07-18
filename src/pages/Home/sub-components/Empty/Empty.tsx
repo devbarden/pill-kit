@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
 import { ROUTES } from '@app/types'
+
 import { styles } from './Empty.styles'
 
 export const Empty: FC = memo(() => {

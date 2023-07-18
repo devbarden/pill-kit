@@ -2,12 +2,13 @@ import { FC, memo, useState, useCallback } from 'react'
 import { Center, Text, Button, Input } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
+import { useEndpoints } from '@app/hooks'
 import { Medicine, ROUTES } from '@app/types'
-import { useAddMedicine } from '@app/hooks'
 
 export const CreateMedicine: FC = memo(() => {
 	const { navigate } = useNavigation()
-	const { action: save, isLoading: isUploading } = useAddMedicine()
+	const { useAddMedicine } = useEndpoints()
+	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
 	const [form, setForm] = useState<Omit<Medicine, 'id'>>({ name: '' })
 

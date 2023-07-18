@@ -2,7 +2,7 @@ import { FC, memo, useState, useCallback } from 'react'
 import { Button, Input } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { useEditMedicine } from '@app/hooks'
+import { useEndpoints } from '@app/hooks'
 import { Medicine, MedicineWithoutId, ROUTES } from '@app/types'
 
 interface Props {
@@ -12,7 +12,8 @@ interface Props {
 export const Form: FC<Props> = memo(({ data }) => {
 	const { id, ...rest } = data
 	const { navigate } = useNavigation()
-	const { action: edit, isLoading: isUploading } = useEditMedicine(id)
+	const { useEditMedicine } = useEndpoints()
+	const { mutateAsync: edit, isLoading: isUploading } = useEditMedicine(id)
 
 	const [form, setForm] = useState<MedicineWithoutId>(rest)
 

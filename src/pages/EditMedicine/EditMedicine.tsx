@@ -3,14 +3,15 @@ import { Button, Center, Text } from 'native-base'
 import { useRoute, useNavigation } from '@react-navigation/native'
 
 import { Loader } from '@app/components'
-import { useMedicineById } from '@app/hooks'
+import { useEndpoints } from '@app/hooks'
 import { EditMedicineRouteProp, ROUTES } from '@app/types'
 import { Form } from './Form'
 
 export const EditMedicine: FC = memo(() => {
 	const { navigate } = useNavigation()
 	const { params } = useRoute<EditMedicineRouteProp>()
-	const { data, isLoading } = useMedicineById(params.id)
+	const { useMedicine } = useEndpoints()
+	const { data, isLoading } = useMedicine(params.id)
 
 	const backHandler = useCallback(() => {
 		navigate(ROUTES.HOME)
