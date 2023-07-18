@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { nanoid } from 'nanoid'
 
+import { uid } from '@app/utils'
 import {
 	STORAGE,
 	StorageData,
@@ -54,7 +54,7 @@ export const getMedicine = async (id: MedicineId) => {
 export const setMedicine = async (data: MedicineWithoutId) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
-		const newMedicine = { id: nanoid(), ...data }
+		const newMedicine = { id: uid(), ...data }
 		const newMedicines: Medicine[] = [...medicines, newMedicine]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 

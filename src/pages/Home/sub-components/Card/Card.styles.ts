@@ -12,7 +12,5 @@ export const styles = StyleSheet.create({
 	text: {
 		maxWidth: '50%',
 		overflow: 'hidden',
-		whiteSpace: 'nowrap',
-		textOverflow: 'ellipsis',
 	},
 })

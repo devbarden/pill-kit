@@ -28,7 +28,12 @@ export const Card: FC<Props> = memo(({ data }) => {
 
 	return (
 		<Pressable style={styles.card} key={id} onPress={onCardPress}>
-			<Text fontSize="lg" color="white" style={styles.text}>
+			<Text
+				fontSize="lg"
+				color="white"
+				style={styles.text}
+				numberOfLines={1}
+				ellipsizeMode="tail">
 				{isRemoving ? 'Removing...' : name}
 			</Text>
 
