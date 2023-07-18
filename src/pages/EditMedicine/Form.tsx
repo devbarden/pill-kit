@@ -1,15 +1,20 @@
 import { FC, memo, useState, useCallback } from 'react'
-import { Center, Text, Button, Input } from 'native-base'
+import { Button, Input } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { Medicine, ROUTES } from '@app/types'
-import { useAddMedicine } from '@app/hooks'
+import { useEditMedicine } from '@app/hooks'
+import { Medicine, MedicineWithoutId, ROUTES } from '@app/types'
 
-export const CreateMedicine: FC = memo(() => {
+interface Props {
+	data: Medicine
+}
+
+export const Form: FC<Props> = memo(({ data }) => {
+	const { id, ...rest } = data
 	const { navigate } = useNavigation()
-	const { action: save, isLoading: isUploading } = useAddMedicine()
+	const { action: edit, isLoading: isUploading } = useEditMedicine(id)
 
-	const [form, setForm] = useState<Omit<Medicine, 'id'>>({ name: '' })
+	const [form, setForm] = useState<MedicineWithoutId>(rest)
 
 	const backHandler = useCallback(() => {
 		navigate(ROUTES.HOME)
@@ -20,13 +25,12 @@ export const CreateMedicine: FC = memo(() => {
 	}, [])
 
 	const saveHandler = useCallback(async () => {
-		await save(form)
+		await edit(form)
 		backHandler()
-	}, [save, form, backHandler])
+	}, [edit, form, backHandler])
 
 	return (
-		<Center flex={1}>
-			<Text>Create Medicine Page</Text>
+		<>
 			<Input
 				mx="3"
 				w="100%"
@@ -40,6 +44,6 @@ export const CreateMedicine: FC = memo(() => {
 			<Button disabled={isUploading} onPress={backHandler}>
 				Back
 			</Button>
-		</Center>
+		</>
 	)
 })

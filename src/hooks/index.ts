@@ -1,5 +1,6 @@
 export * from './use-medicines'
 export * from './use-add-medicine'
+export * from './use-edit-medicine'
 export * from './use-medicine-by-id'
 export * from './use-init-medicines'
 export * from './use-remove-medicine-by-id'

@@ -1,7 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { nanoid } from 'nanoid'
 
 import { notifyError } from '@app/utils'
-import { STORAGE, StorageData, Medicine, PossibleMedicine } from '@app/types'
+import {
+	STORAGE,
+	StorageData,
+	Medicine,
+	PossibleMedicine,
+	MedicineId,
+	MedicineWithoutId,
+} from '@app/types'
 
 export const initMedicines = async () => {
 	try {
@@ -32,7 +40,7 @@ export const getMedicines = async () => {
 	}
 }
 
-export const getMedicineById = async (id: string) => {
+export const getMedicineById = async (id: MedicineId) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
 		const medicine: PossibleMedicine =
@@ -46,10 +54,13 @@ export const getMedicineById = async (id: string) => {
 	}
 }
 
-export const setMedicine = async (newMedicine: Medicine) => {
+export const setMedicine = async (newMedicine: MedicineWithoutId) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
-		const newMedicines: Medicine[] = [...medicines, newMedicine]
+		const newMedicines: Medicine[] = [
+			...medicines,
+			{ ...newMedicine, id: nanoid() },
+		]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
@@ -58,7 +69,24 @@ export const setMedicine = async (newMedicine: Medicine) => {
 	}
 }
 
-export const removeMedicineById = async (id: string) => {
+export const editMedicine = async (
+	id: MedicineId,
+	updatedMedicine: MedicineWithoutId,
+) => {
+	try {
+		const medicines: Medicine[] = await getMedicines()
+		const newMedicines: Medicine[] = medicines.map((item) =>
+			item.id === id ? { id, ...updatedMedicine } : item,
+		)
+		const stringifiedMedicines = JSON.stringify(newMedicines)
+
+		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+	} catch (error) {
+		notifyError(error)
+	}
+}
+
+export const removeMedicineById = async (id: MedicineId) => {
 	try {
 		const medicines: Medicine[] = await getMedicines()
 		const newMedicines: Medicine[] = medicines.filter((item) => item.id !== id)

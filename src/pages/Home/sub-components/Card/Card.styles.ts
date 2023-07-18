@@ -5,6 +5,9 @@ export const styles = StyleSheet.create({
 		padding: 12,
 		borderRadius: 4,
 		backgroundColor: 'rgb(219, 39, 119)',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		flexDirection: 'row',
 	},
 	text: {
 		maxWidth: '50%',

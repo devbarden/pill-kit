@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
 
-import { PossibleMedicine } from '@app/types'
 import { getMedicineById } from '@app/api'
+import { PossibleMedicine, MedicineId } from '@app/types'
 
 interface MedicinesState {
 	data: PossibleMedicine
 	isLoading: boolean
 }
 
-export const useMedicineById = (id: string) => {
+export const useMedicineById = (id: MedicineId) => {
 	const [state, setState] = useState<MedicinesState>({
 		data: null,
 		isLoading: false,
 	})
 
-	const loadMedicine = async (id: string) => {
+	const loadMedicine = async (id: MedicineId) => {
 		setState((prev) => ({ ...prev, isLoading: true }))
 
 		const medicine: PossibleMedicine = await getMedicineById(id)
