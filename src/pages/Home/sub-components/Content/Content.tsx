@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 
 import { Medicine } from '@app/types'
 
-import { Card } from '../'
+import { Card } from '../Card'
 import { styles } from './Content.styles'
 
 interface Props {
