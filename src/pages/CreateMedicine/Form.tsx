@@ -4,20 +4,15 @@ import { Button, Input } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
-import { Medicine, MedicineWithoutId, ROUTES } from '@app/types'
+import { MedicineWithoutId, ROUTES } from '@app/types'
 
-interface Props {
-	data: Medicine
-}
-
-export const Form: FC<Props> = memo(({ data }) => {
-	const { id, ...rest } = data
+export const Form: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { useEditMedicine } = useEndpoints()
-	const { mutateAsync: edit, isLoading: isUploading } = useEditMedicine(id)
+	const { useAddMedicine } = useEndpoints()
+	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
-	const [form, setForm] = useState<MedicineWithoutId>(rest)
+	const [form, setForm] = useState<MedicineWithoutId>({ name: '' })
 
 	const backHandler = useCallback(() => {
 		navigate(ROUTES.HOME)
@@ -28,9 +23,9 @@ export const Form: FC<Props> = memo(({ data }) => {
 	}, [])
 
 	const saveHandler = useCallback(async () => {
-		await edit(form)
+		await save(form)
 		backHandler()
-	}, [edit, form, backHandler])
+	}, [save, form, backHandler])
 
 	return (
 		<>

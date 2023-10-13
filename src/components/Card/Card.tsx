@@ -1,4 +1,5 @@
 import { FC, memo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome as Icon } from '@expo/vector-icons'
@@ -14,6 +15,7 @@ interface Props {
 
 export const Card: FC<Props> = memo(({ data }) => {
 	const { id, name } = data
+	const { t } = useTranslation()
 	const { navigate } = useNavigation()
 	const { useRemoveMedicine } = useEndpoints()
 	const { mutateAsync: remove, isLoading: isRemoving } = useRemoveMedicine()
@@ -34,7 +36,7 @@ export const Card: FC<Props> = memo(({ data }) => {
 				style={styles.text}
 				numberOfLines={1}
 				ellipsizeMode="tail">
-				{isRemoving ? 'Removing...' : name}
+				{isRemoving ? t('actions:removing') : name}
 			</Text>
 
 			<Pressable onPress={deleteHandler}>

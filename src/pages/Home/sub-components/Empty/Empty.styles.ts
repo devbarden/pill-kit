@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { colors } from '@app/constants'
+
 export const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
@@ -19,6 +21,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		flexDirection: 'row',
 		justifyContent: 'center',
-		backgroundColor: 'rgb(219, 39, 119)',
+		backgroundColor: colors.purple,
 	},
 })

@@ -1,4 +1,3 @@
-export * from './Card'
 export * from './Empty'
 export * from './Header'
 export * from './Content'

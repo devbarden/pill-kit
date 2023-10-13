@@ -1,10 +1,10 @@
 import { FC, memo } from 'react'
 import { Box } from 'native-base'
 
-import { Medicine } from '@app/types'
 import { uid } from '@app/utils'
+import { Medicine } from '@app/types'
+import { Card } from '@app/components'
 
-import { Card } from '../Card'
 import { styles } from './Content.styles'
 
 interface Props {
