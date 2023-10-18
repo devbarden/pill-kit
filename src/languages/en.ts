@@ -36,4 +36,13 @@ export const en: Language = {
 	actions: {
 		removing: 'Removing...',
 	},
+
+	notifications: {
+		medicines: {
+			add: 'Medicine was added successfully',
+			edit: 'Medicine was updated successfully',
+			remove: 'Medicine was removed successfully',
+			error: 'Something went wrong. We are working on the problem',
+		},
+	},
 }

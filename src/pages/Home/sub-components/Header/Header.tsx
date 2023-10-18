@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
 import { ROUTES } from '@app/types'
+import { colors } from '@app/constants'
 
 export const Header: FC = memo(() => {
 	const { t } = useTranslation()
@@ -17,9 +18,9 @@ export const Header: FC = memo(() => {
 	return (
 		<Stack direction="row" justifyContent="flex-end">
 			<Button
-				onPress={addHandler}
 				size="lg"
-				colorScheme="secondary"
+				onPress={addHandler}
+				colorScheme={colors.red}
 				endIcon={<Icon name="pill" color="white" size={24} />}>
 				{t('home:addButton')}
 			</Button>

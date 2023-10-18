@@ -21,6 +21,6 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		flexDirection: 'row',
 		justifyContent: 'center',
-		backgroundColor: colors.purple,
+		backgroundColor: colors.red,
 	},
 })

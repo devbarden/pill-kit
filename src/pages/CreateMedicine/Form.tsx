@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Button, Input } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
+import { colors } from '@app/constants'
 import { useEndpoints } from '@app/hooks'
 import { MedicineWithoutId, ROUTES } from '@app/types'
 
@@ -37,10 +38,16 @@ export const Form: FC = memo(() => {
 				onChangeText={inputNameHandler}
 			/>
 
-			<Button disabled={isUploading} onPress={saveHandler}>
+			<Button
+				disabled={isUploading}
+				onPress={saveHandler}
+				colorScheme={colors.darkBlue}>
 				{t('components:btn.save')}
 			</Button>
-			<Button disabled={isUploading} onPress={backHandler}>
+			<Button
+				disabled={isUploading}
+				onPress={backHandler}
+				colorScheme={colors.darkBlue}>
 				{t('components:btn.back')}
 			</Button>
 		</>

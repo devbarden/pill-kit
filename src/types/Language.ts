@@ -34,4 +34,13 @@ export interface Language {
 	actions: {
 		removing: string
 	}
+
+	notifications: {
+		medicines: {
+			add: string
+			edit: string
+			remove: string
+			error: string
+		}
+	}
 }

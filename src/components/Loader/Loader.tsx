@@ -12,8 +12,8 @@ export const Loader: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Icon name="pill" size={128} color={colors.purple} />
-			<Heading size="4xl" color={colors.purple}>
+			<Icon name="pill" size={128} color={colors.red} />
+			<Heading size="4xl" color={colors.red}>
 				{t('main:appTitle')}
 			</Heading>
 		</Box>
