@@ -14,11 +14,11 @@ export type StackTypes = {
 	[ROUTES.CREATE_MEDICINE]: undefined
 }
 
-export type HomeRouteProp = RouteProp<StackTypes, ROUTES.EDIT_MEDICINE>
+export type HomeRouteProp = RouteProp<StackTypes, ROUTES.HOME>
 
 export type EditMedicineRouteProp = RouteProp<StackTypes, ROUTES.EDIT_MEDICINE>
 
 export type CreateMedicineRouteProp = RouteProp<
 	StackTypes,
-	ROUTES.EDIT_MEDICINE
+	ROUTES.CREATE_MEDICINE
 >
