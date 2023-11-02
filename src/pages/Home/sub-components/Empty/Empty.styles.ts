@@ -6,13 +6,20 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		gap: 16,
+		justifyContent: 'space-between',
 	},
-	infoBlock: {
+
+	infoWrapper: {
 		flex: 1,
-		gap: 16,
-		alignItems: 'center',
 		justifyContent: 'center',
 	},
+
+	info: {
+		gap: 16,
+		alignItems: 'center',
+		alignSelf: 'center',
+	},
+
 	buttonWrapper: {
 		gap: 8,
 		padding: 16,

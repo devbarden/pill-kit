@@ -18,10 +18,12 @@ export const Empty: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Pressable style={styles.infoBlock} onPress={addHandler}>
-				<Icon name="flask-empty-plus-outline" size={128} color="grey" />
-				<Text fontSize="lg">{t('home:emptyInfo')}</Text>
-			</Pressable>
+			<Box style={styles.infoWrapper}>
+				<Pressable style={styles.info} onPress={addHandler}>
+					<Icon name="flask-empty-plus-outline" size={128} color="grey" />
+					<Text fontSize="lg">{t('home:emptyInfo')}</Text>
+				</Pressable>
+			</Box>
 
 			<Pressable style={styles.buttonWrapper} onPress={addHandler}>
 				<Text fontSize="lg" color="white">
