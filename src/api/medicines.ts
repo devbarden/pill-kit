@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { omit } from 'lodash'
 
-import { uid } from '@app/utils'
+import { ERRORS } from '@app/constants'
+import { isAnyFieldEmpty, uid } from '@app/utils'
 import {
 	STORAGE,
 	StorageData,
@@ -53,6 +54,10 @@ export const getMedicine = async (id: MedicineId) => {
 }
 
 export const setMedicine = async (data: MedicineWithoutId) => {
+	if (isAnyFieldEmpty(data)) {
+		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
+	}
+
 	try {
 		const medicines: Medicine[] = await getMedicines()
 		const newMedicine = { id: uid(), ...data }
@@ -64,6 +69,10 @@ export const setMedicine = async (data: MedicineWithoutId) => {
 }
 
 export const editMedicine = async (id: MedicineId, data: MedicineWithoutId) => {
+	if (isAnyFieldEmpty(data)) {
+		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
+	}
+
 	try {
 		const medicines: Medicine[] = await getMedicines()
 		const updatedMedicine = { id, ...data }
