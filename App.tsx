@@ -4,8 +4,8 @@ import { RootSiblingParent } from 'react-native-root-siblings'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import '@app/i18n'
-import { registerLogs } from '@app/utils'
 import { Main } from '@app/entry'
+import { registerLogs } from '@app/utils'
 
 const queryClient = new QueryClient()
 

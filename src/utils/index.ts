@@ -1,3 +1,5 @@
 export * from './uid'
 export * from './toast'
+export * from './weeks'
+export * from './reg-exp'
 export * from './register-logs'

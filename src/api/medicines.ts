@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { omit } from 'lodash'
 
 import { uid } from '@app/utils'
 import {
@@ -45,7 +46,7 @@ export const getMedicine = async (id: MedicineId) => {
 		const medicine: PossibleMedicine =
 			medicines.find((item) => item.id === id) ?? null
 
-		return medicine
+		return omit(medicine, ['id'])
 	} catch {
 		return null
 	}

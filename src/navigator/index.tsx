@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import * as PAGE_MAP from '@app/pages'
 import { ROUTES, StackTypes } from '@app/types'
+import { withSafeArea } from '@app/hoc'
 
 declare global {
 	namespace ReactNavigation {
@@ -19,7 +20,11 @@ export const Navigator: FC = memo(() => (
 	<NavigationContainer>
 		<Stack.Navigator initialRouteName={ROUTES.HOME} screenOptions={options}>
 			{values(ROUTES).map((route, index) => (
-				<Stack.Screen key={index} name={route} component={PAGE_MAP[route]} />
+				<Stack.Screen
+					key={index}
+					name={route}
+					component={withSafeArea(PAGE_MAP[route])}
+				/>
 			))}
 		</Stack.Navigator>
 	</NavigationContainer>

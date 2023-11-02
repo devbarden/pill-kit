@@ -9,9 +9,5 @@ export const Main: FC = memo(() => {
 	const { useInitMedicines } = useEndpoints()
 	const { isLoading } = useInitMedicines()
 
-	if (isLoading) {
-		return <Loader />
-	}
-
-	return <Navigator />
+	return isLoading ? <Loader /> : <Navigator />
 })

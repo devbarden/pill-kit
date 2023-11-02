@@ -1,29 +1,35 @@
 import { FC, memo } from 'react'
-import { Box } from 'native-base'
 import { isEmpty } from 'lodash'
 
-import { Loader } from '@app/components'
+import { Loader, ScreenWrapper } from '@app/components'
 import { useEndpoints } from '@app/hooks'
 
 import { Header, Content, Empty } from './sub-components'
-import { styles } from './Home.styles'
 
 export const Home: FC = memo(() => {
 	const { useMedicines } = useEndpoints()
 	const { data: medicines = [], isLoading } = useMedicines()
 
 	if (isLoading) {
-		return <Loader />
+		return (
+			<ScreenWrapper>
+				<Loader />
+			</ScreenWrapper>
+		)
 	}
 
 	if (isEmpty(medicines)) {
-		return <Empty />
+		return (
+			<ScreenWrapper>
+				<Empty />
+			</ScreenWrapper>
+		)
 	}
 
 	return (
-		<Box style={styles.wrapper}>
+		<ScreenWrapper>
 			<Header />
 			<Content items={medicines} />
-		</Box>
+		</ScreenWrapper>
 	)
 })

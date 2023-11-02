@@ -4,7 +4,7 @@ import { colors } from '@app/constants'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		flex: 1,
+		height: '100%',
 		justifyContent: 'space-between',
 	},
 	infoBlock: {
