@@ -1,17 +1,16 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Button, Text } from 'native-base'
-import { useRoute, useNavigation } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 
-import { Loader, ScreenWrapper } from '@app/components'
+import { MedicineForm } from '@app/forms'
 import { useEndpoints } from '@app/hooks'
-import { EditMedicineRouteProp, ROUTES } from '@app/types'
+import { Loader } from '@app/components'
+import { EditMedicineRouteProp } from '@app/types'
 
-import { MedicineForm } from '../common'
+import { NotFound } from './sub-components'
 
 export const EditMedicine: FC = memo(() => {
 	const { t } = useTranslation()
-	const { navigate } = useNavigation()
 	const { params } = useRoute<EditMedicineRouteProp>()
 	const { useMedicine, useEditMedicine } = useEndpoints()
 	const { data, isLoading } = useMedicine(params.id)
@@ -19,35 +18,20 @@ export const EditMedicine: FC = memo(() => {
 		params.id,
 	)
 
-	const backHandler = useCallback(() => {
-		navigate(ROUTES.HOME)
-	}, [navigate])
-
 	if (isLoading) {
-		return (
-			<ScreenWrapper>
-				<Loader />
-			</ScreenWrapper>
-		)
+		return <Loader />
 	}
 
 	if (!data) {
-		return (
-			<ScreenWrapper>
-				<Text>{t('editMedicine:notFound')}</Text>
-				<Button onPress={backHandler}>{t('editMedicine:back')}</Button>
-			</ScreenWrapper>
-		)
+		return <NotFound />
 	}
 
 	return (
-		<ScreenWrapper>
-			<Text>{t('editMedicine:title')}</Text>
-			<MedicineForm
-				data={data}
-				submitHandler={edit}
-				isSubmitting={isUpdating}
-			/>
-		</ScreenWrapper>
+		<MedicineForm
+			title={t('editMedicine:title')}
+			data={data}
+			submitHandler={edit}
+			isSubmitting={isUpdating}
+		/>
 	)
 })

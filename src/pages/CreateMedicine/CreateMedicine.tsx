@@ -1,14 +1,11 @@
 import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text } from 'native-base'
 
 import { addWeeks } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
+import { MedicineForm } from '@app/forms'
 import { MedicineType } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
-import { ScreenWrapper } from '@app/components'
-
-import { MedicineForm } from '../common'
 
 export const CreateMedicine: FC = memo(() => {
 	const { t } = useTranslation()
@@ -30,13 +27,11 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<ScreenWrapper>
-			<Text>{t('createMedicine:title')}</Text>
-			<MedicineForm
-				data={data}
-				submitHandler={save}
-				isSubmitting={isUploading}
-			/>
-		</ScreenWrapper>
+		<MedicineForm
+			title={t('createMedicine:title')}
+			data={data}
+			submitHandler={save}
+			isSubmitting={isUploading}
+		/>
 	)
 })

@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
-import { isEmpty } from 'lodash'
 
-import { Loader, ScreenWrapper } from '@app/components'
+import { Loader } from '@app/components'
 import { useEndpoints } from '@app/hooks'
+import { isDeserted } from '@app/utils'
 
 import { Header, Content, Empty } from './sub-components'
 
@@ -11,25 +11,17 @@ export const Home: FC = memo(() => {
 	const { data: medicines = [], isLoading } = useMedicines()
 
 	if (isLoading) {
-		return (
-			<ScreenWrapper>
-				<Loader />
-			</ScreenWrapper>
-		)
+		return <Loader />
 	}
 
-	if (isEmpty(medicines)) {
-		return (
-			<ScreenWrapper>
-				<Empty />
-			</ScreenWrapper>
-		)
+	if (isDeserted(medicines)) {
+		return <Empty />
 	}
 
 	return (
-		<ScreenWrapper>
+		<>
 			<Header />
 			<Content items={medicines} />
-		</ScreenWrapper>
+		</>
 	)
 })
