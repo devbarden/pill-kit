@@ -4,8 +4,8 @@ import { colors } from '@app/constants'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		height: '100%',
-		justifyContent: 'space-between',
+		flex: 1,
+		gap: 16,
 	},
 	infoBlock: {
 		flex: 1,
@@ -15,12 +15,11 @@ export const styles = StyleSheet.create({
 	},
 	buttonWrapper: {
 		gap: 8,
-		margin: 32,
 		padding: 16,
 		borderRadius: 24,
-		alignItems: 'center',
-		flexDirection: 'row',
-		justifyContent: 'center',
 		backgroundColor: colors.red,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 })
