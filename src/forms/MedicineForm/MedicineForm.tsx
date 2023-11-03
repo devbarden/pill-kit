@@ -12,7 +12,7 @@ import { styles } from './MedicineForm.styles'
 
 export const MedicineForm: FC<MedicineFormProps> = memo(
 	({ title, data, submitHandler, isSubmitting }) => {
-		const { t } = useTranslation()
+		const { t, i18n } = useTranslation()
 		const {
 			form,
 			changeNameHandler,
@@ -91,6 +91,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 									minimumDate={new Date()}
 									value={new Date(form.startDate)}
 									onChange={changeStartDateHandler}
+									locale={i18n.language}
 								/>
 							</Form.Item>
 							<Form.Separator />
@@ -100,6 +101,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 									minimumDate={new Date()}
 									value={new Date(form.endDate)}
 									onChange={changeEndDateHandler}
+									locale={i18n.language}
 								/>
 							</Form.Item>
 						</Form.Wrapper>
