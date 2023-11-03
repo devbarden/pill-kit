@@ -4,9 +4,12 @@ export const colors = {
 	lightGrey: 'rgb(242, 242, 247)',
 	grey: 'rgb(230, 230, 233)',
 	darkGrey: 'rgb(128, 128, 128)',
-	blue: 'rgb(0, 53, 102)',
+	lightBlue: 'rgb(141, 198, 255)',
+	blue: 'rgb(0, 146, 202)',
 	darkBlue: 'rgb(40, 75, 99)',
 	green: 'rgb(5, 140, 66)',
 	black: 'rgb(53, 53, 53)',
 	white: 'rgb(255, 255, 255)',
+
+	transparentGrey: 'rgba(230, 230, 233, 0.5)',
 }
