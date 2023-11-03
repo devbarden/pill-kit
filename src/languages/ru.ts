@@ -20,6 +20,16 @@ export const ru: Language = {
 		back: 'Вернуться назад',
 	},
 
+	medicineForm: {
+		name: 'Название',
+		type: 'Тип',
+		count: 'Количество',
+		perDay: 'Сколько в день',
+		startDate: 'Начало приема',
+		endDate: 'Конец приема',
+		notification: 'Уведомления',
+	},
+
 	components: {
 		btn: {
 			add: 'Добавить',
@@ -29,7 +39,10 @@ export const ru: Language = {
 		},
 
 		input: {
-			placeholder: 'Название лекарства',
+			placeholder: {
+				required: 'Обязательно',
+				optional: 'Необязательно',
+			},
 		},
 	},
 

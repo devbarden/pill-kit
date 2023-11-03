@@ -18,6 +18,16 @@ export interface Language {
 		back: string
 	}
 
+	medicineForm: {
+		name: string
+		type: string
+		count: string
+		perDay: string
+		startDate: string
+		endDate: string
+		notification: string
+	}
+
 	components: {
 		btn: {
 			add: string
@@ -27,7 +37,10 @@ export interface Language {
 		}
 
 		input: {
-			placeholder: string
+			placeholder: {
+				required: string
+				optional: string
+			}
 		}
 	}
 

@@ -20,6 +20,16 @@ export const en: Language = {
 		back: 'Go Back',
 	},
 
+	medicineForm: {
+		name: 'Name',
+		type: 'Type',
+		count: 'Count',
+		perDay: 'Per day',
+		startDate: 'Start date',
+		endDate: 'End date',
+		notification: 'Notification',
+	},
+
 	components: {
 		btn: {
 			add: 'Add',
@@ -29,7 +39,10 @@ export const en: Language = {
 		},
 
 		input: {
-			placeholder: 'Medicine',
+			placeholder: {
+				required: 'Required',
+				optional: 'Optional',
+			},
 		},
 	},
 

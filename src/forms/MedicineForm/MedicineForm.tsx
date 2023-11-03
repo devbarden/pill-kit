@@ -35,19 +35,19 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 				<ScrollView>
 					<Box style={styles.fieldsWrapper}>
 						<Form.Wrapper>
-							<Form.Item name="Name">
+							<Form.Item name={t('medicineForm:name')}>
 								<Input
 									isFullWidth
+									variant="unstyled"
 									maxLength={25}
 									value={form.name}
 									onChangeText={changeNameHandler}
-									variant="unstyled"
-									placeholder="Required"
+									placeholder={t('components:input.placeholder.required')}
 									style={styles.input}
 								/>
 							</Form.Item>
 							<Form.Separator />
-							<Form.Item name="Type">
+							<Form.Item name={t('medicineForm:type')}>
 								<Select
 									items={medicineTypesSelectItems}
 									selected={form.type}
@@ -57,35 +57,35 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 						</Form.Wrapper>
 
 						<Form.Wrapper>
-							<Form.Item name="Count">
+							<Form.Item name={t('medicineForm:count')}>
 								<Input
 									isFullWidth
+									variant="unstyled"
+									keyboardType="number-pad"
 									value={form.countPerUse}
 									maxLength={5}
 									onChangeText={changeCountPerUseHandler}
-									variant="unstyled"
-									keyboardType="number-pad"
-									placeholder="Required"
+									placeholder={t('components:input.placeholder.required')}
 									style={styles.input}
 								/>
 							</Form.Item>
 							<Form.Separator />
-							<Form.Item name="Per day">
+							<Form.Item name={t('medicineForm:perDay')}>
 								<Input
 									isFullWidth
+									variant="unstyled"
+									keyboardType="number-pad"
 									value={form.countPerDay}
 									maxLength={1}
 									onChangeText={changeCountPerDayHandler}
-									variant="unstyled"
-									keyboardType="number-pad"
-									placeholder="Required"
+									placeholder={t('components:input.placeholder.required')}
 									style={styles.input}
 								/>
 							</Form.Item>
 						</Form.Wrapper>
 
 						<Form.Wrapper>
-							<Form.Item name="Start date">
+							<Form.Item name={t('medicineForm:startDate')}>
 								<DateTimePicker
 									mode="date"
 									minimumDate={new Date()}
@@ -94,7 +94,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 								/>
 							</Form.Item>
 							<Form.Separator />
-							<Form.Item name="End date">
+							<Form.Item name={t('medicineForm:endDate')}>
 								<DateTimePicker
 									mode="date"
 									minimumDate={new Date()}
@@ -105,7 +105,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 						</Form.Wrapper>
 
 						<Form.Wrapper>
-							<Form.Item name="Notification">
+							<Form.Item name={t('medicineForm:notification')}>
 								<Switch
 									isChecked={form.notification}
 									onToggle={notifySwitchToggle}
