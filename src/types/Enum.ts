@@ -1,3 +1,3 @@
-export interface Enum {
-	[key: string | number]: string
-}
+enum ABSTRACT_ENUM {}
+
+export type Enum = typeof ABSTRACT_ENUM
