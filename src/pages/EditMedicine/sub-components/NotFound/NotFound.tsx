@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Button, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { ROUTES } from '@app/types'
+import { ROUTES } from '@app/constants'
 
 export const NotFound: FC = memo(() => {
 	const { t } = useTranslation()

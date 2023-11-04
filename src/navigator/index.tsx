@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import * as PAGE_MAP from '@app/pages'
-import { ROUTES, StackTypes } from '@app/types'
+import { ROUTES } from '@app/constants'
+import { StackTypes } from '@app/types'
 import { withSafeArea } from '@app/hoc'
 
 declare global {

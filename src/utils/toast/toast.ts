@@ -1,12 +1,12 @@
 import Toast, { ToastOptions } from 'react-native-root-toast'
 
-import { colors } from '@app/constants'
+import { COLORS } from '@app/constants'
 
 const baseConfig: ToastOptions = {
 	position: Toast.positions.TOP,
 	duration: Toast.durations.SHORT,
-	backgroundColor: colors.black,
-	textColor: colors.white,
+	backgroundColor: COLORS.BLACK,
+	textColor: COLORS.WHITE,
 	shadow: false,
 	animation: true,
 	hideOnPress: true,
@@ -18,7 +18,7 @@ export const toast = {
 		Toast.show(message, {
 			...baseConfig,
 			...customConfig,
-			backgroundColor: colors.green,
+			backgroundColor: COLORS.GREEN,
 		}),
 
 	error: (message: string, customConfig?: ToastOptions) =>
@@ -27,6 +27,6 @@ export const toast = {
 			...customConfig,
 			shadow: true,
 			duration: Toast.durations.LONG,
-			backgroundColor: colors.red,
+			backgroundColor: COLORS.RED,
 		}),
 }

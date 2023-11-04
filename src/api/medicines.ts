@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { omit } from 'lodash'
 
-import { ERRORS } from '@app/constants'
+import { ERRORS, STORAGE } from '@app/constants'
 import { isAnyFieldEmpty, uid } from '@app/utils'
 import {
-	STORAGE,
 	StorageData,
 	Medicine,
 	PossibleMedicine,

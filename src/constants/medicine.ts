@@ -1,11 +1,7 @@
-import { values } from 'lodash'
-
-export enum MedicineType {
-	PILL = 'Pill',
-	CREAM = 'Cream',
+export enum MEDICINE_TYPE {
+	PILL = 'PILL',
+	CREAM = 'CREAM',
 }
 
-export const medicineTypesSelectItems = values(MedicineType).map((item) => ({
-	value: item,
-	label: item,
-}))
+export const MEDICINE_TYPE_TRANSLATION_PATH =
+	'components:select.items.medicineTypes'

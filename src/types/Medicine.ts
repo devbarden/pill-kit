@@ -1,9 +1,9 @@
-import { MedicineType } from '@app/constants'
+import { MEDICINE_TYPE } from '@app/constants'
 
 export interface Medicine {
 	id: string
 	name: string
-	type: MedicineType
+	type: MEDICINE_TYPE
 	countPerUse: string
 	countPerDay: string
 	completed: boolean

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { colors } from '@app/constants'
+import { COLORS } from '@app/constants'
 
 export const styles = StyleSheet.create({
 	wrapper: {
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
 		gap: 8,
 		padding: 16,
 		borderRadius: 24,
-		backgroundColor: colors.red,
+		backgroundColor: COLORS.RED,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',

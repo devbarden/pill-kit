@@ -1,7 +1,6 @@
 export * from './uid'
 export * from './toast'
 export * from './weeks'
-export * from './reg-exp'
 export * from './is-deserted'
 export * from './register-logs'
 export * from './is-any-field-empty'

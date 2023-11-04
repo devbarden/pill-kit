@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Box, Heading } from 'native-base'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
-import { colors } from '@app/constants'
+import { COLORS } from '@app/constants'
 
 import { styles } from './Loader.styles'
 
@@ -12,8 +12,8 @@ export const Loader: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Icon name="pill" size={128} color={colors.red} />
-			<Heading size="4xl" color={colors.red}>
+			<Icon name="pill" size={128} color={COLORS.RED} />
+			<Heading size="4xl" color={COLORS.RED}>
 				{t('main:appTitle')}
 			</Heading>
 		</Box>

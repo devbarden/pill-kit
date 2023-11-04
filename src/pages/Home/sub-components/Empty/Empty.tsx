@@ -4,7 +4,7 @@ import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
-import { ROUTES } from '@app/types'
+import { ROUTES } from '@app/constants'
 
 import { styles } from './Empty.styles'
 

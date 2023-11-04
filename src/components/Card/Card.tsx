@@ -4,8 +4,9 @@ import { Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome as Icon } from '@expo/vector-icons'
 
+import { Medicine } from '@app/types'
+import { ROUTES } from '@app/constants'
 import { useEndpoints } from '@app/hooks'
-import { Medicine, ROUTES } from '@app/types'
 
 import { styles } from './Card.styles'
 

@@ -4,8 +4,7 @@ import { Button, Stack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
 
-import { ROUTES } from '@app/types'
-import { colors } from '@app/constants'
+import { ROUTES, COLORS } from '@app/constants'
 
 export const Header: FC = memo(() => {
 	const { t } = useTranslation()
@@ -20,7 +19,7 @@ export const Header: FC = memo(() => {
 			<Button
 				size="lg"
 				onPress={addHandler}
-				colorScheme={colors.red}
+				colorScheme={COLORS.RED}
 				endIcon={<Icon name="pill" color="white" size={24} />}>
 				{t('home:addButton')}
 			</Button>

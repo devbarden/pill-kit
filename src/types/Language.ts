@@ -1,3 +1,5 @@
+import { MEDICINE_TYPE } from '@app/constants'
+
 export interface Language {
 	main: {
 		appTitle: string
@@ -40,6 +42,12 @@ export interface Language {
 			placeholder: {
 				required: string
 				optional: string
+			}
+		}
+
+		select: {
+			items: {
+				medicineTypes: Record<MEDICINE_TYPE, string>
 			}
 		}
 	}

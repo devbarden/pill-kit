@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { addWeeks } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { MedicineType } from '@app/constants'
+import { MEDICINE_TYPE } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
 
 export const CreateMedicine: FC = memo(() => {
@@ -15,7 +15,7 @@ export const CreateMedicine: FC = memo(() => {
 	const data: MedicineWithoutId = useMemo(
 		() => ({
 			name: '',
-			type: MedicineType.PILL,
+			type: MEDICINE_TYPE.PILL,
 			countPerUse: '',
 			countPerDay: '',
 			completed: false,

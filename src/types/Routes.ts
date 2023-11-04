@@ -1,12 +1,7 @@
 import { RouteProp } from '@react-navigation/native'
 
+import { ROUTES } from '@app/constants'
 import { MedicineId } from '@app/types'
-
-export enum ROUTES {
-	HOME = 'Home',
-	EDIT_MEDICINE = 'EditMedicine',
-	CREATE_MEDICINE = 'CreateMedicine',
-}
 
 export type StackTypes = {
 	[ROUTES.HOME]: undefined

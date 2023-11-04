@@ -1,4 +1,5 @@
 import { Language } from '@app/types'
+import { MEDICINE_TYPE } from '@app/constants'
 
 export const ru: Language = {
 	main: {
@@ -42,6 +43,15 @@ export const ru: Language = {
 			placeholder: {
 				required: 'Обязательно',
 				optional: 'Необязательно',
+			},
+		},
+
+		select: {
+			items: {
+				medicineTypes: {
+					[MEDICINE_TYPE.PILL]: 'Таблетка',
+					[MEDICINE_TYPE.CREAM]: 'Мазь',
+				},
 			},
 		},
 	},

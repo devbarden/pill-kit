@@ -2,14 +2,9 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
-import { MedicineType } from '@app/constants'
-import { MedicineWithoutId, ROUTES } from '@app/types'
-import {
-	removeExtraMarksFromNumber,
-	addWeeks,
-	removeWeeks,
-	isAnyFieldEmpty,
-} from '@app/utils'
+import { ROUTES, MEDICINE_TYPE } from '@app/constants'
+import { MedicineWithoutId } from '@app/types'
+import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
 import { UseMedicineFormProps } from './types'
 
@@ -41,20 +36,20 @@ export const useMedicineForm = ({
 	}, [])
 
 	const typeChangeHandler = useCallback((type: string) => {
-		setForm((prev) => ({ ...prev, type: type as MedicineType }))
+		setForm((prev) => ({ ...prev, type: type as MEDICINE_TYPE }))
 	}, [])
 
-	const changeCountPerUseHandler = useCallback((value: string) => {
+	const changeCountPerUseHandler = useCallback((countPerUse: string) => {
 		setForm((prev) => ({
 			...prev,
-			countPerUse: removeExtraMarksFromNumber(value),
+			countPerUse,
 		}))
 	}, [])
 
-	const changeCountPerDayHandler = useCallback((value: string) => {
+	const changeCountPerDayHandler = useCallback((countPerDay: string) => {
 		setForm((prev) => ({
 			...prev,
-			countPerDay: removeExtraMarksFromNumber(value),
+			countPerDay,
 		}))
 	}, [])
 

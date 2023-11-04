@@ -3,8 +3,9 @@ import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Input, HStack, Text, ScrollView } from 'native-base'
 
+import { useSelectItems } from '@app/hooks'
 import { Form, Switch, Select, Button } from '@app/components'
-import { medicineTypesSelectItems } from '@app/constants'
+import { MEDICINE_TYPE, MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
 
 import { MedicineFormProps } from './types'
 import { useMedicineForm } from './useMedicineForm'
@@ -13,6 +14,10 @@ import { styles } from './MedicineForm.styles'
 export const MedicineForm: FC<MedicineFormProps> = memo(
 	({ title, data, submitHandler, isSubmitting }) => {
 		const { t, i18n } = useTranslation()
+		const { items: medicineTypesSelectItems } = useSelectItems(
+			MEDICINE_TYPE,
+			MEDICINE_TYPE_TRANSLATION_PATH,
+		)
 		const {
 			form,
 			changeNameHandler,
