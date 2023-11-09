@@ -1,6 +1,5 @@
-import { FC, memo, useMemo, useCallback } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { Pressable } from 'native-base'
-import { useNavigation } from '@react-navigation/native'
 
 import { ROUTES } from '@app/constants'
 
@@ -10,21 +9,20 @@ import { styles } from './NavigationItem.styles'
 interface Props {
 	route: ROUTES
 	activePage: ROUTES
+	navigateToRoute: () => void
 }
 
-export const NavigationItem: FC<Props> = memo(({ route, activePage }) => {
-	const { navigate } = useNavigation()
+export const NavigationItem: FC<Props> = memo(
+	({ route, activePage, navigateToRoute }) => {
+		const isPageActive = useMemo(
+			() => route === activePage,
+			[route, activePage],
+		)
 
-	const isPageActive = useMemo(() => route === activePage, [route, activePage])
-
-	const goToPage = useCallback(() => {
-		// TODO: remove any
-		navigate(route as any)
-	}, [navigate, route])
-
-	return (
-		<Pressable style={styles.wrapper} onPress={goToPage}>
-			{getIcon(route, isPageActive)}
-		</Pressable>
-	)
-})
+		return (
+			<Pressable style={styles.wrapper} onPress={navigateToRoute}>
+				{getIcon(route, isPageActive)}
+			</Pressable>
+		)
+	},
+)

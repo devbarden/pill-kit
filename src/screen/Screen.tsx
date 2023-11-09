@@ -36,9 +36,7 @@ export const Screen: FC = memo(() => {
 			<Tab.Navigator
 				initialRouteName={ROUTES.HOME}
 				screenOptions={screenOptions}
-				tabBar={({ state }: BottomTabBarProps) => (
-					<Navigation stateIndex={state.index} />
-				)}>
+				tabBar={(barProps: BottomTabBarProps) => <Navigation {...barProps} />}>
 				{values(ROUTES).map((route, index) => (
 					<Tab.Screen
 						key={index}
