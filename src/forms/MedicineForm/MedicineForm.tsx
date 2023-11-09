@@ -4,12 +4,19 @@ import { useTranslation } from 'react-i18next'
 import { Box, Input, HStack, Text, ScrollView } from 'native-base'
 
 import { useSelectItems } from '@app/hooks'
+import { MedicineWithoutId } from '@app/types'
 import { Form, Switch, Select, Button } from '@app/components'
 import { MEDICINE_TYPE, MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
 
-import { MedicineFormProps } from './types'
-import { useMedicineForm } from './useMedicineForm'
+import { useMedicineForm } from './hooks'
 import { styles } from './MedicineForm.styles'
+
+export interface MedicineFormProps {
+	title: string
+	data: MedicineWithoutId
+	submitHandler: (medicine: MedicineWithoutId) => void
+	isSubmitting: boolean
+}
 
 export const MedicineForm: FC<MedicineFormProps> = memo(
 	({ title, data, submitHandler, isSubmitting }) => {

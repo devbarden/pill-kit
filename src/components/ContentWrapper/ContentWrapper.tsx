@@ -1,12 +1,12 @@
 import { FC, ReactElement, memo } from 'react'
 import { Box } from 'native-base'
 
-import { styles } from './ScreenWrapper.styles'
+import { styles } from './ContentWrapper.styles'
 
 interface Props {
 	children: ReactElement | ReactElement[] | string
 }
 
-export const ScreenWrapper: FC<Props> = memo(({ children }) => (
+export const ContentWrapper: FC<Props> = memo(({ children }) => (
 	<Box style={styles.wrapper}>{children}</Box>
 ))

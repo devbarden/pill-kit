@@ -2,11 +2,13 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
-import { ROUTES, MEDICINE_TYPE } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
+import { ROUTES, MEDICINE_TYPE } from '@app/constants'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
-import { UseMedicineFormProps } from './types'
+import { MedicineFormProps } from '../../MedicineForm'
+
+type UseMedicineFormProps = Omit<MedicineFormProps, 'title'>
 
 export const useMedicineForm = ({
 	data,

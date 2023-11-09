@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native'
 
+import { COLORS } from '@app/constants'
+
 export const styles = StyleSheet.create({
 	wrapper: {
-		height: '100%',
-		padding: 16,
-		gap: 16,
+		flex: 1,
+		backgroundColor: COLORS.WHITE,
 	},
 })
