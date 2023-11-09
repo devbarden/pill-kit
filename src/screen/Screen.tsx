@@ -20,10 +20,8 @@ declare global {
 	}
 }
 
-const screenOptions = { headerShown: false }
+const screenOptions = { headerShown: false, unmountOnBlur: true }
 const Tab = createBottomTabNavigator<NavigatorTypes>()
-
-// TODO: remove caching of page
 
 export const Screen: FC = memo(() => {
 	const { useInitMedicines } = useEndpoints()
