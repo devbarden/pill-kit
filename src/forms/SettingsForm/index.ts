@@ -1,2 +1,1 @@
-export * from './MedicineForm'
 export * from './SettingsForm'

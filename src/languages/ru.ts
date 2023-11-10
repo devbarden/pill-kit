@@ -21,6 +21,21 @@ export const ru: Language = {
 		back: 'Вернуться назад',
 	},
 
+	settings: {
+		title: 'Настройки',
+	},
+
+	settingsForm: {
+		upgrade: 'Улучшить до версии PRO',
+		donate: 'Пожертвовать',
+		rate: 'Оценить приложение',
+		language: 'Язык',
+		contact: 'Связь с нами',
+		clearData: 'Удалить все данные',
+		termsOfUsage: 'Условия Использования',
+		privacyPolicy: 'Политика Конфиденциальности',
+	},
+
 	medicineForm: {
 		name: 'Название',
 		type: 'Тип',

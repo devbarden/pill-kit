@@ -1,10 +1,7 @@
 import { FC, memo } from 'react'
-import { Box, Text } from 'native-base'
+
+import { SettingsForm } from '@app/forms'
 
 export const Settings: FC = memo(() => {
-	return (
-		<Box>
-			<Text>Settings</Text>
-		</Box>
-	)
+	return <SettingsForm />
 })

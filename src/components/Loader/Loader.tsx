@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Heading } from 'native-base'
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { COLORS } from '@app/constants'
 
@@ -12,7 +12,7 @@ export const Loader: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Icon name="pill" size={128} color={COLORS.RED} />
+			<MaterialCommunityIcons name="pill" size={128} color={COLORS.RED} />
 			<Heading size="4xl" color={COLORS.RED}>
 				{t('main:appTitle')}
 			</Heading>

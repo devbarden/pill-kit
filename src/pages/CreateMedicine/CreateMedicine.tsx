@@ -1,5 +1,4 @@
 import { FC, memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { addWeeks } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
@@ -8,7 +7,6 @@ import { MEDICINE_TYPE } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
 
 export const CreateMedicine: FC = memo(() => {
-	const { t } = useTranslation()
 	const { useAddMedicine } = useEndpoints()
 	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
@@ -27,11 +25,6 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<MedicineForm
-			title={t('createMedicine:title')}
-			data={data}
-			submitHandler={save}
-			isSubmitting={isUploading}
-		/>
+		<MedicineForm data={data} submitHandler={save} isSubmitting={isUploading} />
 	)
 })

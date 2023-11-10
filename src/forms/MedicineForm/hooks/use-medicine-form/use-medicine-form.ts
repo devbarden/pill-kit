@@ -8,13 +8,11 @@ import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
 import { MedicineFormProps } from '../../MedicineForm'
 
-type UseMedicineFormProps = Omit<MedicineFormProps, 'title'>
-
 export const useMedicineForm = ({
 	data,
 	submitHandler,
 	isSubmitting,
-}: UseMedicineFormProps) => {
+}: MedicineFormProps) => {
 	const { navigate } = useNavigation()
 
 	const [form, setForm] = useState<MedicineWithoutId>(data)

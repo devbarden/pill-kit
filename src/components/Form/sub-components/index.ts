@@ -1,3 +1,7 @@
 export * from './Item'
+export * from './Input'
+export * from './Title'
+export * from './Select'
 export * from './Wrapper'
 export * from './Separator'
+export * from './IconAction'

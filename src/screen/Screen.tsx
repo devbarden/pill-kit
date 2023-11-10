@@ -8,8 +8,8 @@ import {
 
 import '@app/i18n'
 import * as PAGE_MAP from '@app/pages'
-import { useEndpoints } from '@app/hooks'
 import { ROUTES } from '@app/constants'
+import { useEndpoints } from '@app/hooks'
 import { NavigatorTypes } from '@app/types'
 import { withContentWrapper } from '@app/hoc'
 import { Loader, Navigation } from '@app/components'

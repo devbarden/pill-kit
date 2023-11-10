@@ -21,6 +21,21 @@ export const en: Language = {
 		back: 'Go Back',
 	},
 
+	settings: {
+		title: 'Settings',
+	},
+
+	settingsForm: {
+		upgrade: 'Upgrade to Pro version',
+		donate: 'Donate',
+		rate: 'Rate the App',
+		language: 'Language',
+		contact: 'Contact',
+		clearData: 'Clear all data',
+		termsOfUsage: 'Terms of Usage',
+		privacyPolicy: 'Privacy Policy',
+	},
+
 	medicineForm: {
 		name: 'Name',
 		type: 'Type',

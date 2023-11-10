@@ -20,6 +20,21 @@ export interface Language {
 		back: string
 	}
 
+	settings: {
+		title: string
+	}
+
+	settingsForm: {
+		upgrade: string
+		donate: string
+		rate: string
+		language: string
+		contact: string
+		clearData: string
+		termsOfUsage: string
+		privacyPolicy: string
+	}
+
 	medicineForm: {
 		name: string
 		type: string

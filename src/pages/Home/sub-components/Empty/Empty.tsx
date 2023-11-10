@@ -2,7 +2,7 @@ import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { ROUTES } from '@app/constants'
 
@@ -20,7 +20,11 @@ export const Empty: FC = memo(() => {
 		<Box style={styles.wrapper}>
 			<Box style={styles.infoWrapper}>
 				<Pressable style={styles.info} onPress={addHandler}>
-					<Icon name="flask-empty-plus-outline" size={128} color="grey" />
+					<MaterialCommunityIcons
+						name="flask-empty-plus-outline"
+						size={128}
+						color="grey"
+					/>
 					<Text fontSize="lg">{t('home:emptyInfo')}</Text>
 				</Pressable>
 			</Box>
@@ -29,7 +33,7 @@ export const Empty: FC = memo(() => {
 				<Text fontSize="lg" color="white">
 					{t('home:addButton')}
 				</Text>
-				<Icon name="pill" color="white" size={24} />
+				<MaterialCommunityIcons name="pill" color="white" size={24} />
 			</Pressable>
 		</Box>
 	)

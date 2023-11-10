@@ -2,7 +2,7 @@ import { FC, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Stack } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { ROUTES, COLORS } from '@app/constants'
 
@@ -20,7 +20,9 @@ export const Header: FC = memo(() => {
 				size="lg"
 				onPress={addHandler}
 				colorScheme={COLORS.RED}
-				endIcon={<Icon name="pill" color="white" size={24} />}>
+				endIcon={
+					<MaterialCommunityIcons name="pill" color="white" size={24} />
+				}>
 				{t('home:addButton')}
 			</Button>
 		</Stack>
