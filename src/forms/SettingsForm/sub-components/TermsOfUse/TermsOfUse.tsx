@@ -9,20 +9,17 @@ import { useTranslation } from 'react-i18next'
 import { AlertDialog, Button, IAlertProps } from 'native-base'
 
 import { COLORS } from '@app/constants'
-import { useEndpoints } from '@app/hooks'
 
-import { styles } from './RemoveAlert.styles'
+import { styles } from './TermsOfUse.styles'
 
-export interface RemoveAlertHandlers {
+export interface TermsOfUseHandlers {
 	openModal: () => void
 }
 
-export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
+// TODO: put the correct terms of use
+export const TermsOfUse = forwardRef<TermsOfUseHandlers, IAlertProps>(
 	(props, ref) => {
 		const { t } = useTranslation()
-		const { useRemoveAllMedicines } = useEndpoints()
-		const { mutateAsync: removeAllMedicines, isLoading: isRemoving } =
-			useRemoveAllMedicines()
 
 		const [isOpen, setIsOpen] = useState(false)
 
@@ -38,12 +35,6 @@ export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
 			setIsOpen(false)
 		}, [])
 
-		const deleteHandler = useCallback(async () => {
-			await removeAllMedicines()
-
-			closeModal()
-		}, [removeAllMedicines, closeModal])
-
 		useImperativeHandle(
 			ref,
 			() => ({
@@ -54,6 +45,7 @@ export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
 
 		return (
 			<AlertDialog
+				size="xl"
 				leastDestructiveRef={cancelRef}
 				isOpen={isOpen}
 				onClose={onClose}
@@ -61,25 +53,16 @@ export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
 				{...props}>
 				<AlertDialog.Content style={styles.modal}>
 					<AlertDialog.CloseButton />
-					<AlertDialog.Header>{t('removeDataAlert:title')}</AlertDialog.Header>
-					<AlertDialog.Body>
-						{t('removeDataAlert:description')}
-					</AlertDialog.Body>
+					<AlertDialog.Header>{t('termsOfUse:title')}</AlertDialog.Header>
+					<AlertDialog.Body>{t('termsOfUse:description')}</AlertDialog.Body>
 					<AlertDialog.Footer>
 						<Button.Group space={2}>
 							<Button
 								variant="outline"
 								colorScheme={COLORS.RED}
-								disabled={isRemoving}
 								onPress={closeModal}
 								ref={cancelRef}>
-								{t('components:btn.cancel')}
-							</Button>
-							<Button
-								colorScheme={COLORS.RED}
-								disabled={isRemoving}
-								onPress={deleteHandler}>
-								{t('components:btn.delete')}
+								{t('components:btn.close')}
 							</Button>
 						</Button.Group>
 					</AlertDialog.Footer>

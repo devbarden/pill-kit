@@ -4,12 +4,13 @@ import { useTranslation } from 'react-i18next'
 
 import { getSelectedLanguage } from '@app/utils'
 
-import { MAIL_TO_LINK } from '@app/constants'
+import { DONATE_LINK, MAIL_TO_LINK, RATE_LINK } from '@app/constants'
 
-import { RemoveAlertHandlers } from '../../sub-components'
+import { RemoveAlertHandlers, TermsOfUseHandlers } from '../../sub-components'
 
 export const useSettingsForm = () => {
 	const removeAlertRef = useRef<RemoveAlertHandlers>(null)
+	const termsOfUseRef = useRef<TermsOfUseHandlers>(null)
 
 	const { i18n } = useTranslation()
 
@@ -29,15 +30,34 @@ export const useSettingsForm = () => {
 		Linking.openURL(MAIL_TO_LINK)
 	}, [])
 
+	const donateHandler = useCallback(() => {
+		Linking.openURL(DONATE_LINK)
+	}, [])
+
+	const rateHandler = useCallback(() => {
+		Linking.openURL(RATE_LINK)
+	}, [])
+
 	const removeDataHandler = useCallback(() => {
 		removeAlertRef.current?.openModal()
 	}, [])
 
+	const termsOfUseHandler = useCallback(() => {
+		termsOfUseRef.current?.openModal()
+	}, [])
+
+	const upgradeHandler = useCallback(() => {}, [])
+
 	return {
 		removeAlertRef,
+		termsOfUseRef,
 		selectedLanguage,
 		changeLanguageHandler,
 		mailHandler,
 		removeDataHandler,
+		donateHandler,
+		rateHandler,
+		termsOfUseHandler,
+		upgradeHandler,
 	}
 }

@@ -31,8 +31,7 @@ export interface Language {
 		language: string
 		contact: string
 		clearData: string
-		termsOfUsage: string
-		privacyPolicy: string
+		termsOfUse: string
 	}
 
 	medicineForm: {
@@ -57,6 +56,7 @@ export interface Language {
 			back: string
 			cancel: string
 			delete: string
+			close: string
 		}
 
 		input: {
@@ -85,5 +85,10 @@ export interface Language {
 			removeAll: string
 			error: string
 		}
+	}
+
+	termsOfUse: {
+		title: string
+		description: string
 	}
 }

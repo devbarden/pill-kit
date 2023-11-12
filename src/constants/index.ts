@@ -1,5 +1,5 @@
-export * from './mail'
 export * from './form'
+export * from './links'
 export * from './routes'
 export * from './errors'
 export * from './colors'

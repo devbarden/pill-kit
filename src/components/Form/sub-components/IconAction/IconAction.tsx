@@ -1,6 +1,11 @@
 import { FC, ReactElement, memo } from 'react'
 import { Pressable } from 'native-base'
-import { Feather, MaterialIcons } from '@expo/vector-icons'
+import {
+	AntDesign,
+	Feather,
+	MaterialIcons,
+	FontAwesome5,
+} from '@expo/vector-icons'
 
 import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
@@ -17,11 +22,19 @@ const ICONS_MAP: Record<FORM_ICON_ACTION_MODES, ReactElement> = {
 	),
 
 	[FORM_ICON_ACTION_MODES.ARROW]: (
-		<Feather name="chevron-right" size={20} color={COLORS.DARK_GREY} />
+		<Feather name="chevron-right" size={24} color={COLORS.DARK_GREY} />
 	),
 
 	[FORM_ICON_ACTION_MODES.REMOVE]: (
-		<MaterialIcons name="highlight-remove" size={24} color={COLORS.RED} />
+		<MaterialIcons name="highlight-remove" size={28} color={COLORS.RED} />
+	),
+
+	[FORM_ICON_ACTION_MODES.MONEY]: (
+		<FontAwesome5 name="money-bill" size={24} color={COLORS.GREEN} />
+	),
+
+	[FORM_ICON_ACTION_MODES.STAR]: (
+		<AntDesign name="star" size={24} color={COLORS.BLUE} />
 	),
 }
 

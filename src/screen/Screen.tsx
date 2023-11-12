@@ -20,6 +20,7 @@ declare global {
 	}
 }
 
+// TODO: improve performance
 const screenOptions = { headerShown: false, unmountOnBlur: true }
 const Tab = createBottomTabNavigator<NavigatorTypes>()
 

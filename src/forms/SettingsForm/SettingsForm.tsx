@@ -8,41 +8,33 @@ import { languageSelectItems } from '@app/utils'
 import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
 import { useSettingsForm } from './hooks'
-import { RemoveAlert } from './sub-components'
+import { RemoveAlert, TermsOfUse } from './sub-components'
 
 export const SettingsForm: FC = memo(() => {
 	const { t } = useTranslation()
 	const {
 		removeAlertRef,
+		termsOfUseRef,
 		selectedLanguage,
 		changeLanguageHandler,
 		mailHandler,
 		removeDataHandler,
+		donateHandler,
+		rateHandler,
+		termsOfUseHandler,
+		upgradeHandler,
 	} = useSettingsForm()
 
 	return (
 		<ScrollContent>
 			<RemoveAlert ref={removeAlertRef} />
+			<TermsOfUse ref={termsOfUseRef} />
 
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:upgrade')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={() => {}}
-					/>
-				</Form.Item>
-				<Form.Separator />
-				<Form.Item name={t('settingsForm:donate')}>
-					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={() => {}}
-					/>
-				</Form.Item>
-				<Form.Separator />
-				<Form.Item name={t('settingsForm:rate')}>
-					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={() => {}}
+						handler={upgradeHandler}
 					/>
 				</Form.Item>
 			</Form.Wrapper>
@@ -79,17 +71,26 @@ export const SettingsForm: FC = memo(() => {
 			</Form.Wrapper>
 
 			<Form.Wrapper>
-				<Form.Item name={t('settingsForm:termsOfUsage')}>
+				<Form.Item name={t('settingsForm:donate')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={() => {}}
+						mode={FORM_ICON_ACTION_MODES.MONEY}
+						handler={donateHandler}
 					/>
 				</Form.Item>
 				<Form.Separator />
-				<Form.Item name={t('settingsForm:privacyPolicy')}>
+				<Form.Item name={t('settingsForm:rate')}>
+					<Form.IconAction
+						mode={FORM_ICON_ACTION_MODES.STAR}
+						handler={rateHandler}
+					/>
+				</Form.Item>
+			</Form.Wrapper>
+
+			<Form.Wrapper>
+				<Form.Item name={t('settingsForm:termsOfUse')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={() => {}}
+						handler={termsOfUseHandler}
 					/>
 				</Form.Item>
 			</Form.Wrapper>
