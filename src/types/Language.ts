@@ -45,12 +45,18 @@ export interface Language {
 		notification: string
 	}
 
+	removeDataAlert: {
+		title: string
+		description: string
+	}
+
 	components: {
 		btn: {
 			add: string
 			save: string
-			cancel: string
 			back: string
+			cancel: string
+			delete: string
 		}
 
 		input: {
@@ -76,6 +82,7 @@ export interface Language {
 			add: string
 			edit: string
 			remove: string
+			removeAll: string
 			error: string
 		}
 	}

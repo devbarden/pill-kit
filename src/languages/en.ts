@@ -46,12 +46,19 @@ export const en: Language = {
 		notification: 'Notification',
 	},
 
+	removeDataAlert: {
+		title: 'Clear All Data',
+		description:
+			'Do you really want to delete all the data ? This action is irrevocable',
+	},
+
 	components: {
 		btn: {
 			add: 'Add',
 			save: 'Save',
-			cancel: 'Cancel',
 			back: 'Back',
+			cancel: 'Cancel',
+			delete: 'Delete',
 		},
 
 		input: {
@@ -80,6 +87,7 @@ export const en: Language = {
 			add: 'Medicine was added successfully',
 			edit: 'Medicine was updated successfully',
 			remove: 'Medicine was removed successfully',
+			removeAll: 'All medicines have been successfully removed',
 			error: 'Something went wrong. We are working on the problem',
 		},
 	},

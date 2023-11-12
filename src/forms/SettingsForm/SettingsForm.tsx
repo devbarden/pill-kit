@@ -1,34 +1,29 @@
-import { FC, memo, useMemo, useCallback } from 'react'
-import { Linking } from 'react-native'
+import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { Form, ScrollContent } from '@app/components'
-import { getSelectedLanguage, languageSelectItems } from '@app/utils'
+import { languageSelectItems } from '@app/utils'
 
-import { COLORS, FORM_ICON_ACTION_MODES, MAIL_TO_LINK } from '@app/constants'
+import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
+
+import { useSettingsForm } from './hooks'
+import { RemoveAlert } from './sub-components'
 
 export const SettingsForm: FC = memo(() => {
-	const { t, i18n } = useTranslation()
-
-	const selectedLanguage = useMemo(
-		() => getSelectedLanguage(i18n.language),
-		[i18n],
-	)
-
-	const changeLanguageHandler = useCallback(
-		(language: string) => {
-			i18n.changeLanguage(language)
-		},
-		[i18n],
-	)
-
-	const mailHandler = useCallback(() => {
-		Linking.openURL(MAIL_TO_LINK)
-	}, [])
+	const { t } = useTranslation()
+	const {
+		removeAlertRef,
+		selectedLanguage,
+		changeLanguageHandler,
+		mailHandler,
+		removeDataHandler,
+	} = useSettingsForm()
 
 	return (
 		<ScrollContent>
+			<RemoveAlert ref={removeAlertRef} />
+
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:upgrade')}>
 					<Form.IconAction
@@ -78,7 +73,7 @@ export const SettingsForm: FC = memo(() => {
 				<Form.Item name={t('settingsForm:clearData')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.REMOVE}
-						handler={() => {}}
+						handler={removeDataHandler}
 					/>
 				</Form.Item>
 			</Form.Wrapper>

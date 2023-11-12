@@ -2,14 +2,7 @@ import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
-import {
-	getMedicine,
-	setMedicine,
-	editMedicine,
-	getMedicines,
-	initMedicines,
-	removeMedicine,
-} from '@app/api'
+import * as medicineApi from '@app/api'
 import { toast } from '@app/utils'
 import { MedicineId, MedicineWithoutId } from '@app/types'
 
@@ -25,24 +18,25 @@ export const useMedicinesEndpoints = () => {
 		useInitMedicines: () =>
 			useQuery({
 				queryKey: ['init-medicines'],
-				queryFn: initMedicines,
+				queryFn: medicineApi.initMedicines,
 			}),
 
 		useMedicines: () =>
 			useQuery({
 				queryKey: ['medicines'],
-				queryFn: getMedicines,
+				queryFn: medicineApi.getMedicines,
 			}),
 
 		useMedicine: (id: MedicineId) =>
 			useQuery({
 				queryKey: ['medicine', id],
-				queryFn: () => getMedicine(id),
+				queryFn: () => medicineApi.getMedicine(id),
 			}),
 
 		useAddMedicine: () =>
 			useMutation({
-				mutationFn: (medicine: MedicineWithoutId) => setMedicine(medicine),
+				mutationFn: (medicine: MedicineWithoutId) =>
+					medicineApi.setMedicine(medicine),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.add'))
 					invalidateMedicines()
@@ -54,7 +48,8 @@ export const useMedicinesEndpoints = () => {
 
 		useEditMedicine: (id: MedicineId) =>
 			useMutation({
-				mutationFn: (medicine: MedicineWithoutId) => editMedicine(id, medicine),
+				mutationFn: (medicine: MedicineWithoutId) =>
+					medicineApi.editMedicine(id, medicine),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.edit'))
 					invalidateMedicines()
@@ -66,9 +61,21 @@ export const useMedicinesEndpoints = () => {
 
 		useRemoveMedicine: () =>
 			useMutation({
-				mutationFn: (id: MedicineId) => removeMedicine(id),
+				mutationFn: (id: MedicineId) => medicineApi.removeMedicine(id),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.remove'))
+					invalidateMedicines()
+				},
+				onError: () => {
+					toast.error(t('notifications:medicines.error'))
+				},
+			}),
+
+		useRemoveAllMedicines: () =>
+			useMutation({
+				mutationFn: medicineApi.removeAllMedicines,
+				onSuccess: () => {
+					toast.success(t('notifications:medicines.removeAll'))
 					invalidateMedicines()
 				},
 				onError: () => {

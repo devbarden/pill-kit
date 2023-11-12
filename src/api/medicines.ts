@@ -93,3 +93,12 @@ export const removeMedicine = async (id: MedicineId) => {
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
 	} catch {}
 }
+
+export const removeAllMedicines = async () => {
+	try {
+		const newMedicines: Medicine[] = []
+		const stringifiedMedicines = JSON.stringify(newMedicines)
+
+		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+	} catch {}
+}
