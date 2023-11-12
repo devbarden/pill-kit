@@ -1,11 +1,12 @@
 import { FC, memo, useMemo, useCallback } from 'react'
+import { Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { Form, ScrollContent } from '@app/components'
 import { getSelectedLanguage, languageSelectItems } from '@app/utils'
 
-import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
+import { COLORS, FORM_ICON_ACTION_MODES, MAIL_TO_LINK } from '@app/constants'
 
 export const SettingsForm: FC = memo(() => {
 	const { t, i18n } = useTranslation()
@@ -21,6 +22,10 @@ export const SettingsForm: FC = memo(() => {
 		},
 		[i18n],
 	)
+
+	const mailHandler = useCallback(() => {
+		Linking.openURL(MAIL_TO_LINK)
+	}, [])
 
 	return (
 		<ScrollContent>
@@ -66,7 +71,7 @@ export const SettingsForm: FC = memo(() => {
 				<Form.Item name={t('settingsForm:contact')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.MAIL}
-						handler={() => {}}
+						handler={mailHandler}
 					/>
 				</Form.Item>
 				<Form.Separator />
