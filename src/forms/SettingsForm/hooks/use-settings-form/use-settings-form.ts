@@ -4,7 +4,12 @@ import { useTranslation } from 'react-i18next'
 
 import { getSelectedLanguage } from '@app/utils'
 
-import { DONATE_LINK, MAIL_TO_LINK, RATE_LINK } from '@app/constants'
+import {
+	DONATE_LINK,
+	MAIL_TO_LINK,
+	RATE_LINK,
+	UPGRADE_LINK,
+} from '@app/constants'
 
 import { RemoveAlertHandlers, TermsOfUseHandlers } from '../../sub-components'
 
@@ -26,6 +31,10 @@ export const useSettingsForm = () => {
 		[i18n],
 	)
 
+	const upgradeHandler = useCallback(() => {
+		Linking.openURL(UPGRADE_LINK)
+	}, [])
+
 	const mailHandler = useCallback(() => {
 		Linking.openURL(MAIL_TO_LINK)
 	}, [])
@@ -45,8 +54,6 @@ export const useSettingsForm = () => {
 	const termsOfUseHandler = useCallback(() => {
 		termsOfUseRef.current?.openModal()
 	}, [])
-
-	const upgradeHandler = useCallback(() => {}, [])
 
 	return {
 		removeAlertRef,

@@ -1,4 +1,4 @@
-import { Ionicons, Octicons, Feather } from '@expo/vector-icons'
+import { Ionicons, Octicons, AntDesign } from '@expo/vector-icons'
 
 import { COLORS, ROUTES } from '@app/constants'
 
@@ -12,7 +12,7 @@ export const getIcon = (route: ROUTES, isActive: boolean) =>
 	({
 		[ROUTES.HOME]: () => <Octicons name="home" {...getIconProps(isActive)} />,
 		[ROUTES.CREATE_MEDICINE]: () => (
-			<Feather name="file-plus" {...getIconProps(isActive)} />
+			<AntDesign name="pluscircleo" {...getIconProps(isActive)} />
 		),
 		[ROUTES.HISTORY]: () => (
 			<Octicons name="history" {...getIconProps(isActive)} />

@@ -8,7 +8,7 @@ import { languageSelectItems } from '@app/utils'
 import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
 import { useSettingsForm } from './hooks'
-import { RemoveAlert, TermsOfUse } from './sub-components'
+import { RemoveAlert, TermsOfUse, ProLabel } from './sub-components'
 
 export const SettingsForm: FC = memo(() => {
 	const { t } = useTranslation()
@@ -32,10 +32,7 @@ export const SettingsForm: FC = memo(() => {
 
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:upgrade')}>
-					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={upgradeHandler}
-					/>
+					<ProLabel handler={upgradeHandler} />
 				</Form.Item>
 			</Form.Wrapper>
 
