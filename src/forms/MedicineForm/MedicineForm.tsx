@@ -84,7 +84,6 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 					<Form.Item name={t('medicineForm:startDate')}>
 						<DateTimePicker
 							mode="date"
-							minimumDate={new Date()}
 							value={new Date(form.startDate)}
 							onChange={changeStartDateHandler}
 							locale={i18n.language}
@@ -94,7 +93,6 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 					<Form.Item name={t('medicineForm:endDate')}>
 						<DateTimePicker
 							mode="date"
-							minimumDate={new Date()}
 							value={new Date(form.endDate)}
 							onChange={changeEndDateHandler}
 							locale={i18n.language}

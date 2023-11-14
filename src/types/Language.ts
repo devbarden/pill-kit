@@ -49,6 +49,14 @@ export interface Language {
 		description: string
 	}
 
+	card: {
+		date: {
+			till: string
+			from: string
+			daily: string
+		}
+	}
+
 	components: {
 		btn: {
 			add: string

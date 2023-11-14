@@ -51,6 +51,14 @@ export const en: Language = {
 			'Do you really want to delete all the data ? This action is irrevocable',
 	},
 
+	card: {
+		date: {
+			till: 'Till',
+			from: 'From',
+			daily: 'Daily',
+		},
+	},
+
 	components: {
 		btn: {
 			add: 'Add',
