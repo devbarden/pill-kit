@@ -94,11 +94,11 @@ export const useCardState = (data: Medicine) => {
 	const medicineIcon = useMemo(() => {
 		const MEDICINE_ICON_MAP: Record<MEDICINE_TYPE, ReactElement> = {
 			[MEDICINE_TYPE.PILL]: (
-				<MaterialCommunityIcons name="pill" {...commonIconProps} />
+				<MaterialCommunityIcons name="pill" {...commonIconProps} size={34} />
 			),
 
 			[MEDICINE_TYPE.CREAM]: (
-				<MaterialIcons name="local-drink" {...commonIconProps} />
+				<MaterialIcons name="local-drink" {...commonIconProps} size={34} />
 			),
 		}
 
