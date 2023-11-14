@@ -9,16 +9,16 @@ import { SearchBar, FilteredCards } from './sub-components'
 import { styles } from './History.styles'
 
 export const History: FC = memo(() => {
-	const context = useHistoryState()
+	const state = useHistoryState()
 
-	if (context.isLoading) {
+	if (state.isLoading) {
 		return <Loader />
 	}
 
 	// TODO: implement empty page
 
 	return (
-		<HistoryContext.Provider value={context}>
+		<HistoryContext.Provider value={state}>
 			<Box style={styles.wrapper}>
 				<SearchBar />
 				<FilteredCards />
