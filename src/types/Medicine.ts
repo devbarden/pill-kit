@@ -6,7 +6,6 @@ export interface Medicine {
 	type: MEDICINE_TYPE
 	countPerUse: string
 	countPerDay: string
-	completed: boolean
 	notification: boolean
 	startDate: number
 	endDate: number

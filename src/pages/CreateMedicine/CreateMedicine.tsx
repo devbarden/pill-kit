@@ -16,7 +16,6 @@ export const CreateMedicine: FC = memo(() => {
 			type: MEDICINE_TYPE.PILL,
 			countPerUse: '',
 			countPerDay: '',
-			completed: false,
 			notification: true,
 			startDate: Date.now(),
 			endDate: addWeeks(new Date(), 2),
