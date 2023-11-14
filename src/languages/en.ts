@@ -21,6 +21,15 @@ export const en: Language = {
 		back: 'Go Back',
 	},
 
+	history: {
+		filters: {
+			title: 'Filters',
+			active: 'Active',
+			future: 'Future',
+			past: 'Past',
+		},
+	},
+
 	settings: {
 		title: 'Settings',
 	},
@@ -73,6 +82,7 @@ export const en: Language = {
 			placeholder: {
 				required: 'Required',
 				optional: 'Optional',
+				search: 'Search',
 			},
 		},
 

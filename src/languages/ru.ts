@@ -21,6 +21,15 @@ export const ru: Language = {
 		back: 'Вернуться назад',
 	},
 
+	history: {
+		filters: {
+			title: 'Фильтры',
+			active: 'Активные',
+			future: 'Будущие',
+			past: 'Прошлые',
+		},
+	},
+
 	settings: {
 		title: 'Настройки',
 	},
@@ -73,6 +82,7 @@ export const ru: Language = {
 			placeholder: {
 				required: 'Обязательно',
 				optional: 'Необязательно',
+				search: 'Поиск',
 			},
 		},
 

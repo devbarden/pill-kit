@@ -20,6 +20,15 @@ export interface Language {
 		back: string
 	}
 
+	history: {
+		filters: {
+			title: string
+			active: string
+			future: string
+			past: string
+		}
+	}
+
 	settings: {
 		title: string
 	}
@@ -71,6 +80,7 @@ export interface Language {
 			placeholder: {
 				required: string
 				optional: string
+				search: string
 			}
 		}
 

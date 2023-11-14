@@ -15,6 +15,7 @@ import { styles } from './RemoveAlert.styles'
 
 export interface RemoveAlertHandlers {
 	openModal: () => void
+	closeModal: () => void
 }
 
 export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
@@ -27,8 +28,6 @@ export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
 		const [isOpen, setIsOpen] = useState(false)
 
 		const cancelRef = useRef(null)
-
-		const onClose = () => setIsOpen(false)
 
 		const openModal = useCallback(() => {
 			setIsOpen(true)
@@ -48,15 +47,16 @@ export const RemoveAlert = forwardRef<RemoveAlertHandlers, IAlertProps>(
 			ref,
 			() => ({
 				openModal,
+				closeModal,
 			}),
-			[openModal],
+			[openModal, closeModal],
 		)
 
 		return (
 			<AlertDialog
 				leastDestructiveRef={cancelRef}
 				isOpen={isOpen}
-				onClose={onClose}
+				onClose={closeModal}
 				style={styles.wrapper}
 				{...props}>
 				<AlertDialog.Content style={styles.modal}>

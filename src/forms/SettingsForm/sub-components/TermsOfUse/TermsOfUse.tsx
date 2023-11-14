@@ -14,6 +14,7 @@ import { styles } from './TermsOfUse.styles'
 
 export interface TermsOfUseHandlers {
 	openModal: () => void
+	closeModal: () => void
 }
 
 // TODO: put the correct terms of use
@@ -24,8 +25,6 @@ export const TermsOfUse = forwardRef<TermsOfUseHandlers, IAlertProps>(
 		const [isOpen, setIsOpen] = useState(false)
 
 		const cancelRef = useRef(null)
-
-		const onClose = () => setIsOpen(false)
 
 		const openModal = useCallback(() => {
 			setIsOpen(true)
@@ -39,8 +38,9 @@ export const TermsOfUse = forwardRef<TermsOfUseHandlers, IAlertProps>(
 			ref,
 			() => ({
 				openModal,
+				closeModal,
 			}),
-			[openModal],
+			[openModal, closeModal],
 		)
 
 		return (
@@ -48,7 +48,7 @@ export const TermsOfUse = forwardRef<TermsOfUseHandlers, IAlertProps>(
 				size="xl"
 				leastDestructiveRef={cancelRef}
 				isOpen={isOpen}
-				onClose={onClose}
+				onClose={closeModal}
 				style={styles.wrapper}
 				{...props}>
 				<AlertDialog.Content style={styles.modal}>

@@ -5,7 +5,11 @@ import { useTranslation } from 'react-i18next'
 import { useSelectItems } from '@app/hooks'
 import { MedicineWithoutId } from '@app/types'
 import { Form, Switch, Button, ScrollContent } from '@app/components'
-import { MEDICINE_TYPE, MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
+import {
+	MEDICINE_MAX_LENGTH_OF_NAME,
+	MEDICINE_TYPE,
+	MEDICINE_TYPE_TRANSLATION_PATH,
+} from '@app/constants'
 
 import { useMedicineForm } from './hooks'
 
@@ -42,7 +46,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 				<Form.Wrapper>
 					<Form.Item name={t('medicineForm:name')}>
 						<Form.Input
-							maxLength={25}
+							maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
 							value={form.name}
 							onChangeText={changeNameHandler}
 							placeholder={t('components:input.placeholder.required')}
