@@ -4,5 +4,6 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		gap: 16,
+		marginTop: 16,
 	},
 })

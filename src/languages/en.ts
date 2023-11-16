@@ -7,12 +7,13 @@ export const en: Language = {
 	},
 
 	home: {
+		title: 'Home',
 		add: 'Add',
 		empty: 'No medications found',
 	},
 
 	createMedicine: {
-		title: 'Create New Medicine',
+		title: 'Create Medicine',
 	},
 
 	editMedicine: {
@@ -22,6 +23,7 @@ export const en: Language = {
 	},
 
 	history: {
+		title: 'History',
 		empty: 'No medications found',
 		filtersTitle: 'Filters',
 		filters: {

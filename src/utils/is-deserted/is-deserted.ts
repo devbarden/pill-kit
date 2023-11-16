@@ -18,6 +18,10 @@ export const isDeserted = <T>(value: T): boolean => {
 	}
 
 	if (typeof value === 'object') {
+		if (value === null) {
+			return true
+		}
+
 		if (Array.isArray(value)) {
 			return value.length === 0
 		}

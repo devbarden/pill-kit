@@ -6,6 +6,7 @@ export interface Language {
 	}
 
 	home: {
+		title: string
 		add: string
 		empty: string
 	}
@@ -21,6 +22,7 @@ export interface Language {
 	}
 
 	history: {
+		title: string
 		empty: string
 		filtersTitle: string
 		filters: Record<HISTORY_FILTER, string>

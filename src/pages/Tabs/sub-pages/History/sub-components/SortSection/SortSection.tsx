@@ -18,11 +18,17 @@ export const SortSection: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Text fontSize="lg" color={COLORS.DARK_GREY}>
+			<Text
+				fontSize="lg"
+				numberOfLines={1}
+				color={COLORS.DARK_GREY}
+				style={styles.maxWidthHalfOfRow}>
 				{t('sortSection:medicines')}: {medicines.length}
 			</Text>
-			<Pressable style={styles.sort} onPress={openSortingOptions}>
-				<Text fontSize="lg" color={COLORS.DARK_GREY}>
+			<Pressable
+				style={[styles.sort, styles.maxWidthHalfOfRow]}
+				onPress={openSortingOptions}>
+				<Text fontSize="lg" numberOfLines={1} color={COLORS.DARK_GREY}>
 					{t('sortSection:sort')}
 				</Text>
 				<MaterialCommunityIcons

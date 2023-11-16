@@ -6,8 +6,10 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		gap: 16,
-		marginBottom: 16,
+	},
+
+	maxWidthHalfOfRow: {
+		maxWidth: '50%',
 	},
 
 	sort: {
@@ -15,8 +17,8 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		gap: 8,
-		paddingVertical: 8,
-		paddingHorizontal: 24,
+		paddingVertical: 6,
+		paddingHorizontal: 12,
 		borderRadius: 12,
 		backgroundColor: COLORS.WHITE,
 	},

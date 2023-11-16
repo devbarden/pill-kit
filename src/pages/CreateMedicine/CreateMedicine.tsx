@@ -1,13 +1,15 @@
 import { FC, memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { addWeeks } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { MEDICINE_TYPE } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
-import { BgWrapper, ContentWrapper } from '@app/components'
+import { MEDICINE_TYPE } from '@app/constants'
+import { Header } from '@app/components'
 
 export const CreateMedicine: FC = memo(() => {
+	const { t } = useTranslation()
 	const { useAddMedicine } = useEndpoints()
 	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
@@ -25,14 +27,13 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<BgWrapper>
-			<ContentWrapper>
-				<MedicineForm
-					data={data}
-					submitHandler={save}
-					isSubmitting={isUploading}
-				/>
-			</ContentWrapper>
-		</BgWrapper>
+		<>
+			<Header title={t('createMedicine:title')} withGoBack />
+			<MedicineForm
+				data={data}
+				submitHandler={save}
+				isSubmitting={isUploading}
+			/>
+		</>
 	)
 })

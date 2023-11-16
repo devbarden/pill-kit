@@ -7,12 +7,13 @@ export const ru: Language = {
 	},
 
 	home: {
+		title: 'Домашняя страница',
 		add: 'Добавить',
 		empty: 'Лекарства не найдены',
 	},
 
 	createMedicine: {
-		title: 'Добавить новое лекарство',
+		title: 'Добавить лекарство',
 	},
 
 	editMedicine: {
@@ -22,6 +23,7 @@ export const ru: Language = {
 	},
 
 	history: {
+		title: 'История',
 		empty: 'Лекарства не найдены',
 		filtersTitle: 'Фильтры',
 		filters: {

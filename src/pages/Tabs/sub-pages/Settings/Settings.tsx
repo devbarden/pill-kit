@@ -1,14 +1,18 @@
 import { FC, memo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { SettingsForm } from '@app/forms'
-import { BgWrapper, ContentWrapper } from '@app/components'
+import { ContentWrapper, Header } from '@app/components'
 
 export const Settings: FC = memo(() => {
+	const { t } = useTranslation()
+
 	return (
-		<BgWrapper>
-			<ContentWrapper>
+		<>
+			<Header title={t('settings:title')} />
+			<ContentWrapper withHorizontalPaddings>
 				<SettingsForm />
 			</ContentWrapper>
-		</BgWrapper>
+		</>
 	)
 })
