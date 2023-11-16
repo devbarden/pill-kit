@@ -1,1 +1,1 @@
-export const CARD_HEIGHT = 94
+export const CARD_MARGIN_TOP = 16

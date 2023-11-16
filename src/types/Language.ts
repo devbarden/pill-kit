@@ -26,6 +26,11 @@ export interface Language {
 		filters: Record<HISTORY_FILTER, string>
 	}
 
+	sortSection: {
+		medicines: string
+		sort: string
+	}
+
 	settings: {
 		title: string
 	}

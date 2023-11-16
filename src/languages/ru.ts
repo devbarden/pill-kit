@@ -31,6 +31,11 @@ export const ru: Language = {
 		},
 	},
 
+	sortSection: {
+		medicines: 'Лекарства',
+		sort: 'Сортировать',
+	},
+
 	settings: {
 		title: 'Настройки',
 	},

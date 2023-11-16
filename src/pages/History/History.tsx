@@ -5,7 +5,7 @@ import { Loader } from '@app/components'
 
 import { useHistoryState } from './hooks'
 import { HistoryContext } from './context'
-import { SearchBar, FilteredCards } from './sub-components'
+import { SearchBar, SortSection, FilteredCards } from './sub-components'
 import { styles } from './History.styles'
 
 export const History: FC = memo(() => {
@@ -19,6 +19,7 @@ export const History: FC = memo(() => {
 		<HistoryContext.Provider value={state}>
 			<Box style={styles.wrapper}>
 				<SearchBar />
+				<SortSection />
 				<FilteredCards />
 			</Box>
 		</HistoryContext.Provider>

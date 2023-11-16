@@ -31,6 +31,11 @@ export const en: Language = {
 		},
 	},
 
+	sortSection: {
+		medicines: 'Medicines',
+		sort: 'Sort',
+	},
+
 	settings: {
 		title: 'Settings',
 	},

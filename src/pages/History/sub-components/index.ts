@@ -1,4 +1,5 @@
 export * from './Empty'
 export * from './SearchBar'
+export * from './SortSection'
 export * from './FiltersModal'
 export * from './FilteredCards'
