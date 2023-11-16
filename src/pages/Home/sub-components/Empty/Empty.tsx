@@ -25,13 +25,13 @@ export const Empty: FC = memo(() => {
 						size={128}
 						color="grey"
 					/>
-					<Text fontSize="lg">{t('home:emptyInfo')}</Text>
+					<Text fontSize="lg">{t('home:empty')}</Text>
 				</Pressable>
 			</Box>
 
 			<Pressable style={styles.buttonWrapper} onPress={addHandler}>
 				<Text fontSize="lg" color="white">
-					{t('home:addButton')}
+					{t('home:add')}
 				</Text>
 				<MaterialCommunityIcons name="pill" color="white" size={24} />
 			</Pressable>

@@ -8,7 +8,7 @@ import {
 } from '@expo/vector-icons'
 
 import { Medicine } from '@app/types'
-import { dateToFormat } from '@app/utils'
+import { dateToFormat, medicineUtils } from '@app/utils'
 import { MEDICINE_TYPE, COLORS, ROUTES } from '@app/constants'
 
 export const useCardState = (data: Medicine) => {
@@ -45,33 +45,34 @@ export const useCardState = (data: Medicine) => {
 		[startDate, endDate],
 	)
 
-	const isExpired = useMemo(() => Date.now() > endDate, [endDate])
-
-	const isUpcoming = useMemo(() => Date.now() < startDate, [startDate])
+	const { isActive, isFuture, isPast } = useMemo(
+		() => medicineUtils.getMedicineStatusByDate(data),
+		[data],
+	)
 
 	const dateToShow = useMemo(() => {
-		if (isExpired) {
+		if (isPast) {
 			return dateRange
 		}
 
-		if (isUpcoming) {
+		if (isFuture) {
 			return fromDate
 		}
 
 		return tillDate
-	}, [tillDate, fromDate, dateRange, isExpired, isUpcoming])
+	}, [tillDate, fromDate, dateRange, isPast, isFuture])
 
 	const cardColor = useMemo(() => {
-		if (isExpired) {
+		if (isPast) {
 			return COLORS.DARK_GREY
 		}
 
-		if (isUpcoming) {
+		if (isFuture) {
 			return COLORS.BLUE
 		}
 
 		return COLORS.RED
-	}, [isExpired, isUpcoming])
+	}, [isPast, isFuture])
 
 	const commonIconProps = useMemo(
 		() => ({
@@ -111,7 +112,9 @@ export const useCardState = (data: Medicine) => {
 
 	return {
 		name,
-		isExpired,
+		isPast,
+		isFuture,
+		isActive,
 		cardColor,
 		dateToShow,
 		onCardPress,

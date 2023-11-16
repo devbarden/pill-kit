@@ -1,6 +1,7 @@
 import { FC, memo, useCallback, useContext, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Pressable } from 'native-base'
+import { Pressable, Box, Text } from 'native-base'
+import { values, filter, size } from 'lodash'
 import { Ionicons } from '@expo/vector-icons'
 
 import { Form } from '@app/components'
@@ -8,12 +9,13 @@ import { COLORS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
 import { HistoryContext } from '../../context'
 import { FiltersModal, FiltersModalHandlers } from '../FiltersModal'
+import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
-	const filtersModalRef = useRef<FiltersModalHandlers>(null)
-
 	const { t } = useTranslation()
-	const { searchValue, setSearchValue } = useContext(HistoryContext)
+	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
+
+	const filtersModalRef = useRef<FiltersModalHandlers>(null)
 
 	const commonIconProps = useMemo(
 		() => ({
@@ -23,12 +25,21 @@ export const SearchBar: FC = memo(() => {
 		[],
 	)
 
+	const activeFilters: number = useMemo(
+		() => size(filter(values(filters), (isFilterActive) => isFilterActive)),
+		[filters],
+	)
+
 	const onChangeSearchValueHandler = useCallback(
 		(value: string) => {
 			setSearchValue(value)
 		},
 		[setSearchValue],
 	)
+
+	const clearSearchValue = useCallback(() => {
+		setSearchValue('')
+	}, [setSearchValue])
 
 	const openFiltersModal = useCallback(() => {
 		filtersModalRef.current?.openModal()
@@ -44,10 +55,19 @@ export const SearchBar: FC = memo(() => {
 					placeholder={t('components:input.placeholder.search')}
 					leftElement={<Ionicons name="search" {...commonIconProps} />}
 					rightElement={
-						// TODO: add X action to clear search value
-						<Pressable onPress={openFiltersModal}>
-							<Ionicons name="options" {...commonIconProps} />
-						</Pressable>
+						<Box style={styles.actionsWrapper}>
+							{searchValue && (
+								<Pressable onPress={clearSearchValue}>
+									<Ionicons name="close-circle-outline" {...commonIconProps} />
+								</Pressable>
+							)}
+							<Pressable onPress={openFiltersModal}>
+								<Box style={styles.badge}>
+									<Text style={styles.badgeText}>{activeFilters}</Text>
+								</Box>
+								<Ionicons name="options" {...commonIconProps} />
+							</Pressable>
+						</Box>
 					}
 				/>
 			</Form.Item>

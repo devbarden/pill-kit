@@ -5,12 +5,15 @@ import {
 	useRef,
 	useImperativeHandle,
 	useContext,
+	Fragment,
 } from 'react'
-import { useTranslation } from 'react-i18next'
+import { entries } from 'lodash'
 import { Modal } from 'native-base'
+import { useTranslation } from 'react-i18next'
 
+import { uid } from '@app/utils'
 import { Form, Switch } from '@app/components'
-import { COLORS } from '@app/constants'
+import { COLORS, HISTORY_FILTER } from '@app/constants'
 
 import { HistoryContext } from '../../context'
 
@@ -36,17 +39,12 @@ export const FiltersModal = forwardRef<FiltersModalHandlers>((props, ref) => {
 		setIsOpen(false)
 	}, [])
 
-	const toggleActiveFilter = useCallback(() => {
-		setFilters((prev) => ({ ...prev, active: !prev.active }))
-	}, [setFilters])
-
-	const toggleFutureFilter = useCallback(() => {
-		setFilters((prev) => ({ ...prev, future: !prev.future }))
-	}, [setFilters])
-
-	const togglePastFilter = useCallback(() => {
-		setFilters((prev) => ({ ...prev, past: !prev.past }))
-	}, [setFilters])
+	const toggleFilter = useCallback(
+		(filter: HISTORY_FILTER) => {
+			setFilters((prev) => ({ ...prev, [filter]: !prev[filter] }))
+		},
+		[setFilters],
+	)
 
 	useImperativeHandle(
 		ref,
@@ -66,26 +64,20 @@ export const FiltersModal = forwardRef<FiltersModalHandlers>((props, ref) => {
 			finalFocusRef={finalRef}>
 			<Modal.Content>
 				<Modal.CloseButton />
-				<Modal.Header>{t('history:filters.title')}</Modal.Header>
+				<Modal.Header>{t('history:filtersTitle')}</Modal.Header>
 				<Modal.Body style={{ backgroundColor: COLORS.GREY }}>
 					<Form.Wrapper>
-						<Form.Item name={t('history:filters.active')}>
-							<Switch
-								isChecked={filters.active}
-								onToggle={toggleActiveFilter}
-							/>
-						</Form.Item>
-						<Form.Separator />
-						<Form.Item name={t('history:filters.future')}>
-							<Switch
-								isChecked={filters.future}
-								onToggle={toggleFutureFilter}
-							/>
-						</Form.Item>
-						<Form.Separator />
-						<Form.Item name={t('history:filters.past')}>
-							<Switch isChecked={filters.past} onToggle={togglePastFilter} />
-						</Form.Item>
+						{entries(filters).map(([filter, status]) => (
+							<Fragment key={uid()}>
+								<Form.Item name={t(`history:filters.${filter}`)}>
+									<Switch
+										isChecked={status}
+										onToggle={() => toggleFilter(filter as HISTORY_FILTER)}
+									/>
+								</Form.Item>
+								<Form.Separator />
+							</Fragment>
+						))}
 					</Form.Wrapper>
 				</Modal.Body>
 			</Modal.Content>

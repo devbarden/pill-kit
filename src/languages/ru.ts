@@ -7,8 +7,8 @@ export const ru: Language = {
 	},
 
 	home: {
-		addButton: 'Добавить',
-		emptyInfo: 'Лекарства не найдены',
+		add: 'Добавить',
+		empty: 'Лекарства не найдены',
 	},
 
 	createMedicine: {
@@ -22,8 +22,9 @@ export const ru: Language = {
 	},
 
 	history: {
+		empty: 'Лекарства не найдены',
+		filtersTitle: 'Фильтры',
 		filters: {
-			title: 'Фильтры',
 			active: 'Активные',
 			future: 'Будущие',
 			past: 'Прошлые',

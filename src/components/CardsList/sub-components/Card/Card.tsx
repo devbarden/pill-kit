@@ -14,7 +14,7 @@ interface Props {
 export const Card: FC<Props> = memo(({ data }) => {
 	const {
 		name,
-		isExpired,
+		isPast,
 		cardColor,
 		dateToShow,
 		onCardPress,
@@ -51,7 +51,7 @@ export const Card: FC<Props> = memo(({ data }) => {
 					{dateToShow}
 				</Text>
 			</Box>
-			{!isExpired && notificationIcon}
+			{!isPast && notificationIcon}
 		</Pressable>
 	)
 })

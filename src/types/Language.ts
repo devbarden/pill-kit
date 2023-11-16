@@ -1,4 +1,4 @@
-import { MEDICINE_TYPE } from '@app/constants'
+import { MEDICINE_TYPE, HISTORY_FILTER } from '@app/constants'
 
 export interface Language {
 	main: {
@@ -6,8 +6,8 @@ export interface Language {
 	}
 
 	home: {
-		addButton: string
-		emptyInfo: string
+		add: string
+		empty: string
 	}
 
 	createMedicine: {
@@ -21,12 +21,9 @@ export interface Language {
 	}
 
 	history: {
-		filters: {
-			title: string
-			active: string
-			future: string
-			past: string
-		}
+		empty: string
+		filtersTitle: string
+		filters: Record<HISTORY_FILTER, string>
 	}
 
 	settings: {

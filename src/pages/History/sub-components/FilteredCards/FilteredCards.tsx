@@ -1,11 +1,17 @@
 import { FC, memo, useContext } from 'react'
 
+import { isDeserted } from '@app/utils'
 import { CardsList } from '@app/components'
 
+import { Empty } from '../Empty'
 import { HistoryContext } from '../../context'
 
 export const FilteredCards: FC = memo(() => {
-	const { filteredMedicines } = useContext(HistoryContext)
+	const { medicines } = useContext(HistoryContext)
 
-	return <CardsList items={filteredMedicines} />
+	if (isDeserted(medicines)) {
+		return <Empty />
+	}
+
+	return <CardsList items={medicines} />
 })

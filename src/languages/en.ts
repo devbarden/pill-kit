@@ -7,8 +7,8 @@ export const en: Language = {
 	},
 
 	home: {
-		addButton: 'Add',
-		emptyInfo: 'No medications found',
+		add: 'Add',
+		empty: 'No medications found',
 	},
 
 	createMedicine: {
@@ -22,8 +22,9 @@ export const en: Language = {
 	},
 
 	history: {
+		empty: 'No medications found',
+		filtersTitle: 'Filters',
 		filters: {
-			title: 'Filters',
 			active: 'Active',
 			future: 'Future',
 			past: 'Past',

@@ -15,8 +15,6 @@ export const History: FC = memo(() => {
 		return <Loader />
 	}
 
-	// TODO: implement empty page
-
 	return (
 		<HistoryContext.Provider value={state}>
 			<Box style={styles.wrapper}>
