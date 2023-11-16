@@ -1,10 +1,9 @@
 import { FC, memo, useMemo } from 'react'
 import { Box } from 'native-base'
-import { values } from 'lodash'
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 
 import { uid } from '@app/utils'
-import { ROUTES, LIST_OF_NAVIGATION_ITEMS } from '@app/constants'
+import { LIST_OF_NAVIGATION_ITEMS } from '@app/constants'
 
 import { NavigationItem } from './sub-components'
 import { styles } from './Navigation.styles'
@@ -15,7 +14,7 @@ export const Navigation: FC<BottomTabBarProps> = memo(
 			() =>
 				LIST_OF_NAVIGATION_ITEMS.map((route) => ({
 					route,
-					activePage: values(ROUTES)[state.index],
+					activePage: LIST_OF_NAVIGATION_ITEMS[state.index],
 					navigateToRoute: () => {
 						navigation.navigate(route)
 					},

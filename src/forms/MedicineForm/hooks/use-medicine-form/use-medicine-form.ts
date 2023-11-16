@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
 import { MedicineWithoutId } from '@app/types'
-import { ROUTES, MEDICINE_TYPE } from '@app/constants'
+import { TAB_ROUTES, MEDICINE_TYPE } from '@app/constants'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
 import { MedicineFormProps } from '../../MedicineForm'
@@ -24,7 +24,7 @@ export const useMedicineForm = ({
 	)
 
 	const backHandler = useCallback(() => {
-		navigate(ROUTES.HOME)
+		navigate(TAB_ROUTES.HOME)
 	}, [navigate])
 
 	const changeNameHandler = useCallback((name: string) => {

@@ -5,6 +5,7 @@ import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
 import { MEDICINE_TYPE } from '@app/constants'
 import { MedicineWithoutId } from '@app/types'
+import { BgWrapper, ContentWrapper } from '@app/components'
 
 export const CreateMedicine: FC = memo(() => {
 	const { useAddMedicine } = useEndpoints()
@@ -24,6 +25,14 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<MedicineForm data={data} submitHandler={save} isSubmitting={isUploading} />
+		<BgWrapper>
+			<ContentWrapper>
+				<MedicineForm
+					data={data}
+					submitHandler={save}
+					isSubmitting={isUploading}
+				/>
+			</ContentWrapper>
+		</BgWrapper>
 	)
 })

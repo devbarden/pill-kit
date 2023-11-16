@@ -4,9 +4,9 @@ import { RootSiblingParent } from 'react-native-root-siblings'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import '@app/i18n'
-import { Screen } from '@app/screen'
 import { registerLogs } from '@app/utils'
 import { SafeArea } from '@app/components'
+import { Navigator } from '@app/navigator'
 
 const queryClient = new QueryClient()
 
@@ -17,7 +17,7 @@ const App: FC = memo(() => (
 		<QueryClientProvider client={queryClient}>
 			<NativeBaseProvider>
 				<RootSiblingParent>
-					<Screen />
+					<Navigator />
 				</RootSiblingParent>
 			</NativeBaseProvider>
 		</QueryClientProvider>

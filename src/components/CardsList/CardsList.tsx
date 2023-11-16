@@ -9,7 +9,7 @@ interface Props {
 	items: Medicine[]
 }
 
-const RIGHT_SWIPE_SIZE = -75
+const RIGHT_SWIPE_SIZE = -85
 
 export const CardsList: FC<Props> = memo(({ items }) => (
 	<SwipeListView

@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 
-import { Loader, CardsList } from '@app/components'
-import { useEndpoints } from '@app/hooks'
 import { isDeserted } from '@app/utils'
+import { useEndpoints } from '@app/hooks'
+import { Loader, CardsList, ContentWrapper, BgWrapper } from '@app/components'
 
 import { Empty } from './sub-components'
 
@@ -15,8 +15,18 @@ export const Home: FC = memo(() => {
 	}
 
 	if (isDeserted(medicines)) {
-		return <Empty />
+		return (
+			<BgWrapper>
+				<ContentWrapper>
+					<Empty />
+				</ContentWrapper>
+			</BgWrapper>
+		)
 	}
 
-	return <CardsList items={medicines} />
+	return (
+		<BgWrapper>
+			<CardsList items={medicines} />
+		</BgWrapper>
+	)
 })

@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		gap: 16,
+		marginBottom: 16,
 	},
 
 	sort: {

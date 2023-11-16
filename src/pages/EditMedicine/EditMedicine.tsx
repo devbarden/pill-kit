@@ -3,8 +3,8 @@ import { useRoute } from '@react-navigation/native'
 
 import { MedicineForm } from '@app/forms'
 import { useEndpoints } from '@app/hooks'
-import { Loader } from '@app/components'
 import { EditMedicineRouteProp } from '@app/types'
+import { BgWrapper, ContentWrapper, Loader } from '@app/components'
 
 import { NotFound } from './sub-components'
 
@@ -21,10 +21,24 @@ export const EditMedicine: FC = memo(() => {
 	}
 
 	if (!data) {
-		return <NotFound />
+		return (
+			<BgWrapper>
+				<ContentWrapper>
+					<NotFound />
+				</ContentWrapper>
+			</BgWrapper>
+		)
 	}
 
 	return (
-		<MedicineForm data={data} submitHandler={edit} isSubmitting={isUpdating} />
+		<BgWrapper>
+			<ContentWrapper>
+				<MedicineForm
+					data={data}
+					submitHandler={edit}
+					isSubmitting={isUpdating}
+				/>
+			</ContentWrapper>
+		</BgWrapper>
 	)
 })

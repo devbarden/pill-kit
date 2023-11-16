@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		borderColor: COLORS.LIGHT_GREY,
+		backgroundColor: COLORS.GREY,
+		borderColor: COLORS.DARK_GREY,
 		borderTopWidth: 1,
 	},
 })

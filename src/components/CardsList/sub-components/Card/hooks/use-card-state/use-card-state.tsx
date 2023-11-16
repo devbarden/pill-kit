@@ -9,7 +9,7 @@ import {
 
 import { Medicine } from '@app/types'
 import { dateToFormat, medicineUtils } from '@app/utils'
-import { MEDICINE_TYPE, COLORS, ROUTES } from '@app/constants'
+import { MEDICINE_TYPE, COLORS, STACK_ROUTES } from '@app/constants'
 
 export const useCardState = (data: Medicine) => {
 	const {
@@ -107,7 +107,7 @@ export const useCardState = (data: Medicine) => {
 	}, [type, commonIconProps])
 
 	const onCardPress = useCallback(() => {
-		navigate(ROUTES.EDIT_MEDICINE, { id })
+		navigate(STACK_ROUTES.EDIT_MEDICINE, { id })
 	}, [navigate, id])
 
 	return {

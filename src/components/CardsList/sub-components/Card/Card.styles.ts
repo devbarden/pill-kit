@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { CARD_MARGIN_TOP, COLORS } from '@app/constants'
+import { CARD_MARGIN, COLORS } from '@app/constants'
 
 const commonSpace = 16
 
@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: commonSpace,
 		padding: commonSpace,
-		marginTop: CARD_MARGIN_TOP,
+		marginTop: CARD_MARGIN,
+		marginHorizontal: CARD_MARGIN,
 		borderRadius: 16,
 	},
 

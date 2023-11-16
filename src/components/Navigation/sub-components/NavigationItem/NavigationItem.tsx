@@ -1,14 +1,14 @@
 import { FC, memo, useMemo } from 'react'
 import { Pressable } from 'native-base'
 
-import { ROUTES } from '@app/constants'
+import { TAB_ROUTES } from '@app/constants'
 
 import { getIcon } from '../../utils'
 import { styles } from './NavigationItem.styles'
 
 interface Props {
-	route: ROUTES
-	activePage: ROUTES
+	route: TAB_ROUTES
+	activePage: TAB_ROUTES
 	navigateToRoute: () => void
 }
 

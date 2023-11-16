@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { Button, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { ROUTES } from '@app/constants'
+import { TAB_ROUTES } from '@app/constants'
 
 export const NotFound: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
 
 	const backHandler = useCallback(() => {
-		navigate(ROUTES.HOME)
+		navigate(TAB_ROUTES.HOME)
 	}, [navigate])
 
 	return (

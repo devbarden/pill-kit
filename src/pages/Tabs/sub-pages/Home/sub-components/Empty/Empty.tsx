@@ -4,7 +4,7 @@ import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { ROUTES } from '@app/constants'
+import { STACK_ROUTES } from '@app/constants'
 
 import { styles } from './Empty.styles'
 
@@ -13,11 +13,11 @@ export const Empty: FC = memo(() => {
 	const { navigate } = useNavigation()
 
 	const addHandler = useCallback(() => {
-		navigate(ROUTES.CREATE_MEDICINE)
+		navigate(STACK_ROUTES.CREATE_MEDICINE)
 	}, [navigate])
 
 	return (
-		<Box style={styles.wrapper}>
+		<>
 			<Box style={styles.infoWrapper}>
 				<Pressable style={styles.info} onPress={addHandler}>
 					<MaterialCommunityIcons
@@ -35,6 +35,6 @@ export const Empty: FC = memo(() => {
 				</Text>
 				<MaterialCommunityIcons name="pill" color="white" size={24} />
 			</Pressable>
-		</Box>
+		</>
 	)
 })

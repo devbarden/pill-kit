@@ -1,5 +1,3 @@
-export * from './Home'
-export * from './History'
-export * from './Settings'
+export * from './Tabs'
 export * from './EditMedicine'
 export * from './CreateMedicine'

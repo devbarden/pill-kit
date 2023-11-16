@@ -1,6 +1,6 @@
-import { Ionicons, Octicons, AntDesign } from '@expo/vector-icons'
+import { Ionicons, Octicons } from '@expo/vector-icons'
 
-import { COLORS, ROUTES } from '@app/constants'
+import { COLORS, TAB_ROUTES } from '@app/constants'
 
 const getIconProps = (isActive: boolean) => ({
 	size: 24,
@@ -8,16 +8,15 @@ const getIconProps = (isActive: boolean) => ({
 })
 
 // TODO: refactoring
-export const getIcon = (route: ROUTES, isActive: boolean) =>
+export const getIcon = (route: TAB_ROUTES, isActive: boolean) =>
 	({
-		[ROUTES.HOME]: () => <Octicons name="home" {...getIconProps(isActive)} />,
-		[ROUTES.CREATE_MEDICINE]: () => (
-			<AntDesign name="pluscircleo" {...getIconProps(isActive)} />
+		[TAB_ROUTES.HOME]: () => (
+			<Octicons name="home" {...getIconProps(isActive)} />
 		),
-		[ROUTES.HISTORY]: () => (
+		[TAB_ROUTES.HISTORY]: () => (
 			<Octicons name="history" {...getIconProps(isActive)} />
 		),
-		[ROUTES.SETTINGS]: () => (
+		[TAB_ROUTES.SETTINGS]: () => (
 			<Ionicons name="settings-outline" {...getIconProps(isActive)} />
 		),
-	})[route as string]
+	})[route as TAB_ROUTES]

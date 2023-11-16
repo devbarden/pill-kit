@@ -1,1 +1,1 @@
-export const CARD_MARGIN_TOP = 16
+export const CARD_MARGIN = 16

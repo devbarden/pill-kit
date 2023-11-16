@@ -1,28 +1,39 @@
 import { RouteProp } from '@react-navigation/native'
 
-import { ROUTES } from '@app/constants'
+import { STACK_ROUTES, TAB_ROUTES } from '@app/constants'
 import { MedicineId } from '@app/types'
 
-export type NavigatorTypes = {
-	[ROUTES.HOME]: undefined
-	[ROUTES.HISTORY]: undefined
-	[ROUTES.SETTINGS]: undefined
-	[ROUTES.EDIT_MEDICINE]: { id: MedicineId }
-	[ROUTES.CREATE_MEDICINE]: undefined
+export type NavigatorStackTypes = {
+	[STACK_ROUTES.TABS]: undefined
+	[STACK_ROUTES.CREATE_MEDICINE]: undefined
+	[STACK_ROUTES.EDIT_MEDICINE]: { id: MedicineId }
 }
 
-export type HomeRouteProp = RouteProp<NavigatorTypes, ROUTES.HOME>
+export type NavigatorTabTypes = {
+	[TAB_ROUTES.HOME]: undefined
+	[TAB_ROUTES.HISTORY]: undefined
+	[TAB_ROUTES.SETTINGS]: undefined
+}
 
-export type HistoryRouteProp = RouteProp<NavigatorTypes, ROUTES.HISTORY>
+export type NavigatorTypes = NavigatorStackTypes & NavigatorTabTypes
 
-export type SettingsRouteProp = RouteProp<NavigatorTypes, ROUTES.SETTINGS>
+export type HomeRouteProp = RouteProp<NavigatorTabTypes, TAB_ROUTES.HOME>
+
+export type HistoryRouteProp = RouteProp<NavigatorTabTypes, TAB_ROUTES.HISTORY>
+
+export type SettingsRouteProp = RouteProp<
+	NavigatorTabTypes,
+	TAB_ROUTES.SETTINGS
+>
+
+export type TabsRouteProp = RouteProp<NavigatorStackTypes, STACK_ROUTES.TABS>
 
 export type EditMedicineRouteProp = RouteProp<
-	NavigatorTypes,
-	ROUTES.EDIT_MEDICINE
+	NavigatorStackTypes,
+	STACK_ROUTES.EDIT_MEDICINE
 >
 
 export type CreateMedicineRouteProp = RouteProp<
-	NavigatorTypes,
-	ROUTES.CREATE_MEDICINE
+	NavigatorStackTypes,
+	STACK_ROUTES.CREATE_MEDICINE
 >
