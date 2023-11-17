@@ -28,12 +28,16 @@ export const Header: FC<Props> = memo(
 						<Ionicons name="chevron-back-sharp" size={28} color={COLORS.RED} />
 					</Pressable>
 				)}
-				<Box style={{ paddingHorizontal: withGoBack || action ? 48 : 8 }}>
-					<Text fontSize="xl" numberOfLines={1} color={COLORS.RED}>
+				<Box style={styles.title}>
+					<Text
+						fontSize="xl"
+						textAlign={withGoBack || action ? 'left' : 'center'}
+						numberOfLines={1}
+						color={COLORS.RED}>
 						{title}
 					</Text>
 				</Box>
-				<Box style={styles.action}>{action}</Box>
+				{action && <Box style={styles.action}>{action}</Box>}
 			</Box>
 		)
 	},
