@@ -35,6 +35,10 @@ export const en: Language = {
 	},
 
 	sortSection: {
+		modal: {
+			title: 'Sort by',
+			apply: 'Apply',
+		},
 		medicines: 'Medicines',
 		sort: 'Sort',
 	},
@@ -67,6 +71,7 @@ export const en: Language = {
 		title: 'Clear All Data',
 		description:
 			'Do you really want to delete all the data ? This action is irrevocable',
+		isRemoving: 'Is removing...',
 	},
 
 	card: {

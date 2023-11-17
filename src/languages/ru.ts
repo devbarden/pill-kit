@@ -35,6 +35,10 @@ export const ru: Language = {
 	},
 
 	sortSection: {
+		modal: {
+			title: 'Сортировать по',
+			apply: 'Применить',
+		},
 		medicines: 'Лекарства',
 		sort: 'Сортировать',
 	},
@@ -67,6 +71,7 @@ export const ru: Language = {
 		title: 'Удалить все данные',
 		description:
 			'Вы действительно хотите удалить все данные? Это действие является необратимым',
+		isRemoving: 'Удаление...',
 	},
 
 	card: {

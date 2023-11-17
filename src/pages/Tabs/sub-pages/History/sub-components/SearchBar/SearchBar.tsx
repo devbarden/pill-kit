@@ -4,18 +4,18 @@ import { Pressable, Box, Text } from 'native-base'
 import { values, filter, size } from 'lodash'
 import { Ionicons } from '@expo/vector-icons'
 
-import { Form } from '@app/components'
+import { Form, Modal, ModalHandlers } from '@app/components'
 import { COLORS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
+import { FiltersModalContent } from '../FiltersModalContent'
 import { HistoryContext } from '../../context'
-import { FiltersModal, FiltersModalHandlers } from '../FiltersModal'
 import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
 	const { t } = useTranslation()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
-	const filtersModalRef = useRef<FiltersModalHandlers>(null)
+	const filtersModalRef = useRef<ModalHandlers>(null)
 
 	const commonIconProps = useMemo(
 		() => ({
@@ -42,7 +42,7 @@ export const SearchBar: FC = memo(() => {
 	}, [setSearchValue])
 
 	const openFiltersModal = useCallback(() => {
-		filtersModalRef.current?.openModal()
+		filtersModalRef.current?.open()
 	}, [])
 
 	return (
@@ -71,7 +71,12 @@ export const SearchBar: FC = memo(() => {
 					}
 				/>
 			</Form.Item>
-			<FiltersModal ref={filtersModalRef} />
+			<Modal
+				title={t('history:filtersTitle')}
+				cancelText={t('components:btn.close')}
+				content={<FiltersModalContent />}
+				ref={filtersModalRef}
+			/>
 		</Form.Wrapper>
 	)
 })

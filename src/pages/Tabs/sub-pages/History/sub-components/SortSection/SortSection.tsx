@@ -1,19 +1,22 @@
-import { FC, memo, useCallback, useContext } from 'react'
+import { FC, memo, useRef, useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { COLORS } from '@app/constants'
+import { Modal, ModalHandlers } from '@app/components'
 
 import { HistoryContext } from '../../context'
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
+	const sortModalRef = useRef<ModalHandlers>(null)
+
 	const { t } = useTranslation()
 	const { medicines } = useContext(HistoryContext)
 
 	const openSortingOptions = useCallback(() => {
-		// TODO: implement sort options
+		sortModalRef.current?.open()
 	}, [])
 
 	return (
@@ -37,6 +40,16 @@ export const SortSection: FC = memo(() => {
 					color={COLORS.DARK_GREY}
 				/>
 			</Pressable>
+
+			<Modal
+				title={t('sortSection:modal.title')}
+				content={
+					<Text fontSize="lg" numberOfLines={1} color={COLORS.DARK_GREY}>
+						{t('sortSection:sort')}
+					</Text>
+				}
+				ref={sortModalRef}
+			/>
 		</Box>
 	)
 })

@@ -25,7 +25,9 @@ export const Empty: FC = memo(() => {
 						size={128}
 						color="grey"
 					/>
-					<Text fontSize="lg">{t('home:empty')}</Text>
+					<Text fontSize="lg" textAlign="center">
+						{t('home:empty')}
+					</Text>
 				</Pressable>
 			</Box>
 

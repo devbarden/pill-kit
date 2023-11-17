@@ -1,8 +1,6 @@
-import { useRef, useMemo, useCallback } from 'react'
+import { useMemo, useCallback, useRef } from 'react'
 import { Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
-
-import { getSelectedLanguage } from '@app/utils'
 
 import {
 	DONATE_LINK,
@@ -10,12 +8,12 @@ import {
 	RATE_LINK,
 	UPGRADE_LINK,
 } from '@app/constants'
-
-import { RemoveAlertHandlers, TermsOfUseHandlers } from '../../sub-components'
+import { getSelectedLanguage } from '@app/utils'
+import { ModalHandlers } from '@app/components'
 
 export const useSettingsForm = () => {
-	const removeAlertRef = useRef<RemoveAlertHandlers>(null)
-	const termsOfUseRef = useRef<TermsOfUseHandlers>(null)
+	const removeAlertRef = useRef<ModalHandlers>(null)
+	const termsOfUseRef = useRef<ModalHandlers>(null)
 
 	const { i18n } = useTranslation()
 
@@ -47,12 +45,12 @@ export const useSettingsForm = () => {
 		Linking.openURL(RATE_LINK)
 	}, [])
 
-	const removeDataHandler = useCallback(() => {
-		removeAlertRef.current?.openModal()
+	const openRemoveDataModal = useCallback(() => {
+		removeAlertRef.current?.open()
 	}, [])
 
-	const termsOfUseHandler = useCallback(() => {
-		termsOfUseRef.current?.openModal()
+	const openTermsOfUseModal = useCallback(() => {
+		termsOfUseRef.current?.open()
 	}, [])
 
 	return {
@@ -61,10 +59,10 @@ export const useSettingsForm = () => {
 		selectedLanguage,
 		changeLanguageHandler,
 		mailHandler,
-		removeDataHandler,
+		openRemoveDataModal,
 		donateHandler,
 		rateHandler,
-		termsOfUseHandler,
+		openTermsOfUseModal,
 		upgradeHandler,
 	}
 }

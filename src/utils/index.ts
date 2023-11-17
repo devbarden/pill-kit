@@ -1,6 +1,7 @@
 export * from './uid'
 export * from './toast'
 export * from './weeks'
+export * from './is-last'
 export * from './is-deserted'
 export * from './register-logs'
 export * from './date-to-format'

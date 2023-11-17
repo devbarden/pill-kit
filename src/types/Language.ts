@@ -1,4 +1,4 @@
-import { MEDICINE_TYPE, HISTORY_FILTER } from '@app/constants'
+import { MEDICINE_TYPE, CARD_FILTER } from '@app/constants'
 
 export interface Language {
 	main: {
@@ -26,10 +26,14 @@ export interface Language {
 		title: string
 		empty: string
 		filtersTitle: string
-		filters: Record<HISTORY_FILTER, string>
+		filters: Record<CARD_FILTER, string>
 	}
 
 	sortSection: {
+		modal: {
+			title: string
+			apply: string
+		}
 		medicines: string
 		sort: string
 	}
@@ -61,6 +65,7 @@ export interface Language {
 	removeDataAlert: {
 		title: string
 		description: string
+		isRemoving: string
 	}
 
 	card: {

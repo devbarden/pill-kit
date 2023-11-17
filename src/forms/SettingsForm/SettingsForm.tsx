@@ -1,14 +1,15 @@
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Text } from 'native-base'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { Form, ScrollContent } from '@app/components'
+import { useEndpoints } from '@app/hooks'
 import { languageSelectItems } from '@app/utils'
-
+import { Form, ScrollContent, Modal } from '@app/components'
 import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
 import { useSettingsForm } from './hooks'
-import { RemoveAlert, TermsOfUse, ProLabel } from './sub-components'
+import { ProLabel } from './sub-components'
 
 export const SettingsForm: FC = memo(() => {
 	const { t } = useTranslation()
@@ -18,17 +19,43 @@ export const SettingsForm: FC = memo(() => {
 		selectedLanguage,
 		changeLanguageHandler,
 		mailHandler,
-		removeDataHandler,
+		openRemoveDataModal,
 		donateHandler,
 		rateHandler,
-		termsOfUseHandler,
+		openTermsOfUseModal,
 		upgradeHandler,
 	} = useSettingsForm()
+	const { useRemoveAllMedicines } = useEndpoints()
+	const { mutateAsync: removeAllMedicines, isLoading: isRemoving } =
+		useRemoveAllMedicines()
 
 	return (
 		<ScrollContent>
-			<RemoveAlert ref={removeAlertRef} />
-			<TermsOfUse ref={termsOfUseRef} />
+			<Modal
+				title={t('removeDataAlert:title')}
+				content={
+					<Text color={COLORS.DARK_GREY}>
+						{t('removeDataAlert:description')}
+					</Text>
+				}
+				submit={{
+					text: t('components:btn.delete'),
+					handler: removeAllMedicines,
+					isLoading: isRemoving,
+					isLoadingText: t('components:btn.delete'),
+				}}
+				ref={removeAlertRef}
+			/>
+			<Modal
+				onFullScreen
+				withContentScroll
+				title={t('termsOfUse:title')}
+				cancelText={t('components:btn.close')}
+				content={
+					<Text color={COLORS.DARK_GREY}>{t('termsOfUse:description')}</Text>
+				}
+				ref={termsOfUseRef}
+			/>
 
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:upgrade')}>
@@ -62,7 +89,7 @@ export const SettingsForm: FC = memo(() => {
 				<Form.Item name={t('settingsForm:clearData')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.REMOVE}
-						handler={removeDataHandler}
+						handler={openRemoveDataModal}
 					/>
 				</Form.Item>
 			</Form.Wrapper>
@@ -87,7 +114,7 @@ export const SettingsForm: FC = memo(() => {
 				<Form.Item name={t('settingsForm:termsOfUse')}>
 					<Form.IconAction
 						mode={FORM_ICON_ACTION_MODES.ARROW}
-						handler={termsOfUseHandler}
+						handler={openTermsOfUseModal}
 					/>
 				</Form.Item>
 			</Form.Wrapper>

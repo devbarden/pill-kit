@@ -10,5 +10,5 @@ export enum COLORS {
 	GREEN = 'rgb(5, 140, 66)',
 	BLACK = 'rgb(53, 53, 53)',
 	WHITE = 'rgb(255, 255, 255)',
-	TRANSPARENT_GREY = 'rgba(230, 230, 233, 0.5)',
+	TRANSPARENT_GREY = 'rgba(170, 170, 170, 0.5)',
 }
