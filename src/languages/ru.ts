@@ -20,6 +20,7 @@ export const ru: Language = {
 		title: 'Редактировать лекарство',
 		notFound: 'Лекарство не найдено',
 		back: 'Вернуться назад',
+		remove: 'Удалить лекарство',
 	},
 
 	history: {

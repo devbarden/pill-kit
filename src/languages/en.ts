@@ -20,6 +20,7 @@ export const en: Language = {
 		title: 'Edit Medicine',
 		notFound: 'Not Found',
 		back: 'Go Back',
+		remove: 'Remove',
 	},
 
 	history: {

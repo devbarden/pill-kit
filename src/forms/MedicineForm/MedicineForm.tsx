@@ -1,5 +1,5 @@
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { FC, memo } from 'react'
+import { FC, Fragment, memo, ReactElement } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box } from 'native-base'
 
@@ -26,10 +26,11 @@ export interface MedicineFormProps {
 	data: MedicineWithoutId
 	submitHandler: (medicine: MedicineWithoutId) => void
 	isSubmitting: boolean
+	additionalActions?: ReactElement | ReactElement[]
 }
 
 export const MedicineForm: FC<MedicineFormProps> = memo(
-	({ data, submitHandler, isSubmitting }) => {
+	({ data, submitHandler, isSubmitting, additionalActions }) => {
 		const { t, i18n } = useTranslation()
 		const { items: medicineTypesSelectItems } = useSelectItems(
 			MEDICINE_TYPE,
@@ -123,6 +124,8 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 								/>
 							</Form.Item>
 						</Form.Wrapper>
+
+						<Fragment>{additionalActions}</Fragment>
 					</ScrollContent>
 				</ContentWrapper>
 

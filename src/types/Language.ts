@@ -19,6 +19,7 @@ export interface Language {
 		title: string
 		notFound: string
 		back: string
+		remove: string
 	}
 
 	history: {
