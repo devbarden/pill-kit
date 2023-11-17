@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { Medicine } from './medicine'
+import { Medicine, MedicineSortableField } from './medicine'
 import { CardFilters } from './card'
 
 export interface HistoryContextProps {
@@ -10,4 +10,6 @@ export interface HistoryContextProps {
 	setFilters: Dispatch<SetStateAction<CardFilters>>
 	medicines: Medicine[]
 	isLoading: boolean
+	sortType: MedicineSortableField
+	setSortType: Dispatch<SetStateAction<MedicineSortableField>>
 }

@@ -19,7 +19,7 @@ export const useSettingsForm = () => {
 
 	const selectedLanguage = useMemo(
 		() => getSelectedLanguage(i18n.language),
-		[i18n],
+		[i18n.language],
 	)
 
 	const changeLanguageHandler = useCallback(

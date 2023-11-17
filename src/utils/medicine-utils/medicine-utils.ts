@@ -1,6 +1,6 @@
-import { filter, includes, sortBy, toLower } from 'lodash'
+import { filter, get, includes, sortBy, toLower } from 'lodash'
 
-import { CardFilters, Medicine } from '@app/types'
+import { CardFilters, Medicine, MedicineSortableField } from '@app/types'
 
 export interface getMedicineStatusByDateResponse {
 	isActive: boolean
@@ -12,8 +12,10 @@ export interface MedicineUtils {
 	getMedicineStatusByDate: (item: Medicine) => getMedicineStatusByDateResponse
 	getMedicinesByFilters: (items: Medicine[], filters: CardFilters) => Medicine[]
 	getMedicinesBySearchValue: (items: Medicine[], value: string) => Medicine[]
-	getSortedByStartDate: (items: Medicine[]) => Medicine[]
-	getSortedByEndDate: (items: Medicine[]) => Medicine[]
+	getSortedBy: (
+		items: Medicine[],
+		sortType: MedicineSortableField,
+	) => Medicine[]
 }
 
 // TODO: rewrite on class to have chaining
@@ -57,11 +59,7 @@ export const medicineUtils: MedicineUtils = {
 			: medicines
 	},
 
-	getSortedByStartDate(medicines) {
-		return sortBy(medicines, ({ startDate }) => startDate)
-	},
-
-	getSortedByEndDate(medicines) {
-		return sortBy(medicines, ({ endDate }) => endDate)
+	getSortedBy(medicines, sortType) {
+		return sortBy(medicines, (item) => get(item, sortType))
 	},
 }

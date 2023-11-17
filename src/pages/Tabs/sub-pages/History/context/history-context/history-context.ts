@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 import { HistoryContextProps } from '@app/types'
-import { INITIAL_HISTORY_FILTERS } from '@app/constants'
+import { INITIAL_HISTORY_FILTERS, CARD_SORT_TYPE } from '@app/constants'
 
 export const HistoryContext = createContext<HistoryContextProps>({
 	searchValue: 'string',
@@ -10,4 +10,6 @@ export const HistoryContext = createContext<HistoryContextProps>({
 	setFilters: () => {},
 	medicines: [],
 	isLoading: true,
+	sortType: CARD_SORT_TYPE.END_DATE,
+	setSortType: () => {},
 })

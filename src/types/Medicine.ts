@@ -11,6 +11,13 @@ export interface Medicine {
 	endDate: number
 }
 
+export type MedicineWithSortableFields = Omit<
+	Medicine,
+	'id' | 'type' | 'countPerUse' | 'countPerDay' | 'notification'
+>
+
+export type MedicineSortableField = keyof MedicineWithSortableFields
+
 export type PossibleMedicine = Medicine | null
 
 export type PossibleMedicines = Medicine[] | null

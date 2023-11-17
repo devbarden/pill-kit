@@ -6,7 +6,12 @@ import { FontAwesome } from '@expo/vector-icons'
 
 import { useEndpoints } from '@app/hooks'
 import { isDeserted, medicineUtils } from '@app/utils'
-import { COLORS, HOME_FILTERS, STACK_ROUTES } from '@app/constants'
+import {
+	CARD_SORT_TYPE,
+	COLORS,
+	HOME_FILTERS,
+	STACK_ROUTES,
+} from '@app/constants'
 import { Header, Loader, CardsList, ContentWrapper } from '@app/components'
 
 import { Empty } from './sub-components'
@@ -23,7 +28,7 @@ export const Home: FC = memo(() => {
 	)
 
 	const medicines = useMemo(
-		() => medicineUtils.getSortedByEndDate(filteredMedicines),
+		() => medicineUtils.getSortedBy(filteredMedicines, CARD_SORT_TYPE.END_DATE),
 		[filteredMedicines],
 	)
 

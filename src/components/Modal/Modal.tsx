@@ -175,6 +175,8 @@ export const Modal = forwardRef<ModalHandlers, Props>(
 										<Box style={styles.separator} />
 										<Pressable
 											onPress={onSubmit}
+											// TODO: implement disabled behavior
+											// disabled={submit?.isLoading}
 											style={({ pressed }) => [
 												styles.action,
 												styles.bottomRightRadius,
@@ -188,7 +190,6 @@ export const Modal = forwardRef<ModalHandlers, Props>(
 												fontSize="md"
 												textAlign="center"
 												fontWeight="bold"
-												disabled={submit?.isLoading}
 												color={COLORS.RED}>
 												{submitBtnText}
 											</Text>

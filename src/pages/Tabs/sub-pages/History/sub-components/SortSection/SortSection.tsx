@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { COLORS } from '@app/constants'
 import { Modal, ModalHandlers } from '@app/components'
 
+import { SortModalContent } from '../SortModalContent'
 import { HistoryContext } from '../../context'
 import { styles } from './SortSection.styles'
 
@@ -14,6 +15,10 @@ export const SortSection: FC = memo(() => {
 
 	const { t } = useTranslation()
 	const { medicines } = useContext(HistoryContext)
+
+	const closeSortModalContent = useCallback(() => {
+		sortModalRef.current?.close()
+	}, [])
 
 	const openSortingOptions = useCallback(() => {
 		sortModalRef.current?.open()
@@ -43,11 +48,7 @@ export const SortSection: FC = memo(() => {
 
 			<Modal
 				title={t('sortSection:modal.title')}
-				content={
-					<Text fontSize="lg" numberOfLines={1} color={COLORS.DARK_GREY}>
-						{t('sortSection:sort')}
-					</Text>
-				}
+				content={<SortModalContent closeHandler={closeSortModalContent} />}
 				ref={sortModalRef}
 			/>
 		</Box>

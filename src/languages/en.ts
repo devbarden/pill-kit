@@ -32,6 +32,11 @@ export const en: Language = {
 			future: 'Future',
 			past: 'Past',
 		},
+		sortTypes: {
+			name: 'Name',
+			startDate: 'Start date',
+			endDate: 'End date',
+		},
 	},
 
 	sortSection: {

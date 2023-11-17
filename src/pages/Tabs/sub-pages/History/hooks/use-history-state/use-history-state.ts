@@ -2,14 +2,21 @@ import { useState, useMemo } from 'react'
 
 import { useEndpoints } from '@app/hooks'
 import { medicineUtils } from '@app/utils'
-import { INITIAL_HISTORY_FILTERS } from '@app/constants'
-import { CardFilters, HistoryContextProps } from '@app/types'
+import { CARD_SORT_TYPE, INITIAL_HISTORY_FILTERS } from '@app/constants'
+import {
+	CardFilters,
+	HistoryContextProps,
+	MedicineSortableField,
+} from '@app/types'
 
 export const useHistoryState = (): HistoryContextProps => {
 	const { useMedicines } = useEndpoints()
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const [searchValue, setSearchValue] = useState('')
+	const [sortType, setSortType] = useState<MedicineSortableField>(
+		CARD_SORT_TYPE.END_DATE,
+	)
 	const [filters, setFilters] = useState<CardFilters>(INITIAL_HISTORY_FILTERS)
 
 	const filteredMedicines = useMemo(
@@ -24,8 +31,8 @@ export const useHistoryState = (): HistoryContextProps => {
 	)
 
 	const medicines = useMemo(
-		() => medicineUtils.getSortedByEndDate(medicinesBySearchValue),
-		[medicinesBySearchValue],
+		() => medicineUtils.getSortedBy(medicinesBySearchValue, sortType),
+		[medicinesBySearchValue, sortType],
 	)
 
 	return {
@@ -35,5 +42,7 @@ export const useHistoryState = (): HistoryContextProps => {
 		setFilters,
 		medicines,
 		isLoading,
+		sortType,
+		setSortType,
 	}
 }

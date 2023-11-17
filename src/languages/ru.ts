@@ -32,6 +32,11 @@ export const ru: Language = {
 			future: 'Будущие',
 			past: 'Прошлые',
 		},
+		sortTypes: {
+			name: 'Имя',
+			startDate: 'Начало приема',
+			endDate: 'Конец приема',
+		},
 	},
 
 	sortSection: {
