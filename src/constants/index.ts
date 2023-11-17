@@ -1,5 +1,6 @@
 export * from './card'
 export * from './form'
+export * from './home'
 export * from './links'
 export * from './routes'
 export * from './errors'

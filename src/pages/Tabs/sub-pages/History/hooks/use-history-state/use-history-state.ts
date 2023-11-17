@@ -3,19 +3,17 @@ import { useState, useMemo } from 'react'
 import { useEndpoints } from '@app/hooks'
 import { medicineUtils } from '@app/utils'
 import { INITIAL_HISTORY_FILTERS } from '@app/constants'
-import { HistoryFilters, HistoryContextProps } from '@app/types'
+import { CardFilters, HistoryContextProps } from '@app/types'
 
 export const useHistoryState = (): HistoryContextProps => {
 	const { useMedicines } = useEndpoints()
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const [searchValue, setSearchValue] = useState('')
-	const [filters, setFilters] = useState<HistoryFilters>(
-		INITIAL_HISTORY_FILTERS,
-	)
+	const [filters, setFilters] = useState<CardFilters>(INITIAL_HISTORY_FILTERS)
 
 	const filteredMedicines = useMemo(
-		() => medicineUtils.getMedicinesByHistoryFilters(allMedicines, filters),
+		() => medicineUtils.getMedicinesByFilters(allMedicines, filters),
 		[allMedicines, filters],
 	)
 

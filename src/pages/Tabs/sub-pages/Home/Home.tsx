@@ -1,21 +1,31 @@
-import { FC, memo, useCallback, useMemo } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons'
 
-import { isDeserted } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
+import { isDeserted, medicineUtils } from '@app/utils'
+import { COLORS, HOME_FILTERS, STACK_ROUTES } from '@app/constants'
 import { Header, Loader, CardsList, ContentWrapper } from '@app/components'
 
 import { Empty } from './sub-components'
-import { COLORS, STACK_ROUTES } from '@app/constants'
 
 export const Home: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
 	const { useMedicines } = useEndpoints()
-	const { data: medicines = [], isLoading } = useMedicines()
+	const { data: allMedicines = [], isLoading } = useMedicines()
+
+	const filteredMedicines = useMemo(
+		() => medicineUtils.getMedicinesByFilters(allMedicines, HOME_FILTERS),
+		[allMedicines],
+	)
+
+	const medicines = useMemo(
+		() => medicineUtils.getSortedByEndDate(filteredMedicines),
+		[filteredMedicines],
+	)
 
 	const isNoMedicines = useMemo(() => isDeserted(medicines), [medicines])
 

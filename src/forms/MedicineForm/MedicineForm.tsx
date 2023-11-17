@@ -51,6 +51,8 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 			isSaveBtnDisabled,
 		} = useMedicineForm({ data, submitHandler, isSubmitting })
 
+		// TODO: add label if user creating medicine in PAST
+
 		return (
 			<>
 				<ContentWrapper withHorizontalPaddings>

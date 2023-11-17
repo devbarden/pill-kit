@@ -1,6 +1,6 @@
 import { filter, includes, sortBy, toLower } from 'lodash'
 
-import { HistoryFilters, Medicine } from '@app/types'
+import { CardFilters, Medicine } from '@app/types'
 
 export interface getMedicineStatusByDateResponse {
 	isActive: boolean
@@ -10,15 +10,13 @@ export interface getMedicineStatusByDateResponse {
 
 export interface MedicineUtils {
 	getMedicineStatusByDate: (item: Medicine) => getMedicineStatusByDateResponse
-	getMedicinesByHistoryFilters: (
-		items: Medicine[],
-		filters: HistoryFilters,
-	) => Medicine[]
+	getMedicinesByFilters: (items: Medicine[], filters: CardFilters) => Medicine[]
 	getMedicinesBySearchValue: (items: Medicine[], value: string) => Medicine[]
 	getSortedByStartDate: (items: Medicine[]) => Medicine[]
 	getSortedByEndDate: (items: Medicine[]) => Medicine[]
 }
 
+// TODO: rewrite on class to have chaining
 export const medicineUtils: MedicineUtils = {
 	getMedicineStatusByDate({ startDate, endDate }) {
 		const isPast = Date.now() > endDate
@@ -32,7 +30,7 @@ export const medicineUtils: MedicineUtils = {
 		}
 	},
 
-	getMedicinesByHistoryFilters(medicines, filters) {
+	getMedicinesByFilters(medicines, filters) {
 		return filter(medicines, (medicine) => {
 			const { isActive, isFuture, isPast } =
 				this.getMedicineStatusByDate(medicine)

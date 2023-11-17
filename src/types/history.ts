@@ -1,16 +1,13 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { HISTORY_FILTER } from '@app/constants'
-
 import { Medicine } from './medicine'
-
-export type HistoryFilters = Record<HISTORY_FILTER, boolean>
+import { CardFilters } from './card'
 
 export interface HistoryContextProps {
 	searchValue: string
 	setSearchValue: Dispatch<SetStateAction<string>>
-	filters: HistoryFilters
-	setFilters: Dispatch<SetStateAction<HistoryFilters>>
+	filters: CardFilters
+	setFilters: Dispatch<SetStateAction<CardFilters>>
 	medicines: Medicine[]
 	isLoading: boolean
 }

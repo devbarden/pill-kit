@@ -9,7 +9,7 @@ export const ru: Language = {
 	home: {
 		title: 'Домашняя страница',
 		add: 'Добавить',
-		empty: 'Лекарства не найдены',
+		empty: 'Активных или будущих лекарств не обнаружено',
 	},
 
 	createMedicine: {

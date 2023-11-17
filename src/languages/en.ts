@@ -9,7 +9,7 @@ export const en: Language = {
 	home: {
 		title: 'Home',
 		add: 'Add',
-		empty: 'No medications found',
+		empty: 'No active or future medicines found',
 	},
 
 	createMedicine: {
