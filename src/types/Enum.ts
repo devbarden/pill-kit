@@ -1,3 +1,3 @@
-enum ABSTRACT_ENUM {}
+enum E_Abstract {}
 
-export type Enum = typeof ABSTRACT_ENUM
+export type T_Enum = typeof E_Abstract

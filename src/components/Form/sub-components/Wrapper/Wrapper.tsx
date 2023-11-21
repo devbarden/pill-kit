@@ -3,10 +3,10 @@ import { Box } from 'native-base'
 
 import { styles } from './Wrapper.styles'
 
-interface Props {
+interface I_Props {
 	children: ReactElement | ReactElement[]
 }
 
-export const Wrapper: FC<Props> = memo(({ children }) => (
+export const Wrapper: FC<I_Props> = memo(({ children }) => (
 	<Box style={styles.wrapper}>{children}</Box>
 ))

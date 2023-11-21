@@ -1,17 +1,17 @@
 import { FC, memo } from 'react'
 import { SwipeListView } from 'react-native-swipe-list-view'
 
-import { Medicine } from '@app/types'
+import { I_Medicine } from '@app/types'
 
 import { Card, SwipeActions } from './sub-components'
 
-interface Props {
-	items: Medicine[]
+interface I_Props {
+	items: I_Medicine[]
 }
 
 const SWIPE_SIZE = 85
 
-export const CardsList: FC<Props> = memo(({ items }) => (
+export const CardsList: FC<I_Props> = memo(({ items }) => (
 	<SwipeListView
 		data={items}
 		renderItem={({ item }) => <Card data={item} />}

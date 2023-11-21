@@ -4,7 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { MedicineForm } from '@app/forms'
 import { useEndpoints } from '@app/hooks'
-import { EditMedicineRouteProp } from '@app/types'
+import { T_EditMedicineRouteProp } from '@app/types'
 import { FORM_ICON_ACTION_MODES, TAB_ROUTES } from '@app/constants'
 import { ContentWrapper, Form, Header, Loader } from '@app/components'
 
@@ -13,7 +13,7 @@ import { NotFound } from './sub-components'
 export const EditMedicine: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { params } = useRoute<EditMedicineRouteProp>()
+	const { params } = useRoute<T_EditMedicineRouteProp>()
 	const { id } = params
 	const { useMedicine, useEditMedicine, useRemoveMedicine } = useEndpoints()
 	const { data, isLoading } = useMedicine(id)

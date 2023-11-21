@@ -2,17 +2,17 @@ import { FC, memo, useMemo, useCallback, useContext } from 'react'
 import { Pressable } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { Route } from '@app/types'
+import { T_Route } from '@app/types'
 import { GlobalStateContext } from '@app/context'
 
 import { getIcon } from '../../utils'
 import { styles } from './NavigationItem.styles'
 
-interface Props {
-	route: Route
+interface I_Props {
+	route: T_Route
 }
 
-export const NavigationItem: FC<Props> = memo(({ route }) => {
+export const NavigationItem: FC<I_Props> = memo(({ route }) => {
 	const { navigate } = useNavigation()
 	const { activeTab } = useContext(GlobalStateContext)
 

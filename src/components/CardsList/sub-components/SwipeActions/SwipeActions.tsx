@@ -2,20 +2,20 @@ import { FC, memo, useMemo, useCallback, useRef } from 'react'
 import { Box } from 'native-base'
 import { AntDesign, Foundation } from '@expo/vector-icons'
 
-import { Medicine } from '@app/types'
+import { I_Medicine } from '@app/types'
 import { useEndpoints } from '@app/hooks'
 import { COLORS } from '@app/constants'
 
-import { Modal, ModalHandlers } from '../../../Modal'
+import { Modal, I_ModalHandlers } from '../../../Modal'
 import { Action, InfoModalContent } from './sub-components'
 import { styles } from './SwipeActions.styles'
 
-interface Props {
-	data: Medicine
+interface I_Props {
+	data: I_Medicine
 }
 
-export const SwipeActions: FC<Props> = memo(({ data }) => {
-	const cardInfoModalRef = useRef<ModalHandlers>(null)
+export const SwipeActions: FC<I_Props> = memo(({ data }) => {
+	const cardInfoModalRef = useRef<I_ModalHandlers>(null)
 
 	const { id, name } = useMemo(() => data, [data])
 	const { useRemoveMedicine } = useEndpoints()

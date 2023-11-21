@@ -1,7 +1,7 @@
-import { Language } from '@app/types'
+import { I_Language } from '@app/types'
 import { MEDICINE_TYPE } from '@app/constants'
 
-export const en: Language = {
+export const en: I_Language = {
 	main: {
 		appTitle: 'Pill Kit',
 	},

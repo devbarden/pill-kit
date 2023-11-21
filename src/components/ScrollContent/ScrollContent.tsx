@@ -4,11 +4,11 @@ import { Box } from 'native-base'
 
 import { styles } from './ScrollContent.styles'
 
-interface Props {
+interface I_Props {
 	children: ReactElement | ReactElement[] | string
 }
 
-export const ScrollContent: FC<Props> = memo(({ children }) => (
+export const ScrollContent: FC<I_Props> = memo(({ children }) => (
 	<ScrollView>
 		<Box style={styles.wrapper}>{children}</Box>
 	</ScrollView>

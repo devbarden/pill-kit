@@ -4,7 +4,7 @@ import { Pressable, Box, Text } from 'native-base'
 import { values, filter, size } from 'lodash'
 import { Ionicons } from '@expo/vector-icons'
 
-import { Form, Modal, ModalHandlers } from '@app/components'
+import { Form, Modal, I_ModalHandlers } from '@app/components'
 import { COLORS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
 import { FiltersModalContent } from '../FiltersModalContent'
@@ -15,7 +15,7 @@ export const SearchBar: FC = memo(() => {
 	const { t } = useTranslation()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
-	const filtersModalRef = useRef<ModalHandlers>(null)
+	const filtersModalRef = useRef<I_ModalHandlers>(null)
 
 	const commonIconProps = useMemo(
 		() => ({

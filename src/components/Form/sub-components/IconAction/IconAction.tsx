@@ -11,7 +11,7 @@ import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
 import { styles } from './IconAction.styles'
 
-interface Props {
+interface I_Props {
 	mode: FORM_ICON_ACTION_MODES
 	handler: () => void
 }
@@ -38,7 +38,7 @@ const ICONS_MAP: Record<FORM_ICON_ACTION_MODES, ReactElement> = {
 	),
 }
 
-export const IconAction: FC<Props> = memo(({ mode, handler }) => (
+export const IconAction: FC<I_Props> = memo(({ mode, handler }) => (
 	<Pressable onPress={handler} style={styles.wrapper}>
 		{ICONS_MAP[mode]}
 	</Pressable>

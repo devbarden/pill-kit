@@ -3,10 +3,10 @@ import { Text } from 'native-base'
 
 import { styles } from './Title.styles'
 
-export interface Props {
+interface I_Props {
 	title: string
 }
 
-export const Title: FC<Props> = memo(({ title }) => (
+export const Title: FC<I_Props> = memo(({ title }) => (
 	<Text style={styles.title}>{title}</Text>
 ))

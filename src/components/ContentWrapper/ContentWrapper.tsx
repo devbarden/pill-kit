@@ -4,7 +4,7 @@ import { Box } from 'native-base'
 import { styles } from './ContentWrapper.styles'
 import { COLORS } from '@app/constants'
 
-interface Props {
+interface I_Props {
 	withStretch?: boolean
 	withBackground?: boolean
 	withVerticalPaddings?: boolean
@@ -12,7 +12,7 @@ interface Props {
 	children: ReactElement | ReactElement[] | string
 }
 
-export const ContentWrapper: FC<Props> = memo(
+export const ContentWrapper: FC<I_Props> = memo(
 	({
 		children,
 		withStretch = true,

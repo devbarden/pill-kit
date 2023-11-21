@@ -7,11 +7,11 @@ import {
 	MaterialIcons,
 } from '@expo/vector-icons'
 
-import { Medicine } from '@app/types'
+import { I_Medicine } from '@app/types'
 import { dateToFormat, medicineUtils } from '@app/utils'
 import { MEDICINE_TYPE, COLORS, STACK_ROUTES } from '@app/constants'
 
-export const useCardState = (data: Medicine) => {
+export const useCardState = (data: I_Medicine) => {
 	const {
 		id,
 		name,

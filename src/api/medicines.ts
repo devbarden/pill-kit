@@ -4,16 +4,16 @@ import { omit } from 'lodash'
 import { ERRORS, STORAGE } from '@app/constants'
 import { isAnyFieldEmpty, uid } from '@app/utils'
 import {
-	StorageData,
-	Medicine,
-	PossibleMedicine,
-	MedicineId,
-	MedicineWithoutId,
+	I_Medicine,
+	T_MedicineId,
+	T_StorageData,
+	T_PossibleMedicine,
+	T_MedicineWithoutId,
 } from '@app/types'
 
 export const initMedicines = async () => {
 	try {
-		const data: StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
+		const data: T_StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
 
 		if (data) {
 			return data
@@ -31,8 +31,8 @@ export const initMedicines = async () => {
 
 export const getMedicines = async () => {
 	try {
-		const data: StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
-		const medicines: Medicine[] = data ? JSON.parse(data) : []
+		const data: T_StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
+		const medicines: I_Medicine[] = data ? JSON.parse(data) : []
 
 		return medicines
 	} catch {
@@ -40,10 +40,10 @@ export const getMedicines = async () => {
 	}
 }
 
-export const getMedicine = async (id: MedicineId) => {
+export const getMedicine = async (id: T_MedicineId) => {
 	try {
-		const medicines: Medicine[] = await getMedicines()
-		const medicine: PossibleMedicine =
+		const medicines: I_Medicine[] = await getMedicines()
+		const medicine: T_PossibleMedicine =
 			medicines.find((item) => item.id === id) ?? null
 
 		return omit(medicine, ['id'])
@@ -52,30 +52,33 @@ export const getMedicine = async (id: MedicineId) => {
 	}
 }
 
-export const setMedicine = async (data: MedicineWithoutId) => {
+export const setMedicine = async (data: T_MedicineWithoutId) => {
 	if (isAnyFieldEmpty(data)) {
 		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
 	}
 
 	try {
-		const medicines: Medicine[] = await getMedicines()
+		const medicines: I_Medicine[] = await getMedicines()
 		const newMedicine = { id: uid(), ...data }
-		const newMedicines: Medicine[] = [...medicines, newMedicine]
+		const newMedicines: I_Medicine[] = [...medicines, newMedicine]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
 	} catch {}
 }
 
-export const editMedicine = async (id: MedicineId, data: MedicineWithoutId) => {
+export const editMedicine = async (
+	id: T_MedicineId,
+	data: T_MedicineWithoutId,
+) => {
 	if (isAnyFieldEmpty(data)) {
 		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
 	}
 
 	try {
-		const medicines: Medicine[] = await getMedicines()
+		const medicines: I_Medicine[] = await getMedicines()
 		const updatedMedicine = { id, ...data }
-		const newMedicines: Medicine[] = medicines.map((item) =>
+		const newMedicines: I_Medicine[] = medicines.map((item) =>
 			item.id === id ? updatedMedicine : item,
 		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
@@ -84,10 +87,12 @@ export const editMedicine = async (id: MedicineId, data: MedicineWithoutId) => {
 	} catch {}
 }
 
-export const removeMedicine = async (id: MedicineId) => {
+export const removeMedicine = async (id: T_MedicineId) => {
 	try {
-		const medicines: Medicine[] = await getMedicines()
-		const newMedicines: Medicine[] = medicines.filter((item) => item.id !== id)
+		const medicines: I_Medicine[] = await getMedicines()
+		const newMedicines: I_Medicine[] = medicines.filter(
+			(item) => item.id !== id,
+		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
@@ -96,7 +101,7 @@ export const removeMedicine = async (id: MedicineId) => {
 
 export const removeAllMedicines = async () => {
 	try {
-		const newMedicines: Medicine[] = []
+		const newMedicines: I_Medicine[] = []
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)

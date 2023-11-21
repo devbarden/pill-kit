@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { addWeeks } from '@app/utils'
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { MedicineWithoutId } from '@app/types'
+import { T_MedicineWithoutId } from '@app/types'
 import { MEDICINE_TYPE } from '@app/constants'
 import { Header } from '@app/components'
 
@@ -13,7 +13,7 @@ export const CreateMedicine: FC = memo(() => {
 	const { useAddMedicine } = useEndpoints()
 	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
-	const data: MedicineWithoutId = useMemo(
+	const data: T_MedicineWithoutId = useMemo(
 		() => ({
 			name: '',
 			type: MEDICINE_TYPE.PILL,

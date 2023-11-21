@@ -1,7 +1,7 @@
 import { MEDICINE_TYPE, CARD_FILTER } from '@app/constants'
-import { MedicineSortableField } from './medicine'
+import { T_MedicineSortableField } from './medicine'
 
-export interface Language {
+export interface I_Language {
 	main: {
 		appTitle: string
 	}
@@ -32,7 +32,7 @@ export interface Language {
 		empty: string
 		filtersTitle: string
 		filters: Record<CARD_FILTER, string>
-		sortTypes: Record<MedicineSortableField, string>
+		sortTypes: Record<T_MedicineSortableField, string>
 	}
 
 	sortSection: {

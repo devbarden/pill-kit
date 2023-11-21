@@ -7,13 +7,13 @@ import { COLORS, TAB_ROUTES } from '@app/constants'
 
 import { styles } from './Header.styles'
 
-interface Props {
+interface I_Props {
 	title: string
 	action?: ReactElement
 	withGoBack?: boolean
 }
 
-export const Header: FC<Props> = memo(
+export const Header: FC<I_Props> = memo(
 	({ title, withGoBack = false, action = null }) => {
 		const { navigate } = useNavigation()
 

@@ -2,20 +2,20 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
-import { MedicineWithoutId } from '@app/types'
+import { T_MedicineWithoutId } from '@app/types'
 import { TAB_ROUTES, MEDICINE_TYPE } from '@app/constants'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
-import { MedicineFormProps } from '../../MedicineForm'
+import { I_MedicineFormProps } from '../../MedicineForm'
 
 export const useMedicineForm = ({
 	data,
 	submitHandler,
 	isSubmitting,
-}: MedicineFormProps) => {
+}: I_MedicineFormProps) => {
 	const { navigate } = useNavigation()
 
-	const [form, setForm] = useState<MedicineWithoutId>(data)
+	const [form, setForm] = useState<T_MedicineWithoutId>(data)
 
 	const isCancelBtnDisabled = useMemo(() => isSubmitting, [isSubmitting])
 	const isSaveBtnDisabled = useMemo(

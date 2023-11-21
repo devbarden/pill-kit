@@ -5,7 +5,7 @@ import { values } from 'lodash'
 
 import { Form } from '@app/components'
 import { uid, isLast } from '@app/utils'
-import { MedicineSortableField } from '@app/types'
+import { T_MedicineSortableField } from '@app/types'
 import { CARD_SORT_TYPE } from '@app/constants'
 
 import { HistoryContext } from '../../context'
@@ -20,7 +20,7 @@ export const SortModalContent: FC<Props> = memo(({ closeHandler }) => {
 
 	const onChangeSortType = useCallback(
 		(value: string) => {
-			setSortType(value as MedicineSortableField)
+			setSortType(value as T_MedicineSortableField)
 			closeHandler()
 		},
 		[setSortType, closeHandler],

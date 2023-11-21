@@ -5,7 +5,7 @@ import {
 	Octicons,
 } from '@expo/vector-icons'
 
-import { Route } from '@app/types'
+import { T_Route } from '@app/types'
 import { COLORS, STACK_ROUTES, TAB_ROUTES } from '@app/constants'
 
 const getIconProps = (isActive: boolean) => ({
@@ -14,7 +14,7 @@ const getIconProps = (isActive: boolean) => ({
 })
 
 // TODO: refactoring
-export const getIcon = (route: Route, isActive: boolean) =>
+export const getIcon = (route: T_Route, isActive: boolean) =>
 	({
 		[TAB_ROUTES.HOME]: () => (
 			<Octicons name="home" {...getIconProps(isActive)} />

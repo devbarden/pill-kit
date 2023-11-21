@@ -4,14 +4,14 @@ import { Box, Pressable, Text } from 'native-base'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { COLORS } from '@app/constants'
-import { Modal, ModalHandlers } from '@app/components'
+import { Modal, I_ModalHandlers } from '@app/components'
 
 import { SortModalContent } from '../SortModalContent'
 import { HistoryContext } from '../../context'
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
-	const sortModalRef = useRef<ModalHandlers>(null)
+	const sortModalRef = useRef<I_ModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { medicines } = useContext(HistoryContext)

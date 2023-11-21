@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 import { TAB_ROUTES, DEFAULT_TAB_ROUTE } from '@app/constants'
-import { GlobalStateContextProps } from '@app/types'
+import { I_GlobalStateContextProps } from '@app/types'
 
-export const useGlobalState = (): GlobalStateContextProps => {
+export const useGlobalState = (): I_GlobalStateContextProps => {
 	const [activeTab, setActiveTab] = useState<TAB_ROUTES>(DEFAULT_TAB_ROUTE)
 
 	return {

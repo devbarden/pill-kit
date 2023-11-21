@@ -9,7 +9,7 @@ import { getRandomInRange, uid } from '@app/utils'
 import { AnimationWrapper } from './sub-components'
 import { styles } from './ProLabel.styles'
 
-interface Props {
+interface I_Props {
 	handler: () => void
 }
 
@@ -48,7 +48,7 @@ const positionsOfStars = [
 	},
 ]
 
-export const ProLabel: FC<Props> = memo(({ handler }) => (
+export const ProLabel: FC<I_Props> = memo(({ handler }) => (
 	<Pressable onPress={handler} style={styles.wrapper}>
 		<LinearGradient
 			colors={[COLORS.DARK_BLUE, COLORS.BLUE, COLORS.BLACK]}

@@ -6,20 +6,20 @@ import {
 } from '@react-navigation/bottom-tabs'
 
 import { Navigation } from '@app/components'
-import { NavigatorTabTypes } from '@app/types'
+import { T_NavigatorTabTypes } from '@app/types'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_TAB_ROUTE, TAB_ROUTES } from '@app/constants'
 
 import { Home, History, Settings, Analytic } from './sub-pages'
 
-const Tab = createBottomTabNavigator<NavigatorTabTypes>()
+const Tab = createBottomTabNavigator<T_NavigatorTabTypes>()
 
 const screenOptions: BottomTabNavigationOptions = {
 	headerShown: false,
 }
 
-interface TabListeners {
-	route: RouteProp<NavigatorTabTypes, TAB_ROUTES>
+interface I_TabListeners {
+	route: RouteProp<T_NavigatorTabTypes, TAB_ROUTES>
 }
 
 export const Tabs: FC = memo(() => {
@@ -27,7 +27,7 @@ export const Tabs: FC = memo(() => {
 
 	const commonListenersProps = useMemo(
 		() => ({
-			listeners: ({ route }: TabListeners) => ({
+			listeners: ({ route }: I_TabListeners) => ({
 				state: () => {
 					setActiveTab(route.name)
 				},

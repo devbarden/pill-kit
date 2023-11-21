@@ -3,12 +3,12 @@ import { Button as BaseButton, IButtonProps } from 'native-base'
 
 import { styles } from './Button.styles'
 
-interface Props {
+interface I_Props {
 	children: ReactElement | string
 	[rest: string]: IButtonProps
 }
 
-export const Button: FC<Props> = memo(({ children, ...rest }) => (
+export const Button: FC<I_Props> = memo(({ children, ...rest }) => (
 	<BaseButton style={styles.button} {...rest}>
 		{children}
 	</BaseButton>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Box } from 'native-base'
 
 import { useSelectItems } from '@app/hooks'
-import { MedicineWithoutId } from '@app/types'
+import { T_MedicineWithoutId } from '@app/types'
 import {
 	Form,
 	Switch,
@@ -22,14 +22,14 @@ import {
 import { useMedicineForm } from './hooks'
 import { styles } from './MedicineForm.styles'
 
-export interface MedicineFormProps {
-	data: MedicineWithoutId
-	submitHandler: (medicine: MedicineWithoutId) => void
+export interface I_MedicineFormProps {
+	data: T_MedicineWithoutId
+	submitHandler: (medicine: T_MedicineWithoutId) => void
 	isSubmitting: boolean
 	additionalActions?: ReactElement | ReactElement[]
 }
 
-export const MedicineForm: FC<MedicineFormProps> = memo(
+export const MedicineForm: FC<I_MedicineFormProps> = memo(
 	({ data, submitHandler, isSubmitting, additionalActions }) => {
 		const { t, i18n } = useTranslation()
 		const { items: medicineTypesSelectItems } = useSelectItems(

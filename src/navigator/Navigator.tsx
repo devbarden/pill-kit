@@ -10,18 +10,18 @@ import { Loader } from '@app/components'
 import { GlobalStateContext } from '@app/context'
 import { useEndpoints, useGlobalState } from '@app/hooks'
 import { Tabs, CreateMedicine, EditMedicine } from '@app/pages'
-import { NavigatorTypes, NavigatorStackTypes } from '@app/types'
+import { T_NavigatorTypes, T_NavigatorStackTypes } from '@app/types'
 import { DEFAULT_STACK_ROUTE, STACK_ROUTES } from '@app/constants'
 
 import { styles } from './Navigator.styles'
 
 declare global {
 	namespace ReactNavigation {
-		interface RootParamList extends NavigatorTypes {}
+		interface RootParamList extends T_NavigatorTypes {}
 	}
 }
 
-const Stack = createStackNavigator<NavigatorStackTypes>()
+const Stack = createStackNavigator<T_NavigatorStackTypes>()
 
 const screenOptions: StackNavigationOptions = {
 	headerShown: false,

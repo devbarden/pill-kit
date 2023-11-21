@@ -1,17 +1,17 @@
 import { FC, memo, useMemo } from 'react'
 import { Pressable, Box, Text, ITextProps } from 'native-base'
 
-import { Medicine } from '@app/types'
+import { I_Medicine } from '@app/types'
 import { COLORS } from '@app/constants'
 
 import { useCardState } from './hooks'
 import { styles } from './Card.styles'
 
-interface Props {
-	data: Medicine
+interface I_Props {
+	data: I_Medicine
 }
 
-export const Card: FC<Props> = memo(({ data }) => {
+export const Card: FC<I_Props> = memo(({ data }) => {
 	const {
 		name,
 		isPast,

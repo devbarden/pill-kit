@@ -21,12 +21,12 @@ import { COLORS } from '@app/constants'
 import { ScrollContent } from '../ScrollContent'
 import { styles } from './Modal.styles'
 
-export interface ModalHandlers {
+export interface I_ModalHandlers {
 	open: () => void
 	close: () => void
 }
 
-interface Props {
+interface I_Props {
 	title: ReactElement | string
 	content: ReactElement | ReactElement[] | string
 	submit?: {
@@ -42,7 +42,7 @@ interface Props {
 }
 
 // TODO: fix blinking
-export const Modal = forwardRef<ModalHandlers, Props>(
+export const Modal = forwardRef<I_ModalHandlers, I_Props>(
 	(
 		{
 			title,
@@ -104,7 +104,7 @@ export const Modal = forwardRef<ModalHandlers, Props>(
 
 		useImperativeHandle(
 			ref,
-			(): ModalHandlers => ({
+			(): I_ModalHandlers => ({
 				open,
 				close,
 			}),
