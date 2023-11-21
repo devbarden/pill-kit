@@ -1,5 +1,5 @@
 import { TypeLanguage } from '@app/types'
-import { EnumMedicineType } from '@app/enums'
+import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const en: TypeLanguage = {
 	main: {
@@ -32,9 +32,9 @@ export const en: TypeLanguage = {
 		empty: 'No medications found',
 		filtersTitle: 'Filters',
 		filters: {
-			active: 'Active',
-			future: 'Future',
-			past: 'Past',
+			[EnumCardFilter.active]: 'Active',
+			[EnumCardFilter.future]: 'Future',
+			[EnumCardFilter.past]: 'Past',
 		},
 		sortTypes: {
 			name: 'Name',
