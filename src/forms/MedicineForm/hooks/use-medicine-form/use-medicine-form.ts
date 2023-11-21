@@ -1,9 +1,10 @@
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback, useEffect, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
+import { EnumMedicineType } from '@app/enums'
+import { GlobalStateContext } from '@app/context'
 import { TypeMedicineWithoutId } from '@app/types'
-import { EnumTabRoute, EnumMedicineType } from '@app/enums'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
 import { TypeMedicineFormProps } from '../../MedicineForm'
@@ -14,6 +15,7 @@ export const useMedicineForm = ({
 	isSubmitting,
 }: TypeMedicineFormProps) => {
 	const { navigate } = useNavigation()
+	const { activeTab } = useContext(GlobalStateContext)
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
 
@@ -24,9 +26,8 @@ export const useMedicineForm = ({
 	)
 
 	const backHandler = useCallback(() => {
-		// TODO: implement go back
-		navigate(EnumTabRoute.home)
-	}, [navigate])
+		navigate(activeTab)
+	}, [navigate, activeTab])
 
 	const changeNameHandler = useCallback((name: string) => {
 		setForm((prev) => ({ ...prev, name }))

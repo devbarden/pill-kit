@@ -1,31 +1,39 @@
-import { FC, Fragment, memo, useCallback } from 'react'
+import { FC, Fragment, memo, useCallback, useContext, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { Text } from 'native-base'
 
 import { MedicineForm } from '@app/forms'
 import { useEndpoints } from '@app/hooks'
-import { TypeEditMedicineRouteProp } from '@app/types'
-import { EnumFormIconActionMode, EnumTabRoute } from '@app/enums'
-import { ContentWrapper, Form, Header, Loader } from '@app/components'
+import { GlobalStateContext } from '@app/context'
+import { EnumFormIconActionMode } from '@app/enums'
+import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/types'
+import { ContentWrapper, Form, Header, Loader, Modal } from '@app/components'
 
 import { NotFound } from './sub-components'
 
 export const EditMedicine: FC = memo(() => {
+	const removeModalRef = useRef<TypeModalHandlers>(null)
+
 	const { t } = useTranslation()
+	const { activeTab } = useContext(GlobalStateContext)
 	const { navigate } = useNavigation()
 	const { params } = useRoute<TypeEditMedicineRouteProp>()
 	const { id } = params
 	const { useMedicine, useEditMedicine, useRemoveMedicine } = useEndpoints()
 	const { data, isLoading } = useMedicine(id)
-	const { mutateAsync: remove } = useRemoveMedicine()
+	const { mutateAsync: remove, isLoading: isRemoving } = useRemoveMedicine()
 	const { mutateAsync: edit, isLoading: isUpdating } = useEditMedicine(id)
+
+	const openRemoveModal = useCallback(() => {
+		removeModalRef.current?.open()
+	}, [])
 
 	const deleteHandler = useCallback(async () => {
 		await remove(id)
 
-		// TODO: implement modal + go back
-		navigate(EnumTabRoute.home)
-	}, [remove, navigate, id])
+		navigate(activeTab)
+	}, [remove, navigate, id, activeTab])
 
 	if (isLoading) {
 		return <Loader />
@@ -54,9 +62,22 @@ export const EditMedicine: FC = memo(() => {
 						<Form.Item name={t('editMedicine:remove')}>
 							<Form.IconAction
 								mode={EnumFormIconActionMode.remove}
-								handler={deleteHandler}
+								handler={openRemoveModal}
 							/>
 						</Form.Item>
+
+						<Modal
+							title={data.name}
+							content={<Text>{t('modal:removeMedicine.description')}</Text>}
+							closeText={t('components:btn.cancel')}
+							submit={{
+								handler: deleteHandler,
+								isLoading: isRemoving,
+								text: t('components:btn.delete'),
+								isLoadingText: t('actions:removing'),
+							}}
+							ref={removeModalRef}
+						/>
 					</Form.Wrapper>
 				}
 			/>

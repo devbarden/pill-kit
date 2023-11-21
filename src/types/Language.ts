@@ -72,7 +72,6 @@ export type TypeLanguage = {
 	removeDataAlert: {
 		title: string
 		description: string
-		isRemoving: string
 	}
 
 	card: {
@@ -116,6 +115,12 @@ export type TypeLanguage = {
 
 	actions: {
 		removing: string
+	}
+
+	modal: {
+		removeMedicine: {
+			description: string
+		}
 	}
 
 	notifications: {

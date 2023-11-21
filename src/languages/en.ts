@@ -80,7 +80,6 @@ export const en: TypeLanguage = {
 		title: 'Clear All Data',
 		description:
 			'Do you really want to delete all the data ? This action is irrevocable',
-		isRemoving: 'Is removing...',
 	},
 
 	card: {
@@ -126,6 +125,13 @@ export const en: TypeLanguage = {
 
 	actions: {
 		removing: 'Removing...',
+	},
+
+	modal: {
+		removeMedicine: {
+			description:
+				'Do you really want to delete this medicine ? This action is irrevocable',
+		},
 	},
 
 	notifications: {

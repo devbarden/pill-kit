@@ -43,7 +43,7 @@ export const SettingsForm: FC = memo(() => {
 					text: t('components:btn.delete'),
 					handler: removeAllMedicines,
 					isLoading: isRemoving,
-					isLoadingText: t('components:btn.delete'),
+					isLoadingText: t('actions:removing'),
 				}}
 				ref={removeAlertRef}
 			/>

@@ -80,7 +80,6 @@ export const ru: TypeLanguage = {
 		title: 'Удалить все данные',
 		description:
 			'Вы действительно хотите удалить все данные? Это действие является необратимым',
-		isRemoving: 'Удаление...',
 	},
 
 	card: {
@@ -126,6 +125,13 @@ export const ru: TypeLanguage = {
 
 	actions: {
 		removing: 'Удаление...',
+	},
+
+	modal: {
+		removeMedicine: {
+			description:
+				'Вы действительно хотите удалить это лекарство? Это действие является необратимым',
+		},
 	},
 
 	notifications: {

@@ -1,12 +1,13 @@
 import { FC, memo, useMemo, useCallback, useRef } from 'react'
-import { Box } from 'native-base'
+import { Box, Text } from 'native-base'
+import { useTranslation } from 'react-i18next'
 import { AntDesign, Foundation } from '@expo/vector-icons'
 
 import { EnumColor } from '@app/enums'
-import { TypeMedicine } from '@app/types'
 import { useEndpoints } from '@app/hooks'
+import { TypeMedicine, TypeModalHandlers } from '@app/types'
 
-import { Modal, TypeModalHandlers } from '../../../Modal'
+import { Modal } from '../../../Modal'
 import { Action, InfoModalContent } from './sub-components'
 import { styles } from './SwipeActions.styles'
 
@@ -15,14 +16,20 @@ type TypeProps = {
 }
 
 export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
+	const removeModalRef = useRef<TypeModalHandlers>(null)
 	const cardInfoModalRef = useRef<TypeModalHandlers>(null)
 
+	const { t } = useTranslation()
 	const { id, name } = useMemo(() => data, [data])
 	const { useRemoveMedicine } = useEndpoints()
-	const { mutateAsync: remove } = useRemoveMedicine()
+	const { mutateAsync: remove, isLoading: isRemoving } = useRemoveMedicine()
 
 	const openInfoModal = useCallback(() => {
 		cardInfoModalRef.current?.open()
+	}, [])
+
+	const openRemoveModal = useCallback(() => {
+		removeModalRef.current?.open()
 	}, [])
 
 	const deleteHandler = useCallback(async () => {
@@ -40,9 +47,21 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 				content={<InfoModalContent data={data} />}
 				ref={cardInfoModalRef}
 			/>
+			<Modal
+				title={name}
+				content={<Text>{t('modal:removeMedicine.description')}</Text>}
+				closeText={t('components:btn.cancel')}
+				submit={{
+					handler: deleteHandler,
+					isLoading: isRemoving,
+					text: t('components:btn.delete'),
+					isLoadingText: t('actions:removing'),
+				}}
+				ref={removeModalRef}
+			/>
 			<Action
 				icon={<AntDesign name="delete" size={24} color={EnumColor.red} />}
-				handler={deleteHandler}
+				handler={openRemoveModal}
 			/>
 		</Box>
 	)

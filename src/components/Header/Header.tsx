@@ -1,9 +1,10 @@
-import { FC, ReactElement, memo, useCallback } from 'react'
+import { FC, ReactElement, memo, useCallback, useContext } from 'react'
 import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons'
 
-import { EnumColor, EnumTabRoute } from '@app/enums'
+import { GlobalStateContext } from '@app/context'
+import { EnumColor } from '@app/enums'
 
 import { styles } from './Header.styles'
 
@@ -16,16 +17,16 @@ type TypeProps = {
 export const Header: FC<TypeProps> = memo(
 	({ title, withGoBack = false, action = null }) => {
 		const { navigate } = useNavigation()
+		const { activeTab } = useContext(GlobalStateContext)
 
-		const goBack = useCallback(() => {
-			// TODO: implement go back
-			navigate(EnumTabRoute.home)
-		}, [navigate])
+		const backHandler = useCallback(() => {
+			navigate(activeTab)
+		}, [navigate, activeTab])
 
 		return (
 			<Box style={styles.wrapper}>
 				{withGoBack && (
-					<Pressable style={styles.back} onPress={goBack}>
+					<Pressable style={styles.back} onPress={backHandler}>
 						<Ionicons
 							name="chevron-back-sharp"
 							size={28}

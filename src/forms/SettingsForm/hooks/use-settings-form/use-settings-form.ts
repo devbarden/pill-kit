@@ -8,8 +8,8 @@ import {
 	RATE_LINK,
 	UPGRADE_LINK,
 } from '@app/constants'
+import { TypeModalHandlers } from '@app/types'
 import { getSelectedLanguage } from '@app/utils'
-import { TypeModalHandlers } from '@app/components'
 
 export const useSettingsForm = () => {
 	const removeAlertRef = useRef<TypeModalHandlers>(null)

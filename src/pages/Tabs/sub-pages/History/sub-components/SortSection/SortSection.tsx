@@ -4,7 +4,8 @@ import { Box, Pressable, Text } from 'native-base'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { EnumColor } from '@app/enums'
-import { Modal, TypeModalHandlers } from '@app/components'
+import { Modal } from '@app/components'
+import { TypeModalHandlers } from '@app/types'
 
 import { SortModalContent } from '../SortModalContent'
 import { HistoryContext } from '../../context'

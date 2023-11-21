@@ -1,5 +1,6 @@
 export * from './enum'
 export * from './card'
+export * from './modal'
 export * from './select'
 export * from './routes'
 export * from './global'

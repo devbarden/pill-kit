@@ -5,8 +5,9 @@ import { values, filter, size } from 'lodash'
 import { Pressable, Box, Text } from 'native-base'
 
 import { EnumColor } from '@app/enums'
+import { Form, Modal } from '@app/components'
+import { TypeModalHandlers } from '@app/types'
 import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
-import { Form, Modal, TypeModalHandlers } from '@app/components'
 
 import { FiltersModalContent } from '../FiltersModalContent'
 import { HistoryContext } from '../../context'

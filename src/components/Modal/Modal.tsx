@@ -17,14 +17,10 @@ import {
 import { useTranslation } from 'react-i18next'
 
 import { EnumColor } from '@app/enums'
+import { TypeModalHandlers } from '@app/types'
 
 import { ScrollContent } from '../ScrollContent'
 import { styles } from './Modal.styles'
-
-export type TypeModalHandlers = {
-	open: () => void
-	close: () => void
-}
 
 type TypeProps = {
 	title: ReactElement | string
