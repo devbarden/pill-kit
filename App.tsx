@@ -8,9 +8,9 @@ import { registerLogs } from '@app/utils'
 import { SafeArea } from '@app/components'
 import { Navigator } from '@app/navigator'
 
-const queryClient = new QueryClient()
-
 registerLogs()
+
+const queryClient = new QueryClient()
 
 const App: FC = memo(() => (
 	<SafeArea>
