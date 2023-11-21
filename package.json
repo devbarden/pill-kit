@@ -10,7 +10,7 @@
 		"prettier": "prettier . --write",
 		"lint": "tsc --noEmit && eslint --max-warnings 0 --ext .js,.jsx,.ts,.tsx ./",
 		"prepare": "husky install",
-    "format": "npm run prettier && npm run lint"
+		"format": "npm run prettier && npm run lint"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^13.0.0",
@@ -59,6 +59,6 @@
 	},
 	"private": true,
 	"lint-staged": {
-    "*.{js,jsx,ts,tsx}": "npm run format"
+		"*.{js,jsx,ts,tsx}": "npm run format"
 	}
 }
