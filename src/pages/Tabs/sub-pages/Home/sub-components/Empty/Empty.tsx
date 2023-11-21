@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, Fragment, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
@@ -17,7 +17,7 @@ export const Empty: FC = memo(() => {
 	}, [navigate])
 
 	return (
-		<>
+		<Fragment>
 			<Box style={styles.infoWrapper}>
 				<Pressable style={styles.info} onPress={addHandler}>
 					<MaterialCommunityIcons
@@ -37,6 +37,6 @@ export const Empty: FC = memo(() => {
 				</Text>
 				<MaterialCommunityIcons name="pill" color="white" size={24} />
 			</Pressable>
-		</>
+		</Fragment>
 	)
 })

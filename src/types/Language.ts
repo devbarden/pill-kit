@@ -80,6 +80,18 @@ export interface Language {
 			from: string
 			daily: string
 		}
+
+		infoModal: {
+			type: string
+			count: string
+			perDay: string
+			startDate: string
+			endDate: string
+		}
+	}
+
+	medicine: {
+		types: Record<MEDICINE_TYPE, string>
 	}
 
 	components: {
@@ -97,12 +109,6 @@ export interface Language {
 				required: string
 				optional: string
 				search: string
-			}
-		}
-
-		select: {
-			items: {
-				medicineTypes: Record<MEDICINE_TYPE, string>
 			}
 		}
 	}

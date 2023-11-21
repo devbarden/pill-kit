@@ -1,4 +1,4 @@
-import { FC, memo, useMemo, useCallback } from 'react'
+import { FC, Fragment, memo, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
@@ -44,17 +44,17 @@ export const Home: FC = memo(() => {
 
 	if (isNoMedicines) {
 		return (
-			<>
+			<Fragment>
 				<Header title={t('home:title')} />
 				<ContentWrapper withHorizontalPaddings withVerticalPaddings>
 					<Empty />
 				</ContentWrapper>
-			</>
+			</Fragment>
 		)
 	}
 
 	return (
-		<>
+		<Fragment>
 			<Header
 				title={t('home:title')}
 				action={
@@ -66,6 +66,6 @@ export const Home: FC = memo(() => {
 			<ContentWrapper>
 				<CardsList items={medicines} />
 			</ContentWrapper>
-		</>
+		</Fragment>
 	)
 })

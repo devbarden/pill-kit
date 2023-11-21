@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, Fragment, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { SettingsForm } from '@app/forms'
@@ -8,11 +8,11 @@ export const Settings: FC = memo(() => {
 	const { t } = useTranslation()
 
 	return (
-		<>
+		<Fragment>
 			<Header title={t('settings:title')} />
 			<ContentWrapper withHorizontalPaddings>
 				<SettingsForm />
 			</ContentWrapper>
-		</>
+		</Fragment>
 	)
 })

@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, Fragment, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
@@ -15,9 +15,9 @@ export const NotFound: FC = memo(() => {
 	}, [navigate])
 
 	return (
-		<>
+		<Fragment>
 			<Text>{t('editMedicine:notFound')}</Text>
 			<Button onPress={backHandler}>{t('editMedicine:back')}</Button>
-		</>
+		</Fragment>
 	)
 })

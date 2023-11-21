@@ -1,12 +1,12 @@
 import BaseModal from 'react-native-modal'
 import {
-	Fragment,
 	ReactElement,
 	forwardRef,
 	useState,
 	useMemo,
 	useCallback,
 	useImperativeHandle,
+	Fragment,
 } from 'react'
 import { Box, Text } from 'native-base'
 import {
@@ -35,7 +35,7 @@ interface Props {
 		isLoading?: boolean
 		isLoadingText?: ReactElement | string
 	}
-	cancelText?: string
+	closeText?: string
 	onFullScreen?: boolean
 	withContentScroll?: boolean
 	isPossibleCloseOutside?: boolean
@@ -48,7 +48,7 @@ export const Modal = forwardRef<ModalHandlers, Props>(
 			title,
 			content,
 			submit,
-			cancelText,
+			closeText,
 			onFullScreen = false,
 			withContentScroll = false,
 			isPossibleCloseOutside = true,
@@ -60,8 +60,8 @@ export const Modal = forwardRef<ModalHandlers, Props>(
 		const [isVisible, setIsVisible] = useState(false)
 
 		const closeBtnText = useMemo(
-			() => cancelText ?? t('components:btn.cancel'),
-			[cancelText, t],
+			() => closeText ?? t('components:btn.close'),
+			[closeText, t],
 		)
 
 		const isSubmitLoadingInfoProvided = useMemo(

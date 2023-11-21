@@ -38,6 +38,7 @@ export const SettingsForm: FC = memo(() => {
 						{t('removeDataAlert:description')}
 					</Text>
 				}
+				closeText={t('components:btn.cancel')}
 				submit={{
 					text: t('components:btn.delete'),
 					handler: removeAllMedicines,
@@ -50,7 +51,6 @@ export const SettingsForm: FC = memo(() => {
 				onFullScreen
 				withContentScroll
 				title={t('termsOfUse:title')}
-				cancelText={t('components:btn.close')}
 				content={
 					<Text color={COLORS.DARK_GREY}>{t('termsOfUse:description')}</Text>
 				}

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, Fragment, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'native-base'
 
@@ -8,11 +8,11 @@ export const Analytic: FC = memo(() => {
 	const { t } = useTranslation()
 
 	return (
-		<>
+		<Fragment>
 			<Header title={t('analytic:title')} />
 			<ContentWrapper withHorizontalPaddings>
 				<Text>Content</Text>
 			</ContentWrapper>
-		</>
+		</Fragment>
 	)
 })

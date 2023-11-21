@@ -48,6 +48,7 @@ export const SortSection: FC = memo(() => {
 
 			<Modal
 				title={t('sortSection:modal.title')}
+				closeText={t('components:btn.cancel')}
 				content={<SortModalContent closeHandler={closeSortModalContent} />}
 				ref={sortModalRef}
 			/>

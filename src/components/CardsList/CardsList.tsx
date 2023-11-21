@@ -3,22 +3,22 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 
 import { Medicine } from '@app/types'
 
-import { Card, RightSwipeAction } from './sub-components'
+import { Card, SwipeActions } from './sub-components'
 
 interface Props {
 	items: Medicine[]
 }
 
-const RIGHT_SWIPE_SIZE = -85
+const SWIPE_SIZE = 85
 
-// TODO: implement left swipe for complete action
 export const CardsList: FC<Props> = memo(({ items }) => (
 	<SwipeListView
-		disableRightSwipe
 		data={items}
 		renderItem={({ item }) => <Card data={item} />}
-		renderHiddenItem={({ item }) => <RightSwipeAction data={item} />}
-		stopRightSwipe={RIGHT_SWIPE_SIZE}
-		rightOpenValue={RIGHT_SWIPE_SIZE}
+		renderHiddenItem={({ item }) => <SwipeActions data={item} />}
+		stopLeftSwipe={SWIPE_SIZE}
+		leftOpenValue={SWIPE_SIZE}
+		stopRightSwipe={-SWIPE_SIZE}
+		rightOpenValue={-SWIPE_SIZE}
 	/>
 ))

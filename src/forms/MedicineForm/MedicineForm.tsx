@@ -54,7 +54,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 		// TODO: add label if user creating medicine in PAST
 
 		return (
-			<>
+			<Fragment>
 				<ContentWrapper withHorizontalPaddings>
 					<ScrollContent>
 						<Form.Wrapper>
@@ -146,7 +146,7 @@ export const MedicineForm: FC<MedicineFormProps> = memo(
 						{t('components:btn.save')}
 					</Button>
 				</Box>
-			</>
+			</Fragment>
 		)
 	},
 )

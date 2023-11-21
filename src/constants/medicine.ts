@@ -3,7 +3,6 @@ export enum MEDICINE_TYPE {
 	CREAM = 'CREAM',
 }
 
-export const MEDICINE_TYPE_TRANSLATION_PATH =
-	'components:select.items.medicineTypes'
+export const MEDICINE_TYPE_TRANSLATION_PATH = 'medicine:types'
 
 export const MEDICINE_MAX_LENGTH_OF_NAME = 30

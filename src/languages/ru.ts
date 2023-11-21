@@ -89,6 +89,20 @@ export const ru: Language = {
 			from: 'С',
 			daily: 'Ежедневно',
 		},
+		infoModal: {
+			type: 'Тип',
+			count: 'Количество',
+			perDay: 'Сколько в день',
+			startDate: 'Начало приема',
+			endDate: 'Конец приема',
+		},
+	},
+
+	medicine: {
+		types: {
+			[MEDICINE_TYPE.PILL]: 'Таблетка',
+			[MEDICINE_TYPE.CREAM]: 'Мазь',
+		},
 	},
 
 	components: {
@@ -106,15 +120,6 @@ export const ru: Language = {
 				required: 'Обязательно',
 				optional: 'Необязательно',
 				search: 'Поиск',
-			},
-		},
-
-		select: {
-			items: {
-				medicineTypes: {
-					[MEDICINE_TYPE.PILL]: 'Таблетка',
-					[MEDICINE_TYPE.CREAM]: 'Мазь',
-				},
 			},
 		},
 	},

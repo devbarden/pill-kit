@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, Fragment, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
@@ -33,17 +33,17 @@ export const EditMedicine: FC = memo(() => {
 
 	if (!data) {
 		return (
-			<>
+			<Fragment>
 				<Header title={t('editMedicine:title')} withGoBack />
 				<ContentWrapper withHorizontalPaddings withVerticalPaddings>
 					<NotFound />
 				</ContentWrapper>
-			</>
+			</Fragment>
 		)
 	}
 
 	return (
-		<>
+		<Fragment>
 			<Header title={t('editMedicine:title')} withGoBack />
 			<MedicineForm
 				data={data}
@@ -60,6 +60,6 @@ export const EditMedicine: FC = memo(() => {
 					</Form.Wrapper>
 				}
 			/>
-		</>
+		</Fragment>
 	)
 })

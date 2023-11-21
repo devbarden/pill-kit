@@ -89,6 +89,20 @@ export const en: Language = {
 			from: 'From',
 			daily: 'Daily',
 		},
+		infoModal: {
+			type: 'Type',
+			count: 'Count',
+			perDay: 'Per day',
+			startDate: 'Start date',
+			endDate: 'End date',
+		},
+	},
+
+	medicine: {
+		types: {
+			[MEDICINE_TYPE.PILL]: 'Pill',
+			[MEDICINE_TYPE.CREAM]: 'Cream',
+		},
 	},
 
 	components: {
@@ -106,15 +120,6 @@ export const en: Language = {
 				required: 'Required',
 				optional: 'Optional',
 				search: 'Search',
-			},
-		},
-
-		select: {
-			items: {
-				medicineTypes: {
-					[MEDICINE_TYPE.PILL]: 'Pill',
-					[MEDICINE_TYPE.CREAM]: 'Cream',
-				},
 			},
 		},
 	},

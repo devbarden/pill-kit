@@ -73,7 +73,6 @@ export const SearchBar: FC = memo(() => {
 			</Form.Item>
 			<Modal
 				title={t('history:filtersTitle')}
-				cancelText={t('components:btn.close')}
 				content={<FiltersModalContent />}
 				ref={filtersModalRef}
 			/>

@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { addWeeks } from '@app/utils'
@@ -27,13 +27,13 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<>
+		<Fragment>
 			<Header title={t('createMedicine:title')} withGoBack />
 			<MedicineForm
 				data={data}
 				submitHandler={save}
 				isSubmitting={isUploading}
 			/>
-		</>
+		</Fragment>
 	)
 })
