@@ -23,6 +23,10 @@ export const en: Language = {
 		remove: 'Remove',
 	},
 
+	analytic: {
+		title: 'Analytics',
+	},
+
 	history: {
 		title: 'History',
 		empty: 'No medications found',

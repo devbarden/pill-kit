@@ -24,6 +24,7 @@ export const useMedicineForm = ({
 	)
 
 	const backHandler = useCallback(() => {
+		// TODO: implement go back
 		navigate(TAB_ROUTES.HOME)
 	}, [navigate])
 

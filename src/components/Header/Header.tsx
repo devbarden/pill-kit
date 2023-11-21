@@ -18,6 +18,7 @@ export const Header: FC<Props> = memo(
 		const { navigate } = useNavigation()
 
 		const goBack = useCallback(() => {
+			// TODO: implement go back
 			navigate(TAB_ROUTES.HOME)
 		}, [navigate])
 

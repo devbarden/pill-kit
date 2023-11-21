@@ -23,6 +23,10 @@ export interface Language {
 		remove: string
 	}
 
+	analytic: {
+		title: string
+	}
+
 	history: {
 		title: string
 		empty: string

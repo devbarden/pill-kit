@@ -23,6 +23,7 @@ export const EditMedicine: FC = memo(() => {
 	const deleteHandler = useCallback(async () => {
 		await remove(id)
 
+		// TODO: implement modal + go back
 		navigate(TAB_ROUTES.HOME)
 	}, [remove, navigate, id])
 

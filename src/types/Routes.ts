@@ -3,6 +3,8 @@ import { RouteProp } from '@react-navigation/native'
 import { STACK_ROUTES, TAB_ROUTES } from '@app/constants'
 import { MedicineId } from '@app/types'
 
+export type Route = TAB_ROUTES | STACK_ROUTES
+
 export type NavigatorStackTypes = {
 	[STACK_ROUTES.TABS]: undefined
 	[STACK_ROUTES.CREATE_MEDICINE]: undefined
@@ -11,6 +13,7 @@ export type NavigatorStackTypes = {
 
 export type NavigatorTabTypes = {
 	[TAB_ROUTES.HOME]: undefined
+	[TAB_ROUTES.ANALYTIC]: undefined
 	[TAB_ROUTES.HISTORY]: undefined
 	[TAB_ROUTES.SETTINGS]: undefined
 }

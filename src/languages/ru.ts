@@ -23,6 +23,10 @@ export const ru: Language = {
 		remove: 'Удалить лекарство',
 	},
 
+	analytic: {
+		title: 'Аналитика',
+	},
+
 	history: {
 		title: 'История',
 		empty: 'Лекарства не найдены',

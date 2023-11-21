@@ -11,6 +11,7 @@ interface Props {
 
 const RIGHT_SWIPE_SIZE = -85
 
+// TODO: implement left swipe for complete action
 export const CardsList: FC<Props> = memo(({ items }) => (
 	<SwipeListView
 		disableRightSwipe

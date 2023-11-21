@@ -1,6 +1,12 @@
-import { Ionicons, Octicons } from '@expo/vector-icons'
+import {
+	AntDesign,
+	Ionicons,
+	MaterialCommunityIcons,
+	Octicons,
+} from '@expo/vector-icons'
 
-import { COLORS, TAB_ROUTES } from '@app/constants'
+import { Route } from '@app/types'
+import { COLORS, STACK_ROUTES, TAB_ROUTES } from '@app/constants'
 
 const getIconProps = (isActive: boolean) => ({
 	size: 24,
@@ -8,10 +14,19 @@ const getIconProps = (isActive: boolean) => ({
 })
 
 // TODO: refactoring
-export const getIcon = (route: TAB_ROUTES, isActive: boolean) =>
+export const getIcon = (route: Route, isActive: boolean) =>
 	({
 		[TAB_ROUTES.HOME]: () => (
 			<Octicons name="home" {...getIconProps(isActive)} />
+		),
+		[TAB_ROUTES.ANALYTIC]: () => (
+			<MaterialCommunityIcons
+				name="google-analytics"
+				{...getIconProps(isActive)}
+			/>
+		),
+		[STACK_ROUTES.CREATE_MEDICINE]: () => (
+			<AntDesign name="pluscircleo" {...getIconProps(isActive)} />
 		),
 		[TAB_ROUTES.HISTORY]: () => (
 			<Octicons name="history" {...getIconProps(isActive)} />

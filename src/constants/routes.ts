@@ -1,5 +1,6 @@
 export enum TAB_ROUTES {
 	HOME = 'Home',
+	ANALYTIC = 'Analytic',
 	HISTORY = 'History',
 	SETTINGS = 'Settings',
 }
@@ -10,8 +11,6 @@ export enum STACK_ROUTES {
 	EDIT_MEDICINE = 'EditMedicine',
 }
 
-export const LIST_OF_NAVIGATION_ITEMS: TAB_ROUTES[] = [
-	TAB_ROUTES.HOME,
-	TAB_ROUTES.HISTORY,
-	TAB_ROUTES.SETTINGS,
-]
+export const DEFAULT_TAB_ROUTE: TAB_ROUTES = TAB_ROUTES.HOME
+
+export const DEFAULT_STACK_ROUTE: STACK_ROUTES = STACK_ROUTES.TABS

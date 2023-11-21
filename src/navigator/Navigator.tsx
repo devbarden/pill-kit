@@ -7,10 +7,11 @@ import {
 
 import '@app/i18n'
 import { Loader } from '@app/components'
-import { useEndpoints } from '@app/hooks'
-import { STACK_ROUTES } from '@app/constants'
+import { GlobalStateContext } from '@app/context'
+import { useEndpoints, useGlobalState } from '@app/hooks'
 import { Tabs, CreateMedicine, EditMedicine } from '@app/pages'
 import { NavigatorTypes, NavigatorStackTypes } from '@app/types'
+import { DEFAULT_STACK_ROUTE, STACK_ROUTES } from '@app/constants'
 
 import { styles } from './Navigator.styles'
 
@@ -31,25 +32,29 @@ export const Navigator: FC = memo(() => {
 	const { useInitMedicines } = useEndpoints()
 	const { isLoading } = useInitMedicines()
 
+	const globalState = useGlobalState()
+
 	if (isLoading) {
 		return <Loader />
 	}
 
 	return (
-		<NavigationContainer>
-			<Stack.Navigator
-				initialRouteName={STACK_ROUTES.TABS}
-				screenOptions={screenOptions}>
-				<Stack.Screen name={STACK_ROUTES.TABS} component={Tabs} />
-				<Stack.Screen
-					name={STACK_ROUTES.CREATE_MEDICINE}
-					component={CreateMedicine}
-				/>
-				<Stack.Screen
-					name={STACK_ROUTES.EDIT_MEDICINE}
-					component={EditMedicine}
-				/>
-			</Stack.Navigator>
-		</NavigationContainer>
+		<GlobalStateContext.Provider value={globalState}>
+			<NavigationContainer>
+				<Stack.Navigator
+					initialRouteName={DEFAULT_STACK_ROUTE}
+					screenOptions={screenOptions}>
+					<Stack.Screen name={STACK_ROUTES.TABS} component={Tabs} />
+					<Stack.Screen
+						name={STACK_ROUTES.CREATE_MEDICINE}
+						component={CreateMedicine}
+					/>
+					<Stack.Screen
+						name={STACK_ROUTES.EDIT_MEDICINE}
+						component={EditMedicine}
+					/>
+				</Stack.Navigator>
+			</NavigationContainer>
+		</GlobalStateContext.Provider>
 	)
 })

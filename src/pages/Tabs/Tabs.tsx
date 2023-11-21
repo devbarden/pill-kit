@@ -1,15 +1,16 @@
-import { FC, memo } from 'react'
+import { FC, memo, useContext, useMemo } from 'react'
+import { RouteProp } from '@react-navigation/native'
 import {
-	BottomTabBarProps,
 	BottomTabNavigationOptions,
 	createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
 
-import { TAB_ROUTES } from '@app/constants'
-import { NavigatorTabTypes } from '@app/types'
 import { Navigation } from '@app/components'
+import { NavigatorTabTypes } from '@app/types'
+import { GlobalStateContext } from '@app/context'
+import { DEFAULT_TAB_ROUTE, TAB_ROUTES } from '@app/constants'
 
-import { Home, History, Settings } from './sub-pages'
+import { Home, History, Settings, Analytic } from './sub-pages'
 
 const Tab = createBottomTabNavigator<NavigatorTabTypes>()
 
@@ -17,13 +18,49 @@ const screenOptions: BottomTabNavigationOptions = {
 	headerShown: false,
 }
 
-export const Tabs: FC = memo(() => (
-	<Tab.Navigator
-		initialRouteName={TAB_ROUTES.HOME}
-		screenOptions={screenOptions}
-		tabBar={(barProps: BottomTabBarProps) => <Navigation {...barProps} />}>
-		<Tab.Screen name={TAB_ROUTES.HOME} component={Home} />
-		<Tab.Screen name={TAB_ROUTES.HISTORY} component={History} />
-		<Tab.Screen name={TAB_ROUTES.SETTINGS} component={Settings} />
-	</Tab.Navigator>
-))
+interface TabListeners {
+	route: RouteProp<NavigatorTabTypes, TAB_ROUTES>
+}
+
+export const Tabs: FC = memo(() => {
+	const { setActiveTab } = useContext(GlobalStateContext)
+
+	const commonListenersProps = useMemo(
+		() => ({
+			listeners: ({ route }: TabListeners) => ({
+				state: () => {
+					setActiveTab(route.name)
+				},
+			}),
+		}),
+		[setActiveTab],
+	)
+
+	return (
+		<Tab.Navigator
+			initialRouteName={DEFAULT_TAB_ROUTE}
+			screenOptions={screenOptions}
+			tabBar={() => <Navigation />}>
+			<Tab.Screen
+				name={TAB_ROUTES.HOME}
+				component={Home}
+				{...commonListenersProps}
+			/>
+			<Tab.Screen
+				name={TAB_ROUTES.ANALYTIC}
+				component={Analytic}
+				{...commonListenersProps}
+			/>
+			<Tab.Screen
+				name={TAB_ROUTES.HISTORY}
+				component={History}
+				{...commonListenersProps}
+			/>
+			<Tab.Screen
+				name={TAB_ROUTES.SETTINGS}
+				component={Settings}
+				{...commonListenersProps}
+			/>
+		</Tab.Navigator>
+	)
+})
