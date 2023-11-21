@@ -7,16 +7,20 @@ import { useSelectItems } from '@app/hooks'
 import { TypeMedicineWithoutId } from '@app/types'
 import { EnumMedicineType, EnumColor } from '@app/enums'
 import {
+	MEDICINE_MAX_LENGTH_OF_NAME,
+	MEDICINE_TYPE_TRANSLATION_PATH,
+} from '@app/constants'
+import {
+	medicineCountPerDaySelectItems,
+	medicinePillCountPerUseSelectItems,
+} from '@app/utils'
+import {
 	Form,
 	Switch,
 	Button,
 	ScrollContent,
 	ContentWrapper,
 } from '@app/components'
-import {
-	MEDICINE_MAX_LENGTH_OF_NAME,
-	MEDICINE_TYPE_TRANSLATION_PATH,
-} from '@app/constants'
 
 import { useMedicineForm } from './hooks'
 import { styles } from './MedicineForm.styles'
@@ -77,22 +81,18 @@ export const MedicineForm: FC<TypeMedicineFormProps> = memo(
 
 						<Form.Wrapper>
 							<Form.Item name={t('medicineForm:count')}>
-								<Form.Input
-									keyboardType="number-pad"
-									value={form.countPerUse}
-									maxLength={5}
-									onChangeText={changeCountPerUseHandler}
-									placeholder={t('components:input.placeholder.required')}
+								<Form.Select
+									items={medicinePillCountPerUseSelectItems}
+									selected={form.countPerUse}
+									onSelect={changeCountPerUseHandler}
 								/>
 							</Form.Item>
 							<Form.Separator />
 							<Form.Item name={t('medicineForm:perDay')}>
-								<Form.Input
-									keyboardType="number-pad"
-									value={form.countPerDay}
-									maxLength={1}
-									onChangeText={changeCountPerDayHandler}
-									placeholder={t('components:input.placeholder.required')}
+								<Form.Select
+									items={medicineCountPerDaySelectItems}
+									selected={form.countPerDay}
+									onSelect={changeCountPerDayHandler}
 								/>
 							</Form.Item>
 						</Form.Wrapper>

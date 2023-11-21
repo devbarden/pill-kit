@@ -13,12 +13,12 @@ export const CreateMedicine: FC = memo(() => {
 	const { useAddMedicine } = useEndpoints()
 	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
-	const data: TypeMedicineWithoutId = useMemo(
+	const defaultMedicineData: TypeMedicineWithoutId = useMemo(
 		() => ({
 			name: '',
 			type: EnumMedicineType.pill,
-			countPerUse: '',
-			countPerDay: '',
+			countPerUse: '1',
+			countPerDay: '2',
 			notification: true,
 			startDate: Date.now(),
 			endDate: addWeeks(new Date(), 2),
@@ -30,7 +30,7 @@ export const CreateMedicine: FC = memo(() => {
 		<Fragment>
 			<Header title={t('createMedicine:title')} withGoBack />
 			<MedicineForm
-				data={data}
+				data={defaultMedicineData}
 				submitHandler={save}
 				isSubmitting={isUploading}
 			/>
