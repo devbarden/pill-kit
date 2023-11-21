@@ -1,7 +1,8 @@
-import { MEDICINE_TYPE, CARD_FILTER } from '@app/constants'
-import { T_MedicineSortableField } from './medicine'
+import { EnumMedicineType, EnumCardFilter } from '@app/enums'
 
-export interface I_Language {
+import { TypeMedicineSortableField } from './medicine'
+
+export type TypeLanguage = {
 	main: {
 		appTitle: string
 	}
@@ -31,8 +32,8 @@ export interface I_Language {
 		title: string
 		empty: string
 		filtersTitle: string
-		filters: Record<CARD_FILTER, string>
-		sortTypes: Record<T_MedicineSortableField, string>
+		filters: Record<EnumCardFilter, string>
+		sortTypes: Record<TypeMedicineSortableField, string>
 	}
 
 	sortSection: {
@@ -91,7 +92,7 @@ export interface I_Language {
 	}
 
 	medicine: {
-		types: Record<MEDICINE_TYPE, string>
+		types: Record<EnumMedicineType, string>
 	}
 
 	components: {

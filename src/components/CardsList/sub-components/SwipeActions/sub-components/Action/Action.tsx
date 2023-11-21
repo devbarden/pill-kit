@@ -3,12 +3,12 @@ import { Pressable } from 'native-base'
 
 import { styles } from './Action.styles'
 
-interface I_Props {
+type TypeProps = {
 	icon: ReactElement
 	handler: () => void
 }
 
-export const Action: FC<I_Props> = memo(({ icon, handler }) => (
+export const Action: FC<TypeProps> = memo(({ icon, handler }) => (
 	<Pressable onPress={handler} style={styles.action}>
 		{icon}
 	</Pressable>

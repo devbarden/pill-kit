@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
-import { CARD_MARGIN, COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
+import { CARD_MARGIN } from '@app/constants'
 
 const commonSpace = 16
 
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
 		paddingLeft: commonSpace,
 		paddingRight: commonSpace * 2,
 
-		borderLeftColor: COLORS.WHITE,
+		borderLeftColor: EnumColor.white,
 		borderLeftWidth: 1,
 	},
 })

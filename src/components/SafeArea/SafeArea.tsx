@@ -3,10 +3,10 @@ import { SafeAreaView } from 'react-native'
 
 import { styles } from './SafeArea.styles'
 
-interface I_Props {
+type TypeProps = {
 	children: ReactElement
 }
 
-export const SafeArea: FC<I_Props> = memo(({ children }) => (
+export const SafeArea: FC<TypeProps> = memo(({ children }) => (
 	<SafeAreaView style={styles.wrapper}>{children}</SafeAreaView>
 ))

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Button, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 
-import { TAB_ROUTES } from '@app/constants'
+import { EnumTabRoute } from '@app/enums'
 
 export const NotFound: FC = memo(() => {
 	const { t } = useTranslation()
@@ -11,7 +11,7 @@ export const NotFound: FC = memo(() => {
 
 	const backHandler = useCallback(() => {
 		// TODO: implement go back
-		navigate(TAB_ROUTES.HOME)
+		navigate(EnumTabRoute.home)
 	}, [navigate])
 
 	return (

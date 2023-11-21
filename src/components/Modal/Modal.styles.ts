@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	overlay: {
@@ -13,14 +13,14 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		width: '100%',
 		borderRadius: 16,
-		backgroundColor: COLORS.GREY,
+		backgroundColor: EnumColor.grey,
 	},
 
 	title: {
 		padding: 16,
 		alignItems: 'center',
 		borderBottomWidth: 1,
-		borderColor: COLORS.DARK_GREY,
+		borderColor: EnumColor.darkGrey,
 	},
 
 	content: {
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
 	actions: {
 		flexDirection: 'row',
 		borderTopWidth: 1,
-		borderColor: COLORS.DARK_GREY,
+		borderColor: EnumColor.darkGrey,
 	},
 
 	action: {
@@ -48,6 +48,6 @@ export const styles = StyleSheet.create({
 
 	separator: {
 		borderRightWidth: 1,
-		borderColor: COLORS.DARK_GREY,
+		borderColor: EnumColor.darkGrey,
 	},
 })

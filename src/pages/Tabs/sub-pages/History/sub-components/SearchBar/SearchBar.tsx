@@ -1,11 +1,12 @@
 import { FC, memo, useCallback, useContext, useMemo, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Pressable, Box, Text } from 'native-base'
-import { values, filter, size } from 'lodash'
 import { Ionicons } from '@expo/vector-icons'
+import { useTranslation } from 'react-i18next'
+import { values, filter, size } from 'lodash'
+import { Pressable, Box, Text } from 'native-base'
 
-import { Form, Modal, I_ModalHandlers } from '@app/components'
-import { COLORS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
+import { EnumColor } from '@app/enums'
+import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
+import { Form, Modal, TypeModalHandlers } from '@app/components'
 
 import { FiltersModalContent } from '../FiltersModalContent'
 import { HistoryContext } from '../../context'
@@ -15,12 +16,12 @@ export const SearchBar: FC = memo(() => {
 	const { t } = useTranslation()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
-	const filtersModalRef = useRef<I_ModalHandlers>(null)
+	const filtersModalRef = useRef<TypeModalHandlers>(null)
 
 	const commonIconProps = useMemo(
 		() => ({
 			size: 24,
-			color: COLORS.DARK_GREY,
+			color: EnumColor.darkGrey,
 		}),
 		[],
 	)

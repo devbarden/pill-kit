@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Box } from 'native-base'
 
 import { useSelectItems } from '@app/hooks'
-import { T_MedicineWithoutId } from '@app/types'
+import { TypeMedicineWithoutId } from '@app/types'
+import { EnumMedicineType, EnumColor } from '@app/enums'
 import {
 	Form,
 	Switch,
@@ -13,27 +14,25 @@ import {
 	ContentWrapper,
 } from '@app/components'
 import {
-	COLORS,
 	MEDICINE_MAX_LENGTH_OF_NAME,
-	MEDICINE_TYPE,
 	MEDICINE_TYPE_TRANSLATION_PATH,
 } from '@app/constants'
 
 import { useMedicineForm } from './hooks'
 import { styles } from './MedicineForm.styles'
 
-export interface I_MedicineFormProps {
-	data: T_MedicineWithoutId
-	submitHandler: (medicine: T_MedicineWithoutId) => void
+export type TypeMedicineFormProps = {
+	data: TypeMedicineWithoutId
+	submitHandler: (medicine: TypeMedicineWithoutId) => void
 	isSubmitting: boolean
 	additionalActions?: ReactElement | ReactElement[]
 }
 
-export const MedicineForm: FC<I_MedicineFormProps> = memo(
+export const MedicineForm: FC<TypeMedicineFormProps> = memo(
 	({ data, submitHandler, isSubmitting, additionalActions }) => {
 		const { t, i18n } = useTranslation()
 		const { items: medicineTypesSelectItems } = useSelectItems(
-			MEDICINE_TYPE,
+			EnumMedicineType,
 			MEDICINE_TYPE_TRANSLATION_PATH,
 		)
 		const {
@@ -134,14 +133,14 @@ export const MedicineForm: FC<I_MedicineFormProps> = memo(
 				<Box style={styles.footer}>
 					<Button
 						variant="outline"
-						colorScheme={COLORS.RED}
+						colorScheme={EnumColor.red}
 						disabled={isCancelBtnDisabled}
 						onPress={backHandler}>
 						{t('components:btn.cancel')}
 					</Button>
 					<Button
 						disabled={isSaveBtnDisabled}
-						colorScheme={COLORS.RED}
+						colorScheme={EnumColor.red}
 						onPress={saveHandler}>
 						{t('components:btn.save')}
 					</Button>

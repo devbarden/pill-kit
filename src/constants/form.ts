@@ -1,7 +1,0 @@
-export enum FORM_ICON_ACTION_MODES {
-	MAIL = 'MAIL',
-	ARROW = 'ARROW',
-	REMOVE = 'REMOVE',
-	MONEY = 'MONEY',
-	STAR = 'STAR',
-}

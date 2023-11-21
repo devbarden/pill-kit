@@ -2,21 +2,21 @@ import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { addWeeks } from '@app/utils'
+import { Header } from '@app/components'
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { T_MedicineWithoutId } from '@app/types'
-import { MEDICINE_TYPE } from '@app/constants'
-import { Header } from '@app/components'
+import { EnumMedicineType } from '@app/enums'
+import { TypeMedicineWithoutId } from '@app/types'
 
 export const CreateMedicine: FC = memo(() => {
 	const { t } = useTranslation()
 	const { useAddMedicine } = useEndpoints()
 	const { mutateAsync: save, isLoading: isUploading } = useAddMedicine()
 
-	const data: T_MedicineWithoutId = useMemo(
+	const data: TypeMedicineWithoutId = useMemo(
 		() => ({
 			name: '',
-			type: MEDICINE_TYPE.PILL,
+			type: EnumMedicineType.pill,
 			countPerUse: '',
 			countPerDay: '',
 			notification: true,

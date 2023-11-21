@@ -9,11 +9,11 @@ import {
 	UPGRADE_LINK,
 } from '@app/constants'
 import { getSelectedLanguage } from '@app/utils'
-import { I_ModalHandlers } from '@app/components'
+import { TypeModalHandlers } from '@app/components'
 
 export const useSettingsForm = () => {
-	const removeAlertRef = useRef<I_ModalHandlers>(null)
-	const termsOfUseRef = useRef<I_ModalHandlers>(null)
+	const removeAlertRef = useRef<TypeModalHandlers>(null)
+	const termsOfUseRef = useRef<TypeModalHandlers>(null)
 
 	const { i18n } = useTranslation()
 

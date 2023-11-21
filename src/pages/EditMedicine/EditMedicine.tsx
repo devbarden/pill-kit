@@ -4,8 +4,8 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 
 import { MedicineForm } from '@app/forms'
 import { useEndpoints } from '@app/hooks'
-import { T_EditMedicineRouteProp } from '@app/types'
-import { FORM_ICON_ACTION_MODES, TAB_ROUTES } from '@app/constants'
+import { TypeEditMedicineRouteProp } from '@app/types'
+import { EnumFormIconActionMode, EnumTabRoute } from '@app/enums'
 import { ContentWrapper, Form, Header, Loader } from '@app/components'
 
 import { NotFound } from './sub-components'
@@ -13,7 +13,7 @@ import { NotFound } from './sub-components'
 export const EditMedicine: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { params } = useRoute<T_EditMedicineRouteProp>()
+	const { params } = useRoute<TypeEditMedicineRouteProp>()
 	const { id } = params
 	const { useMedicine, useEditMedicine, useRemoveMedicine } = useEndpoints()
 	const { data, isLoading } = useMedicine(id)
@@ -24,7 +24,7 @@ export const EditMedicine: FC = memo(() => {
 		await remove(id)
 
 		// TODO: implement modal + go back
-		navigate(TAB_ROUTES.HOME)
+		navigate(EnumTabRoute.home)
 	}, [remove, navigate, id])
 
 	if (isLoading) {
@@ -53,7 +53,7 @@ export const EditMedicine: FC = memo(() => {
 					<Form.Wrapper>
 						<Form.Item name={t('editMedicine:remove')}>
 							<Form.IconAction
-								mode={FORM_ICON_ACTION_MODES.REMOVE}
+								mode={EnumFormIconActionMode.remove}
 								handler={deleteHandler}
 							/>
 						</Form.Item>

@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-import { TAB_ROUTES, DEFAULT_TAB_ROUTE } from '@app/constants'
-import { I_GlobalStateContextProps } from '@app/types'
+import { EnumTabRoute } from '@app/enums'
+import { DEFAULT_TAB_ROUTE } from '@app/constants'
+import { TypeGlobalStateContextProps } from '@app/types'
 
-export const useGlobalState = (): I_GlobalStateContextProps => {
-	const [activeTab, setActiveTab] = useState<TAB_ROUTES>(DEFAULT_TAB_ROUTE)
+export const useGlobalState = (): TypeGlobalStateContextProps => {
+	const [activeTab, setActiveTab] = useState<EnumTabRoute>(DEFAULT_TAB_ROUTE)
 
 	return {
 		activeTab,

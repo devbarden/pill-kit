@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { COLORS } from '@app/constants'
-import { Modal, I_ModalHandlers } from '@app/components'
+import { EnumColor } from '@app/enums'
+import { Modal, TypeModalHandlers } from '@app/components'
 
 import { SortModalContent } from '../SortModalContent'
 import { HistoryContext } from '../../context'
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
-	const sortModalRef = useRef<I_ModalHandlers>(null)
+	const sortModalRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { medicines } = useContext(HistoryContext)
@@ -29,20 +29,20 @@ export const SortSection: FC = memo(() => {
 			<Text
 				fontSize="lg"
 				numberOfLines={1}
-				color={COLORS.DARK_GREY}
+				color={EnumColor.darkGrey}
 				style={styles.maxWidthHalfOfRow}>
 				{t('sortSection:medicines')}: {medicines.length}
 			</Text>
 			<Pressable
 				style={[styles.sort, styles.maxWidthHalfOfRow]}
 				onPress={openSortingOptions}>
-				<Text fontSize="lg" numberOfLines={1} color={COLORS.DARK_GREY}>
+				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
 					{t('sortSection:sort')}
 				</Text>
 				<MaterialCommunityIcons
 					name="sort"
 					size={24}
-					color={COLORS.DARK_GREY}
+					color={EnumColor.darkGrey}
 				/>
 			</Pressable>
 

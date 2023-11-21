@@ -4,7 +4,7 @@ import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { STACK_ROUTES } from '@app/constants'
+import { EnumStackRoute } from '@app/enums'
 
 import { styles } from './Empty.styles'
 
@@ -13,7 +13,7 @@ export const Empty: FC = memo(() => {
 	const { navigate } = useNavigation()
 
 	const addHandler = useCallback(() => {
-		navigate(STACK_ROUTES.CREATE_MEDICINE)
+		navigate(EnumStackRoute.createMedicine)
 	}, [navigate])
 
 	return (

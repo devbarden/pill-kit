@@ -7,21 +7,22 @@ import {
 
 import '@app/i18n'
 import { Loader } from '@app/components'
+import { EnumStackRoute } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
+import { DEFAULT_STACK_ROUTE } from '@app/constants'
 import { useEndpoints, useGlobalState } from '@app/hooks'
 import { Tabs, CreateMedicine, EditMedicine } from '@app/pages'
-import { T_NavigatorTypes, T_NavigatorStackTypes } from '@app/types'
-import { DEFAULT_STACK_ROUTE, STACK_ROUTES } from '@app/constants'
+import { TypeNavigatorScreen, TypeNavigatorStack } from '@app/types'
 
 import { styles } from './Navigator.styles'
 
 declare global {
 	namespace ReactNavigation {
-		interface RootParamList extends T_NavigatorTypes {}
+		interface RootParamList extends TypeNavigatorScreen {}
 	}
 }
 
-const Stack = createStackNavigator<T_NavigatorStackTypes>()
+const Stack = createStackNavigator<TypeNavigatorStack>()
 
 const screenOptions: StackNavigationOptions = {
 	headerShown: false,
@@ -44,13 +45,13 @@ export const Navigator: FC = memo(() => {
 				<Stack.Navigator
 					initialRouteName={DEFAULT_STACK_ROUTE}
 					screenOptions={screenOptions}>
-					<Stack.Screen name={STACK_ROUTES.TABS} component={Tabs} />
+					<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
 					<Stack.Screen
-						name={STACK_ROUTES.CREATE_MEDICINE}
+						name={EnumStackRoute.createMedicine}
 						component={CreateMedicine}
 					/>
 					<Stack.Screen
-						name={STACK_ROUTES.EDIT_MEDICINE}
+						name={EnumStackRoute.editMedicine}
 						component={EditMedicine}
 					/>
 				</Stack.Navigator>

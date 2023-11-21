@@ -7,11 +7,11 @@ import {
 	MaterialIcons,
 } from '@expo/vector-icons'
 
-import { I_Medicine } from '@app/types'
+import { EnumColor, EnumMedicineType, EnumStackRoute } from '@app/enums'
+import { TypeMedicine } from '@app/types'
 import { dateToFormat, medicineUtils } from '@app/utils'
-import { MEDICINE_TYPE, COLORS, STACK_ROUTES } from '@app/constants'
 
-export const useCardState = (data: I_Medicine) => {
+export const useCardState = (data: TypeMedicine) => {
 	const {
 		id,
 		name,
@@ -64,19 +64,19 @@ export const useCardState = (data: I_Medicine) => {
 
 	const cardColor = useMemo(() => {
 		if (isPast) {
-			return COLORS.DARK_GREY
+			return EnumColor.darkGrey
 		}
 
 		if (isFuture) {
-			return COLORS.BLUE
+			return EnumColor.blue
 		}
 
-		return COLORS.RED
+		return EnumColor.red
 	}, [isPast, isFuture])
 
 	const commonIconProps = useMemo(
 		() => ({
-			color: COLORS.WHITE,
+			color: EnumColor.white,
 			size: 24,
 		}),
 		[],
@@ -93,12 +93,12 @@ export const useCardState = (data: I_Medicine) => {
 	)
 
 	const medicineIcon = useMemo(() => {
-		const MEDICINE_ICON_MAP: Record<MEDICINE_TYPE, ReactElement> = {
-			[MEDICINE_TYPE.PILL]: (
+		const MEDICINE_ICON_MAP: Record<EnumMedicineType, ReactElement> = {
+			[EnumMedicineType.pill]: (
 				<MaterialCommunityIcons name="pill" {...commonIconProps} size={34} />
 			),
 
-			[MEDICINE_TYPE.CREAM]: (
+			[EnumMedicineType.cream]: (
 				<MaterialIcons name="local-drink" {...commonIconProps} size={34} />
 			),
 		}
@@ -107,7 +107,7 @@ export const useCardState = (data: I_Medicine) => {
 	}, [type, commonIconProps])
 
 	const onCardPress = useCallback(() => {
-		navigate(STACK_ROUTES.EDIT_MEDICINE, { id })
+		navigate(EnumStackRoute.editMedicine, { id })
 	}, [navigate, id])
 
 	return {

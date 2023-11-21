@@ -5,33 +5,33 @@ import {
 	Octicons,
 } from '@expo/vector-icons'
 
-import { T_Route } from '@app/types'
-import { COLORS, STACK_ROUTES, TAB_ROUTES } from '@app/constants'
+import { TypeRoute } from '@app/types'
+import { EnumColor, EnumStackRoute, EnumTabRoute } from '@app/enums'
 
 const getIconProps = (isActive: boolean) => ({
 	size: 24,
-	color: isActive ? COLORS.RED : COLORS.DARK_GREY,
+	color: isActive ? EnumColor.red : EnumColor.darkGrey,
 })
 
 // TODO: refactoring
-export const getIcon = (route: T_Route, isActive: boolean) =>
+export const getIcon = (route: TypeRoute, isActive: boolean) =>
 	({
-		[TAB_ROUTES.HOME]: () => (
+		[EnumTabRoute.home]: () => (
 			<Octicons name="home" {...getIconProps(isActive)} />
 		),
-		[TAB_ROUTES.ANALYTIC]: () => (
+		[EnumTabRoute.analytic]: () => (
 			<MaterialCommunityIcons
 				name="google-analytics"
 				{...getIconProps(isActive)}
 			/>
 		),
-		[STACK_ROUTES.CREATE_MEDICINE]: () => (
+		[EnumStackRoute.createMedicine]: () => (
 			<AntDesign name="pluscircleo" {...getIconProps(isActive)} />
 		),
-		[TAB_ROUTES.HISTORY]: () => (
+		[EnumTabRoute.history]: () => (
 			<Octicons name="history" {...getIconProps(isActive)} />
 		),
-		[TAB_ROUTES.SETTINGS]: () => (
+		[EnumTabRoute.settings]: () => (
 			<Ionicons name="settings-outline" {...getIconProps(isActive)} />
 		),
-	})[route as TAB_ROUTES]
+	})[route as EnumTabRoute]

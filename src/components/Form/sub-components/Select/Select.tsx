@@ -1,20 +1,20 @@
 import { FC, ReactElement, memo } from 'react'
 import { Select as BaseSelect } from 'native-base'
 
-import { I_SelectItem } from '@app/types'
+import { TypeSelectItem } from '@app/types'
 import { uid } from '@app/utils'
 
 import { styles } from './Select.styles'
 
-interface I_Props {
-	items: I_SelectItem[]
+type TypeProps = {
+	items: TypeSelectItem[]
 	selected: string
 	label?: string
 	dropdownIcon?: ReactElement
 	onSelect: (item: string) => void
 }
 
-export const Select: FC<I_Props> = memo(
+export const Select: FC<TypeProps> = memo(
 	({ items, selected, onSelect, dropdownIcon, label = 'Select...' }) => (
 		<BaseSelect
 			width="100%"

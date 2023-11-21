@@ -5,14 +5,10 @@ import { useNavigation } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons'
 
 import { useEndpoints } from '@app/hooks'
+import { EnumStackRoute, EnumColor } from '@app/enums'
 import { isDeserted, medicineUtils } from '@app/utils'
-import {
-	CARD_SORT_TYPE,
-	COLORS,
-	HOME_FILTERS,
-	STACK_ROUTES,
-} from '@app/constants'
 import { Header, Loader, CardsList, ContentWrapper } from '@app/components'
+import { CARD_SORT_TYPE, INITIAL_HOME_FILTERS } from '@app/constants'
 
 import { Empty } from './sub-components'
 
@@ -23,7 +19,8 @@ export const Home: FC = memo(() => {
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const filteredMedicines = useMemo(
-		() => medicineUtils.getMedicinesByFilters(allMedicines, HOME_FILTERS),
+		() =>
+			medicineUtils.getMedicinesByFilters(allMedicines, INITIAL_HOME_FILTERS),
 		[allMedicines],
 	)
 
@@ -35,7 +32,7 @@ export const Home: FC = memo(() => {
 	const isNoMedicines = useMemo(() => isDeserted(medicines), [medicines])
 
 	const addNewMedicineHandler = useCallback(() => {
-		navigate(STACK_ROUTES.CREATE_MEDICINE)
+		navigate(EnumStackRoute.createMedicine)
 	}, [navigate])
 
 	if (isLoading) {
@@ -59,7 +56,7 @@ export const Home: FC = memo(() => {
 				title={t('home:title')}
 				action={
 					<Pressable onPress={addNewMedicineHandler}>
-						<FontAwesome name="plus-circle" size={32} color={COLORS.RED} />
+						<FontAwesome name="plus-circle" size={32} color={EnumColor.red} />
 					</Pressable>
 				}
 			/>

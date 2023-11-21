@@ -3,12 +3,12 @@ import { Box, Text } from 'native-base'
 
 import { styles } from './Item.styles'
 
-interface I_Props {
+type TypeProps = {
 	name?: string | ReactElement
 	children: ReactElement
 }
 
-export const Item: FC<I_Props> = memo(({ name, children }) => {
+export const Item: FC<TypeProps> = memo(({ name, children }) => {
 	const isNameExist = useMemo(() => Boolean(name), [name])
 
 	return (

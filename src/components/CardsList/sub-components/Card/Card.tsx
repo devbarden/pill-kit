@@ -1,17 +1,17 @@
 import { FC, memo, useMemo } from 'react'
 import { Pressable, Box, Text, ITextProps } from 'native-base'
 
-import { I_Medicine } from '@app/types'
-import { COLORS } from '@app/constants'
+import { TypeMedicine } from '@app/types'
+import { EnumColor } from '@app/enums'
 
 import { useCardState } from './hooks'
 import { styles } from './Card.styles'
 
-interface I_Props {
-	data: I_Medicine
+type TypeProps = {
+	data: TypeMedicine
 }
 
-export const Card: FC<I_Props> = memo(({ data }) => {
+export const Card: FC<TypeProps> = memo(({ data }) => {
 	const {
 		name,
 		isPast,
@@ -30,7 +30,7 @@ export const Card: FC<I_Props> = memo(({ data }) => {
 
 	const baseTextProps: ITextProps = useMemo(
 		() => ({
-			color: COLORS.WHITE,
+			color: EnumColor.white,
 			numberOfLines: 1,
 			ellipsizeMode: 'tail',
 		}),

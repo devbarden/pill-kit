@@ -1,19 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { omit } from 'lodash'
 
-import { ERRORS, STORAGE } from '@app/constants'
 import { isAnyFieldEmpty, uid } from '@app/utils'
+import { EnumStorage, EnumError } from '@app/enums'
 import {
-	I_Medicine,
-	T_MedicineId,
-	T_StorageData,
-	T_PossibleMedicine,
-	T_MedicineWithoutId,
+	TypeMedicine,
+	TypeMedicineId,
+	TypeStorageData,
+	TypePossibleMedicine,
+	TypeMedicineWithoutId,
 } from '@app/types'
 
 export const initMedicines = async () => {
 	try {
-		const data: T_StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
+		const data: TypeStorageData = await AsyncStorage.getItem(
+			EnumStorage.medicines,
+		)
 
 		if (data) {
 			return data
@@ -21,7 +23,7 @@ export const initMedicines = async () => {
 
 		const initialMedicines = JSON.stringify([])
 
-		await AsyncStorage.setItem(STORAGE.MEDICINES, initialMedicines)
+		await AsyncStorage.setItem(EnumStorage.medicines, initialMedicines)
 
 		return []
 	} catch {
@@ -31,8 +33,10 @@ export const initMedicines = async () => {
 
 export const getMedicines = async () => {
 	try {
-		const data: T_StorageData = await AsyncStorage.getItem(STORAGE.MEDICINES)
-		const medicines: I_Medicine[] = data ? JSON.parse(data) : []
+		const data: TypeStorageData = await AsyncStorage.getItem(
+			EnumStorage.medicines,
+		)
+		const medicines: TypeMedicine[] = data ? JSON.parse(data) : []
 
 		return medicines
 	} catch {
@@ -40,10 +44,10 @@ export const getMedicines = async () => {
 	}
 }
 
-export const getMedicine = async (id: T_MedicineId) => {
+export const getMedicine = async (id: TypeMedicineId) => {
 	try {
-		const medicines: I_Medicine[] = await getMedicines()
-		const medicine: T_PossibleMedicine =
+		const medicines: TypeMedicine[] = await getMedicines()
+		const medicine: TypePossibleMedicine =
 			medicines.find((item) => item.id === id) ?? null
 
 		return omit(medicine, ['id'])
@@ -52,58 +56,58 @@ export const getMedicine = async (id: T_MedicineId) => {
 	}
 }
 
-export const setMedicine = async (data: T_MedicineWithoutId) => {
+export const setMedicine = async (data: TypeMedicineWithoutId) => {
 	if (isAnyFieldEmpty(data)) {
-		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
+		throw new Error(EnumError.fieldsNotFilled)
 	}
 
 	try {
-		const medicines: I_Medicine[] = await getMedicines()
+		const medicines: TypeMedicine[] = await getMedicines()
 		const newMedicine = { id: uid(), ...data }
-		const newMedicines: I_Medicine[] = [...medicines, newMedicine]
+		const newMedicines: TypeMedicine[] = [...medicines, newMedicine]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
-		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 	} catch {}
 }
 
 export const editMedicine = async (
-	id: T_MedicineId,
-	data: T_MedicineWithoutId,
+	id: TypeMedicineId,
+	data: TypeMedicineWithoutId,
 ) => {
 	if (isAnyFieldEmpty(data)) {
-		throw new Error(ERRORS.FIELDS_NOT_FILLED_IN)
+		throw new Error(EnumError.fieldsNotFilled)
 	}
 
 	try {
-		const medicines: I_Medicine[] = await getMedicines()
+		const medicines: TypeMedicine[] = await getMedicines()
 		const updatedMedicine = { id, ...data }
-		const newMedicines: I_Medicine[] = medicines.map((item) =>
+		const newMedicines: TypeMedicine[] = medicines.map((item) =>
 			item.id === id ? updatedMedicine : item,
 		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
-		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 	} catch {}
 }
 
-export const removeMedicine = async (id: T_MedicineId) => {
+export const removeMedicine = async (id: TypeMedicineId) => {
 	try {
-		const medicines: I_Medicine[] = await getMedicines()
-		const newMedicines: I_Medicine[] = medicines.filter(
+		const medicines: TypeMedicine[] = await getMedicines()
+		const newMedicines: TypeMedicine[] = medicines.filter(
 			(item) => item.id !== id,
 		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
-		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 	} catch {}
 }
 
 export const removeAllMedicines = async () => {
 	try {
-		const newMedicines: I_Medicine[] = []
+		const newMedicines: TypeMedicine[] = []
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
-		await AsyncStorage.setItem(STORAGE.MEDICINES, stringifiedMedicines)
+		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 	} catch {}
 }

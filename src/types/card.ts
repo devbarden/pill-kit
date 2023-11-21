@@ -1,3 +1,3 @@
-import { CARD_FILTER } from '@app/constants'
+import { EnumCardFilter } from '@app/enums'
 
-export type T_CardFilters = Record<CARD_FILTER, boolean>
+export type TypeCardFilters = Record<EnumCardFilter, boolean>

@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
 import { Switch as BaseSwitch, ISwitchProps } from 'native-base'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const Switch: FC<ISwitchProps> = memo((props) => (
 	<BaseSwitch
-		offTrackColor={COLORS.GREY}
-		onTrackColor={COLORS.GREEN}
+		offTrackColor={EnumColor.grey}
+		onTrackColor={EnumColor.green}
 		{...props}
 	/>
 ))

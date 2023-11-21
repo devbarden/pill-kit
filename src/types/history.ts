@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { I_Medicine, T_MedicineSortableField } from './medicine'
-import { T_CardFilters } from './card'
+import { TypeMedicine, TypeMedicineSortableField } from './medicine'
+import { TypeCardFilters } from './card'
 
-export interface I_HistoryContextProps {
+export type TypeHistoryContextProps = {
 	searchValue: string
 	setSearchValue: Dispatch<SetStateAction<string>>
-	filters: T_CardFilters
-	setFilters: Dispatch<SetStateAction<T_CardFilters>>
-	medicines: I_Medicine[]
+	filters: TypeCardFilters
+	setFilters: Dispatch<SetStateAction<TypeCardFilters>>
+	medicines: TypeMedicine[]
 	isLoading: boolean
-	sortType: T_MedicineSortableField
-	setSortType: Dispatch<SetStateAction<T_MedicineSortableField>>
+	sortType: TypeMedicineSortableField
+	setSortType: Dispatch<SetStateAction<TypeMedicineSortableField>>
 }

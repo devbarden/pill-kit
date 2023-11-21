@@ -3,30 +3,34 @@ import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { Ionicons } from '@expo/vector-icons'
 
-import { COLORS, TAB_ROUTES } from '@app/constants'
+import { EnumColor, EnumTabRoute } from '@app/enums'
 
 import { styles } from './Header.styles'
 
-interface I_Props {
+type TypeProps = {
 	title: string
 	action?: ReactElement
 	withGoBack?: boolean
 }
 
-export const Header: FC<I_Props> = memo(
+export const Header: FC<TypeProps> = memo(
 	({ title, withGoBack = false, action = null }) => {
 		const { navigate } = useNavigation()
 
 		const goBack = useCallback(() => {
 			// TODO: implement go back
-			navigate(TAB_ROUTES.HOME)
+			navigate(EnumTabRoute.home)
 		}, [navigate])
 
 		return (
 			<Box style={styles.wrapper}>
 				{withGoBack && (
 					<Pressable style={styles.back} onPress={goBack}>
-						<Ionicons name="chevron-back-sharp" size={28} color={COLORS.RED} />
+						<Ionicons
+							name="chevron-back-sharp"
+							size={28}
+							color={EnumColor.red}
+						/>
 					</Pressable>
 				)}
 				<Box style={styles.title}>
@@ -34,7 +38,7 @@ export const Header: FC<I_Props> = memo(
 						fontSize="xl"
 						textAlign={withGoBack || action ? 'left' : 'center'}
 						numberOfLines={1}
-						color={COLORS.RED}>
+						color={EnumColor.red}>
 						{title}
 					</Text>
 				</Box>

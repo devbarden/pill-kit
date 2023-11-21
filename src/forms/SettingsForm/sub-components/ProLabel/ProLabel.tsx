@@ -3,13 +3,13 @@ import { Pressable, Text } from 'native-base'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 import { getRandomInRange, uid } from '@app/utils'
 
 import { AnimationWrapper } from './sub-components'
 import { styles } from './ProLabel.styles'
 
-interface I_Props {
+type TypeProps = {
 	handler: () => void
 }
 
@@ -48,10 +48,10 @@ const positionsOfStars = [
 	},
 ]
 
-export const ProLabel: FC<I_Props> = memo(({ handler }) => (
+export const ProLabel: FC<TypeProps> = memo(({ handler }) => (
 	<Pressable onPress={handler} style={styles.wrapper}>
 		<LinearGradient
-			colors={[COLORS.DARK_BLUE, COLORS.BLUE, COLORS.BLACK]}
+			colors={[EnumColor.darkBlue, EnumColor.blue, EnumColor.black]}
 			start={{ x: 0.4, y: 0 }}
 			style={styles.gradient}>
 			<Text style={styles.text}>PRO</Text>
@@ -60,7 +60,7 @@ export const ProLabel: FC<I_Props> = memo(({ handler }) => (
 					<AntDesign
 						name="star"
 						size={getRandomInRange(4, 8)}
-						color={COLORS.WHITE}
+						color={EnumColor.white}
 					/>
 				</AnimationWrapper>
 			))}

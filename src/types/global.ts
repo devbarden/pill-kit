@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { TAB_ROUTES } from '@app/constants'
+import { EnumTabRoute } from '@app/enums'
 
-export interface I_GlobalStateContextProps {
-	activeTab: TAB_ROUTES
-	setActiveTab: Dispatch<SetStateAction<TAB_ROUTES>>
+export type TypeGlobalStateContextProps = {
+	activeTab: EnumTabRoute
+	setActiveTab: Dispatch<SetStateAction<EnumTabRoute>>
 }

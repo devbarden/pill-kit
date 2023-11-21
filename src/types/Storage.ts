@@ -1,1 +1,1 @@
-export type T_StorageData = string | null
+export type TypeStorageData = string | null

@@ -5,22 +5,22 @@ import { values } from 'lodash'
 
 import { Form } from '@app/components'
 import { uid, isLast } from '@app/utils'
-import { T_MedicineSortableField } from '@app/types'
+import { TypeMedicineSortableField } from '@app/types'
 import { CARD_SORT_TYPE } from '@app/constants'
 
 import { HistoryContext } from '../../context'
 
-interface Props {
+type TypeProps = {
 	closeHandler: () => void
 }
 
-export const SortModalContent: FC<Props> = memo(({ closeHandler }) => {
+export const SortModalContent: FC<TypeProps> = memo(({ closeHandler }) => {
 	const { t } = useTranslation()
 	const { sortType, setSortType } = useContext(HistoryContext)
 
 	const onChangeSortType = useCallback(
 		(value: string) => {
-			setSortType(value as T_MedicineSortableField)
+			setSortType(value as TypeMedicineSortableField)
 			closeHandler()
 		},
 		[setSortType, closeHandler],

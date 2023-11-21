@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	footer: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 		gap: 16,
 		padding: 16,
 		borderTopWidth: 1,
-		borderColor: COLORS.DARK_GREY,
-		backgroundColor: COLORS.GREY,
+		borderColor: EnumColor.darkGrey,
+		backgroundColor: EnumColor.grey,
 	},
 })

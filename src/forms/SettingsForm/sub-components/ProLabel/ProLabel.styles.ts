@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
 	},
 
 	text: {
-		color: COLORS.WHITE,
+		color: EnumColor.white,
 		fontWeight: 'bold',
 	},
 

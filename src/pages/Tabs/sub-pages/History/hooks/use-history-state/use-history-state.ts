@@ -4,20 +4,22 @@ import { useEndpoints } from '@app/hooks'
 import { medicineUtils } from '@app/utils'
 import { CARD_SORT_TYPE, INITIAL_HISTORY_FILTERS } from '@app/constants'
 import {
-	T_CardFilters,
-	I_HistoryContextProps,
-	T_MedicineSortableField,
+	TypeCardFilters,
+	TypeHistoryContextProps,
+	TypeMedicineSortableField,
 } from '@app/types'
 
-export const useHistoryState = (): I_HistoryContextProps => {
+export const useHistoryState = (): TypeHistoryContextProps => {
 	const { useMedicines } = useEndpoints()
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const [searchValue, setSearchValue] = useState('')
-	const [sortType, setSortType] = useState<T_MedicineSortableField>(
+	const [sortType, setSortType] = useState<TypeMedicineSortableField>(
 		CARD_SORT_TYPE.END_DATE,
 	)
-	const [filters, setFilters] = useState<T_CardFilters>(INITIAL_HISTORY_FILTERS)
+	const [filters, setFilters] = useState<TypeCardFilters>(
+		INITIAL_HISTORY_FILTERS,
+	)
 
 	const filteredMedicines = useMemo(
 		() => medicineUtils.getMedicinesByFilters(allMedicines, filters),

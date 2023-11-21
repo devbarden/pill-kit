@@ -2,15 +2,15 @@ import { FC, Fragment, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'native-base'
 
-import { I_Medicine } from '@app/types'
+import { TypeMedicine } from '@app/types'
 import { dateToFormat } from '@app/utils'
 import { MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
 
-interface I_Props {
-	data: I_Medicine
+type TypeProps = {
+	data: TypeMedicine
 }
 
-export const InfoModalContent: FC<I_Props> = memo(({ data }) => {
+export const InfoModalContent: FC<TypeProps> = memo(({ data }) => {
 	const { t } = useTranslation()
 
 	return (

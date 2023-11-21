@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	infoWrapper: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
 		gap: 8,
 		padding: 16,
 		borderRadius: 24,
-		backgroundColor: COLORS.RED,
+		backgroundColor: EnumColor.red,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',

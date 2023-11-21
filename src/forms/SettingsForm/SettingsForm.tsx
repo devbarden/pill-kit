@@ -1,12 +1,12 @@
 import { FC, memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Text } from 'native-base'
+import { useTranslation } from 'react-i18next'
 import { MaterialIcons } from '@expo/vector-icons'
 
+import { EnumColor, EnumFormIconActionMode } from '@app/enums'
 import { useEndpoints } from '@app/hooks'
 import { languageSelectItems } from '@app/utils'
 import { Form, ScrollContent, Modal } from '@app/components'
-import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
 
 import { useSettingsForm } from './hooks'
 import { ProLabel } from './sub-components'
@@ -34,7 +34,7 @@ export const SettingsForm: FC = memo(() => {
 			<Modal
 				title={t('removeDataAlert:title')}
 				content={
-					<Text color={COLORS.DARK_GREY}>
+					<Text color={EnumColor.darkGrey}>
 						{t('removeDataAlert:description')}
 					</Text>
 				}
@@ -52,7 +52,7 @@ export const SettingsForm: FC = memo(() => {
 				withContentScroll
 				title={t('termsOfUse:title')}
 				content={
-					<Text color={COLORS.DARK_GREY}>{t('termsOfUse:description')}</Text>
+					<Text color={EnumColor.darkGrey}>{t('termsOfUse:description')}</Text>
 				}
 				ref={termsOfUseRef}
 			/>
@@ -73,7 +73,7 @@ export const SettingsForm: FC = memo(() => {
 							<MaterialIcons
 								name="language"
 								size={24}
-								color={COLORS.DARK_GREY}
+								color={EnumColor.darkGrey}
 							/>
 						}
 					/>
@@ -81,14 +81,14 @@ export const SettingsForm: FC = memo(() => {
 				<Form.Separator />
 				<Form.Item name={t('settingsForm:contact')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.MAIL}
+						mode={EnumFormIconActionMode.mail}
 						handler={mailHandler}
 					/>
 				</Form.Item>
 				<Form.Separator />
 				<Form.Item name={t('settingsForm:clearData')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.REMOVE}
+						mode={EnumFormIconActionMode.remove}
 						handler={openRemoveDataModal}
 					/>
 				</Form.Item>
@@ -97,14 +97,14 @@ export const SettingsForm: FC = memo(() => {
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:donate')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.MONEY}
+						mode={EnumFormIconActionMode.money}
 						handler={donateHandler}
 					/>
 				</Form.Item>
 				<Form.Separator />
 				<Form.Item name={t('settingsForm:rate')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.STAR}
+						mode={EnumFormIconActionMode.star}
 						handler={rateHandler}
 					/>
 				</Form.Item>
@@ -113,7 +113,7 @@ export const SettingsForm: FC = memo(() => {
 			<Form.Wrapper>
 				<Form.Item name={t('settingsForm:termsOfUse')}>
 					<Form.IconAction
-						mode={FORM_ICON_ACTION_MODES.ARROW}
+						mode={EnumFormIconActionMode.arrow}
 						handler={openTermsOfUseModal}
 					/>
 				</Form.Item>

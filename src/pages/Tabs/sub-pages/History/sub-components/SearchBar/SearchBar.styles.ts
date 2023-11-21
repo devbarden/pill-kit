@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 const commonSpace = 8
 const badgeSize = 10
@@ -22,11 +22,11 @@ export const styles = StyleSheet.create({
 		borderRadius: badgeSize * 2,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: COLORS.RED,
+		backgroundColor: EnumColor.red,
 	},
 
 	badgeText: {
-		color: COLORS.WHITE,
+		color: EnumColor.white,
 		fontSize: badgeSize,
 	},
 })

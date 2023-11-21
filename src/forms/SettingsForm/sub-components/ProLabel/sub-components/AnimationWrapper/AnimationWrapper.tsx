@@ -3,12 +3,12 @@ import { Animated, Easing, StyleProp, ViewStyle } from 'react-native'
 
 import { getRandomInRange } from '@app/utils'
 
-interface I_Props {
+type TypeProps = {
 	children: ReactElement
 	styles: StyleProp<ViewStyle>
 }
 
-export const AnimationWrapper: FC<I_Props> = memo(({ children, styles }) => {
+export const AnimationWrapper: FC<TypeProps> = memo(({ children, styles }) => {
 	const [fadeAnimation] = useState(new Animated.Value(0))
 	const [rotateAnimation] = useState(new Animated.Value(0))
 

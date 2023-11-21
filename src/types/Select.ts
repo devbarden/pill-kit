@@ -1,4 +1,4 @@
-export interface I_SelectItem {
+export type TypeSelectItem = {
 	value: string
 	label: string
 }

@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	separator: {
 		borderBottomWidth: 2,
-		borderBottomColor: COLORS.GREY,
+		borderBottomColor: EnumColor.grey,
 	},
 })

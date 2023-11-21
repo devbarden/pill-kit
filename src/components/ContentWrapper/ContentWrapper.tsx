@@ -2,9 +2,9 @@ import { FC, ReactElement, memo } from 'react'
 import { Box } from 'native-base'
 
 import { styles } from './ContentWrapper.styles'
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
-interface I_Props {
+type TypeProps = {
 	withStretch?: boolean
 	withBackground?: boolean
 	withVerticalPaddings?: boolean
@@ -12,7 +12,7 @@ interface I_Props {
 	children: ReactElement | ReactElement[] | string
 }
 
-export const ContentWrapper: FC<I_Props> = memo(
+export const ContentWrapper: FC<TypeProps> = memo(
 	({
 		children,
 		withStretch = true,
@@ -27,7 +27,7 @@ export const ContentWrapper: FC<I_Props> = memo(
 					flex: withStretch ? 1 : 0,
 					paddingVertical: withVerticalPaddings ? 16 : 0,
 					paddingHorizontal: withHorizontalPaddings ? 16 : 0,
-					backgroundColor: withBackground ? COLORS.GREY : 'inherit',
+					backgroundColor: withBackground ? EnumColor.grey : 'inherit',
 				},
 			]}>
 			{children}

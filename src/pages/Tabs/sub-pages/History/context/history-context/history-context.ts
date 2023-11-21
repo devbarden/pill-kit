@@ -1,9 +1,9 @@
 import { createContext } from 'react'
 
-import { I_HistoryContextProps } from '@app/types'
+import { TypeHistoryContextProps } from '@app/types'
 import { INITIAL_HISTORY_FILTERS, CARD_SORT_TYPE } from '@app/constants'
 
-export const HistoryContext = createContext<I_HistoryContextProps>({
+export const HistoryContext = createContext<TypeHistoryContextProps>({
 	searchValue: 'string',
 	setSearchValue: () => {},
 	filters: INITIAL_HISTORY_FILTERS,

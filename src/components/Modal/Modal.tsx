@@ -16,17 +16,17 @@ import {
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
-import { COLORS } from '@app/constants'
+import { EnumColor } from '@app/enums'
 
 import { ScrollContent } from '../ScrollContent'
 import { styles } from './Modal.styles'
 
-export interface I_ModalHandlers {
+export type TypeModalHandlers = {
 	open: () => void
 	close: () => void
 }
 
-interface I_Props {
+type TypeProps = {
 	title: ReactElement | string
 	content: ReactElement | ReactElement[] | string
 	submit?: {
@@ -42,7 +42,7 @@ interface I_Props {
 }
 
 // TODO: fix blinking
-export const Modal = forwardRef<I_ModalHandlers, I_Props>(
+export const Modal = forwardRef<TypeModalHandlers, TypeProps>(
 	(
 		{
 			title,
@@ -104,7 +104,7 @@ export const Modal = forwardRef<I_ModalHandlers, I_Props>(
 
 		useImperativeHandle(
 			ref,
-			(): I_ModalHandlers => ({
+			(): TypeModalHandlers => ({
 				open,
 				close,
 			}),
@@ -131,7 +131,7 @@ export const Modal = forwardRef<I_ModalHandlers, I_Props>(
 									textAlign="center"
 									fontWeight="bold"
 									numberOfLines={2}
-									color={COLORS.BLACK}>
+									color={EnumColor.black}>
 									{title}
 								</Text>
 							</Box>
@@ -162,11 +162,11 @@ export const Modal = forwardRef<I_ModalHandlers, I_Props>(
 										!submit ? styles.bottomRightRadius : {},
 										{
 											backgroundColor: pressed
-												? COLORS.TRANSPARENT_GREY
-												: COLORS.GREY,
+												? EnumColor.transparentGrey
+												: EnumColor.grey,
 										},
 									]}>
-									<Text fontSize="md" textAlign="center" color={COLORS.RED}>
+									<Text fontSize="md" textAlign="center" color={EnumColor.red}>
 										{closeBtnText}
 									</Text>
 								</Pressable>
@@ -182,15 +182,15 @@ export const Modal = forwardRef<I_ModalHandlers, I_Props>(
 												styles.bottomRightRadius,
 												{
 													backgroundColor: pressed
-														? COLORS.TRANSPARENT_GREY
-														: COLORS.GREY,
+														? EnumColor.transparentGrey
+														: EnumColor.grey,
 												},
 											]}>
 											<Text
 												fontSize="md"
 												textAlign="center"
 												fontWeight="bold"
-												color={COLORS.RED}>
+												color={EnumColor.red}>
 												{submitBtnText}
 											</Text>
 										</Pressable>

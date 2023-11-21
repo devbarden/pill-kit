@@ -1,14 +1,8 @@
-import { T_MedicineSortableField } from '@app/types'
+import { TypeMedicineSortableField } from '@app/types'
 
 export const CARD_MARGIN = 16
 
-export enum CARD_FILTER {
-	ACTIVE = 'active',
-	FUTURE = 'future',
-	PAST = 'past',
-}
-
-export const CARD_SORT_TYPE: Record<string, T_MedicineSortableField> = {
+export const CARD_SORT_TYPE: Record<string, TypeMedicineSortableField> = {
 	NAME: 'name',
 	START_DATE: 'startDate',
 	END_DATE: 'endDate',

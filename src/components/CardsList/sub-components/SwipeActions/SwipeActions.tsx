@@ -2,20 +2,20 @@ import { FC, memo, useMemo, useCallback, useRef } from 'react'
 import { Box } from 'native-base'
 import { AntDesign, Foundation } from '@expo/vector-icons'
 
-import { I_Medicine } from '@app/types'
+import { EnumColor } from '@app/enums'
+import { TypeMedicine } from '@app/types'
 import { useEndpoints } from '@app/hooks'
-import { COLORS } from '@app/constants'
 
-import { Modal, I_ModalHandlers } from '../../../Modal'
+import { Modal, TypeModalHandlers } from '../../../Modal'
 import { Action, InfoModalContent } from './sub-components'
 import { styles } from './SwipeActions.styles'
 
-interface I_Props {
-	data: I_Medicine
+type TypeProps = {
+	data: TypeMedicine
 }
 
-export const SwipeActions: FC<I_Props> = memo(({ data }) => {
-	const cardInfoModalRef = useRef<I_ModalHandlers>(null)
+export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
+	const cardInfoModalRef = useRef<TypeModalHandlers>(null)
 
 	const { id, name } = useMemo(() => data, [data])
 	const { useRemoveMedicine } = useEndpoints()
@@ -32,7 +32,7 @@ export const SwipeActions: FC<I_Props> = memo(({ data }) => {
 	return (
 		<Box style={styles.wrapper}>
 			<Action
-				icon={<Foundation name="info" size={36} color={COLORS.BLUE} />}
+				icon={<Foundation name="info" size={36} color={EnumColor.blue} />}
 				handler={openInfoModal}
 			/>
 			<Modal
@@ -41,7 +41,7 @@ export const SwipeActions: FC<I_Props> = memo(({ data }) => {
 				ref={cardInfoModalRef}
 			/>
 			<Action
-				icon={<AntDesign name="delete" size={24} color={COLORS.RED} />}
+				icon={<AntDesign name="delete" size={24} color={EnumColor.red} />}
 				handler={deleteHandler}
 			/>
 		</Box>

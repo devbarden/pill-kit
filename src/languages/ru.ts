@@ -1,7 +1,7 @@
-import { I_Language } from '@app/types'
-import { MEDICINE_TYPE } from '@app/constants'
+import { TypeLanguage } from '@app/types'
+import { EnumMedicineType } from '@app/enums'
 
-export const ru: I_Language = {
+export const ru: TypeLanguage = {
 	main: {
 		appTitle: 'Система Лекарств',
 	},
@@ -100,8 +100,8 @@ export const ru: I_Language = {
 
 	medicine: {
 		types: {
-			[MEDICINE_TYPE.PILL]: 'Таблетка',
-			[MEDICINE_TYPE.CREAM]: 'Мазь',
+			[EnumMedicineType.pill]: 'Таблетка',
+			[EnumMedicineType.cream]: 'Мазь',
 		},
 	},
 

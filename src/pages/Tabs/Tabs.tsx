@@ -5,21 +5,22 @@ import {
 	createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
 
+import { EnumTabRoute } from '@app/enums'
 import { Navigation } from '@app/components'
-import { T_NavigatorTabTypes } from '@app/types'
+import { TypeNavigatorTab } from '@app/types'
 import { GlobalStateContext } from '@app/context'
-import { DEFAULT_TAB_ROUTE, TAB_ROUTES } from '@app/constants'
+import { DEFAULT_TAB_ROUTE } from '@app/constants'
 
 import { Home, History, Settings, Analytic } from './sub-pages'
 
-const Tab = createBottomTabNavigator<T_NavigatorTabTypes>()
+const Tab = createBottomTabNavigator<TypeNavigatorTab>()
 
 const screenOptions: BottomTabNavigationOptions = {
 	headerShown: false,
 }
 
-interface I_TabListeners {
-	route: RouteProp<T_NavigatorTabTypes, TAB_ROUTES>
+type TypeTabListeners = {
+	route: RouteProp<TypeNavigatorTab, EnumTabRoute>
 }
 
 export const Tabs: FC = memo(() => {
@@ -27,7 +28,7 @@ export const Tabs: FC = memo(() => {
 
 	const commonListenersProps = useMemo(
 		() => ({
-			listeners: ({ route }: I_TabListeners) => ({
+			listeners: ({ route }: TypeTabListeners) => ({
 				state: () => {
 					setActiveTab(route.name)
 				},
@@ -42,22 +43,22 @@ export const Tabs: FC = memo(() => {
 			screenOptions={screenOptions}
 			tabBar={() => <Navigation />}>
 			<Tab.Screen
-				name={TAB_ROUTES.HOME}
+				name={EnumTabRoute.home}
 				component={Home}
 				{...commonListenersProps}
 			/>
 			<Tab.Screen
-				name={TAB_ROUTES.ANALYTIC}
+				name={EnumTabRoute.analytic}
 				component={Analytic}
 				{...commonListenersProps}
 			/>
 			<Tab.Screen
-				name={TAB_ROUTES.HISTORY}
+				name={EnumTabRoute.history}
 				component={History}
 				{...commonListenersProps}
 			/>
 			<Tab.Screen
-				name={TAB_ROUTES.SETTINGS}
+				name={EnumTabRoute.settings}
 				component={Settings}
 				{...commonListenersProps}
 			/>

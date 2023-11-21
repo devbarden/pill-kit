@@ -2,20 +2,20 @@ import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
-import { T_MedicineWithoutId } from '@app/types'
-import { TAB_ROUTES, MEDICINE_TYPE } from '@app/constants'
+import { TypeMedicineWithoutId } from '@app/types'
+import { EnumTabRoute, EnumMedicineType } from '@app/enums'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
 
-import { I_MedicineFormProps } from '../../MedicineForm'
+import { TypeMedicineFormProps } from '../../MedicineForm'
 
 export const useMedicineForm = ({
 	data,
 	submitHandler,
 	isSubmitting,
-}: I_MedicineFormProps) => {
+}: TypeMedicineFormProps) => {
 	const { navigate } = useNavigation()
 
-	const [form, setForm] = useState<T_MedicineWithoutId>(data)
+	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
 
 	const isCancelBtnDisabled = useMemo(() => isSubmitting, [isSubmitting])
 	const isSaveBtnDisabled = useMemo(
@@ -25,7 +25,7 @@ export const useMedicineForm = ({
 
 	const backHandler = useCallback(() => {
 		// TODO: implement go back
-		navigate(TAB_ROUTES.HOME)
+		navigate(EnumTabRoute.home)
 	}, [navigate])
 
 	const changeNameHandler = useCallback((name: string) => {
@@ -37,7 +37,7 @@ export const useMedicineForm = ({
 	}, [])
 
 	const typeChangeHandler = useCallback((type: string) => {
-		setForm((prev) => ({ ...prev, type: type as MEDICINE_TYPE }))
+		setForm((prev) => ({ ...prev, type: type as EnumMedicineType }))
 	}, [])
 
 	const changeCountPerUseHandler = useCallback((countPerUse: string) => {

@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as medicineApi from '@app/api'
 import { toast } from '@app/utils'
-import { T_MedicineId, T_MedicineWithoutId } from '@app/types'
+import { TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
 
 export const useMedicinesEndpoints = () => {
 	const queryClient = useQueryClient()
@@ -27,7 +27,7 @@ export const useMedicinesEndpoints = () => {
 				queryFn: medicineApi.getMedicines,
 			}),
 
-		useMedicine: (id: T_MedicineId) =>
+		useMedicine: (id: TypeMedicineId) =>
 			useQuery({
 				queryKey: ['medicine', id],
 				queryFn: () => medicineApi.getMedicine(id),
@@ -35,7 +35,7 @@ export const useMedicinesEndpoints = () => {
 
 		useAddMedicine: () =>
 			useMutation({
-				mutationFn: (medicine: T_MedicineWithoutId) =>
+				mutationFn: (medicine: TypeMedicineWithoutId) =>
 					medicineApi.setMedicine(medicine),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.add'))
@@ -46,9 +46,9 @@ export const useMedicinesEndpoints = () => {
 				},
 			}),
 
-		useEditMedicine: (id: T_MedicineId) =>
+		useEditMedicine: (id: TypeMedicineId) =>
 			useMutation({
-				mutationFn: (medicine: T_MedicineWithoutId) =>
+				mutationFn: (medicine: TypeMedicineWithoutId) =>
 					medicineApi.editMedicine(id, medicine),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.edit'))
@@ -61,7 +61,7 @@ export const useMedicinesEndpoints = () => {
 
 		useRemoveMedicine: () =>
 			useMutation({
-				mutationFn: (id: T_MedicineId) => medicineApi.removeMedicine(id),
+				mutationFn: (id: TypeMedicineId) => medicineApi.removeMedicine(id),
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.remove'))
 					invalidateMedicines()

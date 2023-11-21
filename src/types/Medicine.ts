@@ -1,9 +1,9 @@
-import { MEDICINE_TYPE } from '@app/constants'
+import { EnumMedicineType } from '@app/enums'
 
-export interface I_Medicine {
+export type TypeMedicine = {
 	id: string
 	name: string
-	type: MEDICINE_TYPE
+	type: EnumMedicineType
 	countPerUse: string
 	countPerDay: string
 	notification: boolean
@@ -11,17 +11,17 @@ export interface I_Medicine {
 	endDate: number
 }
 
-export type T_MedicineWithSortableFields = Omit<
-	I_Medicine,
+export type TypeMedicineWithSortableFields = Omit<
+	TypeMedicine,
 	'id' | 'type' | 'countPerUse' | 'countPerDay' | 'notification'
 >
 
-export type T_MedicineSortableField = keyof T_MedicineWithSortableFields
+export type TypeMedicineSortableField = keyof TypeMedicineWithSortableFields
 
-export type T_PossibleMedicine = I_Medicine | null
+export type TypePossibleMedicine = TypeMedicine | null
 
-export type T_PossibleMedicines = I_Medicine[] | null
+export type TypePossibleMedicines = TypeMedicine[] | null
 
-export type T_MedicineWithoutId = Omit<I_Medicine, 'id'>
+export type TypeMedicineWithoutId = Omit<TypeMedicine, 'id'>
 
-export type T_MedicineId = I_Medicine['id']
+export type TypeMedicineId = TypeMedicine['id']

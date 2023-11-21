@@ -1,9 +1,8 @@
-import { T_CardFilters } from '@app/types'
+import { EnumCardFilter } from '@app/enums'
+import { TypeCardFilters } from '@app/types'
 
-import { CARD_FILTER } from './card'
-
-export const INITIAL_HISTORY_FILTERS: T_CardFilters = {
-	[CARD_FILTER.ACTIVE]: true,
-	[CARD_FILTER.FUTURE]: true,
-	[CARD_FILTER.PAST]: true,
+export const INITIAL_HISTORY_FILTERS: TypeCardFilters = {
+	[EnumCardFilter.active]: true,
+	[EnumCardFilter.future]: true,
+	[EnumCardFilter.past]: true,
 }

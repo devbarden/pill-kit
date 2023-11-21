@@ -7,38 +7,38 @@ import {
 	FontAwesome5,
 } from '@expo/vector-icons'
 
-import { COLORS, FORM_ICON_ACTION_MODES } from '@app/constants'
+import { EnumColor, EnumFormIconActionMode } from '@app/enums'
 
 import { styles } from './IconAction.styles'
 
-interface I_Props {
-	mode: FORM_ICON_ACTION_MODES
+type TypeProps = {
+	mode: EnumFormIconActionMode
 	handler: () => void
 }
 
-const ICONS_MAP: Record<FORM_ICON_ACTION_MODES, ReactElement> = {
-	[FORM_ICON_ACTION_MODES.MAIL]: (
-		<Feather name="mail" size={24} color={COLORS.DARK_GREY} />
+const ICONS_MAP: Record<EnumFormIconActionMode, ReactElement> = {
+	[EnumFormIconActionMode.mail]: (
+		<Feather name="mail" size={24} color={EnumColor.darkGrey} />
 	),
 
-	[FORM_ICON_ACTION_MODES.ARROW]: (
-		<Feather name="chevron-right" size={24} color={COLORS.DARK_GREY} />
+	[EnumFormIconActionMode.arrow]: (
+		<Feather name="chevron-right" size={24} color={EnumColor.darkGrey} />
 	),
 
-	[FORM_ICON_ACTION_MODES.REMOVE]: (
-		<MaterialIcons name="highlight-remove" size={28} color={COLORS.RED} />
+	[EnumFormIconActionMode.remove]: (
+		<MaterialIcons name="highlight-remove" size={28} color={EnumColor.red} />
 	),
 
-	[FORM_ICON_ACTION_MODES.MONEY]: (
-		<FontAwesome5 name="money-bill" size={24} color={COLORS.GREEN} />
+	[EnumFormIconActionMode.money]: (
+		<FontAwesome5 name="money-bill" size={24} color={EnumColor.green} />
 	),
 
-	[FORM_ICON_ACTION_MODES.STAR]: (
-		<AntDesign name="star" size={24} color={COLORS.BLUE} />
+	[EnumFormIconActionMode.star]: (
+		<AntDesign name="star" size={24} color={EnumColor.blue} />
 	),
 }
 
-export const IconAction: FC<I_Props> = memo(({ mode, handler }) => (
+export const IconAction: FC<TypeProps> = memo(({ mode, handler }) => (
 	<Pressable onPress={handler} style={styles.wrapper}>
 		{ICONS_MAP[mode]}
 	</Pressable>

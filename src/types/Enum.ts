@@ -1,3 +1,3 @@
-enum E_Abstract {}
+import { EnumAbstract } from '@app/enums'
 
-export type T_Enum = typeof E_Abstract
+export type TypeEnum = typeof EnumAbstract

@@ -1,9 +1,9 @@
 import { entries } from 'lodash'
 
-import { I_SelectItem } from '@app/types'
+import { TypeSelectItem } from '@app/types'
 import { LANGUAGES } from '@app/constants'
 
-export const languageSelectItems: I_SelectItem[] = entries(LANGUAGES).map(
+export const languageSelectItems: TypeSelectItem[] = entries(LANGUAGES).map(
 	([value, label]) => ({
 		value,
 		label,
