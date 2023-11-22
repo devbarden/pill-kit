@@ -21,7 +21,7 @@ export const SearchBar: FC = memo(() => {
 
 	const commonIconProps = useMemo(
 		() => ({
-			size: 24,
+			size: 20,
 			color: EnumColor.darkGrey,
 		}),
 		[],
@@ -59,11 +59,11 @@ export const SearchBar: FC = memo(() => {
 					rightElement={
 						<Box style={styles.actionsWrapper}>
 							{searchValue && (
-								<Pressable onPress={clearSearchValue}>
+								<Pressable onPress={clearSearchValue} style={styles.action}>
 									<Icon name={EnumIconName.clear} {...commonIconProps} />
 								</Pressable>
 							)}
-							<Pressable onPress={openFiltersModal}>
+							<Pressable onPress={openFiltersModal} style={styles.action}>
 								<Box style={styles.badge}>
 									<Text style={styles.badgeText}>{activeFilters}</Text>
 								</Box>

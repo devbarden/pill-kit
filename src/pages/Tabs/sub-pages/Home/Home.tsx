@@ -61,7 +61,11 @@ export const Home: FC = memo(() => {
 				title={t('home:title')}
 				action={
 					<Pressable onPress={addNewMedicineHandler}>
-						<Icon name={EnumIconName.plus} size={32} color={EnumColor.red} />
+						<Icon
+							name={EnumIconName.medicine}
+							size={32}
+							color={EnumColor.red}
+						/>
 					</Pressable>
 				}
 			/>

@@ -5,10 +5,10 @@ import { getRandomInRange } from '@app/utils'
 
 type TypeProps = {
 	children: ReactElement
-	styles: StyleProp<ViewStyle>
+	style?: StyleProp<ViewStyle>
 }
 
-export const AnimationWrapper: FC<TypeProps> = memo(({ children, styles }) => {
+export const AnimationWrapper: FC<TypeProps> = memo(({ children, style }) => {
 	const [fadeAnimation] = useState(new Animated.Value(0))
 	const [rotateAnimation] = useState(new Animated.Value(0))
 
@@ -51,7 +51,7 @@ export const AnimationWrapper: FC<TypeProps> = memo(({ children, styles }) => {
 	return (
 		<Animated.View
 			style={[
-				styles,
+				style,
 				{
 					opacity: fadeAnimation,
 					transform: [

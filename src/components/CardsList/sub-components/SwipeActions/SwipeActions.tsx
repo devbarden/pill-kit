@@ -41,8 +41,9 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 		<Box style={styles.wrapper}>
 			<Action
 				icon={
-					<Icon name={EnumIconName.info} size={36} color={EnumColor.blue} />
+					<Icon name={EnumIconName.info} size={24} color={EnumColor.blue} />
 				}
+				style={{ paddingRight: 24, paddingLeft: 16 }}
 				handler={openInfoModal}
 			/>
 			<Modal
@@ -64,8 +65,9 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 			/>
 			<Action
 				icon={
-					<Icon name={EnumIconName.delete} size={24} color={EnumColor.red} />
+					<Icon name={EnumIconName.remove} size={24} color={EnumColor.red} />
 				}
+				style={{ paddingRight: 16, paddingLeft: 24 }}
 				handler={openRemoveModal}
 			/>
 		</Box>

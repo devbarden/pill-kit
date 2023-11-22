@@ -9,7 +9,7 @@ type TypeProps = {
 	items: TypeMedicine[]
 }
 
-const SWIPE_SIZE = 85
+const SWIPE_SIZE = 65
 
 export const CardsList: FC<TypeProps> = memo(({ items }) => (
 	<SwipeListView

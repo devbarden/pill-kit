@@ -8,15 +8,17 @@ const badgeSize = 10
 export const styles = StyleSheet.create({
 	actionsWrapper: {
 		flexDirection: 'row',
-		gap: commonSpace,
+	},
+
+	action: {
 		padding: commonSpace,
 	},
 
 	badge: {
 		zIndex: 1,
 		position: 'absolute',
-		right: -commonSpace,
-		top: -commonSpace,
+		right: 0,
+		top: 0,
 		height: badgeSize * 2,
 		width: badgeSize * 2,
 		borderRadius: badgeSize * 2,
@@ -28,5 +30,6 @@ export const styles = StyleSheet.create({
 	badgeText: {
 		color: EnumColor.white,
 		fontSize: badgeSize,
+		textAlign: 'center',
 	},
 })

@@ -87,11 +87,7 @@ export const useCardState = (data: TypeMedicine) => {
 	const notificationIcon = useMemo(
 		() => (
 			<Icon
-				name={
-					notification
-						? EnumIconName.notification
-						: EnumIconName.notificationOff
-				}
+				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
 				{...commonIconProps}
 			/>
 		),
@@ -101,11 +97,11 @@ export const useCardState = (data: TypeMedicine) => {
 	const medicineIcon = useMemo(() => {
 		const MEDICINE_ICON_MAP: Record<EnumMedicineType, ReactElement> = {
 			[EnumMedicineType.pill]: (
-				<Icon name={EnumIconName.pill} {...commonIconProps} size={34} />
+				<Icon name={EnumIconName.pill} {...commonIconProps} />
 			),
 
 			[EnumMedicineType.cream]: (
-				<Icon name={EnumIconName.cream} {...commonIconProps} size={34} />
+				<Icon name={EnumIconName.cream} {...commonIconProps} />
 			),
 		}
 

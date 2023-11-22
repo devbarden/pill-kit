@@ -23,7 +23,7 @@ export const getIcon = (route: TypeRoute, isActive: boolean) =>
 			<Icon name={EnumIconName.analytic} {...getIconProps(isActive)} />
 		),
 		[EnumStackRoute.createMedicine]: () => (
-			<Icon name={EnumIconName.plus} {...getIconProps(isActive)} />
+			<Icon name={EnumIconName.medicine} {...getIconProps(isActive)} />
 		),
 		[EnumTabRoute.history]: () => (
 			<Icon name={EnumIconName.history} {...getIconProps(isActive)} />

@@ -13,23 +13,23 @@ type TypeProps = {
 
 const ICONS_MAP: Record<EnumFormIconActionMode, ReactElement> = {
 	[EnumFormIconActionMode.mail]: (
-		<Icon name={EnumIconName.mail} size={24} color={EnumColor.darkGrey} />
+		<Icon name={EnumIconName.mail} size={20} color={EnumColor.darkGrey} />
 	),
 
 	[EnumFormIconActionMode.arrow]: (
-		<Icon name={EnumIconName.right} size={24} color={EnumColor.darkGrey} />
+		<Icon name={EnumIconName.right} size={20} color={EnumColor.darkGrey} />
 	),
 
 	[EnumFormIconActionMode.remove]: (
-		<Icon name={EnumIconName.clear} size={28} color={EnumColor.red} />
+		<Icon name={EnumIconName.remove} size={20} color={EnumColor.red} />
 	),
 
 	[EnumFormIconActionMode.money]: (
-		<Icon name={EnumIconName.money} size={24} color={EnumColor.green} />
+		<Icon name={EnumIconName.gift} size={20} color={EnumColor.red} />
 	),
 
 	[EnumFormIconActionMode.star]: (
-		<Icon name={EnumIconName.star} size={24} color={EnumColor.blue} />
+		<Icon name={EnumIconName.star} size={20} color={EnumColor.blue} />
 	),
 }
 

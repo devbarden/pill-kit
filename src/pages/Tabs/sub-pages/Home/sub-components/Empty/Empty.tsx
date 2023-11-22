@@ -21,7 +21,7 @@ export const Empty: FC = memo(() => {
 			<Box style={styles.infoWrapper}>
 				<Pressable style={styles.info} onPress={addHandler}>
 					<Icon
-						name={EnumIconName.addMedicine}
+						name={EnumIconName.medicine}
 						size={128}
 						color={EnumColor.darkGrey}
 					/>

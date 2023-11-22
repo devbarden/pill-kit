@@ -71,7 +71,7 @@ export const SettingsForm: FC = memo(() => {
 						dropdownIcon={
 							<Icon
 								name={EnumIconName.language}
-								size={24}
+								size={20}
 								color={EnumColor.darkGrey}
 							/>
 						}

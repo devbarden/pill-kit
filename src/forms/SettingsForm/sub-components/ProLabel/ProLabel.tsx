@@ -57,7 +57,7 @@ export const ProLabel: FC<TypeProps> = memo(({ handler }) => (
 			style={styles.gradient}>
 			<Text style={styles.text}>PRO</Text>
 			{positionsOfStars.map((position) => (
-				<AnimationWrapper key={uid()} styles={[styles.star, position]}>
+				<AnimationWrapper key={uid()} style={[styles.star, position]}>
 					<Icon
 						name={EnumIconName.star}
 						size={getRandomInRange(4, 8)}

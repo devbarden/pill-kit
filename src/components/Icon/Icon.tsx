@@ -1,15 +1,5 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
-import {
-	Feather,
-	Ionicons,
-	Octicons,
-	AntDesign,
-	Foundation,
-	FontAwesome,
-	FontAwesome5,
-	MaterialIcons,
-	MaterialCommunityIcons,
-} from '@expo/vector-icons'
+import { Octicons, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 
 import { EnumIconName } from '@app/enums'
 
@@ -29,32 +19,27 @@ const getIconByName = (
 	props: TypeAdditionalProps,
 ): ReactElement =>
 	({
-		[EnumIconName.mail]: <Feather name="mail" {...props} />,
+		[EnumIconName.mail]: <Octicons name="mail" {...props} />,
 		[EnumIconName.home]: <Octicons name="home" {...props} />,
-		[EnumIconName.star]: <AntDesign name="star" {...props} />,
-		[EnumIconName.info]: <Foundation name="info" {...props} />,
-		[EnumIconName.search]: <Ionicons name="search" {...props} />,
-		[EnumIconName.delete]: <AntDesign name="delete" {...props} />,
+		[EnumIconName.info]: <Octicons name="info" {...props} />,
+		[EnumIconName.gift]: <Octicons name="gift" {...props} />,
+		[EnumIconName.bell]: <Octicons name="bell" {...props} />,
+		[EnumIconName.remove]: <Octicons name="trash" {...props} />,
+		[EnumIconName.cream]: <Octicons name="beaker" {...props} />,
+		[EnumIconName.search]: <Octicons name="search" {...props} />,
+		[EnumIconName.settings]: <Octicons name="gear" {...props} />,
+		[EnumIconName.star]: <Octicons name="star-fill" {...props} />,
+		[EnumIconName.analytic]: <Octicons name="graph" {...props} />,
+		[EnumIconName.language]: <Octicons name="globe" {...props} />,
+		[EnumIconName.sort]: <Octicons name="sort-desc" {...props} />,
+		[EnumIconName.clear]: <Octicons name="x-circle" {...props} />,
+		[EnumIconName.history]: <Octicons name="archive" {...props} />,
+		[EnumIconName.back]: <Octicons name="chevron-left" {...props} />,
+		[EnumIconName.bellOff]: <Octicons name="bell-slash" {...props} />,
+		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
 		[EnumIconName.options]: <Ionicons name="options" {...props} />,
-		[EnumIconName.history]: <Octicons name="history" {...props} />,
-		[EnumIconName.right]: <Feather name="chevron-right" {...props} />,
-		[EnumIconName.plus]: <FontAwesome name="plus-circle" {...props} />,
-		[EnumIconName.money]: <FontAwesome5 name="money-bill" {...props} />,
-		[EnumIconName.language]: <MaterialIcons name="language" {...props} />,
-		[EnumIconName.cream]: <MaterialIcons name="local-drink" {...props} />,
 		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
-		[EnumIconName.back]: <Ionicons name="chevron-back-sharp" {...props} />,
-		[EnumIconName.sort]: <MaterialCommunityIcons name="sort" {...props} />,
-		[EnumIconName.settings]: <Ionicons name="settings-outline" {...props} />,
-		[EnumIconName.notification]: <Ionicons name="notifications" {...props} />,
-		[EnumIconName.clear]: <Ionicons name="close-circle-outline" {...props} />,
-		[EnumIconName.notificationOff]: (
-			<Ionicons name="notifications-off" {...props} />
-		),
-		[EnumIconName.analytic]: (
-			<MaterialCommunityIcons name="google-analytics" {...props} />
-		),
-		[EnumIconName.addMedicine]: (
+		[EnumIconName.medicine]: (
 			<MaterialCommunityIcons name="flask-empty-plus-outline" {...props} />
 		),
 	})[name]
