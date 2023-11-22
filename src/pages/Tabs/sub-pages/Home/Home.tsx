@@ -2,13 +2,18 @@ import { FC, Fragment, memo, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-import { FontAwesome } from '@expo/vector-icons'
 
 import { useEndpoints } from '@app/hooks'
-import { EnumStackRoute, EnumColor } from '@app/enums'
 import { isDeserted, medicineUtils } from '@app/utils'
-import { Header, Loader, CardsList, ContentWrapper } from '@app/components'
+import { EnumStackRoute, EnumColor, EnumIconName } from '@app/enums'
 import { CARD_SORT_TYPE, INITIAL_HOME_FILTERS } from '@app/constants'
+import {
+	Header,
+	Loader,
+	CardsList,
+	ContentWrapper,
+	Icon,
+} from '@app/components'
 
 import { Empty } from './sub-components'
 
@@ -56,7 +61,7 @@ export const Home: FC = memo(() => {
 				title={t('home:title')}
 				action={
 					<Pressable onPress={addNewMedicineHandler}>
-						<FontAwesome name="plus-circle" size={32} color={EnumColor.red} />
+						<Icon name={EnumIconName.plus} size={32} color={EnumColor.red} />
 					</Pressable>
 				}
 			/>

@@ -1,15 +1,17 @@
 import { useMemo, useCallback, ReactElement } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import {
-	Ionicons,
-	MaterialCommunityIcons,
-	MaterialIcons,
-} from '@expo/vector-icons'
 
-import { EnumColor, EnumMedicineType, EnumStackRoute } from '@app/enums'
 import { TypeMedicine } from '@app/types'
 import { dateToFormat, medicineUtils } from '@app/utils'
+import {
+	EnumColor,
+	EnumIconName,
+	EnumStackRoute,
+	EnumMedicineType,
+} from '@app/enums'
+
+import { Icon } from '../../../../../Icon'
 
 export const useCardState = (data: TypeMedicine) => {
 	const {
@@ -84,8 +86,12 @@ export const useCardState = (data: TypeMedicine) => {
 
 	const notificationIcon = useMemo(
 		() => (
-			<Ionicons
-				name={notification ? 'notifications' : 'notifications-off'}
+			<Icon
+				name={
+					notification
+						? EnumIconName.notification
+						: EnumIconName.notificationOff
+				}
 				{...commonIconProps}
 			/>
 		),
@@ -95,11 +101,11 @@ export const useCardState = (data: TypeMedicine) => {
 	const medicineIcon = useMemo(() => {
 		const MEDICINE_ICON_MAP: Record<EnumMedicineType, ReactElement> = {
 			[EnumMedicineType.pill]: (
-				<MaterialCommunityIcons name="pill" {...commonIconProps} size={34} />
+				<Icon name={EnumIconName.pill} {...commonIconProps} size={34} />
 			),
 
 			[EnumMedicineType.cream]: (
-				<MaterialIcons name="local-drink" {...commonIconProps} size={34} />
+				<Icon name={EnumIconName.cream} {...commonIconProps} size={34} />
 			),
 		}
 

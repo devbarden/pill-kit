@@ -1,12 +1,12 @@
-import {
-	AntDesign,
-	Ionicons,
-	MaterialCommunityIcons,
-	Octicons,
-} from '@expo/vector-icons'
-
 import { TypeRoute } from '@app/types'
-import { EnumColor, EnumStackRoute, EnumTabRoute } from '@app/enums'
+import {
+	EnumColor,
+	EnumIconName,
+	EnumTabRoute,
+	EnumStackRoute,
+} from '@app/enums'
+
+import { Icon } from '../../../Icon'
 
 const getIconProps = (isActive: boolean) => ({
 	size: 24,
@@ -17,21 +17,18 @@ const getIconProps = (isActive: boolean) => ({
 export const getIcon = (route: TypeRoute, isActive: boolean) =>
 	({
 		[EnumTabRoute.home]: () => (
-			<Octicons name="home" {...getIconProps(isActive)} />
+			<Icon name={EnumIconName.home} {...getIconProps(isActive)} />
 		),
 		[EnumTabRoute.analytic]: () => (
-			<MaterialCommunityIcons
-				name="google-analytics"
-				{...getIconProps(isActive)}
-			/>
+			<Icon name={EnumIconName.analytic} {...getIconProps(isActive)} />
 		),
 		[EnumStackRoute.createMedicine]: () => (
-			<AntDesign name="pluscircleo" {...getIconProps(isActive)} />
+			<Icon name={EnumIconName.plus} {...getIconProps(isActive)} />
 		),
 		[EnumTabRoute.history]: () => (
-			<Octicons name="history" {...getIconProps(isActive)} />
+			<Icon name={EnumIconName.history} {...getIconProps(isActive)} />
 		),
 		[EnumTabRoute.settings]: () => (
-			<Ionicons name="settings-outline" {...getIconProps(isActive)} />
+			<Icon name={EnumIconName.settings} {...getIconProps(isActive)} />
 		),
 	})[route as EnumTabRoute]

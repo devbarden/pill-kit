@@ -1,14 +1,14 @@
 import { FC, memo, useRef, useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { EnumColor } from '@app/enums'
-import { Modal } from '@app/components'
+import { Icon, Modal } from '@app/components'
 import { TypeModalHandlers } from '@app/types'
+import { EnumColor, EnumIconName } from '@app/enums'
 
-import { SortModalContent } from '../SortModalContent'
 import { HistoryContext } from '../../context'
+import { SortModalContent } from '../SortModalContent'
+
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
@@ -40,11 +40,7 @@ export const SortSection: FC = memo(() => {
 				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
 					{t('sortSection:sort')}
 				</Text>
-				<MaterialCommunityIcons
-					name="sort"
-					size={24}
-					color={EnumColor.darkGrey}
-				/>
+				<Icon name={EnumIconName.sort} size={24} color={EnumColor.darkGrey} />
 			</Pressable>
 
 			<Modal

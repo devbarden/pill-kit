@@ -1,12 +1,11 @@
 import { FC, memo } from 'react'
 import { Text } from 'native-base'
 import { useTranslation } from 'react-i18next'
-import { MaterialIcons } from '@expo/vector-icons'
 
-import { EnumColor, EnumFormIconActionMode } from '@app/enums'
 import { useEndpoints } from '@app/hooks'
 import { languageSelectItems } from '@app/utils'
-import { Form, ScrollContent, Modal } from '@app/components'
+import { Form, ScrollContent, Modal, Icon } from '@app/components'
+import { EnumColor, EnumFormIconActionMode, EnumIconName } from '@app/enums'
 
 import { useSettingsForm } from './hooks'
 import { ProLabel } from './sub-components'
@@ -70,8 +69,8 @@ export const SettingsForm: FC = memo(() => {
 						selected={selectedLanguage}
 						onSelect={changeLanguageHandler}
 						dropdownIcon={
-							<MaterialIcons
-								name="language"
+							<Icon
+								name={EnumIconName.language}
 								size={24}
 								color={EnumColor.darkGrey}
 							/>

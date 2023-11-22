@@ -1,3 +1,4 @@
+export * from './icon'
 export * from './card'
 export * from './form'
 export * from './route'

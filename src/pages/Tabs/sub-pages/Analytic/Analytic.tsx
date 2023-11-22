@@ -10,7 +10,7 @@ export const Analytic: FC = memo(() => {
 	return (
 		<Fragment>
 			<Header title={t('analytic:title')} />
-			<ContentWrapper withHorizontalPaddings>
+			<ContentWrapper withHorizontalPaddings withVerticalPaddings>
 				<Text>Content</Text>
 			</ContentWrapper>
 		</Fragment>

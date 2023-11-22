@@ -2,9 +2,9 @@ import { FC, Fragment, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import { EnumStackRoute } from '@app/enums'
+import { Icon } from '@app/components'
+import { EnumColor, EnumIconName, EnumStackRoute } from '@app/enums'
 
 import { styles } from './Empty.styles'
 
@@ -20,22 +20,22 @@ export const Empty: FC = memo(() => {
 		<Fragment>
 			<Box style={styles.infoWrapper}>
 				<Pressable style={styles.info} onPress={addHandler}>
-					<MaterialCommunityIcons
-						name="flask-empty-plus-outline"
+					<Icon
+						name={EnumIconName.addMedicine}
 						size={128}
-						color="grey"
+						color={EnumColor.darkGrey}
 					/>
-					<Text fontSize="lg" textAlign="center">
+					<Text fontSize="lg" textAlign="center" color={EnumColor.darkGrey}>
 						{t('home:empty')}
 					</Text>
 				</Pressable>
 			</Box>
 
 			<Pressable style={styles.buttonWrapper} onPress={addHandler}>
-				<Text fontSize="lg" color="white">
+				<Text fontSize="lg" color={EnumColor.white}>
 					{t('home:add')}
 				</Text>
-				<MaterialCommunityIcons name="pill" color="white" size={24} />
+				<Icon name={EnumIconName.pill} color={EnumColor.white} size={24} />
 			</Pressable>
 		</Fragment>
 	)

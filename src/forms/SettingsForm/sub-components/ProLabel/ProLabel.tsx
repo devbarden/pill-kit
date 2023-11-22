@@ -1,12 +1,13 @@
 import { FC, memo } from 'react'
 import { Pressable, Text } from 'native-base'
 import { LinearGradient } from 'expo-linear-gradient'
-import { AntDesign } from '@expo/vector-icons'
 
-import { EnumColor } from '@app/enums'
+import { Icon } from '@app/components'
 import { getRandomInRange, uid } from '@app/utils'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { AnimationWrapper } from './sub-components'
+
 import { styles } from './ProLabel.styles'
 
 type TypeProps = {
@@ -57,8 +58,8 @@ export const ProLabel: FC<TypeProps> = memo(({ handler }) => (
 			<Text style={styles.text}>PRO</Text>
 			{positionsOfStars.map((position) => (
 				<AnimationWrapper key={uid()} styles={[styles.star, position]}>
-					<AntDesign
-						name="star"
+					<Icon
+						name={EnumIconName.star}
 						size={getRandomInRange(4, 8)}
 						color={EnumColor.white}
 					/>

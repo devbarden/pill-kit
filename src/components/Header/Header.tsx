@@ -1,10 +1,11 @@
 import { FC, ReactElement, memo, useCallback, useContext } from 'react'
 import { Box, Pressable, Text } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons'
 
 import { GlobalStateContext } from '@app/context'
-import { EnumColor } from '@app/enums'
+import { EnumColor, EnumIconName } from '@app/enums'
+
+import { Icon } from '../Icon'
 
 import { styles } from './Header.styles'
 
@@ -27,11 +28,7 @@ export const Header: FC<TypeProps> = memo(
 			<Box style={styles.wrapper}>
 				{withGoBack && (
 					<Pressable style={styles.back} onPress={backHandler}>
-						<Ionicons
-							name="chevron-back-sharp"
-							size={28}
-							color={EnumColor.red}
-						/>
+						<Icon name={EnumIconName.back} size={28} color={EnumColor.red} />
 					</Pressable>
 				)}
 				<Box style={styles.title}>

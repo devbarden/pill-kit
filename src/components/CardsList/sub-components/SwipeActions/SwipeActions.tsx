@@ -1,14 +1,15 @@
 import { FC, memo, useMemo, useCallback, useRef } from 'react'
 import { Box, Text } from 'native-base'
 import { useTranslation } from 'react-i18next'
-import { AntDesign, Foundation } from '@expo/vector-icons'
 
-import { EnumColor } from '@app/enums'
 import { useEndpoints } from '@app/hooks'
+import { EnumColor, EnumIconName } from '@app/enums'
 import { TypeMedicine, TypeModalHandlers } from '@app/types'
 
+import { Icon } from '../../../Icon'
 import { Modal } from '../../../Modal'
 import { Action, InfoModalContent } from './sub-components'
+
 import { styles } from './SwipeActions.styles'
 
 type TypeProps = {
@@ -39,7 +40,9 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 	return (
 		<Box style={styles.wrapper}>
 			<Action
-				icon={<Foundation name="info" size={36} color={EnumColor.blue} />}
+				icon={
+					<Icon name={EnumIconName.info} size={36} color={EnumColor.blue} />
+				}
 				handler={openInfoModal}
 			/>
 			<Modal
@@ -60,7 +63,9 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 				ref={removeModalRef}
 			/>
 			<Action
-				icon={<AntDesign name="delete" size={24} color={EnumColor.red} />}
+				icon={
+					<Icon name={EnumIconName.delete} size={24} color={EnumColor.red} />
+				}
 				handler={openRemoveModal}
 			/>
 		</Box>

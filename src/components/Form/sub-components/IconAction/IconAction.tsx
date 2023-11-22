@@ -1,14 +1,9 @@
 import { FC, ReactElement, memo } from 'react'
 import { Pressable } from 'native-base'
-import {
-	AntDesign,
-	Feather,
-	MaterialIcons,
-	FontAwesome5,
-} from '@expo/vector-icons'
 
-import { EnumColor, EnumFormIconActionMode } from '@app/enums'
+import { EnumColor, EnumFormIconActionMode, EnumIconName } from '@app/enums'
 
+import { Icon } from '../../../Icon'
 import { styles } from './IconAction.styles'
 
 type TypeProps = {
@@ -18,23 +13,23 @@ type TypeProps = {
 
 const ICONS_MAP: Record<EnumFormIconActionMode, ReactElement> = {
 	[EnumFormIconActionMode.mail]: (
-		<Feather name="mail" size={24} color={EnumColor.darkGrey} />
+		<Icon name={EnumIconName.mail} size={24} color={EnumColor.darkGrey} />
 	),
 
 	[EnumFormIconActionMode.arrow]: (
-		<Feather name="chevron-right" size={24} color={EnumColor.darkGrey} />
+		<Icon name={EnumIconName.right} size={24} color={EnumColor.darkGrey} />
 	),
 
 	[EnumFormIconActionMode.remove]: (
-		<MaterialIcons name="highlight-remove" size={28} color={EnumColor.red} />
+		<Icon name={EnumIconName.clear} size={28} color={EnumColor.red} />
 	),
 
 	[EnumFormIconActionMode.money]: (
-		<FontAwesome5 name="money-bill" size={24} color={EnumColor.green} />
+		<Icon name={EnumIconName.money} size={24} color={EnumColor.green} />
 	),
 
 	[EnumFormIconActionMode.star]: (
-		<AntDesign name="star" size={24} color={EnumColor.blue} />
+		<Icon name={EnumIconName.star} size={24} color={EnumColor.blue} />
 	),
 }
 
