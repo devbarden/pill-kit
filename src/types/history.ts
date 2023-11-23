@@ -1,15 +1,24 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, RefObject, SetStateAction } from 'react'
 
-import { TypeMedicine, TypeMedicineSortableField } from './medicine'
 import { TypeCardFilters } from './card'
+import { TypeModalHandlers } from './modal'
+import { TypeMedicine, TypeMedicineSortableField } from './medicine'
 
 export type TypeHistoryContextProps = {
+	sortModalRef: RefObject<TypeModalHandlers> | null
+
+	openSortModal: () => void
+	closeSortModal: () => void
+
 	searchValue: string
 	setSearchValue: Dispatch<SetStateAction<string>>
+
 	filters: TypeCardFilters
 	setFilters: Dispatch<SetStateAction<TypeCardFilters>>
-	medicines: TypeMedicine[]
-	isLoading: boolean
+
 	sortType: TypeMedicineSortableField
 	setSortType: Dispatch<SetStateAction<TypeMedicineSortableField>>
+
+	medicines: TypeMedicine[]
+	isLoading: boolean
 }

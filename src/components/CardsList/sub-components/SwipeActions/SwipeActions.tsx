@@ -65,7 +65,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 			/>
 			<Action
 				icon={
-					<Icon name={EnumIconName.remove} size={24} color={EnumColor.red} />
+					<Icon name={EnumIconName.clear} size={24} color={EnumColor.red} />
 				}
 				style={{ paddingRight: 16, paddingLeft: 24 }}
 				handler={openRemoveModal}

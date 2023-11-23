@@ -1,24 +1,32 @@
 import { useMemo, useCallback, useRef } from 'react'
-import { Linking } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { Linking } from 'react-native'
 
 import {
-	DONATE_LINK,
-	MAIL_TO_LINK,
 	RATE_LINK,
+	DONATE_LINK,
 	UPGRADE_LINK,
+	MAIL_TO_LINK,
+	FALLBACK_LANGUAGE_LABEL,
+	LANGUAGE_SELECT_ITEMS,
 } from '@app/constants'
-import { TypeModalHandlers } from '@app/types'
 import { getSelectedLanguage } from '@app/utils'
+import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 
-export const useSettingsForm = () => {
-	const removeAlertRef = useRef<TypeModalHandlers>(null)
-	const termsOfUseRef = useRef<TypeModalHandlers>(null)
-
+export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { i18n } = useTranslation()
 
+	const termsOfUseRef = useRef<TypeModalHandlers>(null)
+	const removeAlertRef = useRef<TypeModalHandlers>(null)
+	const modalLanguageRef = useRef<TypeModalHandlers>(null)
+
 	const selectedLanguage = useMemo(
-		() => getSelectedLanguage(i18n.language),
+		() =>
+			getSelectedLanguage(
+				LANGUAGE_SELECT_ITEMS,
+				i18n.language,
+				FALLBACK_LANGUAGE_LABEL,
+			),
 		[i18n.language],
 	)
 
@@ -45,6 +53,14 @@ export const useSettingsForm = () => {
 		Linking.openURL(RATE_LINK)
 	}, [])
 
+	const openLanguageModal = useCallback(() => {
+		modalLanguageRef.current?.open()
+	}, [])
+
+	const closeLanguageModal = useCallback(() => {
+		modalLanguageRef.current?.close()
+	}, [])
+
 	const openRemoveDataModal = useCallback(() => {
 		removeAlertRef.current?.open()
 	}, [])
@@ -54,15 +70,23 @@ export const useSettingsForm = () => {
 	}, [])
 
 	return {
-		removeAlertRef,
 		termsOfUseRef,
+		removeAlertRef,
+		modalLanguageRef,
+
 		selectedLanguage,
+
 		changeLanguageHandler,
+
+		upgradeHandler,
 		mailHandler,
-		openRemoveDataModal,
 		donateHandler,
 		rateHandler,
+
+		openLanguageModal,
+		closeLanguageModal,
+
+		openRemoveDataModal,
 		openTermsOfUseModal,
-		upgradeHandler,
 	}
 }

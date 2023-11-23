@@ -57,7 +57,7 @@ export const en: TypeLanguage = {
 	},
 
 	settingsForm: {
-		upgrade: 'Upgrade to Pro version',
+		upgrade: 'Upgrade app',
 		donate: 'Donate',
 		rate: 'Rate the App',
 		language: 'Language',
@@ -129,6 +129,7 @@ export const en: TypeLanguage = {
 
 	modal: {
 		removeMedicine: {
+			title: 'Remove medicine',
 			description:
 				'Do you really want to delete this medicine ? This action is irrevocable',
 		},

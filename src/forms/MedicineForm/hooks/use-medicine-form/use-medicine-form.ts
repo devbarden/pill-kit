@@ -1,19 +1,34 @@
-import { useState, useMemo, useCallback, useEffect, useContext } from 'react'
+import {
+	useRef,
+	useMemo,
+	useState,
+	useEffect,
+	useContext,
+	useCallback,
+} from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
 import { EnumMedicineType } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
-import { TypeMedicineWithoutId } from '@app/types'
 import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
-
-import { TypeMedicineFormProps } from '../../MedicineForm'
+import {
+	TypeModalHandlers,
+	TypeMedicineWithoutId,
+	TypeMedicineFormProps,
+	TypeMedicineFormContextProps,
+} from '@app/types'
 
 export const useMedicineForm = ({
 	data,
 	submitHandler,
 	isSubmitting,
-}: TypeMedicineFormProps) => {
+}: TypeMedicineFormProps): TypeMedicineFormContextProps => {
+	const modalNameRef = useRef<TypeModalHandlers>(null)
+	const modalTypeRef = useRef<TypeModalHandlers>(null)
+	const modalCountPerUseRef = useRef<TypeModalHandlers>(null)
+	const modalCountPerDayRef = useRef<TypeModalHandlers>(null)
+
 	const { navigate } = useNavigation()
 	const { activeTab } = useContext(GlobalStateContext)
 
@@ -33,11 +48,15 @@ export const useMedicineForm = ({
 		setForm((prev) => ({ ...prev, name }))
 	}, [])
 
-	const notifySwitchToggle = useCallback(() => {
+	const changeNameToEmptyHandler = useCallback(() => {
+		setForm((prev) => ({ ...prev, name: '' }))
+	}, [])
+
+	const changeSwitchToggleHandler = useCallback(() => {
 		setForm((prev) => ({ ...prev, notification: !prev.notification }))
 	}, [])
 
-	const typeChangeHandler = useCallback((type: string) => {
+	const changeTypeHandler = useCallback((type: string) => {
 		setForm((prev) => ({ ...prev, type: type as EnumMedicineType }))
 	}, [])
 
@@ -92,21 +111,66 @@ export const useMedicineForm = ({
 		backHandler()
 	}, [submitHandler, form, backHandler])
 
+	const openNameModal = useCallback(() => {
+		modalNameRef.current?.open()
+	}, [])
+
+	const openTypeModal = useCallback(() => {
+		modalTypeRef.current?.open()
+	}, [])
+
+	const openCountPerUseModal = useCallback(() => {
+		modalCountPerUseRef.current?.open()
+	}, [])
+
+	const openCountPerDayModal = useCallback(() => {
+		modalCountPerDayRef.current?.open()
+	}, [])
+
+	const closeTypeModal = useCallback(() => {
+		modalTypeRef.current?.close()
+	}, [])
+
+	const closeCountPerUseModal = useCallback(() => {
+		modalCountPerUseRef.current?.close()
+	}, [])
+
+	const closeCountPerDayModal = useCallback(() => {
+		modalCountPerDayRef.current?.close()
+	}, [])
+
 	useEffect(() => {
 		setForm((prev) => ({ ...prev, ...data }))
 	}, [data])
 
 	return {
+		modalNameRef,
+		modalTypeRef,
+		modalCountPerUseRef,
+		modalCountPerDayRef,
+
+		openNameModal,
+		openTypeModal,
+		closeTypeModal,
+		openCountPerUseModal,
+		closeCountPerUseModal,
+		openCountPerDayModal,
+		closeCountPerDayModal,
+
 		form,
+
 		changeNameHandler,
-		typeChangeHandler,
+		changeNameToEmptyHandler,
+		changeTypeHandler,
 		changeCountPerUseHandler,
 		changeCountPerDayHandler,
 		changeStartDateHandler,
 		changeEndDateHandler,
-		notifySwitchToggle,
+		changeSwitchToggleHandler,
+
 		saveHandler,
 		backHandler,
+
 		isCancelBtnDisabled,
 		isSaveBtnDisabled,
 	}

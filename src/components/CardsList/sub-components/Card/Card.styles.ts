@@ -17,6 +17,12 @@ export const styles = StyleSheet.create({
 		borderRadius: 16,
 	},
 
+	iconWrapper: {
+		width: 24,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
 	content: {
 		flex: 1,
 		paddingLeft: commonSpace,

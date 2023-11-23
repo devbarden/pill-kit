@@ -4,8 +4,9 @@ import { Box } from 'native-base'
 import { isDeserted } from '@app/utils'
 import { CardsList } from '@app/components'
 
-import { Empty } from '../Empty'
+import { Empty } from './sub-components'
 import { HistoryContext } from '../../context'
+
 import { styles } from './FilteredCards.styles'
 
 export const FilteredCards: FC = memo(() => {

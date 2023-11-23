@@ -1,22 +1,27 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
 
 import { useEndpoints } from '@app/hooks'
 import { medicineUtils } from '@app/utils'
-import { CARD_SORT_TYPE, INITIAL_HISTORY_FILTERS } from '@app/constants'
+import { INITIAL_CARD_SORT_TYPE, INITIAL_HISTORY_FILTERS } from '@app/constants'
 import {
 	TypeCardFilters,
+	TypeModalHandlers,
 	TypeHistoryContextProps,
 	TypeMedicineSortableField,
 } from '@app/types'
 
 export const useHistoryState = (): TypeHistoryContextProps => {
+	const sortModalRef = useRef<TypeModalHandlers>(null)
+
 	const { useMedicines } = useEndpoints()
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const [searchValue, setSearchValue] = useState('')
+
 	const [sortType, setSortType] = useState<TypeMedicineSortableField>(
-		CARD_SORT_TYPE.END_DATE,
+		INITIAL_CARD_SORT_TYPE,
 	)
+
 	const [filters, setFilters] = useState<TypeCardFilters>(
 		INITIAL_HISTORY_FILTERS,
 	)
@@ -37,14 +42,30 @@ export const useHistoryState = (): TypeHistoryContextProps => {
 		[medicinesBySearchValue, sortType],
 	)
 
+	const openSortModal = useCallback(() => {
+		sortModalRef.current?.open()
+	}, [])
+
+	const closeSortModal = useCallback(() => {
+		sortModalRef.current?.close()
+	}, [])
+
 	return {
+		sortModalRef,
+
+		openSortModal,
+		closeSortModal,
+
 		searchValue,
 		setSearchValue,
+
 		filters,
 		setFilters,
-		medicines,
-		isLoading,
+
 		sortType,
 		setSortType,
+
+		medicines,
+		isLoading,
 	}
 }

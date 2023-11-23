@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { values } from 'lodash'
 import { useTranslation } from 'react-i18next'
+import { values } from 'lodash'
 
 import { TypeEnum, TypeSelectItem } from '@app/types'
 

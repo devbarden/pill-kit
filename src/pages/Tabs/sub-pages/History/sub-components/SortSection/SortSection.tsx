@@ -1,29 +1,18 @@
-import { FC, memo, useRef, useCallback, useContext } from 'react'
+import { FC, memo, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Pressable, Text } from 'native-base'
 
 import { Icon, Modal } from '@app/components'
-import { TypeModalHandlers } from '@app/types'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { HistoryContext } from '../../context'
-import { SortModalContent } from '../SortModalContent'
+import { SortModalContent } from './sub-components'
 
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
-	const sortModalRef = useRef<TypeModalHandlers>(null)
-
 	const { t } = useTranslation()
-	const { medicines } = useContext(HistoryContext)
-
-	const closeSortModalContent = useCallback(() => {
-		sortModalRef.current?.close()
-	}, [])
-
-	const openSortingOptions = useCallback(() => {
-		sortModalRef.current?.open()
-	}, [])
+	const { medicines, sortModalRef, openSortModal } = useContext(HistoryContext)
 
 	return (
 		<Box style={styles.wrapper}>
@@ -34,9 +23,10 @@ export const SortSection: FC = memo(() => {
 				style={styles.maxWidthHalfOfRow}>
 				{t('sortSection:medicines')}: {medicines.length}
 			</Text>
+
 			<Pressable
 				style={[styles.sort, styles.maxWidthHalfOfRow]}
-				onPress={openSortingOptions}>
+				onPress={openSortModal}>
 				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
 					{t('sortSection:sort')}
 				</Text>
@@ -46,7 +36,7 @@ export const SortSection: FC = memo(() => {
 			<Modal
 				title={t('sortSection:modal.title')}
 				closeText={t('components:btn.cancel')}
-				content={<SortModalContent closeHandler={closeSortModalContent} />}
+				content={<SortModalContent />}
 				ref={sortModalRef}
 			/>
 		</Box>

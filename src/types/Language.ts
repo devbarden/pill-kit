@@ -119,6 +119,7 @@ export type TypeLanguage = {
 
 	modal: {
 		removeMedicine: {
+			title: string
 			description: string
 		}
 	}

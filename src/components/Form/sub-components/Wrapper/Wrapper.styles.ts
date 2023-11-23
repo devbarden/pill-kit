@@ -4,8 +4,9 @@ import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		backgroundColor: EnumColor.white,
-		paddingLeft: 16,
+		width: '100%',
+		overflow: 'hidden',
 		borderRadius: 12,
+		backgroundColor: EnumColor.white,
 	},
 })

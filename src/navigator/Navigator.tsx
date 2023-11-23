@@ -46,10 +46,12 @@ export const Navigator: FC = memo(() => {
 					initialRouteName={DEFAULT_STACK_ROUTE}
 					screenOptions={screenOptions}>
 					<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
+
 					<Stack.Screen
 						name={EnumStackRoute.createMedicine}
 						component={CreateMedicine}
 					/>
+
 					<Stack.Screen
 						name={EnumStackRoute.editMedicine}
 						component={EditMedicine}

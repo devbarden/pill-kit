@@ -1,151 +1,29 @@
-import DateTimePicker from '@react-native-community/datetimepicker'
-import { FC, Fragment, memo, ReactElement } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Box } from 'native-base'
+import { FC, Fragment, memo, useMemo } from 'react'
 
-import { useSelectItems } from '@app/hooks'
-import { TypeMedicineWithoutId } from '@app/types'
-import { EnumMedicineType, EnumColor } from '@app/enums'
-import {
-	MEDICINE_MAX_LENGTH_OF_NAME,
-	MEDICINE_TYPE_TRANSLATION_PATH,
-} from '@app/constants'
-import {
-	medicineCountPerDaySelectItems,
-	medicinePillCountPerUseSelectItems,
-} from '@app/utils'
-import {
-	Form,
-	Switch,
-	Button,
-	ScrollContent,
-	ContentWrapper,
-} from '@app/components'
+import { TypeMedicineFormProps } from '@app/types'
+import { ScrollContent, ContentWrapper } from '@app/components'
 
 import { useMedicineForm } from './hooks'
-import { styles } from './MedicineForm.styles'
+import { MedicineFormContext } from './context'
+import { Modals, Fields, Actions } from './sub-components'
 
-export type TypeMedicineFormProps = {
-	data: TypeMedicineWithoutId
-	submitHandler: (medicine: TypeMedicineWithoutId) => void
-	isSubmitting: boolean
-	additionalActions?: ReactElement | ReactElement[]
-}
+export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
+	const state = useMedicineForm(props)
 
-export const MedicineForm: FC<TypeMedicineFormProps> = memo(
-	({ data, submitHandler, isSubmitting, additionalActions }) => {
-		const { t, i18n } = useTranslation()
-		const { items: medicineTypesSelectItems } = useSelectItems(
-			EnumMedicineType,
-			MEDICINE_TYPE_TRANSLATION_PATH,
-		)
-		const {
-			form,
-			changeNameHandler,
-			typeChangeHandler,
-			changeCountPerUseHandler,
-			changeCountPerDayHandler,
-			changeStartDateHandler,
-			changeEndDateHandler,
-			notifySwitchToggle,
-			saveHandler,
-			backHandler,
-			isCancelBtnDisabled,
-			isSaveBtnDisabled,
-		} = useMedicineForm({ data, submitHandler, isSubmitting })
+	const { additionalActions } = useMemo(() => props, [props])
 
-		// TODO: add label if user creating medicine in PAST
+	// TODO: add label if user creating medicine in PAST or FUTURE
 
-		return (
-			<Fragment>
-				<ContentWrapper withHorizontalPaddings>
-					<ScrollContent>
-						<Form.Wrapper>
-							<Form.Item name={t('medicineForm:name')}>
-								<Form.Input
-									maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
-									value={form.name}
-									onChangeText={changeNameHandler}
-									placeholder={t('components:input.placeholder.required')}
-								/>
-							</Form.Item>
-							<Form.Separator />
-							<Form.Item name={t('medicineForm:type')}>
-								<Form.Select
-									items={medicineTypesSelectItems}
-									selected={form.type}
-									onSelect={typeChangeHandler}
-								/>
-							</Form.Item>
-						</Form.Wrapper>
-
-						<Form.Wrapper>
-							<Form.Item name={t('medicineForm:count')}>
-								<Form.Select
-									items={medicinePillCountPerUseSelectItems}
-									selected={form.countPerUse}
-									onSelect={changeCountPerUseHandler}
-								/>
-							</Form.Item>
-							<Form.Separator />
-							<Form.Item name={t('medicineForm:perDay')}>
-								<Form.Select
-									items={medicineCountPerDaySelectItems}
-									selected={form.countPerDay}
-									onSelect={changeCountPerDayHandler}
-								/>
-							</Form.Item>
-						</Form.Wrapper>
-
-						<Form.Wrapper>
-							<Form.Item name={t('medicineForm:startDate')}>
-								<DateTimePicker
-									mode="date"
-									value={new Date(form.startDate)}
-									onChange={changeStartDateHandler}
-									locale={i18n.language}
-								/>
-							</Form.Item>
-							<Form.Separator />
-							<Form.Item name={t('medicineForm:endDate')}>
-								<DateTimePicker
-									mode="date"
-									value={new Date(form.endDate)}
-									onChange={changeEndDateHandler}
-									locale={i18n.language}
-								/>
-							</Form.Item>
-						</Form.Wrapper>
-
-						<Form.Wrapper>
-							<Form.Item name={t('medicineForm:notification')}>
-								<Switch
-									isChecked={form.notification}
-									onToggle={notifySwitchToggle}
-								/>
-							</Form.Item>
-						</Form.Wrapper>
-
-						<Fragment>{additionalActions}</Fragment>
-					</ScrollContent>
-				</ContentWrapper>
-
-				<Box style={styles.footer}>
-					<Button
-						variant="outline"
-						colorScheme={EnumColor.red}
-						disabled={isCancelBtnDisabled}
-						onPress={backHandler}>
-						{t('components:btn.cancel')}
-					</Button>
-					<Button
-						disabled={isSaveBtnDisabled}
-						colorScheme={EnumColor.red}
-						onPress={saveHandler}>
-						{t('components:btn.save')}
-					</Button>
-				</Box>
-			</Fragment>
-		)
-	},
-)
+	return (
+		<MedicineFormContext.Provider value={state}>
+			<Modals />
+			<ContentWrapper withHorizontalPaddings>
+				<ScrollContent>
+					<Fields />
+					<Fragment>{additionalActions}</Fragment>
+				</ScrollContent>
+			</ContentWrapper>
+			<Actions />
+		</MedicineFormContext.Provider>
+	)
+})

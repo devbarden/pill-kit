@@ -57,7 +57,7 @@ export const ru: TypeLanguage = {
 	},
 
 	settingsForm: {
-		upgrade: 'Улучшить до версии PRO',
+		upgrade: 'Улучшить приложение',
 		donate: 'Пожертвовать',
 		rate: 'Оценить приложение',
 		language: 'Язык',
@@ -129,6 +129,7 @@ export const ru: TypeLanguage = {
 
 	modal: {
 		removeMedicine: {
+			title: 'Удалить лекарство',
 			description:
 				'Вы действительно хотите удалить это лекарство? Это действие является необратимым',
 		},

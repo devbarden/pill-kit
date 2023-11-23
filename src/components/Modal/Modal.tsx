@@ -1,102 +1,60 @@
 import BaseModal from 'react-native-modal'
-import {
-	ReactElement,
-	forwardRef,
-	useState,
-	useMemo,
-	useCallback,
-	useImperativeHandle,
-	Fragment,
-} from 'react'
-import { Box, Text } from 'native-base'
-import {
-	Pressable,
-	TouchableOpacity,
-	TouchableWithoutFeedback,
-} from 'react-native'
-import { useTranslation } from 'react-i18next'
+import { forwardRef, useMemo, useImperativeHandle } from 'react'
 
-import { EnumColor } from '@app/enums'
-import { TypeModalHandlers } from '@app/types'
+import { EnumModalType } from '@app/enums'
+import { TypeModalProps, TypeModalHandlers } from '@app/types'
 
-import { ScrollContent } from '../ScrollContent'
+import { useModalState } from './hooks'
+import { ModalContext } from './context'
+import { Default, Bottom } from './sub-components'
+
 import { styles } from './Modal.styles'
 
-type TypeProps = {
-	title: ReactElement | string
-	content: ReactElement | ReactElement[] | string
-	submit?: {
-		text: string
-		handler: () => void
-		isLoading?: boolean
-		isLoadingText?: ReactElement | string
-	}
-	closeText?: string
-	onFullScreen?: boolean
-	withContentScroll?: boolean
-	isPossibleCloseOutside?: boolean
+const fadeAnimationConfig = {
+	animationIn: 'fadeIn',
+	animationOut: 'fadeOut',
+	animationInTiming: 200,
+	animationOutTiming: 200,
 }
 
-// TODO: fix blinking
-export const Modal = forwardRef<TypeModalHandlers, TypeProps>(
-	(
-		{
-			title,
-			content,
-			submit,
-			closeText,
-			onFullScreen = false,
-			withContentScroll = false,
-			isPossibleCloseOutside = true,
-		},
-		ref,
-	) => {
-		const { t } = useTranslation()
+// TODO: fix blinking after closing modal
+export const Modal = forwardRef<TypeModalHandlers, TypeModalProps>(
+	(props, ref) => {
+		const state = useModalState(props)
 
-		const [isVisible, setIsVisible] = useState(false)
+		const { type, open, close, isVisible } = useMemo(() => state, [state])
+		const { component, style, config } = useMemo(() => {
+			switch (type) {
+				case EnumModalType.top:
+					return {
+						component: <Default />,
+						style: styles.top,
+						config: {
+							...fadeAnimationConfig,
+						},
+					}
 
-		const closeBtnText = useMemo(
-			() => closeText ?? t('components:btn.close'),
-			[closeText, t],
-		)
+				case EnumModalType.bottom:
+					return {
+						component: <Bottom />,
+						style: styles.bottom,
+						config: {
+							propagateSwipe: true,
+							swipeDirection: ['down'],
+							onSwipeComplete: close,
+						},
+					}
 
-		const isSubmitLoadingInfoProvided = useMemo(
-			() =>
-				Boolean(submit) &&
-				typeof submit?.isLoading === 'boolean' &&
-				Boolean(submit.isLoadingText),
-			[submit],
-		)
-
-		const submitBtnText = useMemo(
-			() =>
-				isSubmitLoadingInfoProvided && submit?.isLoading
-					? submit?.isLoadingText
-					: submit?.text,
-			[submit, isSubmitLoadingInfoProvided],
-		)
-
-		const open = useCallback(() => {
-			setIsVisible(true)
-		}, [])
-
-		const close = useCallback(() => {
-			if (!isPossibleCloseOutside) {
-				return
+				default:
+					return {
+						component: <Default />,
+						style: {},
+						config: {
+							...fadeAnimationConfig,
+						},
+					}
 			}
-
-			setIsVisible(false)
-		}, [isPossibleCloseOutside])
-
-		const onSubmit = useCallback(async () => {
-			if (!submit?.handler) {
-				return
-			}
-
-			await submit.handler()
-
-			close()
-		}, [submit, close])
+		}, [close, type])
 
 		useImperativeHandle(
 			ref,
@@ -108,95 +66,17 @@ export const Modal = forwardRef<TypeModalHandlers, TypeProps>(
 		)
 
 		return (
-			<BaseModal isVisible={isVisible}>
-				<Pressable style={styles.overlay} onPressOut={close}>
-					<TouchableWithoutFeedback>
-						<Box
-							style={[
-								styles.wrapper,
-								{
-									flex: onFullScreen ? 1 : 0,
-									marginTop: onFullScreen ? 80 : 0,
-									marginBottom: onFullScreen ? 66 : 0,
-									maxHeight: onFullScreen ? '100%' : '50%',
-								},
-							]}>
-							<Box style={styles.title}>
-								<Text
-									fontSize="lg"
-									textAlign="center"
-									fontWeight="bold"
-									numberOfLines={2}
-									color={EnumColor.black}>
-									{title}
-								</Text>
-							</Box>
-							{withContentScroll ? (
-								<ScrollContent>
-									<TouchableOpacity activeOpacity={1}>
-										<Box
-											style={[styles.content, { flex: onFullScreen ? 1 : 0 }]}>
-											{content}
-										</Box>
-									</TouchableOpacity>
-								</ScrollContent>
-							) : (
-								<Box
-									style={[
-										styles.content,
-										{ flex: onFullScreen ? 1 : 0, paddingVertical: 16 },
-									]}>
-									{content}
-								</Box>
-							)}
-							<Box style={styles.actions}>
-								<Pressable
-									onPress={close}
-									style={({ pressed }) => [
-										styles.action,
-										styles.bottomLeftRadius,
-										!submit ? styles.bottomRightRadius : {},
-										{
-											backgroundColor: pressed
-												? EnumColor.transparentGrey
-												: EnumColor.grey,
-										},
-									]}>
-									<Text fontSize="md" textAlign="center" color={EnumColor.red}>
-										{closeBtnText}
-									</Text>
-								</Pressable>
-								{submit && (
-									<Fragment>
-										<Box style={styles.separator} />
-										<Pressable
-											onPress={onSubmit}
-											// TODO: implement disabled behavior
-											// disabled={submit?.isLoading}
-											style={({ pressed }) => [
-												styles.action,
-												styles.bottomRightRadius,
-												{
-													backgroundColor: pressed
-														? EnumColor.transparentGrey
-														: EnumColor.grey,
-												},
-											]}>
-											<Text
-												fontSize="md"
-												textAlign="center"
-												fontWeight="bold"
-												color={EnumColor.red}>
-												{submitBtnText}
-											</Text>
-										</Pressable>
-									</Fragment>
-								)}
-							</Box>
-						</Box>
-					</TouchableWithoutFeedback>
-				</Pressable>
-			</BaseModal>
+			<ModalContext.Provider value={state}>
+				{/* TODO: refactoring + remove ignore comment */}
+				{/* @ts-ignore */}
+				<BaseModal
+					style={style}
+					isVisible={isVisible}
+					onBackdropPress={close}
+					{...config}>
+					{component}
+				</BaseModal>
+			</ModalContext.Provider>
 		)
 	},
 )

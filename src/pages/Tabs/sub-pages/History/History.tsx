@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Loader, ContentWrapper, Header } from '@app/components'
@@ -8,10 +8,12 @@ import { HistoryContext } from './context'
 import { SearchBar, SortSection, FilteredCards } from './sub-components'
 
 export const History: FC = memo(() => {
-	const { t } = useTranslation()
 	const state = useHistoryState()
 
-	if (state.isLoading) {
+	const { t } = useTranslation()
+	const { isLoading } = useMemo(() => state, [state])
+
+	if (isLoading) {
 		return <Loader />
 	}
 

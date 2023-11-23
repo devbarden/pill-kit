@@ -1,3 +1,6 @@
+import { entries } from 'lodash'
+
+import { TypeSelectItem } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
 
 export const LANGUAGES: Record<EnumLanguageCode, string> = {
@@ -5,4 +8,13 @@ export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.ru]: 'Русский',
 }
 
-export const FALLBACK_LANGUAGE = EnumLanguageCode.en
+export const LANGUAGE_SELECT_ITEMS: TypeSelectItem[] = entries(LANGUAGES).map(
+	([value, label]) => ({
+		value,
+		label,
+	}),
+)
+
+export const FALLBACK_LANGUAGE_CODE = EnumLanguageCode.en
+
+export const FALLBACK_LANGUAGE_LABEL = LANGUAGES[FALLBACK_LANGUAGE_CODE]

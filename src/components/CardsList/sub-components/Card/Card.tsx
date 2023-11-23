@@ -39,7 +39,7 @@ export const Card: FC<TypeProps> = memo(({ data }) => {
 
 	return (
 		<Pressable style={cardStyles} onPress={onCardPress}>
-			{medicineIcon}
+			<Box style={styles.iconWrapper}>{medicineIcon}</Box>
 			<Box style={styles.content}>
 				<Text fontSize="lg" {...baseTextProps}>
 					{name}

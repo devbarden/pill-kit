@@ -24,7 +24,6 @@ const getIconByName = (
 		[EnumIconName.info]: <Octicons name="info" {...props} />,
 		[EnumIconName.gift]: <Octicons name="gift" {...props} />,
 		[EnumIconName.bell]: <Octicons name="bell" {...props} />,
-		[EnumIconName.remove]: <Octicons name="trash" {...props} />,
 		[EnumIconName.cream]: <Octicons name="beaker" {...props} />,
 		[EnumIconName.search]: <Octicons name="search" {...props} />,
 		[EnumIconName.settings]: <Octicons name="gear" {...props} />,
@@ -37,8 +36,19 @@ const getIconByName = (
 		[EnumIconName.back]: <Octicons name="chevron-left" {...props} />,
 		[EnumIconName.bellOff]: <Octicons name="bell-slash" {...props} />,
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
+		[EnumIconName.remove]: <Ionicons name="trash" {...props} />,
 		[EnumIconName.options]: <Ionicons name="options" {...props} />,
+		[EnumIconName.count]: (
+			<MaterialCommunityIcons name="format-list-numbered" {...props} />
+		),
+		[EnumIconName.text]: <MaterialCommunityIcons name="text" {...props} />,
+		[EnumIconName.calendar]: (
+			<MaterialCommunityIcons name="calendar-month" {...props} />
+		),
 		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
+		[EnumIconName.docs]: (
+			<MaterialCommunityIcons name="file-document-outline" {...props} />
+		),
 		[EnumIconName.medicine]: (
 			<MaterialCommunityIcons name="flask-empty-plus-outline" {...props} />
 		),
