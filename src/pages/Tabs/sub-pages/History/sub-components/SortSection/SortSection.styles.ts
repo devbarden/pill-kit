@@ -1,5 +1,6 @@
-import { EnumColor } from '@app/enums'
 import { StyleSheet } from 'react-native'
+
+import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
@@ -21,5 +22,9 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 12,
 		borderRadius: 12,
 		backgroundColor: EnumColor.white,
+	},
+
+	pressed: {
+		backgroundColor: EnumColor.lightGrey,
 	},
 })

@@ -1,7 +1,8 @@
 import { FC, memo, useCallback, useContext, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { values, filter, size } from 'lodash'
-import { Pressable, Box, Text } from 'native-base'
+import { Pressable, PressableStateCallbackType } from 'react-native'
+import { Box, Text } from 'native-base'
 
 import { TypeModalHandlers } from '@app/types'
 import { Form, Icon, Modal } from '@app/components'
@@ -32,6 +33,14 @@ export const SearchBar: FC = memo(() => {
 		[filters],
 	)
 
+	const getPressableStyles = useCallback(
+		({ pressed }: PressableStateCallbackType) => [
+			styles.action,
+			pressed ? styles.pressed : {},
+		],
+		[],
+	)
+
 	const onChangeSearchValueHandler = useCallback(
 		(value: string) => {
 			setSearchValue(value)
@@ -58,11 +67,11 @@ export const SearchBar: FC = memo(() => {
 				rightElement={
 					<Box style={styles.actionsWrapper}>
 						{searchValue && (
-							<Pressable onPress={clearSearchValue} style={styles.action}>
+							<Pressable onPress={clearSearchValue} style={getPressableStyles}>
 								<Icon name={EnumIconName.clear} {...commonIconProps} />
 							</Pressable>
 						)}
-						<Pressable onPress={openFiltersModal} style={styles.action}>
+						<Pressable onPress={openFiltersModal} style={getPressableStyles}>
 							<Box style={styles.badge}>
 								<Text style={styles.badgeText}>{activeFilters}</Text>
 							</Box>

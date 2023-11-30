@@ -1,6 +1,6 @@
-import { FC, Fragment, memo, useContext } from 'react'
+import { FC, Fragment, memo, useContext, useCallback } from 'react'
+import { Pressable, PressableStateCallbackType } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { Pressable } from 'native-base'
 
 import { Icon, Form } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
@@ -15,6 +15,14 @@ export const ModalNameContent: FC = memo(() => {
 	const { form, changeNameHandler, changeNameToEmptyHandler } =
 		useContext(MedicineFormContext)
 
+	const getPressableStyles = useCallback(
+		({ pressed }: PressableStateCallbackType) => [
+			styles.action,
+			pressed ? styles.pressed : {},
+		],
+		[],
+	)
+
 	return (
 		<Form.Wrapper>
 			<Form.Input
@@ -28,7 +36,9 @@ export const ModalNameContent: FC = memo(() => {
 				}
 				rightElement={
 					form.name ? (
-						<Pressable onPress={changeNameToEmptyHandler} style={styles.action}>
+						<Pressable
+							onPress={changeNameToEmptyHandler}
+							style={getPressableStyles}>
 							<Icon
 								name={EnumIconName.clear}
 								color={EnumColor.darkGrey}

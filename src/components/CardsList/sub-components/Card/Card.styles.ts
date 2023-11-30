@@ -25,10 +25,22 @@ export const styles = StyleSheet.create({
 
 	content: {
 		flex: 1,
-		paddingLeft: commonSpace,
 		paddingRight: commonSpace * 2,
+	},
 
-		borderLeftColor: EnumColor.white,
-		borderLeftWidth: 1,
+	label: {
+		position: 'absolute',
+		top: -8,
+		right: 46,
+
+		maxWidth: 120,
+
+		paddingVertical: 2,
+		paddingHorizontal: 8,
+
+		borderWidth: 1,
+		borderRadius: 4,
+
+		backgroundColor: EnumColor.white,
 	},
 })

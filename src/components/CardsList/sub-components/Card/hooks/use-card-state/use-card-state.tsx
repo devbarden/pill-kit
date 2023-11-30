@@ -9,11 +9,20 @@ import {
 	EnumIconName,
 	EnumStackRoute,
 	EnumMedicineType,
+	EnumCardListMode,
 } from '@app/enums'
 
 import { Icon } from '../../../../../Icon'
 
-export const useCardState = (data: TypeMedicine) => {
+export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
+	const { t } = useTranslation()
+	const { navigate } = useNavigation()
+
+	const { isActive, isFuture, isPast } = useMemo(
+		() => medicineUtils.getMedicineStatusByDate(data),
+		[data],
+	)
+
 	const {
 		id,
 		name,
@@ -24,8 +33,6 @@ export const useCardState = (data: TypeMedicine) => {
 		startDate,
 		endDate,
 	} = useMemo(() => data, [data])
-	const { t } = useTranslation()
-	const { navigate } = useNavigation()
 
 	const howManyToTakeDaily = useMemo(
 		() => `${countPerUse} / ${countPerDay} ${t('card:date.daily')}`,
@@ -47,11 +54,6 @@ export const useCardState = (data: TypeMedicine) => {
 		[startDate, endDate],
 	)
 
-	const { isActive, isFuture, isPast } = useMemo(
-		() => medicineUtils.getMedicineStatusByDate(data),
-		[data],
-	)
-
 	const dateToShow = useMemo(() => {
 		if (isPast) {
 			return dateRange
@@ -61,20 +63,52 @@ export const useCardState = (data: TypeMedicine) => {
 			return fromDate
 		}
 
-		return tillDate
-	}, [tillDate, fromDate, dateRange, isPast, isFuture])
+		if (isActive) {
+			return tillDate
+		}
 
-	const cardColor = useMemo(() => {
+		return tillDate
+	}, [tillDate, fromDate, dateRange, isPast, isFuture, isActive])
+
+	const dateText = useMemo(() => {
+		if (mode === EnumCardListMode.v1) {
+			return dateToShow
+		}
+
+		if (mode === EnumCardListMode.v2) {
+			return dateRange
+		}
+
+		return dateRange
+	}, [mode, dateToShow, dateRange])
+
+	const labelText = useMemo(() => {
 		if (isPast) {
-			return EnumColor.darkGrey
+			return t('card:label.past')
 		}
 
 		if (isFuture) {
-			return EnumColor.blue
+			return t('card:label.future')
 		}
 
-		return EnumColor.red
-	}, [isPast, isFuture])
+		if (isActive) {
+			return t('card:label.active')
+		}
+
+		return t('card:label.active')
+	}, [t, isPast, isFuture, isActive])
+
+	const isNeedLabel = useMemo(() => {
+		if (mode === EnumCardListMode.v1) {
+			return !isActive
+		}
+
+		if (mode === EnumCardListMode.v2) {
+			return true
+		}
+
+		return false
+	}, [mode, isActive])
 
 	const commonIconProps = useMemo(
 		() => ({
@@ -82,16 +116,6 @@ export const useCardState = (data: TypeMedicine) => {
 			size: 24,
 		}),
 		[],
-	)
-
-	const notificationIcon = useMemo(
-		() => (
-			<Icon
-				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
-				{...commonIconProps}
-			/>
-		),
-		[notification, commonIconProps],
 	)
 
 	const medicineIcon = useMemo(() => {
@@ -108,20 +132,65 @@ export const useCardState = (data: TypeMedicine) => {
 		return MEDICINE_ICON_MAP[type]
 	}, [type, commonIconProps])
 
+	const notificationIcon = useMemo(
+		() => (
+			<Icon
+				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
+				{...commonIconProps}
+			/>
+		),
+		[notification, commonIconProps],
+	)
+
+	const cardColor = useMemo(() => {
+		if (isPast) {
+			return EnumColor.darkGrey
+		}
+
+		if (isFuture) {
+			return EnumColor.blue
+		}
+
+		if (isActive) {
+			return EnumColor.red
+		}
+
+		return EnumColor.red
+	}, [isPast, isFuture, isActive])
+
+	const borderCardColorStyle = useMemo(
+		() => ({ borderColor: cardColor }),
+		[cardColor],
+	)
+
+	const backgroundCardColorStyle = useMemo(
+		() => ({ backgroundColor: cardColor }),
+		[cardColor],
+	)
+
 	const onCardPress = useCallback(() => {
 		navigate(EnumStackRoute.editMedicine, { id })
 	}, [navigate, id])
 
 	return {
-		name,
 		isPast,
 		isFuture,
 		isActive,
-		cardColor,
-		dateToShow,
-		onCardPress,
+
+		name,
+		howManyToTakeDaily,
+		dateText,
+
+		labelText,
+		isNeedLabel,
+
 		medicineIcon,
 		notificationIcon,
-		howManyToTakeDaily,
+
+		cardColor,
+		borderCardColorStyle,
+		backgroundCardColorStyle,
+
+		onCardPress,
 	}
 }

@@ -32,4 +32,9 @@ export const styles = StyleSheet.create({
 		fontSize: badgeSize,
 		textAlign: 'center',
 	},
+
+	pressed: {
+		borderRadius: badgeSize * 2,
+		backgroundColor: EnumColor.lightGrey,
+	},
 })

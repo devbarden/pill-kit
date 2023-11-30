@@ -1,5 +1,5 @@
 import { FC, memo, useMemo, useCallback, useContext } from 'react'
-import { Pressable } from 'native-base'
+import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { TypeRoute } from '@app/types'
@@ -26,7 +26,7 @@ export const NavigationItem: FC<TypeProps> = memo(({ route }) => {
 	}, [navigate, route])
 
 	return (
-		<Pressable style={styles.wrapper} onPress={navigateToRoute}>
+		<Pressable onPressIn={navigateToRoute} style={styles.wrapper}>
 			{Icon}
 		</Pressable>
 	)

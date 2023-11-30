@@ -88,6 +88,12 @@ export type TypeLanguage = {
 			startDate: string
 			endDate: string
 		}
+
+		label: {
+			active: string
+			future: string
+			past: string
+		}
 	}
 
 	medicine: {

@@ -95,6 +95,11 @@ export const en: TypeLanguage = {
 			startDate: 'Start date',
 			endDate: 'End date',
 		},
+		label: {
+			active: 'Active',
+			future: 'Upcoming',
+			past: 'Completed',
+		},
 	},
 
 	medicine: {

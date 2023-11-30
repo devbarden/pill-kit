@@ -3,6 +3,7 @@ import { Box } from 'native-base'
 
 import { isDeserted } from '@app/utils'
 import { CardsList } from '@app/components'
+import { EnumCardListMode } from '@app/enums'
 
 import { Empty } from './sub-components'
 import { HistoryContext } from '../../context'
@@ -18,7 +19,7 @@ export const FilteredCards: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<CardsList items={medicines} />
+			<CardsList items={medicines} mode={EnumCardListMode.v2} />
 		</Box>
 	)
 })

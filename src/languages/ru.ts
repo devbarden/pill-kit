@@ -95,6 +95,11 @@ export const ru: TypeLanguage = {
 			startDate: 'Начало приема',
 			endDate: 'Конец приема',
 		},
+		label: {
+			active: 'Активно',
+			future: 'Ожидаемо',
+			past: 'Завершено',
+		},
 	},
 
 	medicine: {
