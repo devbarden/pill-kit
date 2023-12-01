@@ -39,7 +39,11 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 8,
 
 		borderWidth: 1,
-		borderRadius: 4,
+		borderBottomWidth: 0,
+
+		borderRadius: 8,
+		borderBottomLeftRadius: 0,
+		borderBottomRightRadius: 0,
 
 		backgroundColor: EnumColor.white,
 	},
