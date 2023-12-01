@@ -103,6 +103,9 @@ export const ru: TypeLanguage = {
 	},
 
 	medicine: {
+		indicator: {
+			ml: 'мл',
+		},
 		types: {
 			[EnumMedicineType.pill]: 'Таблетки / Капсулы',
 			[EnumMedicineType.liquid]: 'Настойка / Сироп',

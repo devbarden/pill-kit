@@ -6,6 +6,8 @@ import {
 	useContext,
 	useCallback,
 } from 'react'
+import { map } from 'lodash'
+import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
@@ -26,6 +28,7 @@ import {
 	TypeModalHandlers,
 	TypeMedicineWithoutId,
 	TypeMedicineFormProps,
+	TypeMedicineCountPerUse,
 	TypeMedicineFormContextProps,
 } from '@app/types'
 
@@ -39,6 +42,7 @@ export const useMedicineForm = ({
 	const modalCountPerUseRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerDayRef = useRef<TypeModalHandlers>(null)
 
+	const { t } = useTranslation()
 	const { navigate } = useNavigation()
 	const { activeTab } = useContext(GlobalStateContext)
 
@@ -56,6 +60,39 @@ export const useMedicineForm = ({
 		[isSubmitting, formToValidate],
 	)
 
+	const getCountPerUseValueByType = useCallback(
+		(countPerUse: TypeMedicineCountPerUse, type: EnumMedicineType) => {
+			if (type === EnumMedicineType.liquid) {
+				return `${countPerUse} ${t('medicine:indicator.ml')}`
+			}
+
+			return countPerUse
+		},
+		[t],
+	)
+
+	const getCountPerUseSelectItems = useCallback(
+		(type: EnumMedicineType) => {
+			if (type === EnumMedicineType.pill) {
+				return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+			}
+
+			if (type === EnumMedicineType.liquid) {
+				return map(MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS, (item) => ({
+					...item,
+					label: `${item.label} ${t('medicine:indicator.ml')}`,
+				}))
+			}
+
+			if (type === EnumMedicineType.drops) {
+				return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+			}
+
+			return []
+		},
+		[t],
+	)
+
 	const getIsNeedToFillCountPerUse = useCallback(
 		(type: EnumMedicineType) =>
 			type === EnumMedicineType.pill ||
@@ -63,22 +100,6 @@ export const useMedicineForm = ({
 			type === EnumMedicineType.drops,
 		[],
 	)
-
-	const getCountPerUseSelectItems = useCallback((type: EnumMedicineType) => {
-		if (type === EnumMedicineType.pill) {
-			return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
-		}
-
-		if (type === EnumMedicineType.liquid) {
-			return MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS
-		}
-
-		if (type === EnumMedicineType.drops) {
-			return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
-		}
-
-		return []
-	}, [])
 
 	const backHandler = useCallback(() => {
 		navigate(activeTab)
@@ -210,8 +231,9 @@ export const useMedicineForm = ({
 
 		form,
 
-		getIsNeedToFillCountPerUse,
+		getCountPerUseValueByType,
 		getCountPerUseSelectItems,
+		getIsNeedToFillCountPerUse,
 
 		changeNameHandler,
 		changeNameToEmptyHandler,

@@ -9,6 +9,7 @@ import {
 	EnumIconName,
 	EnumStackRoute,
 	EnumCardListMode,
+	EnumMedicineType,
 } from '@app/enums'
 
 import { Icon } from '../../../../../Icon'
@@ -33,12 +34,20 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		endDate,
 	} = useMemo(() => data, [data])
 
+	const transformedCountPerUse = useMemo(() => {
+		if (type === EnumMedicineType.liquid) {
+			return `${countPerUse}${t('medicine:indicator.ml')}`
+		}
+
+		return countPerUse
+	}, [t, type, countPerUse])
+
 	const howManyToTakeDaily = useMemo(
 		() =>
-			`${countPerUse ? countPerUse + ' / ' : ''}${countPerDay} ${t(
-				'card:date.daily',
-			)}`,
-		[t, countPerUse, countPerDay],
+			`${
+				transformedCountPerUse ? transformedCountPerUse + ' / ' : ''
+			}${countPerDay} ${t('card:date.daily')}`,
+		[t, transformedCountPerUse, countPerDay],
 	)
 
 	const fromDate = useMemo(

@@ -17,6 +17,7 @@ export const Fields: FC = memo(() => {
 
 		form,
 
+		getCountPerUseValueByType,
 		getIsNeedToFillCountPerUse,
 
 		changeStartDateHandler,
@@ -67,7 +68,7 @@ export const Fields: FC = memo(() => {
 								text={t('medicineForm:count')}
 								iconName={EnumIconName.count}
 								handler={openCountPerUseModal}
-								value={countPerUse}
+								value={getCountPerUseValueByType(countPerUse, type)}
 							/>
 
 							<Form.Separator />

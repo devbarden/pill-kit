@@ -25,3 +25,5 @@ export type TypePossibleMedicines = TypeMedicine[] | null
 export type TypeMedicineWithoutId = Omit<TypeMedicine, 'id'>
 
 export type TypeMedicineId = TypeMedicine['id']
+
+export type TypeMedicineCountPerUse = TypeMedicine['countPerUse']

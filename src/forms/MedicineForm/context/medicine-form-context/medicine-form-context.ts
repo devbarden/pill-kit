@@ -19,8 +19,9 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 
 	form: DEFAULT_EMPTY_MEDICINE,
 
-	getIsNeedToFillCountPerUse: () => true,
+	getCountPerUseValueByType: () => '',
 	getCountPerUseSelectItems: () => [],
+	getIsNeedToFillCountPerUse: () => true,
 
 	changeNameHandler: () => {},
 	changeNameToEmptyHandler: () => {},

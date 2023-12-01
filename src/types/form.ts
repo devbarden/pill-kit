@@ -5,7 +5,7 @@ import { EnumMedicineType } from '@app/enums'
 
 import { TypeSelectItem } from './select'
 import { TypeModalHandlers } from './modal'
-import { TypeMedicineWithoutId } from './medicine'
+import { TypeMedicineCountPerUse, TypeMedicineWithoutId } from './medicine'
 
 export type TypeMedicineFormProps = {
 	data: TypeMedicineWithoutId
@@ -32,8 +32,12 @@ export type TypeMedicineFormContextProps = {
 
 	form: TypeMedicineWithoutId
 
-	getIsNeedToFillCountPerUse: (type: EnumMedicineType) => boolean
+	getCountPerUseValueByType: (
+		countPerUse: TypeMedicineCountPerUse,
+		type: EnumMedicineType,
+	) => TypeMedicineCountPerUse
 	getCountPerUseSelectItems: (type: EnumMedicineType) => TypeSelectItem[]
+	getIsNeedToFillCountPerUse: (type: EnumMedicineType) => boolean
 
 	changeNameHandler: (name: string) => void
 	changeNameToEmptyHandler: () => void

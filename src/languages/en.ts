@@ -103,6 +103,9 @@ export const en: TypeLanguage = {
 	},
 
 	medicine: {
+		indicator: {
+			ml: 'ml',
+		},
 		types: {
 			[EnumMedicineType.pill]: 'Pills / Capsules',
 			[EnumMedicineType.liquid]: 'Tincture / Syrup',

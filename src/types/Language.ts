@@ -97,6 +97,9 @@ export type TypeLanguage = {
 	}
 
 	medicine: {
+		indicator: {
+			ml: string
+		}
 		types: Record<EnumMedicineType, string>
 	}
 
