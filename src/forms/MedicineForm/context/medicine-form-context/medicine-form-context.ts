@@ -8,6 +8,7 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalTypeRef: null,
 	modalCountPerUseRef: null,
 	modalCountPerDayRef: null,
+	modalTimeRef: null,
 
 	openNameModal: () => {},
 	openTypeModal: () => {},
@@ -16,6 +17,8 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	closeCountPerUseModal: () => {},
 	openCountPerDayModal: () => {},
 	closeCountPerDayModal: () => {},
+	openTimeModal: () => {},
+	closeTimeModal: () => {},
 
 	form: DEFAULT_EMPTY_MEDICINE,
 
@@ -31,6 +34,7 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	changeStartDateHandler: () => {},
 	changeEndDateHandler: () => {},
 	changeSwitchToggleHandler: () => {},
+	changeTimeHandler: () => {},
 
 	saveHandler: () => {},
 	backHandler: () => {},

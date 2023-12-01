@@ -74,6 +74,12 @@ export const ru: TypeLanguage = {
 		startDate: 'Начало приема',
 		endDate: 'Конец приема',
 		notification: 'Уведомления',
+		time: 'Время',
+		modal: {
+			times: {
+				notification: 'Уведомление',
+			},
+		},
 	},
 
 	removeDataAlert: {

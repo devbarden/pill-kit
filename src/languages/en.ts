@@ -74,6 +74,12 @@ export const en: TypeLanguage = {
 		startDate: 'Start date',
 		endDate: 'End date',
 		notification: 'Notification',
+		time: 'Time',
+		modal: {
+			times: {
+				notification: 'Notification',
+			},
+		},
 	},
 
 	removeDataAlert: {

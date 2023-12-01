@@ -4,28 +4,28 @@ import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		height: '80%',
-		borderTopLeftRadius: 24,
-		borderTopRightRadius: 24,
+		flex: 1,
+		gap: 16,
 	},
 
-	dash: {
-		width: 44,
-		height: 6,
+	item: {
+		padding: 16,
 		borderRadius: 16,
-		backgroundColor: EnumColor.black,
+		backgroundColor: EnumColor.white,
 	},
 
 	content: {
-		flex: 1,
-		width: '100%',
+		flexDirection: 'row',
+		justifyContent: 'space-around',
 		alignItems: 'center',
 		gap: 16,
-		padding: 16,
 	},
 
-	children: {
+	info: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 8,
+		paddingRight: 8,
 		flex: 1,
-		width: '100%',
 	},
 })

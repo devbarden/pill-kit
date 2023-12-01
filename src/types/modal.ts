@@ -25,6 +25,7 @@ export type TypeModalProps = {
 	onFullScreen?: boolean
 	withContentScroll?: boolean
 	isPossibleCloseOutside?: boolean
+	withGreyBackgroundColor?: boolean
 }
 
 export type TypeModalContextProps = TypeModalProps & {

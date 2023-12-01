@@ -40,6 +40,7 @@ const getIconByName = (
 		[EnumIconName.spray]: <MaterialCommunityIcons name="spray" {...props} />,
 		[EnumIconName.bandage]: <Ionicons name="bandage-outline" {...props} />,
 		[EnumIconName.medical]: <AntDesign name="medicinebox" {...props} />,
+		[EnumIconName.time]: <Ionicons name="ios-time-outline" {...props} />,
 		[EnumIconName.mail]: <Octicons name="mail" {...props} />,
 		[EnumIconName.home]: <Octicons name="home" {...props} />,
 		[EnumIconName.info]: <Octicons name="info" {...props} />,

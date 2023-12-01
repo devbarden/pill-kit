@@ -15,6 +15,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		onFullScreen = false,
 		withContentScroll = false,
 		isPossibleCloseOutside = true,
+		withGreyBackgroundColor = false,
 	} = useMemo(() => props, [props])
 
 	const [isVisible, setIsVisible] = useState(false)
@@ -75,6 +76,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		onFullScreen,
 		withContentScroll,
 		isPossibleCloseOutside,
+		withGreyBackgroundColor,
 
 		open,
 		close,

@@ -19,6 +19,7 @@ export const ModalContext = createContext<TypeModalContextProps>({
 	onFullScreen: false,
 	withContentScroll: false,
 	isPossibleCloseOutside: true,
+	withGreyBackgroundColor: false,
 
 	open: () => {},
 	close: () => {},

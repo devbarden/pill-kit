@@ -5,7 +5,11 @@ import { EnumMedicineType } from '@app/enums'
 
 import { TypeSelectItem } from './select'
 import { TypeModalHandlers } from './modal'
-import { TypeMedicineCountPerUse, TypeMedicineWithoutId } from './medicine'
+import {
+	TypeMedicineTime,
+	TypeMedicineWithoutId,
+	TypeMedicineCountPerUse,
+} from './medicine'
 
 export type TypeMedicineFormProps = {
 	data: TypeMedicineWithoutId
@@ -21,6 +25,7 @@ export type TypeMedicineFormContextProps = {
 	modalTypeRef: RefObject<TypeModalHandlers> | null
 	modalCountPerUseRef: RefObject<TypeModalHandlers> | null
 	modalCountPerDayRef: RefObject<TypeModalHandlers> | null
+	modalTimeRef: RefObject<TypeModalHandlers> | null
 
 	openNameModal: () => void
 	openTypeModal: () => void
@@ -29,6 +34,8 @@ export type TypeMedicineFormContextProps = {
 	closeCountPerUseModal: () => void
 	openCountPerDayModal: () => void
 	closeCountPerDayModal: () => void
+	openTimeModal: () => void
+	closeTimeModal: () => void
 
 	form: TypeMedicineWithoutId
 
@@ -47,6 +54,7 @@ export type TypeMedicineFormContextProps = {
 	changeStartDateHandler: (event: DateTimePickerEvent, date?: Date) => void
 	changeEndDateHandler: (event: DateTimePickerEvent, date?: Date) => void
 	changeSwitchToggleHandler: () => void
+	changeTimeHandler: (time: TypeMedicineTime, date?: Date) => void
 
 	saveHandler: () => void
 	backHandler: () => void

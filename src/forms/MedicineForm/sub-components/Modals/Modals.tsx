@@ -6,8 +6,9 @@ import { EnumModalType } from '@app/enums'
 
 import { MedicineFormContext } from '../../context'
 import {
-	ModalTypeContent,
 	ModalNameContent,
+	ModalTypeContent,
+	ModalTimeContent,
 	ModalCountPerUseContent,
 	ModalCountPerDayContent,
 } from './sub-components'
@@ -19,6 +20,7 @@ export const Modals: FC = memo(() => {
 		modalTypeRef,
 		modalCountPerUseRef,
 		modalCountPerDayRef,
+		modalTimeRef,
 	} = useContext(MedicineFormContext)
 
 	return (
@@ -49,6 +51,14 @@ export const Modals: FC = memo(() => {
 				title={t('medicineForm:perDay')}
 				content={<ModalCountPerDayContent />}
 				ref={modalCountPerDayRef}
+			/>
+
+			<Modal
+				withGreyBackgroundColor
+				type={EnumModalType.bottom}
+				title={t('medicineForm:time')}
+				content={<ModalTimeContent />}
+				ref={modalTimeRef}
 			/>
 		</Fragment>
 	)

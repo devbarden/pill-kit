@@ -14,6 +14,7 @@ export const Fields: FC = memo(() => {
 		openTypeModal,
 		openCountPerUseModal,
 		openCountPerDayModal,
+		openTimeModal,
 
 		form,
 
@@ -119,6 +120,14 @@ export const Fields: FC = memo(() => {
 						onToggle={changeSwitchToggleHandler}
 					/>
 				</Form.CustomItem>
+
+				<Form.Separator />
+
+				<Form.PressableItem
+					text={t('medicineForm:time')}
+					iconName={EnumIconName.time}
+					handler={openTimeModal}
+				/>
 			</Form.Wrapper>
 		</Fragment>
 	)

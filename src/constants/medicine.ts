@@ -1,9 +1,10 @@
 import { map, range } from 'lodash'
 
 import { EnumMedicineType } from '@app/enums'
-import { TypeMedicineWithoutId } from '@app/types'
+import { TypeMedicineTime, TypeMedicineWithoutId } from '@app/types'
 
 import {
+	uid,
 	addWeeks,
 	numberToSelectItem,
 	getFirstValueFromSelectItems,
@@ -48,6 +49,94 @@ export const MEDICINE_DEFAULT_START_DATE = Date.now()
 
 export const MEDICINE_DEFAULT_END_DATE = addWeeks(new Date(), 2)
 
+export const MEDICINE_DEFAULT_TIMES_MAP: Record<string, TypeMedicineTime[]> = {
+	'1': [{ id: uid(), hours: 12, minutes: 0 }],
+
+	'2': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 20, minutes: 0 },
+	],
+
+	'3': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 20, minutes: 0 },
+	],
+
+	'4': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+	],
+
+	'5': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 11, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 17, minutes: 0 },
+		{ id: uid(), hours: 20, minutes: 0 },
+	],
+
+	'6': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 18, minutes: 0 },
+	],
+
+	'7': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 18, minutes: 0 },
+		{ id: uid(), hours: 20, minutes: 0 },
+	],
+
+	'8': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+		{ id: uid(), hours: 11, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 18, minutes: 0 },
+		{ id: uid(), hours: 20, minutes: 0 },
+	],
+
+	'9': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+		{ id: uid(), hours: 11, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 13, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 15, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 17, minutes: 0 },
+	],
+
+	'10': [
+		{ id: uid(), hours: 9, minutes: 0 },
+		{ id: uid(), hours: 10, minutes: 0 },
+		{ id: uid(), hours: 11, minutes: 0 },
+		{ id: uid(), hours: 12, minutes: 0 },
+		{ id: uid(), hours: 13, minutes: 0 },
+		{ id: uid(), hours: 14, minutes: 0 },
+		{ id: uid(), hours: 15, minutes: 0 },
+		{ id: uid(), hours: 16, minutes: 0 },
+		{ id: uid(), hours: 17, minutes: 0 },
+		{ id: uid(), hours: 18, minutes: 0 },
+	],
+}
+
+export const MEDICINE_DEFAULT_TIMES =
+	MEDICINE_DEFAULT_TIMES_MAP[MEDICINE_DEFAULT_COUNT_PER_DAY]
+
 export const DEFAULT_EMPTY_MEDICINE: TypeMedicineWithoutId = {
 	name: MEDICINE_DEFAULT_NAME,
 	type: MEDICINE_DEFAULT_TYPE,
@@ -56,4 +145,5 @@ export const DEFAULT_EMPTY_MEDICINE: TypeMedicineWithoutId = {
 	notification: MEDICINE_DEFAULT_NOTIFICATION,
 	startDate: MEDICINE_DEFAULT_START_DATE,
 	endDate: MEDICINE_DEFAULT_END_DATE,
+	times: MEDICINE_DEFAULT_TIMES,
 }

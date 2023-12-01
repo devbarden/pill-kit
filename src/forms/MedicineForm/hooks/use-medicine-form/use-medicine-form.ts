@@ -21,10 +21,12 @@ import {
 	getMedicineWithoutCountPerUseField,
 } from '@app/utils'
 import {
+	MEDICINE_DEFAULT_TIMES_MAP,
 	MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS,
 	MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS,
 } from '@app/constants'
 import {
+	TypeMedicineTime,
 	TypeModalHandlers,
 	TypeMedicineWithoutId,
 	TypeMedicineFormProps,
@@ -41,6 +43,7 @@ export const useMedicineForm = ({
 	const modalTypeRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerUseRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerDayRef = useRef<TypeModalHandlers>(null)
+	const modalTimeRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
@@ -143,6 +146,7 @@ export const useMedicineForm = ({
 		setForm((prev) => ({
 			...prev,
 			countPerDay,
+			times: MEDICINE_DEFAULT_TIMES_MAP[countPerDay],
 		}))
 	}, [])
 
@@ -177,6 +181,26 @@ export const useMedicineForm = ({
 		[],
 	)
 
+	const changeTimeHandler = useCallback(
+		(time: TypeMedicineTime, date?: Date) => {
+			if (!date) return
+
+			setForm((prev) => ({
+				...prev,
+				times: prev.times.map((prevTime) =>
+					prevTime.id === time.id
+						? {
+								...prevTime,
+								hours: date?.getHours(),
+								minutes: date?.getMinutes(),
+						  }
+						: prevTime,
+				),
+			}))
+		},
+		[],
+	)
+
 	const saveHandler = useCallback(async () => {
 		await submitHandler(form)
 
@@ -199,6 +223,10 @@ export const useMedicineForm = ({
 		modalCountPerDayRef.current?.open()
 	}, [])
 
+	const openTimeModal = useCallback(() => {
+		modalTimeRef.current?.open()
+	}, [])
+
 	const closeTypeModal = useCallback(() => {
 		modalTypeRef.current?.close()
 	}, [])
@@ -211,6 +239,10 @@ export const useMedicineForm = ({
 		modalCountPerDayRef.current?.close()
 	}, [])
 
+	const closeTimeModal = useCallback(() => {
+		modalTimeRef.current?.close()
+	}, [])
+
 	useEffect(() => {
 		setForm((prev) => ({ ...prev, ...data }))
 	}, [data])
@@ -220,6 +252,7 @@ export const useMedicineForm = ({
 		modalTypeRef,
 		modalCountPerUseRef,
 		modalCountPerDayRef,
+		modalTimeRef,
 
 		openNameModal,
 		openTypeModal,
@@ -228,6 +261,8 @@ export const useMedicineForm = ({
 		closeCountPerUseModal,
 		openCountPerDayModal,
 		closeCountPerDayModal,
+		openTimeModal,
+		closeTimeModal,
 
 		form,
 
@@ -243,6 +278,7 @@ export const useMedicineForm = ({
 		changeStartDateHandler,
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
+		changeTimeHandler,
 
 		saveHandler,
 		backHandler,

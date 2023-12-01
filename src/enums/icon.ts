@@ -9,6 +9,7 @@ export enum EnumIconName {
 	spray = 'spray',
 	bandage = 'bandage',
 	medical = 'medical',
+	time = 'time',
 	home = 'home',
 	back = 'back',
 	info = 'info',

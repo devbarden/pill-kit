@@ -67,6 +67,12 @@ export type TypeLanguage = {
 		startDate: string
 		endDate: string
 		notification: string
+		time: string
+		modal: {
+			times: {
+				notification: string
+			}
+		}
 	}
 
 	removeDataAlert: {

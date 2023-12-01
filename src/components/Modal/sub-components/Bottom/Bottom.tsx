@@ -1,4 +1,4 @@
-import { FC, memo, useContext } from 'react'
+import { FC, memo, useContext, useMemo } from 'react'
 import { Box, Text } from 'native-base'
 
 import { EnumColor } from '@app/enums'
@@ -9,10 +9,22 @@ import { ScrollContent } from '../../../ScrollContent'
 import { styles } from './Bottom.styles'
 
 export const Bottom: FC = memo(() => {
-	const { title, content } = useContext(ModalContext)
+	const { title, content, withGreyBackgroundColor } = useContext(ModalContext)
+
+	const wrapperStyles = useMemo(
+		() => [
+			styles.wrapper,
+			{
+				backgroundColor: withGreyBackgroundColor
+					? EnumColor.grey
+					: EnumColor.white,
+			},
+		],
+		[withGreyBackgroundColor],
+	)
 
 	return (
-		<Box style={styles.wrapper}>
+		<Box style={wrapperStyles}>
 			<Box style={styles.content}>
 				<Box style={styles.dash} />
 

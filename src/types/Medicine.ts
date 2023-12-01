@@ -1,5 +1,11 @@
 import { EnumMedicineType } from '@app/enums'
 
+export type TypeMedicineTime = {
+	id: string
+	hours: number
+	minutes: number
+}
+
 export type TypeMedicine = {
 	id: string
 	name: string
@@ -9,11 +15,12 @@ export type TypeMedicine = {
 	notification: boolean
 	startDate: number
 	endDate: number
+	times: TypeMedicineTime[]
 }
 
 export type TypeMedicineWithSortableFields = Omit<
 	TypeMedicine,
-	'id' | 'type' | 'countPerUse' | 'countPerDay' | 'notification'
+	'id' | 'type' | 'countPerUse' | 'countPerDay' | 'notification' | 'times'
 >
 
 export type TypeMedicineSortableField = keyof TypeMedicineWithSortableFields
