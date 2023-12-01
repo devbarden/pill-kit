@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
-import { EnumMedicineType } from '@app/enums'
 import { TypeMedicineFormContextProps } from '@app/types'
+import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
 
 export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalNameRef: null,
@@ -17,15 +17,10 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	openCountPerDayModal: () => {},
 	closeCountPerDayModal: () => {},
 
-	form: {
-		name: '',
-		type: EnumMedicineType.pill,
-		countPerUse: '',
-		countPerDay: '',
-		notification: true,
-		startDate: 0,
-		endDate: 0,
-	},
+	form: DEFAULT_EMPTY_MEDICINE,
+
+	getIsNeedToFillCountPerUse: () => true,
+	getCountPerUseSelectItems: () => [],
 
 	changeNameHandler: () => {},
 	changeNameToEmptyHandler: () => {},

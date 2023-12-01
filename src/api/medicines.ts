@@ -1,8 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { omit } from 'lodash'
 
-import { isAnyFieldEmpty, uid } from '@app/utils'
 import { EnumStorage, EnumError } from '@app/enums'
+import {
+	uid,
+	isAnyFieldEmpty,
+	getMedicineWithoutId,
+	getMedicineWithoutCountPerUseField,
+} from '@app/utils'
 import {
 	TypeMedicine,
 	TypeMedicineId,
@@ -50,14 +54,16 @@ export const getMedicine = async (id: TypeMedicineId) => {
 		const medicine: TypePossibleMedicine =
 			medicines.find((item) => item.id === id) ?? null
 
-		return omit(medicine, ['id'])
+		return getMedicineWithoutId(medicine)
 	} catch {
 		return null
 	}
 }
 
 export const setMedicine = async (data: TypeMedicineWithoutId) => {
-	if (isAnyFieldEmpty(data)) {
+	const medicineToValidate = getMedicineWithoutCountPerUseField(data)
+
+	if (isAnyFieldEmpty(medicineToValidate)) {
 		throw new Error(EnumError.fieldsNotFilled)
 	}
 
@@ -75,7 +81,9 @@ export const editMedicine = async (
 	id: TypeMedicineId,
 	data: TypeMedicineWithoutId,
 ) => {
-	if (isAnyFieldEmpty(data)) {
+	const medicineToValidate = getMedicineWithoutCountPerUseField(data)
+
+	if (isAnyFieldEmpty(medicineToValidate)) {
 		throw new Error(EnumError.fieldsNotFilled)
 	}
 

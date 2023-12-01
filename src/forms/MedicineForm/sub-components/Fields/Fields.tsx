@@ -1,10 +1,9 @@
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { FC, Fragment, memo, useContext } from 'react'
+import { FC, Fragment, memo, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { EnumIconName } from '@app/enums'
-import { Form, Switch } from '@app/components'
-import { MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
+import { Form, Icon, Switch } from '@app/components'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { MedicineFormContext } from '../../context'
 
@@ -18,10 +17,21 @@ export const Fields: FC = memo(() => {
 
 		form,
 
+		getIsNeedToFillCountPerUse,
+
 		changeStartDateHandler,
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
 	} = useContext(MedicineFormContext)
+	const {
+		name,
+		type,
+		countPerUse,
+		countPerDay,
+		startDate,
+		endDate,
+		notification,
+	} = useMemo(() => form, [form])
 
 	return (
 		<Fragment>
@@ -30,34 +40,46 @@ export const Fields: FC = memo(() => {
 					text={t('medicineForm:name')}
 					iconName={EnumIconName.text}
 					handler={openNameModal}
-					value={form.name}
+					value={name}
 				/>
 
 				<Form.Separator />
 
 				<Form.PressableItem
 					text={t('medicineForm:type')}
-					iconName={EnumIconName.pill}
+					iconName={EnumIconName.medical}
 					handler={openTypeModal}
-					value={t(`${MEDICINE_TYPE_TRANSLATION_PATH}.${form.type}`)}
+					value={
+						<Icon
+							name={EnumIconName[type]}
+							color={EnumColor.darkGrey}
+							size={20}
+						/>
+					}
 				/>
 			</Form.Wrapper>
 
 			<Form.Wrapper>
-				<Form.PressableItem
-					text={t('medicineForm:count')}
-					iconName={EnumIconName.count}
-					handler={openCountPerUseModal}
-					value={form.countPerUse}
-				/>
+				<Fragment>
+					{getIsNeedToFillCountPerUse(type) && (
+						<Fragment>
+							<Form.PressableItem
+								text={t('medicineForm:count')}
+								iconName={EnumIconName.count}
+								handler={openCountPerUseModal}
+								value={countPerUse}
+							/>
 
-				<Form.Separator />
+							<Form.Separator />
+						</Fragment>
+					)}
+				</Fragment>
 
 				<Form.PressableItem
 					text={t('medicineForm:perDay')}
 					iconName={EnumIconName.count}
 					handler={openCountPerDayModal}
-					value={form.countPerDay}
+					value={countPerDay}
 				/>
 			</Form.Wrapper>
 
@@ -67,7 +89,7 @@ export const Fields: FC = memo(() => {
 					iconName={EnumIconName.calendar}>
 					<DateTimePicker
 						mode="date"
-						value={new Date(form.startDate)}
+						value={new Date(startDate)}
 						onChange={changeStartDateHandler}
 						locale={i18n.language}
 					/>
@@ -80,7 +102,7 @@ export const Fields: FC = memo(() => {
 					iconName={EnumIconName.calendar}>
 					<DateTimePicker
 						mode="date"
-						value={new Date(form.endDate)}
+						value={new Date(endDate)}
 						onChange={changeEndDateHandler}
 						locale={i18n.language}
 					/>
@@ -92,7 +114,7 @@ export const Fields: FC = memo(() => {
 					text={t('medicineForm:notification')}
 					iconName={EnumIconName.bell}>
 					<Switch
-						isChecked={form.notification}
+						isChecked={notification}
 						onToggle={changeSwitchToggleHandler}
 					/>
 				</Form.CustomItem>

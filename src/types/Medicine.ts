@@ -4,7 +4,7 @@ export type TypeMedicine = {
 	id: string
 	name: string
 	type: EnumMedicineType
-	countPerUse: string
+	countPerUse?: string
 	countPerDay: string
 	notification: boolean
 	startDate: number

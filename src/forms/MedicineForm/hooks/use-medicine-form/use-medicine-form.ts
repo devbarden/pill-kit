@@ -11,7 +11,17 @@ import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
 import { EnumMedicineType } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
-import { addWeeks, removeWeeks, isAnyFieldEmpty } from '@app/utils'
+import {
+	addWeeks,
+	removeWeeks,
+	isAnyFieldEmpty,
+	getFirstValueFromSelectItems,
+	getMedicineWithoutCountPerUseField,
+} from '@app/utils'
+import {
+	MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS,
+	MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS,
+} from '@app/constants'
 import {
 	TypeModalHandlers,
 	TypeMedicineWithoutId,
@@ -35,10 +45,40 @@ export const useMedicineForm = ({
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
 
 	const isCancelBtnDisabled = useMemo(() => isSubmitting, [isSubmitting])
-	const isSaveBtnDisabled = useMemo(
-		() => isSubmitting || isAnyFieldEmpty(form),
-		[isSubmitting, form],
+
+	const formToValidate = useMemo(
+		() => getMedicineWithoutCountPerUseField(form),
+		[form],
 	)
+
+	const isSaveBtnDisabled = useMemo(
+		() => isSubmitting || isAnyFieldEmpty(formToValidate),
+		[isSubmitting, formToValidate],
+	)
+
+	const getIsNeedToFillCountPerUse = useCallback(
+		(type: EnumMedicineType) =>
+			type === EnumMedicineType.pill ||
+			type === EnumMedicineType.liquid ||
+			type === EnumMedicineType.drops,
+		[],
+	)
+
+	const getCountPerUseSelectItems = useCallback((type: EnumMedicineType) => {
+		if (type === EnumMedicineType.pill) {
+			return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+		}
+
+		if (type === EnumMedicineType.liquid) {
+			return MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS
+		}
+
+		if (type === EnumMedicineType.drops) {
+			return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+		}
+
+		return []
+	}, [])
 
 	const backHandler = useCallback(() => {
 		navigate(activeTab)
@@ -56,9 +96,20 @@ export const useMedicineForm = ({
 		setForm((prev) => ({ ...prev, notification: !prev.notification }))
 	}, [])
 
-	const changeTypeHandler = useCallback((type: string) => {
-		setForm((prev) => ({ ...prev, type: type as EnumMedicineType }))
-	}, [])
+	const changeTypeHandler = useCallback(
+		(type: string) => {
+			const newType = type as EnumMedicineType
+
+			setForm((prev) => ({
+				...prev,
+				type: newType,
+				countPerUse: getIsNeedToFillCountPerUse(newType)
+					? getFirstValueFromSelectItems(getCountPerUseSelectItems(newType))
+					: undefined,
+			}))
+		},
+		[getIsNeedToFillCountPerUse, getCountPerUseSelectItems],
+	)
 
 	const changeCountPerUseHandler = useCallback((countPerUse: string) => {
 		setForm((prev) => ({
@@ -158,6 +209,9 @@ export const useMedicineForm = ({
 		closeCountPerDayModal,
 
 		form,
+
+		getIsNeedToFillCountPerUse,
+		getCountPerUseSelectItems,
 
 		changeNameHandler,
 		changeNameToEmptyHandler,

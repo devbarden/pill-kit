@@ -1,4 +1,4 @@
-import { useMemo, useCallback, ReactElement } from 'react'
+import { useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 
@@ -8,7 +8,6 @@ import {
 	EnumColor,
 	EnumIconName,
 	EnumStackRoute,
-	EnumMedicineType,
 	EnumCardListMode,
 } from '@app/enums'
 
@@ -35,7 +34,10 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	} = useMemo(() => data, [data])
 
 	const howManyToTakeDaily = useMemo(
-		() => `${countPerUse} / ${countPerDay} ${t('card:date.daily')}`,
+		() =>
+			`${countPerUse ? countPerUse + ' / ' : ''}${countPerDay} ${t(
+				'card:date.daily',
+			)}`,
 		[t, countPerUse, countPerDay],
 	)
 
@@ -118,19 +120,10 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		[],
 	)
 
-	const medicineIcon = useMemo(() => {
-		const MEDICINE_ICON_MAP: Record<EnumMedicineType, ReactElement> = {
-			[EnumMedicineType.pill]: (
-				<Icon name={EnumIconName.pill} {...commonIconProps} />
-			),
-
-			[EnumMedicineType.cream]: (
-				<Icon name={EnumIconName.cream} {...commonIconProps} />
-			),
-		}
-
-		return MEDICINE_ICON_MAP[type]
-	}, [type, commonIconProps])
+	const medicineIcon = useMemo(
+		() => <Icon name={EnumIconName[type]} {...commonIconProps} />,
+		[type, commonIconProps],
+	)
 
 	const notificationIcon = useMemo(
 		() => (

@@ -1,5 +1,10 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
-import { Octicons, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import {
+	Octicons,
+	Ionicons,
+	AntDesign,
+	MaterialCommunityIcons,
+} from '@expo/vector-icons'
 
 import { EnumIconName } from '@app/enums'
 
@@ -19,12 +24,27 @@ const getIconByName = (
 	props: TypeAdditionalProps,
 ): ReactElement =>
 	({
+		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
+		[EnumIconName.liquid]: (
+			<MaterialCommunityIcons name="cup-water" {...props} />
+		),
+		[EnumIconName.cream]: (
+			<MaterialCommunityIcons name="liquid-spot" {...props} />
+		),
+		[EnumIconName.drops]: <Ionicons name="water" {...props} />,
+		[EnumIconName.candles]: <MaterialCommunityIcons name="candle" {...props} />,
+		[EnumIconName.pencil]: <MaterialCommunityIcons name="pencil" {...props} />,
+		[EnumIconName.powder]: (
+			<MaterialCommunityIcons name="dots-triangle" {...props} />
+		),
+		[EnumIconName.spray]: <MaterialCommunityIcons name="spray" {...props} />,
+		[EnumIconName.bandage]: <Ionicons name="bandage-outline" {...props} />,
+		[EnumIconName.medical]: <AntDesign name="medicinebox" {...props} />,
 		[EnumIconName.mail]: <Octicons name="mail" {...props} />,
 		[EnumIconName.home]: <Octicons name="home" {...props} />,
 		[EnumIconName.info]: <Octicons name="info" {...props} />,
 		[EnumIconName.gift]: <Octicons name="gift" {...props} />,
 		[EnumIconName.bell]: <Octicons name="bell" {...props} />,
-		[EnumIconName.cream]: <Octicons name="beaker" {...props} />,
 		[EnumIconName.search]: <Octicons name="search" {...props} />,
 		[EnumIconName.settings]: <Octicons name="gear" {...props} />,
 		[EnumIconName.star]: <Octicons name="star-fill" {...props} />,
@@ -45,7 +65,6 @@ const getIconByName = (
 		[EnumIconName.calendar]: (
 			<MaterialCommunityIcons name="calendar-month" {...props} />
 		),
-		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
 		[EnumIconName.docs]: (
 			<MaterialCommunityIcons name="file-document-outline" {...props} />
 		),

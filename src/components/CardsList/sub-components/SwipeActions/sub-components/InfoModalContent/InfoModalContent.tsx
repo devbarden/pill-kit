@@ -1,4 +1,4 @@
-import { FC, Fragment, memo } from 'react'
+import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'native-base'
 
@@ -12,24 +12,30 @@ type TypeProps = {
 
 export const InfoModalContent: FC<TypeProps> = memo(({ data }) => {
 	const { t } = useTranslation()
+	const { type, countPerUse, countPerDay, startDate, endDate } = useMemo(
+		() => data,
+		[data],
+	)
 
 	return (
 		<Fragment>
 			<Text>
 				{t('card:infoModal.type')}:{' '}
-				{t(`${MEDICINE_TYPE_TRANSLATION_PATH}.${data.type}`)}
+				{t(`${MEDICINE_TYPE_TRANSLATION_PATH}.${type}`)}
+			</Text>
+			{countPerUse && (
+				<Text>
+					{t('card:infoModal.count')}: {countPerUse}
+				</Text>
+			)}
+			<Text>
+				{t('card:infoModal.perDay')}: {countPerDay}
 			</Text>
 			<Text>
-				{t('card:infoModal.count')}: {data.countPerUse}
+				{t('card:infoModal.startDate')}: {dateToFormat(startDate)}
 			</Text>
 			<Text>
-				{t('card:infoModal.perDay')}: {data.countPerDay}
-			</Text>
-			<Text>
-				{t('card:infoModal.startDate')}: {dateToFormat(data.startDate)}
-			</Text>
-			<Text>
-				{t('card:infoModal.endDate')}: {dateToFormat(data.endDate)}
+				{t('card:infoModal.endDate')}: {dateToFormat(endDate)}
 			</Text>
 		</Fragment>
 	)

@@ -1,6 +1,9 @@
 import { ReactElement, RefObject } from 'react'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
+import { EnumMedicineType } from '@app/enums'
+
+import { TypeSelectItem } from './select'
 import { TypeModalHandlers } from './modal'
 import { TypeMedicineWithoutId } from './medicine'
 
@@ -28,6 +31,9 @@ export type TypeMedicineFormContextProps = {
 	closeCountPerDayModal: () => void
 
 	form: TypeMedicineWithoutId
+
+	getIsNeedToFillCountPerUse: (type: EnumMedicineType) => boolean
+	getCountPerUseSelectItems: (type: EnumMedicineType) => TypeSelectItem[]
 
 	changeNameHandler: (name: string) => void
 	changeNameToEmptyHandler: () => void
