@@ -40,10 +40,7 @@ export const styles = StyleSheet.create({
 
 		borderWidth: 1,
 		borderBottomWidth: 0,
-
-		borderRadius: 8,
-		borderBottomLeftRadius: 0,
-		borderBottomRightRadius: 0,
+		borderTopLeftRadius: 8,
 
 		backgroundColor: EnumColor.white,
 	},
