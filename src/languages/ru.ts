@@ -75,6 +75,7 @@ export const ru: TypeLanguage = {
 		endDate: 'Конец приема',
 		notification: 'Уведомления',
 		time: 'Время',
+		color: 'Цвет',
 		modal: {
 			times: {
 				notification: 'Уведомление',

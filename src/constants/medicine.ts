@@ -1,6 +1,6 @@
 import { map, range } from 'lodash'
 
-import { EnumMedicineType } from '@app/enums'
+import { EnumMedicineType, EnumColor } from '@app/enums'
 import { TypeMedicineTime, TypeMedicineWithoutId } from '@app/types'
 
 import {
@@ -13,6 +13,8 @@ import {
 export const MEDICINE_MAX_LENGTH_OF_NAME = 30
 
 export const MEDICINE_TYPE_TRANSLATION_PATH = 'medicine:types'
+
+export const MEDICINE_COLOR_TRANSLATION_PATH = 'medicine:colors'
 
 export const MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS = map(
 	range(1, 51),
@@ -137,6 +139,8 @@ export const MEDICINE_DEFAULT_TIMES_MAP: Record<string, TypeMedicineTime[]> = {
 export const MEDICINE_DEFAULT_TIMES =
 	MEDICINE_DEFAULT_TIMES_MAP[MEDICINE_DEFAULT_COUNT_PER_DAY]
 
+export const MEDICINE_DEFAULT_COLOR = EnumColor.red
+
 export const DEFAULT_EMPTY_MEDICINE: TypeMedicineWithoutId = {
 	name: MEDICINE_DEFAULT_NAME,
 	type: MEDICINE_DEFAULT_TYPE,
@@ -146,4 +150,5 @@ export const DEFAULT_EMPTY_MEDICINE: TypeMedicineWithoutId = {
 	startDate: MEDICINE_DEFAULT_START_DATE,
 	endDate: MEDICINE_DEFAULT_END_DATE,
 	times: MEDICINE_DEFAULT_TIMES,
+	color: MEDICINE_DEFAULT_COLOR,
 }

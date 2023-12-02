@@ -22,6 +22,7 @@ export enum EnumIconName {
 	count = 'count',
 	clear = 'clear',
 	right = 'right',
+	paint = 'paint',
 	search = 'search',
 	remove = 'remove',
 	options = 'options',

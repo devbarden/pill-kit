@@ -16,11 +16,18 @@ export type TypeMedicine = {
 	startDate: number
 	endDate: number
 	times: TypeMedicineTime[]
+	color: string
 }
 
 export type TypeMedicineWithSortableFields = Omit<
 	TypeMedicine,
-	'id' | 'type' | 'countPerUse' | 'countPerDay' | 'notification' | 'times'
+	| 'id'
+	| 'type'
+	| 'countPerUse'
+	| 'countPerDay'
+	| 'notification'
+	| 'times'
+	| 'color'
 >
 
 export type TypeMedicineSortableField = keyof TypeMedicineWithSortableFields

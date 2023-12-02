@@ -72,6 +72,9 @@ const getIconByName = (
 		[EnumIconName.medicine]: (
 			<MaterialCommunityIcons name="flask-empty-plus-outline" {...props} />
 		),
+		[EnumIconName.paint]: (
+			<MaterialCommunityIcons name="format-paint" {...props} />
+		),
 	})[name]
 
 export const Icon: FC<TypeProps> = memo(({ name, ...rest }) => {

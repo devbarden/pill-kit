@@ -68,6 +68,7 @@ export type TypeLanguage = {
 		endDate: string
 		notification: string
 		time: string
+		color: string
 		modal: {
 			times: {
 				notification: string

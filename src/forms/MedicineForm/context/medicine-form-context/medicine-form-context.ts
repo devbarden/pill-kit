@@ -6,6 +6,7 @@ import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
 export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalNameRef: null,
 	modalTypeRef: null,
+	modalColorRef: null,
 	modalCountPerUseRef: null,
 	modalCountPerDayRef: null,
 	modalTimeRef: null,
@@ -19,6 +20,8 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	closeCountPerDayModal: () => {},
 	openTimeModal: () => {},
 	closeTimeModal: () => {},
+	openColorModal: () => {},
+	closeColorModal: () => {},
 
 	form: DEFAULT_EMPTY_MEDICINE,
 
@@ -35,6 +38,7 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	changeEndDateHandler: () => {},
 	changeSwitchToggleHandler: () => {},
 	changeTimeHandler: () => {},
+	changeColorHandler: () => {},
 
 	saveHandler: () => {},
 	backHandler: () => {},

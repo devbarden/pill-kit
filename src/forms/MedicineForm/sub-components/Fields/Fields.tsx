@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Form, Icon, Switch } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
 
+import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
@@ -15,6 +16,7 @@ export const Fields: FC = memo(() => {
 		openCountPerUseModal,
 		openCountPerDayModal,
 		openTimeModal,
+		openColorModal,
 
 		form,
 
@@ -28,6 +30,7 @@ export const Fields: FC = memo(() => {
 	const {
 		name,
 		type,
+		color,
 		countPerUse,
 		countPerDay,
 		startDate,
@@ -127,6 +130,16 @@ export const Fields: FC = memo(() => {
 					text={t('medicineForm:time')}
 					iconName={EnumIconName.time}
 					handler={openTimeModal}
+				/>
+			</Form.Wrapper>
+
+			<Form.Wrapper>
+				<Form.PressableItem
+					text={t('medicineForm:color')}
+					iconName={EnumIconName.paint}
+					handler={openColorModal}
+					withoutArrow={true}
+					value={<ColorBox color={color} />}
 				/>
 			</Form.Wrapper>
 		</Fragment>

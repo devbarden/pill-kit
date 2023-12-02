@@ -27,6 +27,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		id,
 		name,
 		type,
+		color,
 		countPerUse,
 		countPerDay,
 		notification,
@@ -154,11 +155,11 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		}
 
 		if (isActive) {
-			return EnumColor.red
+			return color
 		}
 
 		return EnumColor.red
-	}, [isPast, isFuture, isActive])
+	}, [isPast, isFuture, isActive, color])
 
 	const borderCardColorStyle = useMemo(
 		() => ({ borderColor: cardColor }),

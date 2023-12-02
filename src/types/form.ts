@@ -23,6 +23,7 @@ export type TypeMedicineFormProps = {
 export type TypeMedicineFormContextProps = {
 	modalNameRef: RefObject<TypeModalHandlers> | null
 	modalTypeRef: RefObject<TypeModalHandlers> | null
+	modalColorRef: RefObject<TypeModalHandlers> | null
 	modalCountPerUseRef: RefObject<TypeModalHandlers> | null
 	modalCountPerDayRef: RefObject<TypeModalHandlers> | null
 	modalTimeRef: RefObject<TypeModalHandlers> | null
@@ -36,6 +37,8 @@ export type TypeMedicineFormContextProps = {
 	closeCountPerDayModal: () => void
 	openTimeModal: () => void
 	closeTimeModal: () => void
+	openColorModal: () => void
+	closeColorModal: () => void
 
 	form: TypeMedicineWithoutId
 
@@ -55,6 +58,7 @@ export type TypeMedicineFormContextProps = {
 	changeEndDateHandler: (event: DateTimePickerEvent, date?: Date) => void
 	changeSwitchToggleHandler: () => void
 	changeTimeHandler: (time: TypeMedicineTime, date?: Date) => void
+	changeColorHandler: (color: string) => void
 
 	saveHandler: () => void
 	backHandler: () => void
