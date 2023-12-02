@@ -1,7 +1,8 @@
 import { RouteProp } from '@react-navigation/native'
 
-import { TypeMedicineId } from '@app/types'
 import { EnumStackRoute, EnumTabRoute } from '@app/enums'
+
+import { TypeMedicineId } from './medicine'
 
 export type TypeRoute = EnumTabRoute | EnumStackRoute
 

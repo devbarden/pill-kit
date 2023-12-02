@@ -1,7 +1,7 @@
 import { Fragment, createContext } from 'react'
 
 import { EnumModalType } from '@app/enums'
-import { TypeModalContextProps } from '@app/types'
+import { TypeModalContextProps } from '@app/xtypes'
 
 export const ModalContext = createContext<TypeModalContextProps>({
 	title: '',

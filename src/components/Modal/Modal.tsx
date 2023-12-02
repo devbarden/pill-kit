@@ -2,7 +2,7 @@ import BaseModal from 'react-native-modal'
 import { forwardRef, useMemo, useImperativeHandle } from 'react'
 
 import { EnumModalType } from '@app/enums'
-import { TypeModalProps, TypeModalHandlers } from '@app/types'
+import { TypeModalProps, TypeModalHandlers } from '@app/xtypes'
 
 import { useModalState } from './hooks'
 import { ModalContext } from './context'

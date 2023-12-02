@@ -2,7 +2,7 @@ import { FC, memo, useMemo, useCallback, useContext } from 'react'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { TypeRoute } from '@app/types'
+import { TypeRoute } from '@app/xtypes'
 import { GlobalStateContext } from '@app/context'
 
 import { getIcon } from '../../utils'

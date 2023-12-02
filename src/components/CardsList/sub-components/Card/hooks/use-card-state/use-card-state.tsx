@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 
-import { TypeMedicine } from '@app/types'
+import { TypeMedicine } from '@app/xtypes'
 import { dateToFormat, medicineUtils } from '@app/utils'
 import {
 	EnumColor,

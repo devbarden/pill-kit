@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import { TypeMedicineFormContextProps } from '@app/types'
+import { TypeMedicineFormContextProps } from '@app/xtypes'
 import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
 
 export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({

@@ -2,7 +2,7 @@ import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text } from 'native-base'
 
-import { TypeMedicine } from '@app/types'
+import { TypeMedicine } from '@app/xtypes'
 import { dateToFormat } from '@app/utils'
 import { MEDICINE_TYPE_TRANSLATION_PATH } from '@app/constants'
 

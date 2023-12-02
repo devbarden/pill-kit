@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from 'react'
 import { Pressable, Box, Text, ITextProps } from 'native-base'
 
-import { TypeMedicine } from '@app/types'
+import { TypeMedicine } from '@app/xtypes'
 import { EnumCardListMode, EnumColor } from '@app/enums'
 
 import { useCardState } from './hooks'

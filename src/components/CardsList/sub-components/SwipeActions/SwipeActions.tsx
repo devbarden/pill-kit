@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import { useEndpoints } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
-import { TypeMedicine, TypeModalHandlers } from '@app/types'
+import { TypeMedicine, TypeModalHandlers } from '@app/xtypes'
 
 import { Icon } from '../../../Icon'
 import { Modal } from '../../../Modal'
