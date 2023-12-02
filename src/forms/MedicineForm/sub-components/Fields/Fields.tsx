@@ -135,10 +135,10 @@ export const Fields: FC = memo(() => {
 
 			<Form.Wrapper>
 				<Form.PressableItem
+					withoutChevronRight
 					text={t('medicineForm:color')}
 					iconName={EnumIconName.paint}
 					handler={openColorModal}
-					withoutArrow={true}
 					value={<ColorBox color={color} />}
 				/>
 			</Form.Wrapper>

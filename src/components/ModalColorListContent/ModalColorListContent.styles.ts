@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
 	},
 
 	item: {
+		height: 80,
 		padding: 16,
-		height: 60,
 		borderRadius: 16,
 	},
 })

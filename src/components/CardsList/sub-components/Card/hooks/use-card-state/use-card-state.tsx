@@ -150,11 +150,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 			return EnumColor.darkGrey
 		}
 
-		if (isFuture) {
-			return EnumColor.blue
-		}
-
-		if (isActive) {
+		if (isFuture || isActive) {
 			return color
 		}
 

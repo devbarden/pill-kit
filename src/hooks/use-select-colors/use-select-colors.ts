@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
-import { values } from 'lodash'
+import { values, map } from 'lodash'
 
 import { TypeEnum, TypeSelectColors } from '@app/types'
 
 export const useSelectColors = (entity: TypeEnum) => {
 	const items: TypeSelectColors[] = useMemo(
 		() =>
-			values(entity).map((item) => ({
+			map(values(entity), (item) => ({
 				value: item,
 			})),
 		[entity],
