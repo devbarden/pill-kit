@@ -1,6 +1,6 @@
 import { omit } from 'lodash'
 
-import { TypePossibleMedicine, TypeMedicineWithoutId } from '@app/typess'
+import { TypePossibleMedicine, TypeMedicineWithoutId } from '@app/types'
 
 export const getMedicineWithoutCountPerUseField = (
 	medicine: TypePossibleMedicine | TypeMedicineWithoutId,

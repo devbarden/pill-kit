@@ -4,7 +4,7 @@ import { values, filter, size } from 'lodash'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { TypeModalHandlers } from '@app/typess'
+import { TypeModalHandlers } from '@app/types'
 import { Form, Icon, Modal } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'

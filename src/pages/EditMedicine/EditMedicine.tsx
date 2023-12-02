@@ -5,7 +5,7 @@ import { useRoute } from '@react-navigation/native'
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
 import { Header, Loader } from '@app/components'
-import { TypeEditMedicineRouteProp } from '@app/typess'
+import { TypeEditMedicineRouteProp } from '@app/types'
 
 import { NotFound, RemoveAction } from './sub-components'
 

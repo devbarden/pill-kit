@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 import { DEFAULT_TAB_ROUTE } from '@app/constants'
-import { TypeGlobalStateContextProps } from '@app/typess'
+import { TypeGlobalStateContextProps } from '@app/types'
 
 export const GlobalStateContext = createContext<TypeGlobalStateContextProps>({
 	activeTab: DEFAULT_TAB_ROUTE,

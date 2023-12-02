@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { values } from 'lodash'
 
-import { TypeEnum, TypeSelectItem } from '@app/typess'
+import { TypeEnum, TypeSelectItem } from '@app/types'
 
 export const useSelectItems = (entity: TypeEnum, tPath: string) => {
 	const { t } = useTranslation()

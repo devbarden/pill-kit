@@ -1,4 +1,4 @@
-import { TypeLanguage } from '@app/typess'
+import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ru: TypeLanguage = {

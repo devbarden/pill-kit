@@ -1,5 +1,5 @@
 import { EnumCardFilter } from '@app/enums'
-import { TypeCardFilters } from '@app/typess'
+import { TypeCardFilters } from '@app/types'
 
 export const INITIAL_HISTORY_FILTERS: TypeCardFilters = {
 	[EnumCardFilter.active]: true,

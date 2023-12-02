@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import { TypeHistoryContextProps } from '@app/typess'
+import { TypeHistoryContextProps } from '@app/types'
 import { INITIAL_HISTORY_FILTERS, INITIAL_CARD_SORT_TYPE } from '@app/constants'
 
 export const HistoryContext = createContext<TypeHistoryContextProps>({

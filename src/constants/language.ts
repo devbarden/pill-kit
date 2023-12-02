@@ -1,6 +1,6 @@
 import { entries } from 'lodash'
 
-import { TypeSelectItem } from '@app/typess'
+import { TypeSelectItem } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
 
 export const LANGUAGES: Record<EnumLanguageCode, string> = {

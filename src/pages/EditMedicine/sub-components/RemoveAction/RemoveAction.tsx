@@ -6,7 +6,7 @@ import { Text } from 'native-base'
 import { useEndpoints } from '@app/hooks'
 import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName } from '@app/enums'
-import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/typess'
+import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/types'
 import { Form, Modal } from '@app/components'
 
 export const RemoveAction: FC = memo(() => {

@@ -1,4 +1,4 @@
-import { TypeRoute } from '@app/typess'
+import { TypeRoute } from '@app/types'
 import {
 	EnumColor,
 	EnumIconName,

@@ -3,7 +3,7 @@ import { Pressable } from 'react-native'
 import { Box } from 'native-base'
 
 import { uid } from '@app/utils'
-import { TypeSelectColors } from '@app/typess'
+import { TypeSelectColors } from '@app/types'
 
 import { styles } from './ModalColorListContent.styles'
 

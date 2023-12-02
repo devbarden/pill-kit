@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import { TypeHomeContextProps } from '@app/typess'
+import { TypeHomeContextProps } from '@app/types'
 
 export const HomeContext = createContext<TypeHomeContextProps>({
 	medicines: [],
