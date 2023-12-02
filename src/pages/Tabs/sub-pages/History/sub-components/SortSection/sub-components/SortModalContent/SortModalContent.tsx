@@ -6,7 +6,7 @@ import { Radio } from 'native-base'
 import { Form } from '@app/components'
 import { uid, isLast } from '@app/utils'
 import { CARD_SORT_TYPE } from '@app/constants'
-import { TypeMedicineSortableField } from '@app/xtypes'
+import { TypeMedicineSortableField } from '@app/types'
 
 import { HistoryContext } from '../../../../context'
 

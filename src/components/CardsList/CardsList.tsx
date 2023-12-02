@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { SwipeListView } from 'react-native-swipe-list-view'
 
-import { TypeMedicine } from '@app/xtypes'
+import { TypeMedicine } from '@app/types'
 import { SWIPE_SIZE } from '@app/constants'
 import { EnumCardListMode } from '@app/enums'
 

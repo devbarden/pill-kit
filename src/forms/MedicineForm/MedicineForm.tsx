@@ -1,6 +1,6 @@
 import { FC, Fragment, memo, useMemo } from 'react'
 
-import { TypeMedicineFormProps } from '@app/xtypes'
+import { TypeMedicineFormProps } from '@app/types'
 import { ScrollContent, ContentWrapper } from '@app/components'
 
 import { useMedicineForm } from './hooks'

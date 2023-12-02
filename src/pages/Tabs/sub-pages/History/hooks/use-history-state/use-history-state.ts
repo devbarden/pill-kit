@@ -8,7 +8,7 @@ import {
 	TypeModalHandlers,
 	TypeHistoryContextProps,
 	TypeMedicineSortableField,
-} from '@app/xtypes'
+} from '@app/types'
 
 export const useHistoryState = (): TypeHistoryContextProps => {
 	const sortModalRef = useRef<TypeModalHandlers>(null)

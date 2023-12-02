@@ -3,7 +3,7 @@ import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
 import { uid } from '@app/utils'
-import { TypeSelectItem } from '@app/xtypes'
+import { TypeSelectItem } from '@app/types'
 
 import { styles } from './ModalBottomListContent.styles'
 

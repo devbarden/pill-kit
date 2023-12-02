@@ -7,7 +7,7 @@ import {
 
 import { EnumTabRoute } from '@app/enums'
 import { Navigation } from '@app/components'
-import { TypeNavigatorTab } from '@app/xtypes'
+import { TypeNavigatorTab } from '@app/types'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_TAB_ROUTE } from '@app/constants'
 

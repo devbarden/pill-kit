@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 import { FALLBACK_LANGUAGE_LABEL } from '@app/constants'
-import { TypeSettingsFormContextProps } from '@app/xtypes'
+import { TypeSettingsFormContextProps } from '@app/types'
 
 export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
 	termsOfUseRef: null,

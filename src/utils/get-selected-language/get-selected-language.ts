@@ -1,4 +1,4 @@
-import { TypeSelectItem } from '@app/xtypes'
+import { TypeSelectItem } from '@app/types'
 
 // TODO: move to locale file (like its working for medicine type)
 export const getSelectedLanguage = (

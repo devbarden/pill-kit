@@ -9,7 +9,7 @@ import { Box, Text } from 'native-base'
 import { uid } from '@app/utils'
 import { Icon } from '@app/components'
 import { EnumIconName } from '@app/enums'
-import { TypeMedicineTime } from '@app/xtypes'
+import { TypeMedicineTime } from '@app/types'
 
 import { MedicineFormContext } from '../../../../context'
 
