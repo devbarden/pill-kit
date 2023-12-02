@@ -25,6 +25,10 @@ export const ru: TypeLanguage = {
 
 	analytic: {
 		title: 'Аналитика',
+		progress: {
+			title: 'Прогресс',
+			label: 'Активные лекарства',
+		},
 	},
 
 	history: {

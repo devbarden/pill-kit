@@ -26,6 +26,10 @@ export type TypeLanguage = {
 
 	analytic: {
 		title: string
+		progress: {
+			title: string
+			label: string
+		}
 	}
 
 	history: {
