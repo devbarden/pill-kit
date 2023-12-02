@@ -4,8 +4,8 @@ import { useNavigation } from '@react-navigation/native'
 import { useEndpoints } from '@app/hooks'
 import { EnumStackRoute } from '@app/enums'
 import { TypeHomeContextProps } from '@app/types'
+import { INITIAL_HOME_FILTERS } from '@app/constants'
 import { isDeserted, medicineUtils } from '@app/utils'
-import { INITIAL_CARD_SORT_TYPE, INITIAL_HOME_FILTERS } from '@app/constants'
 
 export const useHomeState = (): TypeHomeContextProps => {
 	const { navigate } = useNavigation()
@@ -18,14 +18,9 @@ export const useHomeState = (): TypeHomeContextProps => {
 		[allMedicines],
 	)
 
-	const sortedMedicines = useMemo(
-		() => medicineUtils.getSortedBy(filteredMedicines, INITIAL_CARD_SORT_TYPE),
-		[filteredMedicines],
-	)
-
 	const isNoMedicines = useMemo(
-		() => isDeserted(sortedMedicines),
-		[sortedMedicines],
+		() => isDeserted(filteredMedicines),
+		[filteredMedicines],
 	)
 
 	const addNewMedicineHandler = useCallback(() => {
@@ -33,7 +28,7 @@ export const useHomeState = (): TypeHomeContextProps => {
 	}, [navigate])
 
 	return {
-		medicines: sortedMedicines,
+		medicines: filteredMedicines,
 		isLoading,
 
 		isNoMedicines,

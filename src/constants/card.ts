@@ -10,4 +10,4 @@ export const CARD_SORT_TYPE: Record<string, TypeMedicineSortableField> = {
 	END_DATE: 'endDate',
 }
 
-export const INITIAL_CARD_SORT_TYPE = CARD_SORT_TYPE.END_DATE
+export const INITIAL_CARD_SORT_TYPE = CARD_SORT_TYPE.START_DATE
