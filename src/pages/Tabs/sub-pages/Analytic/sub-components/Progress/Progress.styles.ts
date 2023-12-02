@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 44,
 		position: 'absolute',
 		zIndex: 1,
-		top: -8,
+		top: -10,
 		maxWidth: '100%',
 		flex: 1,
 
-		paddingHorizontal: 8,
+		paddingHorizontal: 12,
 		borderRadius: 4,
 
 		backgroundColor: EnumColor.green,
