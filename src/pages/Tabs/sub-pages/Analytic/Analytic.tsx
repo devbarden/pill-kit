@@ -26,7 +26,7 @@ export const Analytic: FC = memo(() => {
 	)
 
 	const isProgressChartAvailable = useMemo(
-		() => activeMedicines.length > 0 && activeMedicines.length < 40,
+		() => activeMedicines.length > 0 && activeMedicines.length <= 20,
 		[activeMedicines],
 	)
 
