@@ -21,10 +21,18 @@ type TypeProps = {
 	handler?: () => void
 	iconName?: EnumIconName
 	iconColor?: EnumColor
+	withoutChevronRight?: boolean
 }
 
 export const PressableItem: FC<TypeProps> = memo(
-	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
+	({
+		text,
+		value,
+		handler,
+		iconName,
+		iconColor = EnumColor.darkGrey,
+		withoutChevronRight = false,
+	}) => {
 		const isValueString = useMemo(() => typeof value === 'string', [value])
 
 		const getPressableStyles = useCallback(
@@ -52,11 +60,13 @@ export const PressableItem: FC<TypeProps> = memo(
 
 				<Box style={value ? styles.partlyWidth : {}}>
 					<Box style={styles.value}>
-						<Icon
-							size={20}
-							name={EnumIconName.right}
-							color={EnumColor.darkGrey}
-						/>
+						{!withoutChevronRight && (
+							<Icon
+								size={20}
+								name={EnumIconName.right}
+								color={EnumColor.darkGrey}
+							/>
+						)}
 						{isValidElement(value) && value}
 						{isValueString && (
 							<Box style={styles.fullFlex}>

@@ -1,5 +1,6 @@
 export * from './ModalNameContent'
 export * from './ModalTypeContent'
 export * from './ModalTimeContent'
+export * from './ModalColorContent'
 export * from './ModalCountPerDayContent'
 export * from './ModalCountPerUseContent'

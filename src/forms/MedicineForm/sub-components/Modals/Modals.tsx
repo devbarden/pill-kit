@@ -9,6 +9,7 @@ import {
 	ModalNameContent,
 	ModalTypeContent,
 	ModalTimeContent,
+	ModalColorContent,
 	ModalCountPerUseContent,
 	ModalCountPerDayContent,
 } from './sub-components'
@@ -18,6 +19,7 @@ export const Modals: FC = memo(() => {
 	const {
 		modalNameRef,
 		modalTypeRef,
+		modalColorRef,
 		modalCountPerUseRef,
 		modalCountPerDayRef,
 		modalTimeRef,
@@ -59,6 +61,13 @@ export const Modals: FC = memo(() => {
 				title={t('medicineForm:time')}
 				content={<ModalTimeContent />}
 				ref={modalTimeRef}
+			/>
+
+			<Modal
+				type={EnumModalType.bottom}
+				title={t('medicineForm:color')}
+				content={<ModalColorContent />}
+				ref={modalColorRef}
 			/>
 		</Fragment>
 	)

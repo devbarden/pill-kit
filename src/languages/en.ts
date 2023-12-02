@@ -75,6 +75,7 @@ export const en: TypeLanguage = {
 		endDate: 'End date',
 		notification: 'Notification',
 		time: 'Time',
+		color: 'Color',
 		modal: {
 			times: {
 				notification: 'Notification',

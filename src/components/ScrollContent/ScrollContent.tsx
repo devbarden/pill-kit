@@ -9,7 +9,7 @@ type TypeProps = {
 }
 
 export const ScrollContent: FC<TypeProps> = memo(({ children }) => (
-	<ScrollView>
+	<ScrollView showsVerticalScrollIndicator={false}>
 		<Box style={styles.wrapper}>{children}</Box>
 	</ScrollView>
 ))

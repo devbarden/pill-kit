@@ -44,6 +44,7 @@ export const useMedicineForm = ({
 	const modalCountPerUseRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerDayRef = useRef<TypeModalHandlers>(null)
 	const modalTimeRef = useRef<TypeModalHandlers>(null)
+	const modalColorRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
@@ -201,6 +202,13 @@ export const useMedicineForm = ({
 		[],
 	)
 
+	const changeColorHandler = useCallback((color: string) => {
+		setForm((prev) => ({
+			...prev,
+			color,
+		}))
+	}, [])
+
 	const saveHandler = useCallback(async () => {
 		await submitHandler(form)
 
@@ -213,6 +221,10 @@ export const useMedicineForm = ({
 
 	const openTypeModal = useCallback(() => {
 		modalTypeRef.current?.open()
+	}, [])
+
+	const openColorModal = useCallback(() => {
+		modalColorRef.current?.open()
 	}, [])
 
 	const openCountPerUseModal = useCallback(() => {
@@ -229,6 +241,10 @@ export const useMedicineForm = ({
 
 	const closeTypeModal = useCallback(() => {
 		modalTypeRef.current?.close()
+	}, [])
+
+	const closeColorModal = useCallback(() => {
+		modalColorRef.current?.close()
 	}, [])
 
 	const closeCountPerUseModal = useCallback(() => {
@@ -250,6 +266,7 @@ export const useMedicineForm = ({
 	return {
 		modalNameRef,
 		modalTypeRef,
+		modalColorRef,
 		modalCountPerUseRef,
 		modalCountPerDayRef,
 		modalTimeRef,
@@ -263,6 +280,8 @@ export const useMedicineForm = ({
 		closeCountPerDayModal,
 		openTimeModal,
 		closeTimeModal,
+		openColorModal,
+		closeColorModal,
 
 		form,
 
@@ -279,6 +298,7 @@ export const useMedicineForm = ({
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
 		changeTimeHandler,
+		changeColorHandler,
 
 		saveHandler,
 		backHandler,
