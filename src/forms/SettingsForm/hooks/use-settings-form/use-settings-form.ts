@@ -11,7 +11,7 @@ import {
 	LANGUAGE_SELECT_ITEMS,
 } from '@app/constants'
 import { getSelectedLanguage } from '@app/utils'
-import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
+import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/typess'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { i18n } = useTranslation()

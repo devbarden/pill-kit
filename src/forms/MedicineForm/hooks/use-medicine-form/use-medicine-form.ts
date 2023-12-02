@@ -32,7 +32,7 @@ import {
 	TypeMedicineFormProps,
 	TypeMedicineCountPerUse,
 	TypeMedicineFormContextProps,
-} from '@app/types'
+} from '@app/typess'
 
 export const useMedicineForm = ({
 	data,

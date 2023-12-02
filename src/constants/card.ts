@@ -1,4 +1,4 @@
-import { TypeMedicineSortableField } from '@app/types'
+import { TypeMedicineSortableField } from '@app/typess'
 
 export const CARD_MARGIN = 16
 

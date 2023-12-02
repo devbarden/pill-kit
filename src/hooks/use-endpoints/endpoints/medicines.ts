@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as medicineApi from '@app/api'
 import { toast } from '@app/utils'
-import { TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
+import { TypeMedicineId, TypeMedicineWithoutId } from '@app/typess'
 
 export const useMedicinesEndpoints = () => {
 	const queryClient = useQueryClient()

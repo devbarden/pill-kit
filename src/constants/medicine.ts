@@ -1,7 +1,7 @@
 import { map, range } from 'lodash'
 
 import { EnumMedicineType, EnumColor } from '@app/enums'
-import { TypeMedicineTime, TypeMedicineWithoutId } from '@app/types'
+import { TypeMedicineTime, TypeMedicineWithoutId } from '@app/typess'
 
 import {
 	uid,

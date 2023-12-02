@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
 import { EnumStackRoute } from '@app/enums'
-import { TypeHomeContextProps } from '@app/types'
+import { TypeHomeContextProps } from '@app/typess'
 import { isDeserted, medicineUtils } from '@app/utils'
 import { INITIAL_CARD_SORT_TYPE, INITIAL_HOME_FILTERS } from '@app/constants'
 

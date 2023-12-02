@@ -13,7 +13,7 @@ import {
 	TypeStorageData,
 	TypePossibleMedicine,
 	TypeMedicineWithoutId,
-} from '@app/types'
+} from '@app/typess'
 
 export const initMedicines = async () => {
 	try {

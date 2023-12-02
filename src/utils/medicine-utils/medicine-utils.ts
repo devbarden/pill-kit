@@ -4,7 +4,7 @@ import {
 	TypeCardFilters,
 	TypeMedicine,
 	TypeMedicineSortableField,
-} from '@app/types'
+} from '@app/typess'
 
 type TypeGetMedicineStatusByDateResponse = {
 	isActive: boolean

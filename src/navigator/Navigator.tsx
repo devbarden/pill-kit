@@ -12,7 +12,7 @@ import { GlobalStateContext } from '@app/context'
 import { DEFAULT_STACK_ROUTE } from '@app/constants'
 import { useEndpoints, useGlobalState } from '@app/hooks'
 import { Tabs, CreateMedicine, EditMedicine } from '@app/pages'
-import { TypeNavigatorScreen, TypeNavigatorStack } from '@app/types'
+import { TypeNavigatorScreen, TypeNavigatorStack } from '@app/typess'
 
 import { styles } from './Navigator.styles'
 

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { values } from 'lodash'
 
-import { TypeEnum, TypeSelectColors } from '@app/types'
+import { TypeEnum, TypeSelectColors } from '@app/typess'
 
 export const useSelectColors = (entity: TypeEnum) => {
 	const items: TypeSelectColors[] = useMemo(

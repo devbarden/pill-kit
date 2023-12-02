@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { EnumModalType } from '@app/enums'
-import { TypeModalContextProps, TypeModalProps } from '@app/types'
+import { TypeModalContextProps, TypeModalProps } from '@app/typess'
 
 export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 	const { t } = useTranslation()
