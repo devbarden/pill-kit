@@ -90,7 +90,7 @@ export const Contribution: FC<TypeProps> = memo(
 						squareSize={12}
 						numDays={60}
 						width={140}
-						height={160}
+						height={140}
 						horizontal={false}
 						showMonthLabels={false}
 					/>

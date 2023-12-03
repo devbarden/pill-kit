@@ -30,8 +30,7 @@ export const en: TypeLanguage = {
 			label: 'Active medicines',
 		},
 		contribution: {
-			title:
-				'This graph shows the activity of medicines use over the last and next 2 weeks.',
+			title: 'The activity of medicines use over the last and next 2 weeks',
 		},
 	},
 
