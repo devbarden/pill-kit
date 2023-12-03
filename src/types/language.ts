@@ -30,6 +30,9 @@ export type TypeLanguage = {
 			title: string
 			label: string
 		}
+		bar: {
+			title: string
+		}
 		contribution: {
 			title: string
 		}
