@@ -30,6 +30,9 @@ export type TypeLanguage = {
 			title: string
 			label: string
 		}
+		contribution: {
+			title: string
+		}
 	}
 
 	history: {

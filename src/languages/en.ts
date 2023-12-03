@@ -29,6 +29,10 @@ export const en: TypeLanguage = {
 			title: 'Progress',
 			label: 'Active medicines',
 		},
+		contribution: {
+			title:
+				'This graph shows the activity of medicines use over the last and next 2 weeks.',
+		},
 	},
 
 	history: {

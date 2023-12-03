@@ -7,7 +7,7 @@ import { medicineUtils } from '@app/utils'
 import { ANALYTIC_FILTERS_OF_ACTIVE } from '@app/constants'
 import { ContentWrapper, Header, ScrollContent } from '@app/components'
 
-import { Progress } from './sub-components'
+import { Progress, Contribution } from './sub-components'
 
 export const Analytic: FC = memo(() => {
 	const { t } = useTranslation()
@@ -43,6 +43,11 @@ export const Analytic: FC = memo(() => {
 								size={size}
 							/>
 						)}
+						<Contribution
+							medicines={medicines}
+							isLoading={isLoading}
+							size={size}
+						/>
 					</Fragment>
 				</ScrollContent>
 			</ContentWrapper>
