@@ -27,13 +27,13 @@ export const styles = StyleSheet.create({
 
 	content: {
 		flex: 1,
+		gap: 16,
 		paddingRight: 16,
 		paddingVertical: 16,
 	},
 
 	items: {
 		flex: 1,
-		justifyContent: 'center',
 	},
 
 	item: {
