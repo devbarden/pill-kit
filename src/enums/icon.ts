@@ -34,4 +34,6 @@ export enum EnumIconName {
 	medicine = 'medicine',
 	bell = 'notification',
 	bellOff = 'notificationOff',
+	data = 'data',
+	noData = 'noData',
 }

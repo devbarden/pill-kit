@@ -41,6 +41,12 @@ const getIconByName = (
 		[EnumIconName.bandage]: <Ionicons name="bandage-outline" {...props} />,
 		[EnumIconName.medical]: <AntDesign name="medicinebox" {...props} />,
 		[EnumIconName.time]: <Ionicons name="ios-time-outline" {...props} />,
+		[EnumIconName.data]: (
+			<MaterialCommunityIcons name="database-outline" {...props} />
+		),
+		[EnumIconName.noData]: (
+			<MaterialCommunityIcons name="database-off-outline" {...props} />
+		),
 		[EnumIconName.mail]: <Octicons name="mail" {...props} />,
 		[EnumIconName.home]: <Octicons name="home" {...props} />,
 		[EnumIconName.info]: <Octicons name="info" {...props} />,

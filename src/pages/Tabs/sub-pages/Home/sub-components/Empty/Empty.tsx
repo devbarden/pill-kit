@@ -23,11 +23,11 @@ export const Empty: FC = memo(() => {
 				<Box style={styles.infoWrapper}>
 					<Pressable style={styles.info} onPress={addHandler}>
 						<Icon
-							name={EnumIconName.medicine}
-							size={128}
+							name={EnumIconName.noData}
+							size={96}
 							color={EnumColor.darkGrey}
 						/>
-						<Text fontSize="lg" textAlign="center" color={EnumColor.darkGrey}>
+						<Text fontSize="xl" textAlign="center" color={EnumColor.darkGrey}>
 							{t('home:empty')}
 						</Text>
 					</Pressable>

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import {
 	createStackNavigator,
@@ -8,6 +8,7 @@ import {
 import '@app/i18n'
 import { Loader } from '@app/components'
 import { EnumStackRoute } from '@app/enums'
+import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_STACK_ROUTE } from '@app/constants'
 import { useEndpoints, useGlobalState } from '@app/hooks'
@@ -29,7 +30,7 @@ const screenOptions: StackNavigationOptions = {
 	cardStyle: styles.wrapper,
 }
 
-export const Navigator: FC = memo(() => {
+export const Navigator: FC = withErrorBoundary(() => {
 	const { useInitMedicines } = useEndpoints()
 	const { isLoading } = useInitMedicines()
 

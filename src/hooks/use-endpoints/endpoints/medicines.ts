@@ -38,7 +38,6 @@ export const useMedicinesEndpoints = () => {
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
 					medicineApi.setMedicine(medicine),
 				onSuccess: () => {
-					toast.success(t('notifications:medicines.add'))
 					invalidateMedicines()
 				},
 				onError: () => {
@@ -51,7 +50,6 @@ export const useMedicinesEndpoints = () => {
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
 					medicineApi.editMedicine(id, medicine),
 				onSuccess: () => {
-					toast.success(t('notifications:medicines.edit'))
 					invalidateMedicines()
 				},
 				onError: () => {
@@ -63,7 +61,6 @@ export const useMedicinesEndpoints = () => {
 			useMutation({
 				mutationFn: (id: TypeMedicineId) => medicineApi.removeMedicine(id),
 				onSuccess: () => {
-					toast.success(t('notifications:medicines.remove'))
 					invalidateMedicines()
 				},
 				onError: () => {

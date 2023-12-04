@@ -5,6 +5,10 @@ import { TypeMedicineSortableField } from './medicine'
 export type TypeLanguage = {
 	main: {
 		appTitle: string
+		error: {
+			title: string
+			reset: string
+		}
 	}
 
 	home: {

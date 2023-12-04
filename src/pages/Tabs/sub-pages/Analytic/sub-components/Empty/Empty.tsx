@@ -16,11 +16,11 @@ export const Empty: FC = memo(() => {
 			<ContentWrapper withHorizontalPaddings withVerticalPaddings>
 				<Box style={styles.wrapper}>
 					<Icon
-						name={EnumIconName.analytic}
-						size={128}
-						color={EnumColor.transparentGrey}
+						name={EnumIconName.noData}
+						size={96}
+						color={EnumColor.darkGrey}
 					/>
-					<Text fontSize="2xl" textAlign="center" color={EnumColor.darkGrey}>
+					<Text fontSize="xl" textAlign="center" color={EnumColor.darkGrey}>
 						{t('analytic:empty')}
 					</Text>
 				</Box>

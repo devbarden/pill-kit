@@ -4,6 +4,10 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 export const en: TypeLanguage = {
 	main: {
 		appTitle: 'Pill Kit',
+		error: {
+			title: `Something's broken. Please contact us via email`,
+			reset: 'Reset error',
+		},
 	},
 
 	home: {
@@ -25,7 +29,7 @@ export const en: TypeLanguage = {
 
 	analytic: {
 		title: 'Analytics',
-		empty: 'No data. Please add a medicine to see your analytics',
+		empty: 'Please add a medicine to see your analytics',
 		progress: {
 			title: 'Progress',
 			label: 'Active medicines',
@@ -37,7 +41,7 @@ export const en: TypeLanguage = {
 			title: 'The indicator of the use of different types of medicines',
 		},
 		contribution: {
-			title: 'The activity of medicines use over the last and next 2 weeks',
+			title: 'The activity of medicines use over the last 2 months',
 		},
 	},
 

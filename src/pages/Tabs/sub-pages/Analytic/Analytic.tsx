@@ -1,7 +1,7 @@
 import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ContentWrapper, Header, ScrollContent } from '@app/components'
+import { Header, ScrollContent, ContentWrapper } from '@app/components'
 
 import { useAnalyticState } from './hooks'
 import { AnalyticContext } from './context'
