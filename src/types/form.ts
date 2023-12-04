@@ -29,6 +29,7 @@ export type TypeMedicineFormContextProps = {
 	modalTimeRef: RefObject<TypeModalHandlers> | null
 
 	openNameModal: () => void
+	closeNameModal: () => void
 	openTypeModal: () => void
 	closeTypeModal: () => void
 	openCountPerUseModal: () => void

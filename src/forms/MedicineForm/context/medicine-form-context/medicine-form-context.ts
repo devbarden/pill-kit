@@ -12,6 +12,7 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalTimeRef: null,
 
 	openNameModal: () => {},
+	closeNameModal: () => {},
 	openTypeModal: () => {},
 	closeTypeModal: () => {},
 	openCountPerUseModal: () => {},

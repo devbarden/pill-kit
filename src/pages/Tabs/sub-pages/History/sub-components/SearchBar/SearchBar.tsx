@@ -62,6 +62,7 @@ export const SearchBar: FC = memo(() => {
 				maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
 				value={searchValue}
 				onChangeText={onChangeSearchValueHandler}
+				returnKeyType="search"
 				placeholder={t('components:input.placeholder.search')}
 				leftElement={<Icon name={EnumIconName.search} {...commonIconProps} />}
 				rightElement={

@@ -239,6 +239,10 @@ export const useMedicineForm = ({
 		modalTimeRef.current?.open()
 	}, [])
 
+	const closeNameModal = useCallback(() => {
+		modalNameRef.current?.close()
+	}, [])
+
 	const closeTypeModal = useCallback(() => {
 		modalTypeRef.current?.close()
 	}, [])
@@ -272,6 +276,7 @@ export const useMedicineForm = ({
 		modalTimeRef,
 
 		openNameModal,
+		closeNameModal,
 		openTypeModal,
 		closeTypeModal,
 		openCountPerUseModal,

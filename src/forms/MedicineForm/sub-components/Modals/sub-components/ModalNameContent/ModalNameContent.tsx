@@ -12,7 +12,7 @@ import { styles } from './ModalNameContent.styles'
 
 export const ModalNameContent: FC = memo(() => {
 	const { t } = useTranslation()
-	const { form, changeNameHandler, changeNameToEmptyHandler } =
+	const { form, changeNameHandler, changeNameToEmptyHandler, closeNameModal } =
 		useContext(MedicineFormContext)
 
 	const getPressableStyles = useCallback(
@@ -30,6 +30,8 @@ export const ModalNameContent: FC = memo(() => {
 				value={form.name}
 				onChangeText={changeNameHandler}
 				maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
+				onSubmitEditing={closeNameModal}
+				returnKeyType="done"
 				placeholder={t('components:input.placeholder.required')}
 				leftElement={
 					<Icon name={EnumIconName.text} color={EnumColor.darkGrey} size={20} />
