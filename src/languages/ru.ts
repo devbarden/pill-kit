@@ -25,12 +25,17 @@ export const ru: TypeLanguage = {
 
 	analytic: {
 		title: 'Аналитика',
+		empty:
+			'Нет данных. Пожалуйста, добавьте лекарство чтобы увидеть свою аналитику',
 		progress: {
 			title: 'Прогресс',
 			label: 'Активные лекарства',
 		},
 		bar: {
 			title: 'Количество принятых лекарств за последние 5 лет',
+		},
+		pie: {
+			title: 'Показатель использования различных видов лекарственных средств',
 		},
 		contribution: {
 			title:
@@ -68,7 +73,6 @@ export const ru: TypeLanguage = {
 	},
 
 	settingsForm: {
-		upgrade: 'Улучшить приложение',
 		donate: 'Пожертвовать',
 		rate: 'Оценить приложение',
 		language: 'Язык',

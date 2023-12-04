@@ -1,37 +1,34 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { BarChart } from 'react-native-chart-kit'
 import { Box, Text, Skeleton } from 'native-base'
 import {
 	map,
 	range,
-	flatten,
 	reduce,
 	filter,
+	flatten,
 	entries,
-	toString,
 	forEach,
+	groupBy,
+	toString,
 } from 'lodash'
 
 import { EnumColor } from '@app/enums'
-import { TypeMedicine } from '@app/types'
+
+import { AnalyticContext } from '../../context'
 
 import { styles } from './Bar.styles'
 
-type TypeProps = {
-	medicines: TypeMedicine[]
-	isLoading: boolean
-	size: number
-}
-
-export const Bar: FC<TypeProps> = memo(({ medicines, isLoading, size }) => {
+export const Bar: FC = memo(() => {
 	const { t } = useTranslation()
+	const { allMedicines, isLoading, screenWidth } = useContext(AnalyticContext)
 
 	const hiddenSpaceSize = useMemo(() => 80, [])
 
 	const chartWidth = useMemo(
-		() => size * 2 + hiddenSpaceSize / 2,
-		[size, hiddenSpaceSize],
+		() => screenWidth + hiddenSpaceSize / 2,
+		[screenWidth, hiddenSpaceSize],
 	)
 
 	const chartConfig = useMemo(
@@ -46,7 +43,7 @@ export const Bar: FC<TypeProps> = memo(({ medicines, isLoading, size }) => {
 	const barChartData = useMemo(() => {
 		const currentYear = new Date().getFullYear()
 
-		const rangesList = map(medicines, ({ startDate, endDate }) => {
+		const rangesList = map(allMedicines, ({ startDate, endDate }) => {
 			const from = new Date(startDate).getFullYear()
 			const to = new Date(endDate).getFullYear() + 1
 
@@ -62,25 +59,21 @@ export const Bar: FC<TypeProps> = memo(({ medicines, isLoading, size }) => {
 
 		const last5yearsMap = reduce(
 			last5yearsList,
-			(acc, year) => ({ ...acc, [year]: 0 }),
+			(acc, year) => ({ ...acc, [year]: [] }),
 			{},
 		)
 
-		const countOfMedicinesMap = reduce(
-			filteredList,
-			(acc, currentValue) => ({
-				...acc,
-				[currentValue]: (acc[currentValue] | 0) + 1,
-			}),
-			{ ...last5yearsMap } as Record<string, number>,
-		)
+		const countOfMedicinesMap: Record<string, number[]> = {
+			...last5yearsMap,
+			...groupBy(filteredList),
+		}
 
 		const labels: string[] = []
 		const data: number[] = []
 
-		forEach(entries(countOfMedicinesMap), ([year, value]) => {
+		forEach(entries(countOfMedicinesMap), ([year, { length }]) => {
 			labels.push(toString(year))
-			data.push(value)
+			data.push(length)
 		})
 
 		return {
@@ -91,12 +84,12 @@ export const Bar: FC<TypeProps> = memo(({ medicines, isLoading, size }) => {
 				},
 			],
 		}
-	}, [medicines])
+	}, [allMedicines])
 
 	if (isLoading) {
 		return (
 			<Box style={styles.wrapper}>
-				<Skeleton h={size} />
+				<Skeleton h={240} />
 			</Box>
 		)
 	}
@@ -108,8 +101,8 @@ export const Bar: FC<TypeProps> = memo(({ medicines, isLoading, size }) => {
 			</Text>
 			<BarChart
 				fromZero
-				yAxisLabel=""
-				yAxisSuffix=""
+				yAxisLabel="auto"
+				yAxisSuffix="auto"
 				showValuesOnTopOfBars
 				withInnerLines={false}
 				withHorizontalLabels={false}

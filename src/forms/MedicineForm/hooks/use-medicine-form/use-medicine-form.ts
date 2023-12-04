@@ -155,7 +155,7 @@ export const useMedicineForm = ({
 		(event: DateTimePickerEvent, date?: Date) => {
 			if (!date) return
 
-			const startDate = date.getTime()
+			const startDate = date.setHours(0, 0, 0, 0)
 
 			setForm((prev) => ({
 				...prev,
@@ -170,7 +170,7 @@ export const useMedicineForm = ({
 		(event: DateTimePickerEvent, date?: Date) => {
 			if (!date) return
 
-			const endDate = date.getTime()
+			const endDate = date.setHours(23, 59, 59, 999)
 
 			setForm((prev) => ({
 				...prev,

@@ -26,11 +26,15 @@ export type TypeLanguage = {
 
 	analytic: {
 		title: string
+		empty: string
 		progress: {
 			title: string
 			label: string
 		}
 		bar: {
+			title: string
+		}
+		pie: {
 			title: string
 		}
 		contribution: {
@@ -60,7 +64,6 @@ export type TypeLanguage = {
 	}
 
 	settingsForm: {
-		upgrade: string
 		donate: string
 		rate: string
 		language: string

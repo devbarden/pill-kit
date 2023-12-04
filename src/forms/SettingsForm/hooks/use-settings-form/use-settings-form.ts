@@ -5,7 +5,6 @@ import { Linking } from 'react-native'
 import {
 	RATE_LINK,
 	DONATE_LINK,
-	UPGRADE_LINK,
 	MAIL_TO_LINK,
 	FALLBACK_LANGUAGE_LABEL,
 	LANGUAGE_SELECT_ITEMS,
@@ -36,10 +35,6 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		},
 		[i18n],
 	)
-
-	const upgradeHandler = useCallback(() => {
-		Linking.openURL(UPGRADE_LINK)
-	}, [])
 
 	const mailHandler = useCallback(() => {
 		Linking.openURL(MAIL_TO_LINK)
@@ -78,7 +73,6 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 
 		changeLanguageHandler,
 
-		upgradeHandler,
 		mailHandler,
 		donateHandler,
 		rateHandler,

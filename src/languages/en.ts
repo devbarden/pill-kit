@@ -25,12 +25,16 @@ export const en: TypeLanguage = {
 
 	analytic: {
 		title: 'Analytics',
+		empty: 'No data. Please add a medicine to see your analytics',
 		progress: {
 			title: 'Progress',
 			label: 'Active medicines',
 		},
 		bar: {
 			title: 'The number of medications taken in the last 5 years',
+		},
+		pie: {
+			title: 'The indicator of the use of different types of medicines',
 		},
 		contribution: {
 			title: 'The activity of medicines use over the last and next 2 weeks',
@@ -67,7 +71,6 @@ export const en: TypeLanguage = {
 	},
 
 	settingsForm: {
-		upgrade: 'Upgrade app',
 		donate: 'Donate',
 		rate: 'Rate the App',
 		language: 'Language',

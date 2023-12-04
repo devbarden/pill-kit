@@ -12,7 +12,6 @@ export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
 
 	changeLanguageHandler: () => {},
 
-	upgradeHandler: () => {},
 	mailHandler: () => {},
 	donateHandler: () => {},
 	rateHandler: () => {},

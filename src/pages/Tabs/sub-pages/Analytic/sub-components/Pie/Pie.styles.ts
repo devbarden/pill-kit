@@ -4,47 +4,41 @@ import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
+		flex: 1,
 		overflow: 'hidden',
-		flexDirection: 'row',
 		marginHorizontal: 16,
 		borderRadius: 16,
 		backgroundColor: EnumColor.white,
 	},
 
-	label: {
-		marginHorizontal: 44,
-		position: 'absolute',
-		zIndex: 1,
-		top: -10,
-		maxWidth: '100%',
-		flex: 1,
-
-		paddingHorizontal: 12,
-		borderRadius: 4,
-
-		backgroundColor: EnumColor.green,
+	content: {
+		flexDirection: 'row',
 	},
 
-	content: {
+	title: {
 		flex: 1,
-		gap: 16,
-		paddingRight: 16,
-		paddingVertical: 16,
+		padding: 16,
+		paddingLeft: 0,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
+	info: {
+		borderWidth: 1,
+		padding: 16,
+		gap: 8,
 	},
 
 	items: {
 		flex: 1,
+		paddingBottom: 16,
+		paddingHorizontal: 16,
 	},
 
 	item: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		gap: 16,
-	},
-
-	name: {
 		flex: 1,
 		gap: 4,
+		maxWidth: '70%',
 		flexDirection: 'row',
 		alignItems: 'center',
 	},

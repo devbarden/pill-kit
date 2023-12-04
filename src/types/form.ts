@@ -76,7 +76,6 @@ export type TypeSettingsFormContextProps = {
 
 	changeLanguageHandler: (language: string) => void
 
-	upgradeHandler: () => void
 	mailHandler: () => void
 	donateHandler: () => void
 	rateHandler: () => void

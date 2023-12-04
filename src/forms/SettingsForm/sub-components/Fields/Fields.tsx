@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { Form } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
 
-import { ProLabel } from './sub-components'
 import { SettingsFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
@@ -12,7 +11,6 @@ export const Fields: FC = memo(() => {
 	const {
 		selectedLanguage,
 
-		upgradeHandler,
 		mailHandler,
 		donateHandler,
 		rateHandler,
@@ -25,13 +23,6 @@ export const Fields: FC = memo(() => {
 	return (
 		<Fragment>
 			<Form.Wrapper>
-				<Form.CustomItem text={t('settingsForm:upgrade')}>
-					{/* TODO: add another design */}
-					<ProLabel handler={upgradeHandler} />
-				</Form.CustomItem>
-			</Form.Wrapper>
-
-			<Form.Wrapper>
 				<Form.PressableItem
 					iconName={EnumIconName.language}
 					iconColor={EnumColor.darkBlue}
@@ -39,14 +30,18 @@ export const Fields: FC = memo(() => {
 					handler={openLanguageModal}
 					value={selectedLanguage}
 				/>
+
 				<Form.Separator />
+
 				<Form.PressableItem
 					iconName={EnumIconName.mail}
 					iconColor={EnumColor.black}
 					text={t('settingsForm:contact')}
 					handler={mailHandler}
 				/>
-				<Form.Separator />
+			</Form.Wrapper>
+
+			<Form.Wrapper>
 				<Form.PressableItem
 					iconName={EnumIconName.remove}
 					iconColor={EnumColor.red}
@@ -62,7 +57,9 @@ export const Fields: FC = memo(() => {
 					text={t('settingsForm:donate')}
 					handler={donateHandler}
 				/>
+
 				<Form.Separator />
+
 				<Form.PressableItem
 					iconName={EnumIconName.star}
 					iconColor={EnumColor.blue}
