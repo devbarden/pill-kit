@@ -23,4 +23,5 @@ export enum EnumMedicineColor {
 	black = 'rgb(53, 53, 53)',
 	orange = 'rgb(238, 114, 20)',
 	purple = 'rgb(177, 94, 255)',
+	champagne = 'rgb(247, 231, 206)',
 }

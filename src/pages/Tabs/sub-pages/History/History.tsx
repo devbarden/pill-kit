@@ -19,7 +19,7 @@ export const History: FC = memo(() => {
 
 	return (
 		<HistoryContext.Provider value={state}>
-			<Header title={t('history:title')} />
+			<Header withoutBorder title={t('history:title')} />
 			<ContentWrapper
 				withStretch={false}
 				withVerticalPaddings

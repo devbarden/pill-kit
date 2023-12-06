@@ -4,12 +4,10 @@ import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		height: 52,
-		width: '100%',
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		backgroundColor: EnumColor.grey,
-		borderColor: EnumColor.darkGrey,
+		backgroundColor: EnumColor.white,
+		borderColor: EnumColor.lightGrey,
 		borderTopWidth: 1,
 	},
 })

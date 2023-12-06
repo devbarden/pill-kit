@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ru: TypeLanguage = {
 	main: {
-		appTitle: 'Система Лекарств',
+		appTitle: 'Pill Kit',
 		error: {
 			title:
 				'Что-то сломалось. Пожалуйста, свяжитесь с нами по электронной почте',
@@ -18,11 +18,11 @@ export const ru: TypeLanguage = {
 	},
 
 	createMedicine: {
-		title: 'Добавить лекарство',
+		title: 'Добавить',
 	},
 
 	editMedicine: {
-		title: 'Редактировать лекарство',
+		title: 'Редактировать',
 		notFound: 'Лекарство не найдено',
 		back: 'Вернуться назад',
 		remove: 'Удалить лекарство',
@@ -138,6 +138,7 @@ export const ru: TypeLanguage = {
 		types: {
 			[EnumMedicineType.pill]: 'Таблетки / Капсулы',
 			[EnumMedicineType.liquid]: 'Настойка / Сироп',
+			[EnumMedicineType.injection]: 'Укол',
 			[EnumMedicineType.cream]: 'Крем / Мазь / Гель',
 			[EnumMedicineType.drops]: 'Капли',
 			[EnumMedicineType.candles]: 'Свечи',

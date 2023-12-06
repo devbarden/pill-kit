@@ -36,7 +36,11 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 		<Box style={styles.wrapper}>
 			<Modal
 				title={name}
-				content={<Text>{t('modal:removeMedicine.description')}</Text>}
+				content={
+					<Text color={EnumColor.black}>
+						{t('modal:removeMedicine.description')}
+					</Text>
+				}
 				closeText={t('components:btn.cancel')}
 				submit={{
 					handler: deleteHandler,

@@ -2,13 +2,6 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		flex: 1,
-		gap: 16,
-	},
-
-	item: {
-		width: '100%',
-		height: 64,
-		borderRadius: 12,
+		marginBottom: 64,
 	},
 })

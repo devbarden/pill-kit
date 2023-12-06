@@ -34,7 +34,8 @@ export const ModalColorListContent: FC<TypeProps> = memo(
 								backgroundColor: color,
 							},
 						]}
-						onPress={() => pressHandler(color)}></Pressable>
+						onPress={() => pressHandler(color)}
+					/>
 				))}
 			</Box>
 		)

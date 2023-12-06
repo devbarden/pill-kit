@@ -30,6 +30,7 @@ export const Modals: FC = memo(() => {
 	return (
 		<Fragment>
 			<Modal
+				withGreyBackgroundColor
 				type={EnumModalType.top}
 				title={t('medicineForm:name')}
 				content={<ModalNameContent />}

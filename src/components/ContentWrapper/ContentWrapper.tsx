@@ -24,11 +24,11 @@ export const ContentWrapper: FC<TypeProps> = memo(
 			style={[
 				styles.wrapper,
 				{
-					flex: withStretch ? 1 : 0,
 					paddingVertical: withVerticalPaddings ? 16 : 0,
 					paddingHorizontal: withHorizontalPaddings ? 16 : 0,
 					backgroundColor: withBackground ? EnumColor.grey : 'inherit',
 				},
+				withStretch ? { flex: 1 } : {},
 			]}>
 			{children}
 		</Box>

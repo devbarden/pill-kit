@@ -17,9 +17,9 @@ export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
 	return (
 		<MedicineFormContext.Provider value={state}>
 			<Modals />
+			<Header />
 			<ContentWrapper withHorizontalPaddings>
 				<ScrollContent>
-					<Header />
 					<Fields />
 					<Fragment>{additionalActions}</Fragment>
 					<Actions />

@@ -1,7 +1,7 @@
 export enum EnumIconName {
-	check = 'check',
 	pill = 'pill',
 	liquid = 'liquid',
+	injection = 'injection',
 	cream = 'cream',
 	drops = 'drops',
 	candles = 'candles',
@@ -37,4 +37,5 @@ export enum EnumIconName {
 	bellOff = 'notificationOff',
 	data = 'data',
 	noData = 'noData',
+	check = 'check',
 }

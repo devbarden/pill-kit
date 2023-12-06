@@ -7,24 +7,24 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		maxHeight: '50%',
 		borderRadius: 16,
-		backgroundColor: EnumColor.grey,
+		backgroundColor: EnumColor.white,
 	},
 
 	title: {
 		alignItems: 'center',
 		borderBottomWidth: 1,
-		borderColor: EnumColor.darkGrey,
+		borderColor: EnumColor.grey,
 	},
 
 	actions: {
 		flexDirection: 'row',
 		borderTopWidth: 1,
-		borderColor: EnumColor.darkGrey,
+		borderColor: EnumColor.grey,
 	},
 
 	separator: {
 		borderRightWidth: 1,
-		borderColor: EnumColor.darkGrey,
+		borderColor: EnumColor.grey,
 	},
 
 	fullScreen: {
@@ -47,11 +47,11 @@ export const styles = StyleSheet.create({
 	},
 
 	pressedBg: {
-		backgroundColor: EnumColor.transparentGrey,
+		backgroundColor: EnumColor.grey,
 	},
 
 	defaultBg: {
-		backgroundColor: EnumColor.grey,
+		backgroundColor: EnumColor.white,
 	},
 
 	bottomLeftRadius: {

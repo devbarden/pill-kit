@@ -6,6 +6,6 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		borderTopWidth: 1,
-		borderColor: EnumColor.darkGrey,
+		borderColor: EnumColor.transparentGrey,
 	},
 })

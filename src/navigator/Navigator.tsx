@@ -32,6 +32,10 @@ const screenOptions: StackNavigationOptions = {
 
 const modalOptions: StackNavigationOptions = {
 	presentation: 'modal',
+	cardStyle: {
+		borderTopLeftRadius: 24,
+		borderTopRightRadius: 24,
+	},
 }
 
 export const Navigator: FC = withErrorBoundary(() => {

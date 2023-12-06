@@ -83,6 +83,7 @@ export const SearchBar: FC = memo(() => {
 			/>
 
 			<Modal
+				withGreyBackgroundColor
 				title={t('history:filtersTitle')}
 				content={<FiltersModalContent />}
 				ref={filtersModalRef}

@@ -1,3 +1,4 @@
+import { EnumColor } from '@app/enums'
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
@@ -6,6 +7,11 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		gap: 16,
+		paddingVertical: 8,
+		paddingHorizontal: 16,
+		borderBottomWidth: 1,
+		borderColor: EnumColor.lightGrey,
+		backgroundColor: EnumColor.white,
 	},
 
 	backAction: {

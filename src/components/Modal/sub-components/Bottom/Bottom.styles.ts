@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
 		alignItems: 'center',
 		gap: 16,
 		padding: 16,
+		paddingBottom: 0,
 	},
 
 	children: {

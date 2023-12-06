@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/bottom-tabs'
 
 import { EnumTabRoute } from '@app/enums'
-import { Navigation } from '@app/components'
+import { Navigation, SafeArea } from '@app/components'
 import { TypeNavigatorTab } from '@app/types'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_TAB_ROUTE } from '@app/constants'
@@ -38,33 +38,35 @@ export const Tabs: FC = memo(() => {
 	)
 
 	return (
-		<Tab.Navigator
-			initialRouteName={DEFAULT_TAB_ROUTE}
-			screenOptions={screenOptions}
-			tabBar={() => <Navigation />}>
-			<Tab.Screen
-				name={EnumTabRoute.home}
-				component={Home}
-				{...commonListenersProps}
-			/>
+		<SafeArea>
+			<Tab.Navigator
+				initialRouteName={DEFAULT_TAB_ROUTE}
+				screenOptions={screenOptions}
+				tabBar={() => <Navigation />}>
+				<Tab.Screen
+					name={EnumTabRoute.home}
+					component={Home}
+					{...commonListenersProps}
+				/>
 
-			<Tab.Screen
-				name={EnumTabRoute.analytic}
-				component={Analytic}
-				{...commonListenersProps}
-			/>
+				<Tab.Screen
+					name={EnumTabRoute.analytic}
+					component={Analytic}
+					{...commonListenersProps}
+				/>
 
-			<Tab.Screen
-				name={EnumTabRoute.history}
-				component={History}
-				{...commonListenersProps}
-			/>
+				<Tab.Screen
+					name={EnumTabRoute.history}
+					component={History}
+					{...commonListenersProps}
+				/>
 
-			<Tab.Screen
-				name={EnumTabRoute.settings}
-				component={Settings}
-				{...commonListenersProps}
-			/>
-		</Tab.Navigator>
+				<Tab.Screen
+					name={EnumTabRoute.settings}
+					component={Settings}
+					{...commonListenersProps}
+				/>
+			</Tab.Navigator>
+		</SafeArea>
 	)
 })

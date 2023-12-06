@@ -7,5 +7,5 @@ import { EnumColor } from '@app/enums'
 export const ModalTermsOfUseContent: FC = memo(() => {
 	const { t } = useTranslation()
 
-	return <Text color={EnumColor.darkGrey}>{t('termsOfUse:description')}</Text>
+	return <Text color={EnumColor.black}>{t('termsOfUse:description')}</Text>
 })

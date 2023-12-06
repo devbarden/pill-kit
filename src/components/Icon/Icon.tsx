@@ -1,5 +1,6 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
 import {
+	Fontisto,
 	Octicons,
 	Ionicons,
 	AntDesign,
@@ -24,11 +25,11 @@ const getIconByName = (
 	props: TypeAdditionalProps,
 ): ReactElement =>
 	({
-		[EnumIconName.check]: <Ionicons name="checkmark" {...props} />,
 		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
 		[EnumIconName.liquid]: (
 			<MaterialCommunityIcons name="cup-water" {...props} />
 		),
+		[EnumIconName.injection]: <Fontisto name="injection-syringe" {...props} />,
 		[EnumIconName.cream]: (
 			<MaterialCommunityIcons name="liquid-spot" {...props} />
 		),
@@ -66,6 +67,7 @@ const getIconByName = (
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
 		[EnumIconName.remove]: <Ionicons name="md-trash-bin" {...props} />,
 		[EnumIconName.options]: <Ionicons name="options" {...props} />,
+		[EnumIconName.check]: <Ionicons name="checkmark" {...props} />,
 		[EnumIconName.count]: (
 			<MaterialCommunityIcons name="format-list-numbered" {...props} />
 		),

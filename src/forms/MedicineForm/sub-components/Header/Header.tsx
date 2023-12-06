@@ -15,7 +15,7 @@ export const Header: FC = memo(() => {
 		useContext(MedicineFormContext)
 
 	const btnTextColor = useMemo(
-		() => (isSaveBtnDisabled ? EnumColor.darkGrey : EnumColor.blue),
+		() => (isSaveBtnDisabled ? EnumColor.darkGrey : EnumColor.red),
 		[isSaveBtnDisabled],
 	)
 
@@ -24,14 +24,14 @@ export const Header: FC = memo(() => {
 			<Pressable style={styles.backAction} onPress={backHandler}>
 				<Icon name={EnumIconName.back} size={32} />
 				<Box style={styles.title}>
-					<Text fontSize="xl" numberOfLines={1}>
+					<Text fontSize="md" numberOfLines={1}>
 						{title}
 					</Text>
 				</Box>
 			</Pressable>
 			<Pressable style={styles.saveAction} onPress={saveHandler}>
 				<Text
-					fontSize="xl"
+					fontSize="md"
 					fontWeight="bold"
 					numberOfLines={1}
 					color={btnTextColor}>

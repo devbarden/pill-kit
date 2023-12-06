@@ -17,11 +17,11 @@ export const en: TypeLanguage = {
 	},
 
 	createMedicine: {
-		title: 'Create Medicine',
+		title: 'Create',
 	},
 
 	editMedicine: {
-		title: 'Edit Medicine',
+		title: 'Edit',
 		notFound: 'Not Found',
 		back: 'Go Back',
 		remove: 'Remove',
@@ -137,6 +137,7 @@ export const en: TypeLanguage = {
 		types: {
 			[EnumMedicineType.pill]: 'Pills / Capsules',
 			[EnumMedicineType.liquid]: 'Tincture / Syrup',
+			[EnumMedicineType.injection]: 'Injection',
 			[EnumMedicineType.cream]: 'Cream / Ointment / Gel',
 			[EnumMedicineType.drops]: 'Drops',
 			[EnumMedicineType.candles]: 'Candles',

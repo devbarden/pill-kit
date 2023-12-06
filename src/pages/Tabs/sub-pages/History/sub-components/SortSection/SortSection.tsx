@@ -42,6 +42,7 @@ export const SortSection: FC = memo(() => {
 			</Pressable>
 
 			<Modal
+				withGreyBackgroundColor
 				title={t('sortSection:modal.title')}
 				closeText={t('components:btn.cancel')}
 				content={<SortModalContent />}

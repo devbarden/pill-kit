@@ -16,6 +16,7 @@ export const Default: FC = memo(() => {
 		content,
 		onFullScreen,
 		withContentScroll,
+		withGreyBackgroundColor,
 
 		onSubmit,
 		closeInside,
@@ -35,8 +36,16 @@ export const Default: FC = memo(() => {
 	)
 
 	const contentStyles = useMemo(
-		() => [styles.paddingHorizontal, onFullScreen ? styles.fullFlex : {}],
-		[onFullScreen],
+		() => [
+			styles.paddingHorizontal,
+			onFullScreen ? styles.fullFlex : {},
+			{
+				backgroundColor: withGreyBackgroundColor
+					? EnumColor.grey
+					: EnumColor.white,
+			},
+		],
+		[onFullScreen, withGreyBackgroundColor],
 	)
 
 	const getCloseBtnStyles = useCallback(

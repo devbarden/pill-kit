@@ -9,9 +9,8 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		paddingHorizontal: 16,
-		borderBottomWidth: 1,
-		borderColor: EnumColor.darkGrey,
-		backgroundColor: EnumColor.grey,
+		borderColor: EnumColor.lightGrey,
+		backgroundColor: EnumColor.white,
 	},
 
 	back: {
@@ -26,6 +25,6 @@ export const styles = StyleSheet.create({
 
 	title: {
 		flex: 1,
-		paddingBottom: 16,
+		paddingBottom: 8,
 	},
 })

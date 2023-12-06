@@ -1,6 +1,7 @@
 import { FC, ReactElement, memo, useCallback, useContext } from 'react'
-import { Box, Pressable, Text } from 'native-base'
+import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+import { Box, Pressable, Text } from 'native-base'
 
 import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName } from '@app/enums'
@@ -10,13 +11,22 @@ import { Icon } from '../Icon'
 import { styles } from './Header.styles'
 
 type TypeProps = {
-	title: string
+	title?: string
 	action?: ReactElement
+	withLogo?: boolean
 	withGoBack?: boolean
+	withoutBorder?: boolean
 }
 
 export const Header: FC<TypeProps> = memo(
-	({ title, withGoBack = false, action = null }) => {
+	({
+		title,
+		action = null,
+		withLogo = false,
+		withGoBack = false,
+		withoutBorder = false,
+	}) => {
+		const { t } = useTranslation()
 		const { navigate } = useNavigation()
 		const { activeTab } = useContext(GlobalStateContext)
 
@@ -25,20 +35,33 @@ export const Header: FC<TypeProps> = memo(
 		}, [navigate, activeTab])
 
 		return (
-			<Box style={styles.wrapper}>
+			<Box
+				style={[styles.wrapper, { borderBottomWidth: withoutBorder ? 0 : 1 }]}>
 				{withGoBack && (
 					<Pressable style={styles.back} onPress={backHandler}>
 						<Icon name={EnumIconName.back} size={28} color={EnumColor.red} />
 					</Pressable>
 				)}
 				<Box style={styles.title}>
-					<Text
-						fontSize="xl"
-						textAlign={withGoBack || action ? 'left' : 'center'}
-						numberOfLines={1}
-						color={EnumColor.red}>
-						{title}
-					</Text>
+					{withLogo && (
+						<Text
+							fontSize="lg"
+							fontWeight="bold"
+							textAlign="left"
+							numberOfLines={1}
+							color={EnumColor.black}>
+							{t('main:appTitle')}
+						</Text>
+					)}
+					{title && (
+						<Text
+							fontSize="lg"
+							textAlign={withGoBack || action ? 'left' : 'center'}
+							numberOfLines={1}
+							color={EnumColor.black}>
+							{title}
+						</Text>
+					)}
 				</Box>
 				{action && <Box style={styles.action}>{action}</Box>}
 			</Box>
