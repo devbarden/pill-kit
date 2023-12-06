@@ -1,5 +1,6 @@
-import { FC, memo, useMemo } from 'react'
-import { Pressable, Box, Text, ITextProps } from 'native-base'
+import { FC, memo, useCallback, useMemo } from 'react'
+import { Pressable } from 'react-native'
+import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
 import { EnumCardListMode, EnumColor } from '@app/enums'
@@ -14,8 +15,6 @@ type TypeProps = {
 
 export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 	const {
-		isPast,
-
 		name,
 		howManyToTakeDaily,
 		dateText,
@@ -27,50 +26,63 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 		notificationIcon,
 
 		cardColor,
-		borderCardColorStyle,
-		backgroundCardColorStyle,
 
 		onCardPress,
 	} = useCardState(data, mode)
 
-	const cardStyles = useMemo(
-		() => [styles.card, backgroundCardColorStyle],
-		[backgroundCardColorStyle],
-	)
+	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
+
+	const borderStyles = useMemo(() => ({ borderColor: cardColor }), [cardColor])
 
 	const baseTextProps: ITextProps = useMemo(
 		() => ({
-			color: EnumColor.white,
+			color: EnumColor.black,
 			numberOfLines: 1,
 			ellipsizeMode: 'tail',
 		}),
 		[],
 	)
 
+	const rightContentStyles = useMemo(
+		() => [styles.info, isModeV1 ? styles.flexEnd : styles.justifyCenter],
+		[isModeV1],
+	)
+
+	const getCardStyles = useCallback(
+		() => [styles.card, borderStyles],
+		[borderStyles],
+	)
+
 	return (
-		<Pressable style={cardStyles} onPress={onCardPress}>
-			<Box style={styles.iconWrapper}>{medicineIcon}</Box>
-
+		<Pressable style={getCardStyles} onPress={onCardPress}>
 			<Box style={styles.content}>
-				<Text fontSize="lg" {...baseTextProps}>
-					{name}
-				</Text>
+				<Box style={styles.iconWrapper}>{medicineIcon}</Box>
 
-				{mode === EnumCardListMode.v1 && (
-					<Text fontSize="xs" {...baseTextProps}>
-						{howManyToTakeDaily}
+				<Box style={[styles.info, styles.flexStart]}>
+					<Text fontSize="md" {...baseTextProps}>
+						{name}
 					</Text>
-				)}
 
-				<Text fontSize="xs" {...baseTextProps}>
-					{dateText}
-				</Text>
+					{isModeV1 && (
+						<Text fontSize="xs" {...baseTextProps}>
+							{howManyToTakeDaily}
+						</Text>
+					)}
+				</Box>
 			</Box>
 
-			{!isPast && notificationIcon}
+			<Box style={styles.fullHeight}>
+				<Box style={rightContentStyles}>
+					{isModeV1 && notificationIcon}
+
+					<Text fontSize="xs" {...baseTextProps}>
+						{dateText}
+					</Text>
+				</Box>
+			</Box>
 
 			{isNeedLabel && (
-				<Box style={[styles.label, borderCardColorStyle]}>
+				<Box style={[styles.label, borderStyles]}>
 					<Text fontSize="xs" {...baseTextProps} color={cardColor}>
 						{labelText}
 					</Text>

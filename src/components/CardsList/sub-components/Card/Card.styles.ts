@@ -3,44 +3,69 @@ import { StyleSheet } from 'react-native'
 import { EnumColor } from '@app/enums'
 import { CARD_MARGIN } from '@app/constants'
 
-const commonSpace = 16
+const SPACE = 16
+const HALF_SPACE = SPACE / 2
+const RADIUS = 4
 
 export const styles = StyleSheet.create({
 	card: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		gap: commonSpace,
-		padding: commonSpace,
+		gap: SPACE,
+		padding: SPACE,
 		marginTop: CARD_MARGIN,
 		marginHorizontal: CARD_MARGIN,
-		borderRadius: 16,
+		borderRadius: RADIUS,
+		borderTopWidth: HALF_SPACE,
+		backgroundColor: EnumColor.white,
 	},
 
 	iconWrapper: {
 		width: 24,
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'flex-start',
 	},
 
 	content: {
 		flex: 1,
-		paddingRight: commonSpace * 2,
+		gap: SPACE,
+		flexDirection: 'row',
+	},
+
+	fullHeight: {
+		height: '100%',
+	},
+
+	info: {
+		flex: 1,
+		gap: HALF_SPACE,
+		justifyContent: 'space-between',
+	},
+
+	flexStart: {
+		alignItems: 'flex-start',
+	},
+
+	flexEnd: {
+		alignItems: 'flex-end',
+	},
+
+	justifyCenter: {
+		justifyContent: 'center',
 	},
 
 	label: {
 		position: 'absolute',
-		top: -8,
-		right: 46,
+		top: -SPACE,
+		right: 0,
 
-		maxWidth: 120,
+		maxWidth: 160,
 
-		paddingVertical: 2,
-		paddingHorizontal: 8,
+		paddingHorizontal: HALF_SPACE,
 
-		borderWidth: 1,
-		borderBottomWidth: 0,
-		borderTopLeftRadius: 8,
+		borderTopLeftRadius: RADIUS,
+		borderTopRightRadius: RADIUS,
 
 		backgroundColor: EnumColor.white,
 	},

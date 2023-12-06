@@ -15,13 +15,12 @@ type TypeProps = {
 export const CardsList: FC<TypeProps> = memo(
 	({ items, mode = EnumCardListMode.v1 }) => (
 		<SwipeListView
+			disableRightSwipe
+			stopRightSwipe={-SWIPE_SIZE}
+			rightOpenValue={-SWIPE_SIZE}
 			data={items}
 			renderItem={({ item }) => <Card data={item} mode={mode} />}
 			renderHiddenItem={({ item }) => <SwipeActions data={item} />}
-			stopLeftSwipe={SWIPE_SIZE}
-			leftOpenValue={SWIPE_SIZE}
-			stopRightSwipe={-SWIPE_SIZE}
-			rightOpenValue={-SWIPE_SIZE}
 		/>
 	),
 )

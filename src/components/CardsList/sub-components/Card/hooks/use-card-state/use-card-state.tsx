@@ -122,29 +122,6 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		return false
 	}, [mode, isActive])
 
-	const commonIconProps = useMemo(
-		() => ({
-			color: EnumColor.white,
-			size: 24,
-		}),
-		[],
-	)
-
-	const medicineIcon = useMemo(
-		() => <Icon name={EnumIconName[type]} {...commonIconProps} />,
-		[type, commonIconProps],
-	)
-
-	const notificationIcon = useMemo(
-		() => (
-			<Icon
-				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
-				{...commonIconProps}
-			/>
-		),
-		[notification, commonIconProps],
-	)
-
 	const cardColor = useMemo(() => {
 		if (isPast) {
 			return EnumColor.darkGrey
@@ -157,14 +134,20 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		return EnumColor.red
 	}, [isPast, isFuture, isActive, color])
 
-	const borderCardColorStyle = useMemo(
-		() => ({ borderColor: cardColor }),
-		[cardColor],
+	const medicineIcon = useMemo(
+		() => <Icon name={EnumIconName[type]} color={cardColor} size={24} />,
+		[type, cardColor],
 	)
 
-	const backgroundCardColorStyle = useMemo(
-		() => ({ backgroundColor: cardColor }),
-		[cardColor],
+	const notificationIcon = useMemo(
+		() => (
+			<Icon
+				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
+				color={cardColor}
+				size={16}
+			/>
+		),
+		[notification, cardColor],
 	)
 
 	const onCardPress = useCallback(() => {
@@ -187,8 +170,6 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		notificationIcon,
 
 		cardColor,
-		borderCardColorStyle,
-		backgroundCardColorStyle,
 
 		onCardPress,
 	}

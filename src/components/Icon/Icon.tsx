@@ -63,7 +63,7 @@ const getIconByName = (
 		[EnumIconName.back]: <Octicons name="chevron-left" {...props} />,
 		[EnumIconName.bellOff]: <Octicons name="bell-slash" {...props} />,
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
-		[EnumIconName.remove]: <Ionicons name="trash" {...props} />,
+		[EnumIconName.remove]: <Ionicons name="md-trash-bin" {...props} />,
 		[EnumIconName.options]: <Ionicons name="options" {...props} />,
 		[EnumIconName.count]: (
 			<MaterialCommunityIcons name="format-list-numbered" {...props} />
