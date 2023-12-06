@@ -183,17 +183,21 @@ export const useMedicineForm = ({
 	)
 
 	const changeTimeHandler = useCallback(
-		(time: TypeMedicineTime, date?: Date) => {
+		({ id }: TypeMedicineTime, date?: Date) => {
 			if (!date) return
+
+			const time = {
+				hours: date?.getHours(),
+				minutes: date?.getMinutes(),
+			}
 
 			setForm((prev) => ({
 				...prev,
 				times: prev.times.map((prevTime) =>
-					prevTime.id === time.id
+					prevTime.id === id
 						? {
 								...prevTime,
-								hours: date?.getHours(),
-								minutes: date?.getMinutes(),
+								...time,
 						  }
 						: prevTime,
 				),

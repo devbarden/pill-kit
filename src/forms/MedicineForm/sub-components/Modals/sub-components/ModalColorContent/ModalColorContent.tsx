@@ -1,6 +1,6 @@
-import { FC, memo, useContext } from 'react'
+import { FC, memo, useContext, useMemo } from 'react'
+import { values } from 'lodash'
 
-import { useSelectColors } from '@app/hooks'
 import { EnumMedicineColor } from '@app/enums'
 import { ModalColorListContent } from '@app/components'
 
@@ -9,11 +9,12 @@ import { MedicineFormContext } from '../../../../context'
 export const ModalColorContent: FC = memo(() => {
 	const { changeColorHandler, closeColorModal } =
 		useContext(MedicineFormContext)
-	const { items: medicineColorSelectItems } = useSelectColors(EnumMedicineColor)
+
+	const medicineColors = useMemo(() => values(EnumMedicineColor), [])
 
 	return (
 		<ModalColorListContent
-			items={medicineColorSelectItems}
+			items={medicineColors}
 			handler={changeColorHandler}
 			close={closeColorModal}
 		/>
