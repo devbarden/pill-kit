@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { Linking } from 'react-native'
 
 import {
-	RATE_LINK,
-	DONATE_LINK,
 	MAIL_TO_LINK,
 	FALLBACK_LANGUAGE_LABEL,
 	LANGUAGE_SELECT_ITEMS,
@@ -40,14 +38,6 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		Linking.openURL(MAIL_TO_LINK)
 	}, [])
 
-	const donateHandler = useCallback(() => {
-		Linking.openURL(DONATE_LINK)
-	}, [])
-
-	const rateHandler = useCallback(() => {
-		Linking.openURL(RATE_LINK)
-	}, [])
-
 	const openLanguageModal = useCallback(() => {
 		modalLanguageRef.current?.open()
 	}, [])
@@ -74,8 +64,6 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		changeLanguageHandler,
 
 		mailHandler,
-		donateHandler,
-		rateHandler,
 
 		openLanguageModal,
 		closeLanguageModal,

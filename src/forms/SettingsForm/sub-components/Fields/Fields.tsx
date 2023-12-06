@@ -12,8 +12,6 @@ export const Fields: FC = memo(() => {
 		selectedLanguage,
 
 		mailHandler,
-		donateHandler,
-		rateHandler,
 
 		openLanguageModal,
 		openRemoveDataModal,
@@ -47,24 +45,6 @@ export const Fields: FC = memo(() => {
 					iconColor={EnumColor.red}
 					text={t('settingsForm:clearData')}
 					handler={openRemoveDataModal}
-				/>
-			</Form.Wrapper>
-
-			<Form.Wrapper>
-				<Form.PressableItem
-					iconName={EnumIconName.gift}
-					iconColor={EnumColor.red}
-					text={t('settingsForm:donate')}
-					handler={donateHandler}
-				/>
-
-				<Form.Separator />
-
-				<Form.PressableItem
-					iconName={EnumIconName.star}
-					iconColor={EnumColor.blue}
-					text={t('settingsForm:rate')}
-					handler={rateHandler}
 				/>
 			</Form.Wrapper>
 

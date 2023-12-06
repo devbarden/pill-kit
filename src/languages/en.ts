@@ -75,8 +75,6 @@ export const en: TypeLanguage = {
 	},
 
 	settingsForm: {
-		donate: 'Donate',
-		rate: 'Rate the App',
 		language: 'Language',
 		contact: 'Contact',
 		clearData: 'Clear all data',

@@ -68,8 +68,6 @@ export type TypeLanguage = {
 	}
 
 	settingsForm: {
-		donate: string
-		rate: string
 		language: string
 		contact: string
 		clearData: string

@@ -76,8 +76,6 @@ export const ru: TypeLanguage = {
 	},
 
 	settingsForm: {
-		donate: 'Пожертвовать',
-		rate: 'Оценить приложение',
 		language: 'Язык',
 		contact: 'Связь с нами',
 		clearData: 'Удалить все данные',

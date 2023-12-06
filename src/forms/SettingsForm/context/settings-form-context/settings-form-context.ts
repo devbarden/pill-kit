@@ -13,8 +13,6 @@ export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
 	changeLanguageHandler: () => {},
 
 	mailHandler: () => {},
-	donateHandler: () => {},
-	rateHandler: () => {},
 
 	openLanguageModal: () => {},
 	closeLanguageModal: () => {},
