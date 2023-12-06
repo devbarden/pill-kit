@@ -6,7 +6,7 @@ import {
 	useContext,
 	useCallback,
 } from 'react'
-import { map } from 'lodash'
+import { entries, filter, map } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
@@ -19,6 +19,7 @@ import {
 	isAnyFieldEmpty,
 	getFirstValueFromSelectItems,
 	getMedicineWithoutCountPerUseField,
+	isDeserted,
 } from '@app/utils'
 import {
 	MEDICINE_DEFAULT_TIMES_MAP,
@@ -34,35 +35,99 @@ import {
 	TypeMedicineFormContextProps,
 } from '@app/types'
 
-export const useMedicineForm = ({
-	data,
-	submitHandler,
-	isSubmitting,
-}: TypeMedicineFormProps): TypeMedicineFormContextProps => {
+export const useMedicineForm = (
+	props: TypeMedicineFormProps,
+): TypeMedicineFormContextProps => {
 	const modalNameRef = useRef<TypeModalHandlers>(null)
 	const modalTypeRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerUseRef = useRef<TypeModalHandlers>(null)
 	const modalCountPerDayRef = useRef<TypeModalHandlers>(null)
 	const modalTimeRef = useRef<TypeModalHandlers>(null)
 	const modalColorRef = useRef<TypeModalHandlers>(null)
+	const modalValidationRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
 	const { activeTab } = useContext(GlobalStateContext)
+	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
-
-	const isCancelBtnDisabled = useMemo(() => isSubmitting, [isSubmitting])
 
 	const formToValidate = useMemo(
 		() => getMedicineWithoutCountPerUseField(form),
 		[form],
 	)
 
+	const emptyFields = useMemo(() => {
+		const formEntries = entries(formToValidate)
+		const formEmptyEntries = filter(formEntries, ([field, value]) =>
+			isDeserted(value),
+		)
+		const fields = map(formEmptyEntries, ([field]) => field)
+
+		return fields
+	}, [formToValidate])
+
 	const isSaveBtnDisabled = useMemo(
 		() => isSubmitting || isAnyFieldEmpty(formToValidate),
 		[isSubmitting, formToValidate],
 	)
+
+	const openNameModal = useCallback(() => {
+		modalNameRef.current?.open()
+	}, [])
+
+	const closeNameModal = useCallback(() => {
+		modalNameRef.current?.close()
+	}, [])
+
+	const openTypeModal = useCallback(() => {
+		modalTypeRef.current?.open()
+	}, [])
+
+	const closeTypeModal = useCallback(() => {
+		modalTypeRef.current?.close()
+	}, [])
+
+	const openCountPerUseModal = useCallback(() => {
+		modalCountPerUseRef.current?.open()
+	}, [])
+
+	const closeCountPerUseModal = useCallback(() => {
+		modalCountPerUseRef.current?.close()
+	}, [])
+
+	const openCountPerDayModal = useCallback(() => {
+		modalCountPerDayRef.current?.open()
+	}, [])
+
+	const closeCountPerDayModal = useCallback(() => {
+		modalCountPerDayRef.current?.close()
+	}, [])
+
+	const openTimeModal = useCallback(() => {
+		modalTimeRef.current?.open()
+	}, [])
+
+	const closeTimeModal = useCallback(() => {
+		modalTimeRef.current?.close()
+	}, [])
+
+	const openColorModal = useCallback(() => {
+		modalColorRef.current?.open()
+	}, [])
+
+	const closeColorModal = useCallback(() => {
+		modalColorRef.current?.close()
+	}, [])
+
+	const openValidationModal = useCallback(() => {
+		modalValidationRef.current?.open()
+	}, [])
+
+	const closeValidationModal = useCallback(() => {
+		modalValidationRef.current?.close()
+	}, [])
 
 	const getCountPerUseValueByType = useCallback(
 		(countPerUse: TypeMedicineCountPerUse, type: EnumMedicineType) => {
@@ -104,10 +169,6 @@ export const useMedicineForm = ({
 			type === EnumMedicineType.drops,
 		[],
 	)
-
-	const backHandler = useCallback(() => {
-		navigate(activeTab)
-	}, [navigate, activeTab])
 
 	const changeNameHandler = useCallback((name: string) => {
 		setForm((prev) => ({ ...prev, name }))
@@ -213,59 +274,25 @@ export const useMedicineForm = ({
 		}))
 	}, [])
 
+	const backHandler = useCallback(() => {
+		navigate(activeTab)
+	}, [navigate, activeTab])
+
+	const disableHandler = useCallback(() => {
+		openValidationModal()
+	}, [openValidationModal])
+
 	const saveHandler = useCallback(async () => {
+		if (isSaveBtnDisabled) {
+			disableHandler()
+
+			return
+		}
+
 		await submitHandler(form)
 
 		backHandler()
-	}, [submitHandler, form, backHandler])
-
-	const openNameModal = useCallback(() => {
-		modalNameRef.current?.open()
-	}, [])
-
-	const openTypeModal = useCallback(() => {
-		modalTypeRef.current?.open()
-	}, [])
-
-	const openColorModal = useCallback(() => {
-		modalColorRef.current?.open()
-	}, [])
-
-	const openCountPerUseModal = useCallback(() => {
-		modalCountPerUseRef.current?.open()
-	}, [])
-
-	const openCountPerDayModal = useCallback(() => {
-		modalCountPerDayRef.current?.open()
-	}, [])
-
-	const openTimeModal = useCallback(() => {
-		modalTimeRef.current?.open()
-	}, [])
-
-	const closeNameModal = useCallback(() => {
-		modalNameRef.current?.close()
-	}, [])
-
-	const closeTypeModal = useCallback(() => {
-		modalTypeRef.current?.close()
-	}, [])
-
-	const closeColorModal = useCallback(() => {
-		modalColorRef.current?.close()
-	}, [])
-
-	const closeCountPerUseModal = useCallback(() => {
-		modalCountPerUseRef.current?.close()
-	}, [])
-
-	const closeCountPerDayModal = useCallback(() => {
-		modalCountPerDayRef.current?.close()
-	}, [])
-
-	const closeTimeModal = useCallback(() => {
-		modalTimeRef.current?.close()
-	}, [])
+	}, [submitHandler, form, backHandler, isSaveBtnDisabled, disableHandler])
 
 	useEffect(() => {
 		setForm((prev) => ({ ...prev, ...data }))
@@ -278,6 +305,13 @@ export const useMedicineForm = ({
 		modalCountPerUseRef,
 		modalCountPerDayRef,
 		modalTimeRef,
+		modalValidationRef,
+
+		...props,
+
+		form,
+		emptyFields,
+		isSaveBtnDisabled,
 
 		openNameModal,
 		closeNameModal,
@@ -291,8 +325,8 @@ export const useMedicineForm = ({
 		closeTimeModal,
 		openColorModal,
 		closeColorModal,
-
-		form,
+		openValidationModal,
+		closeValidationModal,
 
 		getCountPerUseValueByType,
 		getCountPerUseSelectItems,
@@ -309,10 +343,7 @@ export const useMedicineForm = ({
 		changeTimeHandler,
 		changeColorHandler,
 
-		saveHandler,
 		backHandler,
-
-		isCancelBtnDisabled,
-		isSaveBtnDisabled,
+		saveHandler,
 	}
 }

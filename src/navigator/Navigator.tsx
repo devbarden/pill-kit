@@ -30,6 +30,10 @@ const screenOptions: StackNavigationOptions = {
 	cardStyle: styles.wrapper,
 }
 
+const modalOptions: StackNavigationOptions = {
+	presentation: 'modal',
+}
+
 export const Navigator: FC = withErrorBoundary(() => {
 	const { useInitMedicines } = useEndpoints()
 	const { isLoading } = useInitMedicines()
@@ -49,11 +53,13 @@ export const Navigator: FC = withErrorBoundary(() => {
 					<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
 
 					<Stack.Screen
+						options={modalOptions}
 						name={EnumStackRoute.createMedicine}
 						component={CreateMedicine}
 					/>
 
 					<Stack.Screen
+						options={modalOptions}
 						name={EnumStackRoute.editMedicine}
 						component={EditMedicine}
 					/>

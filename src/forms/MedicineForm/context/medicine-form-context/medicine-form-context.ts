@@ -10,6 +10,16 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalCountPerUseRef: null,
 	modalCountPerDayRef: null,
 	modalTimeRef: null,
+	modalValidationRef: null,
+
+	data: DEFAULT_EMPTY_MEDICINE,
+	title: '',
+	submitHandler: () => {},
+	isSubmitting: false,
+
+	form: DEFAULT_EMPTY_MEDICINE,
+	emptyFields: [],
+	isSaveBtnDisabled: false,
 
 	openNameModal: () => {},
 	closeNameModal: () => {},
@@ -23,8 +33,8 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	closeTimeModal: () => {},
 	openColorModal: () => {},
 	closeColorModal: () => {},
-
-	form: DEFAULT_EMPTY_MEDICINE,
+	openValidationModal: () => {},
+	closeValidationModal: () => {},
 
 	getCountPerUseValueByType: () => '',
 	getCountPerUseSelectItems: () => [],
@@ -41,9 +51,6 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	changeTimeHandler: () => {},
 	changeColorHandler: () => {},
 
-	saveHandler: () => {},
 	backHandler: () => {},
-
-	isCancelBtnDisabled: false,
-	isSaveBtnDisabled: false,
+	saveHandler: () => {},
 })

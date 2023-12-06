@@ -30,7 +30,6 @@ export const Fields: FC = memo(() => {
 	const {
 		name,
 		type,
-		color,
 		countPerUse,
 		countPerDay,
 		startDate,
@@ -139,7 +138,7 @@ export const Fields: FC = memo(() => {
 					text={t('medicineForm:color')}
 					iconName={EnumIconName.paint}
 					handler={openColorModal}
-					value={<ColorBox color={color} />}
+					value={<ColorBox />}
 				/>
 			</Form.Wrapper>
 		</Fragment>

@@ -98,6 +98,10 @@ export const en: TypeLanguage = {
 				notification: 'Notification',
 			},
 		},
+		validation: {
+			title: 'Some fields are not filled in',
+			text: 'Please fill next fields:',
+		},
 	},
 
 	removeDataAlert: {
@@ -145,6 +149,7 @@ export const en: TypeLanguage = {
 
 	components: {
 		btn: {
+			ok: 'OK',
 			add: 'Add',
 			save: 'Save',
 			back: 'Back',

@@ -1,4 +1,5 @@
 export * from './Input'
+export * from './Action'
 export * from './Wrapper'
 export * from './Separator'
 export * from './RadioItem'

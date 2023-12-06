@@ -91,6 +91,10 @@ export type TypeLanguage = {
 				notification: string
 			}
 		}
+		validation: {
+			title: string
+			text: string
+		}
 	}
 
 	removeDataAlert: {
@@ -129,6 +133,7 @@ export type TypeLanguage = {
 
 	components: {
 		btn: {
+			ok: string
 			add: string
 			save: string
 			back: string

@@ -99,6 +99,10 @@ export const ru: TypeLanguage = {
 				notification: 'Уведомление',
 			},
 		},
+		validation: {
+			title: 'Некоторые поля не заполнены',
+			text: 'Пожалуйста, заполните следующие поля:',
+		},
 	},
 
 	removeDataAlert: {
@@ -146,6 +150,7 @@ export const ru: TypeLanguage = {
 
 	components: {
 		btn: {
+			ok: 'Окей',
 			add: 'Добавить',
 			save: 'Сохранить',
 			back: 'Вернуться',

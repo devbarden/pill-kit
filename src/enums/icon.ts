@@ -1,4 +1,5 @@
 export enum EnumIconName {
+	check = 'check',
 	pill = 'pill',
 	liquid = 'liquid',
 	cream = 'cream',

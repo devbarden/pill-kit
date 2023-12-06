@@ -5,7 +5,7 @@ import { ScrollContent, ContentWrapper } from '@app/components'
 
 import { useMedicineForm } from './hooks'
 import { MedicineFormContext } from './context'
-import { Modals, Fields, Actions } from './sub-components'
+import { Modals, Header, Fields, Actions } from './sub-components'
 
 export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
 	const state = useMedicineForm(props)
@@ -19,11 +19,12 @@ export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
 			<Modals />
 			<ContentWrapper withHorizontalPaddings>
 				<ScrollContent>
+					<Header />
 					<Fields />
 					<Fragment>{additionalActions}</Fragment>
+					<Actions />
 				</ScrollContent>
 			</ContentWrapper>
-			<Actions />
 		</MedicineFormContext.Provider>
 	)
 })

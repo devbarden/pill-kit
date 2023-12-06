@@ -10,6 +10,7 @@ import {
 	ModalTypeContent,
 	ModalTimeContent,
 	ModalColorContent,
+	ModalValidationContent,
 	ModalCountPerUseContent,
 	ModalCountPerDayContent,
 } from './sub-components'
@@ -23,6 +24,7 @@ export const Modals: FC = memo(() => {
 		modalCountPerUseRef,
 		modalCountPerDayRef,
 		modalTimeRef,
+		modalValidationRef,
 	} = useContext(MedicineFormContext)
 
 	return (
@@ -68,6 +70,13 @@ export const Modals: FC = memo(() => {
 				title={t('medicineForm:color')}
 				content={<ModalColorContent />}
 				ref={modalColorRef}
+			/>
+
+			<Modal
+				title={t('medicineForm:validation.title')}
+				content={<ModalValidationContent />}
+				ref={modalValidationRef}
+				closeText={t('components:btn.ok')}
 			/>
 		</Fragment>
 	)

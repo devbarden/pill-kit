@@ -1,12 +1,12 @@
-import { FC, memo } from 'react'
+import { FC, memo, useContext } from 'react'
 import { Box } from 'native-base'
+
+import { MedicineFormContext } from '../../../../context'
 
 import { styles } from './ColorBox.styles'
 
-type TypeProps = {
-	color: string
-}
+export const ColorBox: FC = memo(() => {
+	const { form } = useContext(MedicineFormContext)
 
-export const ColorBox: FC<TypeProps> = memo(({ color }) => (
-	<Box style={[styles.wrapper, { backgroundColor: color }]} />
-))
+	return <Box style={[styles.wrapper, { backgroundColor: form.color }]} />
+})

@@ -14,19 +14,26 @@ import {
 export type TypeMedicineFormProps = {
 	data: TypeMedicineWithoutId
 
+	title: string
+
 	submitHandler: (medicine: TypeMedicineWithoutId) => void
 	isSubmitting: boolean
 
 	additionalActions?: ReactElement | ReactElement[]
 }
 
-export type TypeMedicineFormContextProps = {
+export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 	modalNameRef: RefObject<TypeModalHandlers> | null
 	modalTypeRef: RefObject<TypeModalHandlers> | null
 	modalColorRef: RefObject<TypeModalHandlers> | null
 	modalCountPerUseRef: RefObject<TypeModalHandlers> | null
 	modalCountPerDayRef: RefObject<TypeModalHandlers> | null
 	modalTimeRef: RefObject<TypeModalHandlers> | null
+	modalValidationRef: RefObject<TypeModalHandlers> | null
+
+	form: TypeMedicineWithoutId
+	emptyFields: string[]
+	isSaveBtnDisabled: boolean
 
 	openNameModal: () => void
 	closeNameModal: () => void
@@ -40,8 +47,8 @@ export type TypeMedicineFormContextProps = {
 	closeTimeModal: () => void
 	openColorModal: () => void
 	closeColorModal: () => void
-
-	form: TypeMedicineWithoutId
+	openValidationModal: () => void
+	closeValidationModal: () => void
 
 	getCountPerUseValueByType: (
 		countPerUse: TypeMedicineCountPerUse,
@@ -61,11 +68,8 @@ export type TypeMedicineFormContextProps = {
 	changeTimeHandler: (time: TypeMedicineTime, date?: Date) => void
 	changeColorHandler: (color: string) => void
 
-	saveHandler: () => void
 	backHandler: () => void
-
-	isCancelBtnDisabled: boolean
-	isSaveBtnDisabled: boolean
+	saveHandler: () => void
 }
 
 export type TypeSettingsFormContextProps = {

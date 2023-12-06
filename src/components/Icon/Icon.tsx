@@ -24,6 +24,7 @@ const getIconByName = (
 	props: TypeAdditionalProps,
 ): ReactElement =>
 	({
+		[EnumIconName.check]: <Ionicons name="checkmark" {...props} />,
 		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
 		[EnumIconName.liquid]: (
 			<MaterialCommunityIcons name="cup-water" {...props} />
