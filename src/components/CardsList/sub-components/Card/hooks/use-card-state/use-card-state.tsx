@@ -6,13 +6,10 @@ import { TypeMedicine } from '@app/types'
 import { dateToFormat, medicineUtils } from '@app/utils'
 import {
 	EnumColor,
-	EnumIconName,
 	EnumStackRoute,
 	EnumCardListMode,
 	EnumMedicineType,
 } from '@app/enums'
-
-import { Icon } from '../../../../../Icon'
 
 export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	const { t } = useTranslation()
@@ -134,22 +131,6 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		return EnumColor.red
 	}, [isPast, isFuture, isActive, color])
 
-	const medicineIcon = useMemo(
-		() => <Icon name={EnumIconName[type]} color={cardColor} size={24} />,
-		[type, cardColor],
-	)
-
-	const notificationIcon = useMemo(
-		() => (
-			<Icon
-				name={notification ? EnumIconName.bell : EnumIconName.bellOff}
-				color={cardColor}
-				size={16}
-			/>
-		),
-		[notification, cardColor],
-	)
-
 	const onCardPress = useCallback(() => {
 		navigate(EnumStackRoute.editMedicine, { id })
 	}, [navigate, id])
@@ -160,14 +141,13 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		isActive,
 
 		name,
+		type,
+		notification,
 		howManyToTakeDaily,
 		dateText,
 
 		labelText,
 		isNeedLabel,
-
-		medicineIcon,
-		notificationIcon,
 
 		cardColor,
 

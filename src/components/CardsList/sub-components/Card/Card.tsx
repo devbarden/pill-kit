@@ -3,9 +3,11 @@ import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
-import { EnumCardListMode, EnumColor } from '@app/enums'
+import { EnumCardListMode, EnumColor, EnumIconName } from '@app/enums'
 
+import { Icon } from '../../../Icon'
 import { useCardState } from './hooks'
+
 import { styles } from './Card.styles'
 
 type TypeProps = {
@@ -16,14 +18,13 @@ type TypeProps = {
 export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 	const {
 		name,
+		type,
+		notification,
 		howManyToTakeDaily,
 		dateText,
 
 		labelText,
 		isNeedLabel,
-
-		medicineIcon,
-		notificationIcon,
 
 		cardColor,
 
@@ -56,7 +57,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 	return (
 		<Pressable style={getCardStyles} onPress={onCardPress}>
 			<Box style={styles.content}>
-				<Box style={styles.iconWrapper}>{medicineIcon}</Box>
+				<Box style={styles.iconWrapper}>
+					<Icon name={EnumIconName[type]} color={cardColor} size={24} />
+				</Box>
 
 				<Box style={[styles.info, styles.flexStart]}>
 					<Text fontSize="md" {...baseTextProps}>
@@ -73,7 +76,13 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 
 			<Box style={styles.fullHeight}>
 				<Box style={rightContentStyles}>
-					{isModeV1 && notificationIcon}
+					{isModeV1 && (
+						<Icon
+							name={notification ? EnumIconName.bell : EnumIconName.bellOff}
+							color={cardColor}
+							size={16}
+						/>
+					)}
 
 					<Text fontSize="xs" {...baseTextProps}>
 						{dateText}
