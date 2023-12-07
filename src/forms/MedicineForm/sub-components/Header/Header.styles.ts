@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
 		paddingVertical: 8,
 		paddingHorizontal: 16,
 		borderBottomWidth: 1,
-		borderColor: EnumColor.lightGrey,
-		backgroundColor: EnumColor.white,
+		borderColor: EnumColor.transparentGrey,
+		backgroundColor: EnumColor.grey,
 	},
 
 	backAction: {

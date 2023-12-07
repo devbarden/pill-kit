@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 		marginTop: CARD_MARGIN,
 		marginHorizontal: CARD_MARGIN,
 		borderRadius: RADIUS,
-		borderTopWidth: HALF_SPACE,
+		borderTopWidth: RADIUS,
 		backgroundColor: EnumColor.white,
 	},
 
@@ -55,9 +55,29 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 
+	leftOverflowLabel: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+
+		height: SPACE,
+		width: RADIUS,
+		backgroundColor: EnumColor.white,
+	},
+
+	rightOverflowLabel: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
+
+		height: SPACE,
+		width: RADIUS,
+		backgroundColor: EnumColor.white,
+	},
+
 	label: {
 		position: 'absolute',
-		top: -SPACE,
+		top: -12,
 		right: 0,
 
 		maxWidth: 160,

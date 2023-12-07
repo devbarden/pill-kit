@@ -90,6 +90,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 				</Box>
 			</Box>
 
+			<Box style={styles.leftOverflowLabel} />
+			<Box style={styles.rightOverflowLabel} />
+
 			{isNeedLabel && (
 				<Box style={[styles.label, borderStyles]}>
 					<Text fontSize="xs" {...baseTextProps} color={cardColor}>
