@@ -12,8 +12,6 @@ export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
 
 	const { additionalActions } = useMemo(() => props, [props])
 
-	// TODO: add label if user creating medicine in PAST or FUTURE
-
 	return (
 		<MedicineFormContext.Provider value={state}>
 			<Modals />

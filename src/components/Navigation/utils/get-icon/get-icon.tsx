@@ -13,7 +13,6 @@ const getIconProps = (isActive: boolean) => ({
 	color: isActive ? EnumColor.red : EnumColor.darkGrey,
 })
 
-// TODO: refactoring
 export const getIcon = (route: TypeRoute, isActive: boolean) =>
 	({
 		[EnumTabRoute.home]: () => (

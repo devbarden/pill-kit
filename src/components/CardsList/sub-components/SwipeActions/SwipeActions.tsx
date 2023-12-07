@@ -11,12 +11,14 @@ import { Modal } from '../../../Modal'
 import { Action } from './sub-components'
 
 import { styles } from './SwipeActions.styles'
+import { CARD_MARGIN } from '@app/constants'
 
 type TypeProps = {
 	data: TypeMedicine
+	isLast: boolean
 }
 
-export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
+export const SwipeActions: FC<TypeProps> = memo(({ data, isLast }) => {
 	const removeModalRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
@@ -33,7 +35,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 	}, [remove, id])
 
 	return (
-		<Box style={styles.wrapper}>
+		<Box style={[styles.wrapper, { marginBottom: isLast ? CARD_MARGIN : 0 }]}>
 			<Modal
 				title={name}
 				content={

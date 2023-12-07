@@ -3,6 +3,7 @@ import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
+import { CARD_MARGIN } from '@app/constants'
 import { EnumCardListMode, EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -13,9 +14,10 @@ import { styles } from './Card.styles'
 type TypeProps = {
 	data: TypeMedicine
 	mode: EnumCardListMode
+	isLast: boolean
 }
 
-export const Card: FC<TypeProps> = memo(({ data, mode }) => {
+export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 	const {
 		name,
 		type,
@@ -50,8 +52,12 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 	)
 
 	const getCardStyles = useCallback(
-		() => [styles.card, borderStyles],
-		[borderStyles],
+		() => [
+			styles.card,
+			borderStyles,
+			{ marginBottom: isLast ? CARD_MARGIN : 0 },
+		],
+		[borderStyles, isLast],
 	)
 
 	return (
@@ -90,12 +96,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode }) => {
 				</Box>
 			</Box>
 
-			<Box style={styles.leftOverflowLabel} />
-			<Box style={styles.rightOverflowLabel} />
-
 			{isNeedLabel && (
-				<Box style={[styles.label, borderStyles]}>
-					<Text fontSize="xs" {...baseTextProps} color={cardColor}>
+				<Box style={[styles.label, { backgroundColor: cardColor }]}>
+					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
 						{labelText}
 					</Text>
 				</Box>

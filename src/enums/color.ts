@@ -9,6 +9,7 @@ export enum EnumColor {
 	darkBlue = 'rgb(40, 75, 99)',
 	green = 'rgb(5, 140, 66)',
 	black = 'rgb(53, 53, 53)',
+	yellow = 'rgb(255, 191, 0)',
 	white = 'rgb(255, 255, 255)',
 	transparentGrey = 'rgba(170, 170, 170, 0.5)',
 }

@@ -107,17 +107,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		return t('card:label.active')
 	}, [t, isPast, isFuture, isActive])
 
-	const isNeedLabel = useMemo(() => {
-		if (mode === EnumCardListMode.v1) {
-			return !isActive
-		}
-
-		if (mode === EnumCardListMode.v2) {
-			return true
-		}
-
-		return false
-	}, [mode, isActive])
+	const isNeedLabel = useMemo(() => mode === EnumCardListMode.v2, [mode])
 
 	const cardColor = useMemo(() => {
 		if (isPast) {

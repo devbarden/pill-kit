@@ -100,6 +100,9 @@ export const en: TypeLanguage = {
 			title: 'Some fields are not filled in',
 			text: 'Please fill next fields:',
 		},
+		pastWarning:
+			'The time range in the past. You will not see this medicine on the home screen',
+		futureWarning: 'The time range in the future',
 	},
 
 	removeDataAlert: {

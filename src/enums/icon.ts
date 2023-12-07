@@ -38,4 +38,6 @@ export enum EnumIconName {
 	data = 'data',
 	noData = 'noData',
 	check = 'check',
+	warning = 'warning',
+	error = 'error',
 }

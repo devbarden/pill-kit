@@ -5,7 +5,7 @@ import { CARD_MARGIN } from '@app/constants'
 
 const SPACE = 16
 const HALF_SPACE = SPACE / 2
-const RADIUS = 4
+const RADIUS = 12
 
 export const styles = StyleSheet.create({
 	card: {
@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
 		marginTop: CARD_MARGIN,
 		marginHorizontal: CARD_MARGIN,
 		borderRadius: RADIUS,
-		borderTopWidth: RADIUS,
 		backgroundColor: EnumColor.white,
 
 		shadowColor: EnumColor.darkGrey,
@@ -48,7 +47,6 @@ export const styles = StyleSheet.create({
 
 	info: {
 		flex: 1,
-		gap: HALF_SPACE,
 		justifyContent: 'space-between',
 	},
 
@@ -64,38 +62,13 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 
-	leftOverflowLabel: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-
-		height: SPACE,
-		width: RADIUS,
-		backgroundColor: EnumColor.white,
-	},
-
-	rightOverflowLabel: {
-		position: 'absolute',
-		top: 0,
-		right: 0,
-
-		height: SPACE,
-		width: RADIUS,
-		backgroundColor: EnumColor.white,
-	},
-
 	label: {
 		position: 'absolute',
-		top: -12,
-		right: 0,
-
+		top: -8,
+		right: 16,
 		maxWidth: 160,
-
+		borderRadius: 4,
 		paddingHorizontal: HALF_SPACE,
-
-		borderTopLeftRadius: RADIUS,
-		borderTopRightRadius: RADIUS,
-
 		backgroundColor: EnumColor.white,
 	},
 })

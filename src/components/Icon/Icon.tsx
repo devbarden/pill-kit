@@ -4,6 +4,8 @@ import {
 	Octicons,
 	Ionicons,
 	AntDesign,
+	Foundation,
+	MaterialIcons,
 	MaterialCommunityIcons,
 } from '@expo/vector-icons'
 
@@ -51,7 +53,7 @@ const getIconByName = (
 		),
 		[EnumIconName.mail]: <Octicons name="mail" {...props} />,
 		[EnumIconName.home]: <Octicons name="home" {...props} />,
-		[EnumIconName.info]: <Octicons name="info" {...props} />,
+		[EnumIconName.info]: <Foundation name="info" {...props} />,
 		[EnumIconName.gift]: <Octicons name="gift" {...props} />,
 		[EnumIconName.bell]: <Octicons name="bell" {...props} />,
 		[EnumIconName.search]: <Octicons name="search" {...props} />,
@@ -84,6 +86,8 @@ const getIconByName = (
 		[EnumIconName.paint]: (
 			<MaterialCommunityIcons name="format-paint" {...props} />
 		),
+		[EnumIconName.warning]: <Ionicons name="md-warning" {...props} />,
+		[EnumIconName.error]: <MaterialIcons name="error" {...props} />,
 	})[name]
 
 export const Icon: FC<TypeProps> = memo(({ name, ...rest }) => {

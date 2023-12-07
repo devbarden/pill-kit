@@ -2,14 +2,16 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { FC, Fragment, memo, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Form, Icon, Switch } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
+import { Form, Icon, Switch, NotificationLabel } from '@app/components'
 
 import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
+import { medicineUtils } from '@app/utils'
 
 export const Fields: FC = memo(() => {
 	const { t, i18n } = useTranslation()
+
 	const {
 		openNameModal,
 		openTypeModal,
@@ -27,6 +29,7 @@ export const Fields: FC = memo(() => {
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
 	} = useContext(MedicineFormContext)
+
 	const {
 		name,
 		type,
@@ -36,6 +39,11 @@ export const Fields: FC = memo(() => {
 		endDate,
 		notification,
 	} = useMemo(() => form, [form])
+
+	const { isPast, isFuture } = useMemo(
+		() => medicineUtils.getMedicineStatusByDate(form),
+		[form],
+	)
 
 	return (
 		<Fragment>
@@ -112,6 +120,22 @@ export const Fields: FC = memo(() => {
 					/>
 				</Form.CustomItem>
 			</Form.Wrapper>
+
+			{isPast && (
+				<NotificationLabel
+					iconName={EnumIconName.warning}
+					iconColor={EnumColor.yellow}
+					text={t('medicineForm:pastWarning')}
+				/>
+			)}
+
+			{isFuture && (
+				<NotificationLabel
+					iconName={EnumIconName.warning}
+					iconColor={EnumColor.yellow}
+					text={t('medicineForm:futureWarning')}
+				/>
+			)}
 
 			<Form.Wrapper>
 				<Form.CustomItem

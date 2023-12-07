@@ -1,8 +1,9 @@
 import { filter, get, includes, sortBy, toLower } from 'lodash'
 
 import {
-	TypeCardFilters,
 	TypeMedicine,
+	TypeCardFilters,
+	TypeMedicineWithoutId,
 	TypeMedicineSortableField,
 } from '@app/types'
 
@@ -14,7 +15,7 @@ type TypeGetMedicineStatusByDateResponse = {
 
 type TypeMedicineUtils = {
 	getMedicineStatusByDate: (
-		item: TypeMedicine,
+		item: TypeMedicine | TypeMedicineWithoutId,
 	) => TypeGetMedicineStatusByDateResponse
 	getMedicinesByFilters: (
 		items: TypeMedicine[],
@@ -30,7 +31,6 @@ type TypeMedicineUtils = {
 	) => TypeMedicine[]
 }
 
-// TODO: rewrite on class to have chaining
 export const medicineUtils: TypeMedicineUtils = {
 	getMedicineStatusByDate({ startDate, endDate }) {
 		const isPast = Date.now() > endDate

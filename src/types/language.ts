@@ -93,6 +93,8 @@ export type TypeLanguage = {
 			title: string
 			text: string
 		}
+		pastWarning: string
+		futureWarning: string
 	}
 
 	removeDataAlert: {
