@@ -63,8 +63,8 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 	return (
 		<Pressable style={getCardStyles} onPress={onCardPress}>
 			<Box style={styles.content}>
-				<Box style={styles.iconWrapper}>
-					<Icon name={EnumIconName[type]} color={cardColor} size={24} />
+				<Box style={[styles.iconWrapper, { backgroundColor: cardColor }]}>
+					<Icon name={EnumIconName[type]} color={EnumColor.white} size={24} />
 				</Box>
 
 				<Box style={[styles.info, styles.flexStart]}>
