@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
 	iconWrapper: {
 		width: 40,
 		height: 40,
-		borderRadius: 8,
+		borderRadius: 40,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
