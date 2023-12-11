@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
-import * as medicineApi from '@app/api'
+import * as api from '@app/api'
 import { toast } from '@app/utils'
 import { TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
 
@@ -18,25 +18,25 @@ export const useMedicinesEndpoints = () => {
 		useInitMedicines: () =>
 			useQuery({
 				queryKey: ['init-medicines'],
-				queryFn: medicineApi.initMedicines,
+				queryFn: api.initMedicines,
 			}),
 
 		useMedicines: () =>
 			useQuery({
 				queryKey: ['medicines'],
-				queryFn: medicineApi.getMedicines,
+				queryFn: api.getMedicines,
 			}),
 
 		useMedicine: (id: TypeMedicineId) =>
 			useQuery({
 				queryKey: ['medicine', id],
-				queryFn: () => medicineApi.getMedicine(id),
+				queryFn: () => api.getMedicine(id),
 			}),
 
 		useAddMedicine: () =>
 			useMutation({
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
-					medicineApi.setMedicine(medicine),
+					api.setMedicine(medicine),
 				onSuccess: () => {
 					invalidateMedicines()
 				},
@@ -48,7 +48,7 @@ export const useMedicinesEndpoints = () => {
 		useEditMedicine: (id: TypeMedicineId) =>
 			useMutation({
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
-					medicineApi.editMedicine(id, medicine),
+					api.editMedicine(id, medicine),
 				onSuccess: () => {
 					invalidateMedicines()
 				},
@@ -59,7 +59,7 @@ export const useMedicinesEndpoints = () => {
 
 		useRemoveMedicine: () =>
 			useMutation({
-				mutationFn: (id: TypeMedicineId) => medicineApi.removeMedicine(id),
+				mutationFn: (id: TypeMedicineId) => api.removeMedicine(id),
 				onSuccess: () => {
 					invalidateMedicines()
 				},
@@ -70,7 +70,7 @@ export const useMedicinesEndpoints = () => {
 
 		useRemoveAllMedicines: () =>
 			useMutation({
-				mutationFn: medicineApi.removeAllMedicines,
+				mutationFn: api.removeAllMedicines,
 				onSuccess: () => {
 					toast.success(t('notifications:medicines.removeAll'))
 					invalidateMedicines()

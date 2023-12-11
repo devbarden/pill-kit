@@ -22,7 +22,7 @@ export const initMedicines = async () => {
 		)
 
 		if (data) {
-			return data
+			return JSON.parse(data)
 		}
 
 		const initialMedicines = JSON.stringify([])

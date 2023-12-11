@@ -10,6 +10,17 @@ export const en: TypeLanguage = {
 		},
 	},
 
+	welcome: {
+		title:
+			'Welcome! Please read the following documents before using the application',
+		agreement: 'I have read and accept',
+		continue: 'Continue',
+		validation: {
+			title: 'Attention',
+			text: 'You need to read and accept the required documents',
+		},
+	},
+
 	home: {
 		title: 'Home',
 		add: 'Add',

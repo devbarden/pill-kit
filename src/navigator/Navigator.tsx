@@ -1,19 +1,18 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import {
 	createStackNavigator,
 	StackNavigationOptions,
 } from '@react-navigation/stack'
 
-import '@app/i18n'
 import { Loader } from '@app/components'
+import { useGlobalState } from '@app/hooks'
 import { EnumStackRoute } from '@app/enums'
 import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_STACK_ROUTE } from '@app/constants'
-import { useEndpoints, useGlobalState } from '@app/hooks'
-import { Tabs, CreateMedicine, EditMedicine } from '@app/pages'
-import { TypeNavigatorScreen, TypeNavigatorStack } from '@app/types'
+import { TypeNavigatorStack, TypeNavigatorScreen } from '@app/types'
+import { Tabs, CreateMedicine, EditMedicine, Welcome } from '@app/pages'
 
 import { styles } from './Navigator.styles'
 
@@ -32,19 +31,23 @@ const screenOptions: StackNavigationOptions = {
 
 const modalOptions: StackNavigationOptions = {
 	presentation: 'modal',
-	cardStyle: {
-		borderTopLeftRadius: 24,
-		borderTopRightRadius: 24,
-	},
+	cardStyle: styles.modal,
 }
 
 export const Navigator: FC = withErrorBoundary(() => {
-	const { useInitMedicines } = useEndpoints()
-	const { isLoading } = useInitMedicines()
-
 	const globalState = useGlobalState()
 
-	if (isLoading) {
+	const { isUserAcceptAppDocs, isConfigurationLoading } = useMemo(
+		() => globalState,
+		[globalState],
+	)
+
+	const defaultRoute = useMemo(
+		() => (isUserAcceptAppDocs ? DEFAULT_STACK_ROUTE : EnumStackRoute.welcome),
+		[isUserAcceptAppDocs],
+	)
+
+	if (isConfigurationLoading) {
 		return <Loader />
 	}
 
@@ -52,16 +55,15 @@ export const Navigator: FC = withErrorBoundary(() => {
 		<GlobalStateContext.Provider value={globalState}>
 			<NavigationContainer>
 				<Stack.Navigator
-					initialRouteName={DEFAULT_STACK_ROUTE}
+					initialRouteName={defaultRoute}
 					screenOptions={screenOptions}>
+					<Stack.Screen name={EnumStackRoute.welcome} component={Welcome} />
 					<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
-
 					<Stack.Screen
 						options={modalOptions}
 						name={EnumStackRoute.createMedicine}
 						component={CreateMedicine}
 					/>
-
 					<Stack.Screen
 						options={modalOptions}
 						name={EnumStackRoute.editMedicine}

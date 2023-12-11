@@ -11,6 +11,16 @@ export type TypeLanguage = {
 		}
 	}
 
+	welcome: {
+		title: string
+		agreement: string
+		continue: string
+		validation: {
+			title: string
+			text: string
+		}
+	}
+
 	home: {
 		title: string
 		add: string

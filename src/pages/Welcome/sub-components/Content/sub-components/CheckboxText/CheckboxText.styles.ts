@@ -4,11 +4,13 @@ import { EnumColor } from '@app/enums'
 
 export const styles = StyleSheet.create({
 	wrapper: {
-		backgroundColor: EnumColor.white,
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 4,
+		marginLeft: 8,
 	},
 
-	modal: {
-		borderTopLeftRadius: 24,
-		borderTopRightRadius: 24,
+	link: {
+		color: EnumColor.blue,
 	},
 })

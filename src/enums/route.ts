@@ -6,6 +6,7 @@ export enum EnumTabRoute {
 }
 
 export enum EnumStackRoute {
+	welcome = 'welcome',
 	tabs = 'tabs',
 	createMedicine = 'createMedicine',
 	editMedicine = 'editMedicine',

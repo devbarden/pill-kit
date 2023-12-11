@@ -7,6 +7,7 @@ import { TypeMedicineId } from './medicine'
 export type TypeRoute = EnumTabRoute | EnumStackRoute
 
 export type TypeNavigatorStack = {
+	[EnumStackRoute.welcome]: undefined
 	[EnumStackRoute.tabs]: undefined
 	[EnumStackRoute.createMedicine]: undefined
 	[EnumStackRoute.editMedicine]: { id: TypeMedicineId }
@@ -31,6 +32,11 @@ export type TypeHistoryRouteProp = RouteProp<
 export type TypeSettingsRouteProp = RouteProp<
 	TypeNavigatorTab,
 	EnumTabRoute.settings
+>
+
+export type TypeWelcomeRouteProp = RouteProp<
+	TypeNavigatorStack,
+	EnumStackRoute.welcome
 >
 
 export type TypeTabsRouteProp = RouteProp<

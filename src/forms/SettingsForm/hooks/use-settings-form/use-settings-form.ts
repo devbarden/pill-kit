@@ -34,8 +34,8 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		[i18n],
 	)
 
-	const mailHandler = useCallback(() => {
-		Linking.openURL(MAIL_TO_LINK)
+	const mailHandler = useCallback(async () => {
+		await Linking.openURL(MAIL_TO_LINK)
 	}, [])
 
 	const openLanguageModal = useCallback(() => {

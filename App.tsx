@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import '@app/i18n'
 import { registerLogs } from '@app/utils'
-import { Navigator } from '@app/navigator'
+import { Initialization } from '@app/initialization'
 
 registerLogs()
 
@@ -15,7 +15,7 @@ const App: FC = memo(() => (
 	<QueryClientProvider client={queryClient}>
 		<NativeBaseProvider>
 			<RootSiblingParent>
-				<Navigator />
+				<Initialization />
 			</RootSiblingParent>
 		</NativeBaseProvider>
 	</QueryClientProvider>
