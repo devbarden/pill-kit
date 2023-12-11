@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { EnumLanguageCode, EnumTabRoute, EnumTheme } from '@app/enums'
+import { EnumTheme, EnumLanguageCode, EnumTabRoute } from '@app/enums'
 
 import { TypeConfiguration } from './configuration'
 

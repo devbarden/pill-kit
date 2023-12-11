@@ -1,10 +1,10 @@
-import { EnumTheme } from '@app/enums'
 import { TypeConfiguration } from '@app/types'
 
+import { PHONE_THEME } from './theme'
 import { FALLBACK_LANGUAGE_CODE } from './language'
 
 export const INITIAL_APP_CONFIGURATION: TypeConfiguration = {
-	theme: EnumTheme.light,
+	theme: PHONE_THEME,
 	isUserAcceptAppDocs: false,
 	language: FALLBACK_LANGUAGE_CODE,
 }
