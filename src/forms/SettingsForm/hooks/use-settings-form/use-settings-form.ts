@@ -1,17 +1,20 @@
-import { useMemo, useCallback, useRef } from 'react'
+import { useMemo, useCallback, useRef, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Linking } from 'react-native'
 
+import { EnumLanguageCode } from '@app/enums'
+import { getSelectedLanguage } from '@app/utils'
+import { GlobalStateContext } from '@app/context'
+import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 import {
 	MAIL_TO_LINK,
-	FALLBACK_LANGUAGE_LABEL,
 	LANGUAGE_SELECT_ITEMS,
+	FALLBACK_LANGUAGE_LABEL,
 } from '@app/constants'
-import { getSelectedLanguage } from '@app/utils'
-import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { i18n } = useTranslation()
+	const { setLanguage } = useContext(GlobalStateContext)
 
 	const termsOfUseRef = useRef<TypeModalHandlers>(null)
 	const removeAlertRef = useRef<TypeModalHandlers>(null)
@@ -28,10 +31,10 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	)
 
 	const changeLanguageHandler = useCallback(
-		(language: string) => {
-			i18n.changeLanguage(language)
+		async (language: string) => {
+			await setLanguage(language as EnumLanguageCode)
 		},
-		[i18n],
+		[setLanguage],
 	)
 
 	const mailHandler = useCallback(async () => {
