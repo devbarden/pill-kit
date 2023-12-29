@@ -96,7 +96,7 @@ export const en: TypeLanguage = {
 		name: 'Name',
 		type: 'Type',
 		count: 'Dose',
-		perDay: 'How many per day',
+		perDay: 'How many per day ?',
 		startDate: 'Start date',
 		endDate: 'End date',
 		notification: 'Notification',
@@ -123,17 +123,12 @@ export const en: TypeLanguage = {
 	},
 
 	card: {
+		dose: 'Dose',
+		perDay: 'Per day',
 		date: {
 			till: 'Till',
 			from: 'From',
 			daily: 'Daily',
-		},
-		infoModal: {
-			type: 'Type',
-			count: 'Count',
-			perDay: 'Per day',
-			startDate: 'Start date',
-			endDate: 'End date',
 		},
 		label: {
 			active: 'Active',

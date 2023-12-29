@@ -113,18 +113,13 @@ export type TypeLanguage = {
 	}
 
 	card: {
+		dose: string
+		perDay: string
+
 		date: {
 			till: string
 			from: string
 			daily: string
-		}
-
-		infoModal: {
-			type: string
-			count: string
-			perDay: string
-			startDate: string
-			endDate: string
 		}
 
 		label: {

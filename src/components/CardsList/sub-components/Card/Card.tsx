@@ -1,5 +1,6 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { Pressable } from 'react-native'
+import { useTranslation } from 'react-i18next'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
@@ -18,9 +19,12 @@ type TypeProps = {
 }
 
 export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
+	const { t } = useTranslation()
 	const {
 		name,
 		type,
+		transformedCountPerUse,
+		countPerDay,
 		notification,
 		dateText,
 
@@ -65,6 +69,18 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 					<Text fontSize="md" {...baseTextProps}>
 						{name}
 					</Text>
+
+					{isModeV1 && transformedCountPerUse && (
+						<Text fontSize="xs" {...baseTextProps}>
+							{t('card:dose')}: {transformedCountPerUse}
+						</Text>
+					)}
+
+					{isModeV1 && (
+						<Text fontSize="xs" {...baseTextProps}>
+							{t('card:perDay')}: {countPerDay}
+						</Text>
+					)}
 
 					{isModeV2 && (
 						<Text fontSize="xs" {...baseTextProps}>

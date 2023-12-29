@@ -97,7 +97,7 @@ export const ru: TypeLanguage = {
 		name: 'Название',
 		type: 'Тип',
 		count: 'Доза',
-		perDay: 'Сколько в день',
+		perDay: 'Сколько в день ?',
 		startDate: 'Начало приема',
 		endDate: 'Конец приема',
 		notification: 'Уведомления',
@@ -124,17 +124,12 @@ export const ru: TypeLanguage = {
 	},
 
 	card: {
+		dose: 'Доза',
+		perDay: 'В день',
 		date: {
 			till: 'До',
 			from: 'С',
 			daily: 'Ежедневно',
-		},
-		infoModal: {
-			type: 'Тип',
-			count: 'Количество',
-			perDay: 'Сколько в день',
-			startDate: 'Начало приема',
-			endDate: 'Конец приема',
 		},
 		label: {
 			active: 'Активно',
