@@ -88,6 +88,7 @@ export const Fields: FC = memo(() => {
 				</Fragment>
 
 				<Form.PressableItem
+					isValueQuarterWidth
 					text={t('medicineForm:perDay')}
 					iconName={EnumIconName.count}
 					handler={openCountPerDayModal}

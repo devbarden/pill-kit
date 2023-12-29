@@ -22,6 +22,7 @@ type TypeProps = {
 	iconName?: EnumIconName
 	iconColor?: EnumColor
 	withoutChevronRight?: boolean
+	isValueQuarterWidth?: boolean
 }
 
 export const PressableItem: FC<TypeProps> = memo(
@@ -32,8 +33,15 @@ export const PressableItem: FC<TypeProps> = memo(
 		iconName,
 		iconColor = EnumColor.darkGrey,
 		withoutChevronRight = false,
+		isValueQuarterWidth = false,
 	}) => {
 		const isValueString = useMemo(() => typeof value === 'string', [value])
+
+		const valueStyles = useMemo(
+			() =>
+				isValueQuarterWidth ? styles.valueQuarterWidth : styles.valueHalfWidth,
+			[isValueQuarterWidth],
+		)
 
 		const getPressableStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [
@@ -58,7 +66,7 @@ export const PressableItem: FC<TypeProps> = memo(
 					</Box>
 				</Box>
 
-				<Box style={value ? styles.partlyWidth : {}}>
+				<Box style={value ? valueStyles : {}}>
 					<Box style={styles.value}>
 						{!withoutChevronRight && (
 							<Icon

@@ -30,39 +30,23 @@ export const styles = StyleSheet.create({
 	},
 
 	iconWrapper: {
-		width: 40,
-		height: 40,
-		borderRadius: 40,
+		width: 32,
+		height: 32,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
 
 	content: {
 		flex: 1,
-		gap: SPACE,
+		gap: HALF_SPACE,
 		flexDirection: 'row',
 		alignItems: 'center',
-	},
-
-	fullHeight: {
-		height: '100%',
 	},
 
 	info: {
 		flex: 1,
 		justifyContent: 'space-between',
-	},
-
-	flexStart: {
 		alignItems: 'flex-start',
-	},
-
-	flexEnd: {
-		alignItems: 'flex-end',
-	},
-
-	justifyCenter: {
-		justifyContent: 'center',
 	},
 
 	label: {

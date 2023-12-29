@@ -14,8 +14,12 @@ export const styles = StyleSheet.create({
 		flex: 1,
 	},
 
-	partlyWidth: {
-		width: '40%',
+	valueHalfWidth: {
+		width: '50%',
+	},
+
+	valueQuarterWidth: {
+		width: '25%',
 	},
 
 	title: {

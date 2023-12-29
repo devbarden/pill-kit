@@ -96,16 +96,16 @@ export const ru: TypeLanguage = {
 	medicineForm: {
 		name: 'Название',
 		type: 'Тип',
-		count: 'Количество',
+		count: 'Доза',
 		perDay: 'Сколько в день',
 		startDate: 'Начало приема',
 		endDate: 'Конец приема',
 		notification: 'Уведомления',
-		time: 'Время',
+		time: 'Напоминания',
 		color: 'Цвет',
 		modal: {
 			times: {
-				notification: 'Уведомление',
+				notification: 'Доза',
 			},
 		},
 		validation: {

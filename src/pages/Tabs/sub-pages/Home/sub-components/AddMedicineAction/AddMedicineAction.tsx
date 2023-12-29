@@ -18,7 +18,7 @@ export const AddMedicineAction: FC = memo(() => {
 			<Text fontSize="lg" color={EnumColor.red}>
 				{t('home:add')}
 			</Text>
-			<Icon name={EnumIconName.medical} color={EnumColor.red} size={20} />
+			<Icon name={EnumIconName.pill} color={EnumColor.red} size={20} />
 		</Pressable>
 	)
 })

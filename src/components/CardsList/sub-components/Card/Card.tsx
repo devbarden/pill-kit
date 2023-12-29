@@ -22,11 +22,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 		name,
 		type,
 		notification,
-		howManyToTakeDaily,
 		dateText,
 
 		labelText,
-		isNeedLabel,
 
 		cardColor,
 
@@ -34,6 +32,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 	} = useCardState(data, mode)
 
 	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
+	const isModeV2 = useMemo(() => mode === EnumCardListMode.v2, [mode])
 
 	const borderStyles = useMemo(() => ({ borderColor: cardColor }), [cardColor])
 
@@ -44,11 +43,6 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 			ellipsizeMode: 'tail',
 		}),
 		[],
-	)
-
-	const rightContentStyles = useMemo(
-		() => [styles.info, isModeV1 ? styles.flexEnd : styles.justifyCenter],
-		[isModeV1],
 	)
 
 	const getCardStyles = useCallback(
@@ -63,46 +57,34 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 	return (
 		<Pressable style={getCardStyles} onPress={onCardPress}>
 			<Box style={styles.content}>
-				<Box style={[styles.iconWrapper, { backgroundColor: cardColor }]}>
-					<Icon name={EnumIconName[type]} color={EnumColor.white} size={24} />
+				<Box style={styles.iconWrapper}>
+					<Icon name={EnumIconName[type]} color={cardColor} size={28} />
 				</Box>
 
-				<Box style={[styles.info, styles.flexStart]}>
+				<Box style={styles.info}>
 					<Text fontSize="md" {...baseTextProps}>
 						{name}
 					</Text>
 
-					{isModeV1 && (
+					{isModeV2 && (
 						<Text fontSize="xs" {...baseTextProps}>
-							{howManyToTakeDaily}
+							{dateText}
 						</Text>
 					)}
 				</Box>
+
+				<Icon
+					name={notification ? EnumIconName.bell : EnumIconName.bellOff}
+					color={cardColor}
+					size={16}
+				/>
 			</Box>
 
-			<Box style={styles.fullHeight}>
-				<Box style={rightContentStyles}>
-					{isModeV1 && (
-						<Icon
-							name={notification ? EnumIconName.bell : EnumIconName.bellOff}
-							color={cardColor}
-							size={16}
-						/>
-					)}
-
-					<Text fontSize="xs" {...baseTextProps}>
-						{dateText}
-					</Text>
-				</Box>
+			<Box style={[styles.label, { backgroundColor: cardColor }]}>
+				<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
+					{isModeV1 ? dateText : labelText}
+				</Text>
 			</Box>
-
-			{isNeedLabel && (
-				<Box style={[styles.label, { backgroundColor: cardColor }]}>
-					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
-						{labelText}
-					</Text>
-				</Box>
-			)}
 		</Pressable>
 	)
 })

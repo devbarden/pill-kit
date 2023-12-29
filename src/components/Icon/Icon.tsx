@@ -3,7 +3,6 @@ import {
 	Fontisto,
 	Octicons,
 	Ionicons,
-	AntDesign,
 	Foundation,
 	MaterialIcons,
 	MaterialCommunityIcons,
@@ -43,8 +42,7 @@ const getIconByName = (
 		),
 		[EnumIconName.spray]: <MaterialCommunityIcons name="spray" {...props} />,
 		[EnumIconName.bandage]: <Ionicons name="bandage-outline" {...props} />,
-		[EnumIconName.medical]: <AntDesign name="medicinebox" {...props} />,
-		[EnumIconName.time]: <Ionicons name="ios-time-outline" {...props} />,
+		[EnumIconName.time]: <Octicons name="clock" {...props} />,
 		[EnumIconName.data]: (
 			<MaterialCommunityIcons name="database-outline" {...props} />
 		),
@@ -83,11 +81,11 @@ const getIconByName = (
 		[EnumIconName.medicine]: (
 			<MaterialCommunityIcons name="flask-empty-plus-outline" {...props} />
 		),
-		[EnumIconName.paint]: (
-			<MaterialCommunityIcons name="format-paint" {...props} />
-		),
+		[EnumIconName.paint]: <Foundation name="paint-bucket" {...props} />,
 		[EnumIconName.warning]: <Ionicons name="md-warning" {...props} />,
 		[EnumIconName.error]: <MaterialIcons name="error" {...props} />,
+		[EnumIconName.plus]: <Octicons name="plus-circle" {...props} />,
+		[EnumIconName.medical]: <Ionicons name="medical-outline" {...props} />,
 	})[name]
 
 export const Icon: FC<TypeProps> = memo(({ name, ...rest }) => {
