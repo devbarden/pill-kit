@@ -13,13 +13,15 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"supportsTablet": true
+			"supportsTablet": true,
+			"bundleIdentifier": "com.devbarden.pillkit"
 		},
 		"android": {
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/logo.png",
 				"backgroundColor": "#ffffff"
-			}
+			},
+			"package": "com.devbarden.pillkit"
 		},
 		"web": {
 			"favicon": "./assets/logo.png"

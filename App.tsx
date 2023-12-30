@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler'
 import { FC, memo } from 'react'
 import { NativeBaseProvider } from 'native-base'
 import { RootSiblingParent } from 'react-native-root-siblings'
