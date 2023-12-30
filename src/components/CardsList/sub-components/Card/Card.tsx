@@ -1,6 +1,5 @@
 import { FC, memo, useCallback, useMemo } from 'react'
 import { Pressable } from 'react-native'
-import { useTranslation } from 'react-i18next'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
@@ -19,7 +18,6 @@ type TypeProps = {
 }
 
 export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
-	const { t } = useTranslation()
 	const {
 		name,
 		type,
@@ -70,18 +68,6 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 						{name}
 					</Text>
 
-					{isModeV1 && transformedCountPerUse && (
-						<Text fontSize="xs" {...baseTextProps}>
-							{t('card:dose')}: {transformedCountPerUse}
-						</Text>
-					)}
-
-					{isModeV1 && (
-						<Text fontSize="xs" {...baseTextProps}>
-							{t('card:perDay')}: {countPerDay}
-						</Text>
-					)}
-
 					{isModeV2 && (
 						<Text fontSize="xs" {...baseTextProps}>
 							{dateText}
@@ -96,7 +82,16 @@ export const Card: FC<TypeProps> = memo(({ data, mode, isLast }) => {
 				/>
 			</Box>
 
-			<Box style={[styles.label, { backgroundColor: cardColor }]}>
+			{isModeV1 && (
+				<Box style={[styles.leftLabel, { backgroundColor: cardColor }]}>
+					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
+						{transformedCountPerUse && transformedCountPerUse + ' / '}
+						{countPerDay}
+					</Text>
+				</Box>
+			)}
+
+			<Box style={[styles.rightLabel, { backgroundColor: cardColor }]}>
 				<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
 					{isModeV1 ? dateText : labelText}
 				</Text>

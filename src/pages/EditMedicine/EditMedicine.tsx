@@ -1,11 +1,11 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRoute } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { TypeEditMedicineRouteProp } from '@app/types'
 import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
+import { TypeEditMedicineRouteProp, TypeMedicineWithoutId } from '@app/types'
 
 import { NotFound, RemoveAction } from './sub-components'
 
@@ -17,10 +17,18 @@ export const EditMedicine: FC = memo(() => {
 	const { data, isLoading } = useMedicine(id)
 	const { mutateAsync: edit, isLoading: isUpdating } = useEditMedicine(id)
 
+	const dataWhileLoading: TypeMedicineWithoutId = useMemo(
+		() => ({
+			...DEFAULT_EMPTY_MEDICINE,
+			countPerUse: undefined,
+		}),
+		[],
+	)
+
 	if (isLoading) {
 		return (
 			<MedicineForm
-				data={DEFAULT_EMPTY_MEDICINE}
+				data={dataWhileLoading}
 				title={t('editMedicine:title')}
 				submitHandler={edit}
 				isSubmitting={isUpdating}

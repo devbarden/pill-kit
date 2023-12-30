@@ -49,7 +49,15 @@ export const styles = StyleSheet.create({
 		alignItems: 'flex-start',
 	},
 
-	label: {
+	leftLabel: {
+		position: 'absolute',
+		top: -8,
+		left: 16,
+		paddingHorizontal: 8,
+		borderRadius: 4,
+	},
+
+	rightLabel: {
 		position: 'absolute',
 		top: -8,
 		right: 16,
