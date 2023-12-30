@@ -13,10 +13,11 @@ import { useNavigation } from '@react-navigation/native'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { Icon, Modal } from '@app/components'
+import { Modal } from '@app/components'
+import { Logo, PillKit } from '@app/svg'
 import { TypeModalHandlers } from '@app/types'
 import { GlobalStateContext } from '@app/context'
-import { EnumColor, EnumIconName, EnumStackRoute } from '@app/enums'
+import { EnumColor, EnumStackRoute } from '@app/enums'
 
 import { CheckboxText } from './sub-components'
 
@@ -64,8 +65,8 @@ export const Content: FC = memo(() => {
 		<Fragment>
 			<Box style={styles.wrapper}>
 				<Box style={styles.logo}>
-					<Icon name={EnumIconName.medicine} color={EnumColor.red} size={160} />
-					<Text textAlign="center">{t('welcome:title')}</Text>
+					<Logo />
+					<PillKit />
 				</Box>
 
 				<BouncyCheckbox

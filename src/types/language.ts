@@ -157,6 +157,7 @@ export type TypeLanguage = {
 	}
 
 	actions: {
+		loading: string
 		removing: string
 	}
 

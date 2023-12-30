@@ -176,6 +176,7 @@ export const en: TypeLanguage = {
 	},
 
 	actions: {
+		loading: 'Loading...',
 		removing: 'Removing...',
 	},
 

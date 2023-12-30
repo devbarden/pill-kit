@@ -4,8 +4,8 @@ import { useRoute } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { Loader } from '@app/components'
 import { TypeEditMedicineRouteProp } from '@app/types'
+import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
 
 import { NotFound, RemoveAction } from './sub-components'
 
@@ -18,7 +18,15 @@ export const EditMedicine: FC = memo(() => {
 	const { mutateAsync: edit, isLoading: isUpdating } = useEditMedicine(id)
 
 	if (isLoading) {
-		return <Loader />
+		return (
+			<MedicineForm
+				data={DEFAULT_EMPTY_MEDICINE}
+				title={t('editMedicine:title')}
+				submitHandler={edit}
+				isSubmitting={isUpdating}
+				additionalActions={<RemoveAction />}
+			/>
+		)
 	}
 
 	if (!data) {

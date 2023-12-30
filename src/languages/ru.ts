@@ -177,6 +177,7 @@ export const ru: TypeLanguage = {
 	},
 
 	actions: {
+		loading: 'Загрузка...',
 		removing: 'Удаление...',
 	},
 

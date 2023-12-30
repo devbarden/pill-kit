@@ -1,8 +1,8 @@
 import { FC, ReactElement, memo, useCallback, useContext } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { Box, Pressable, Text } from 'native-base'
 
+import { PillKit } from '@app/svg'
 import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName } from '@app/enums'
 
@@ -26,7 +26,6 @@ export const Header: FC<TypeProps> = memo(
 		withGoBack = false,
 		withoutBorder = false,
 	}) => {
-		const { t } = useTranslation()
 		const { navigate } = useNavigation()
 		const { activeTab } = useContext(GlobalStateContext)
 
@@ -43,16 +42,7 @@ export const Header: FC<TypeProps> = memo(
 					</Pressable>
 				)}
 				<Box style={styles.title}>
-					{withLogo && (
-						<Text
-							fontSize="lg"
-							fontWeight="bold"
-							textAlign="left"
-							numberOfLines={1}
-							color={EnumColor.black}>
-							{t('main:appTitle')}
-						</Text>
-					)}
+					{withLogo && <PillKit height={27} width={80} />}
 					{title && (
 						<Text
 							fontSize="lg"

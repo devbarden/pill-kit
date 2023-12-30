@@ -1,4 +1,5 @@
 export enum EnumIconName {
+	add = 'add',
 	plus = 'plus',
 	time = 'time',
 	home = 'home',

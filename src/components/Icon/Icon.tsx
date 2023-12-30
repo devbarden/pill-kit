@@ -1,5 +1,6 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
 import {
+	Entypo,
 	Fontisto,
 	Octicons,
 	Ionicons,
@@ -67,6 +68,7 @@ const getIconByName = (
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
 		[EnumIconName.remove]: <Ionicons name="ios-trash-sharp" {...props} />,
 		[EnumIconName.options]: <Ionicons name="options" {...props} />,
+		[EnumIconName.add]: <Entypo name="add-to-list" {...props} />,
 		[EnumIconName.check]: <Ionicons name="checkmark" {...props} />,
 		[EnumIconName.count]: (
 			<MaterialCommunityIcons name="format-list-numbered" {...props} />
