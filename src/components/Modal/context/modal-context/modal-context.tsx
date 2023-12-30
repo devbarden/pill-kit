@@ -11,8 +11,6 @@ export const ModalContext = createContext<TypeModalContextProps>({
 	submit: {
 		text: '',
 		handler: () => {},
-		isLoading: false,
-		isLoadingText: '',
 	},
 
 	closeText: '',

@@ -12,10 +12,10 @@ export const Fields: FC = memo(() => {
 		selectedLanguage,
 
 		mailHandler,
+		termsOfUseHandler,
 
 		openLanguageModal,
 		openRemoveDataModal,
-		openTermsOfUseModal,
 	} = useContext(SettingsFormContext)
 
 	return (
@@ -53,7 +53,7 @@ export const Fields: FC = memo(() => {
 					iconName={EnumIconName.docs}
 					iconColor={EnumColor.black}
 					text={t('settingsForm:termsOfUse')}
-					handler={openTermsOfUseModal}
+					handler={termsOfUseHandler}
 				/>
 			</Form.Wrapper>
 		</Fragment>

@@ -2,14 +2,15 @@ import { FC, memo, useMemo, useCallback, useContext } from 'react'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { TypeRoute } from '@app/types'
+import { EnumTabRoute } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
 
 import { getIcon } from '../../utils'
+
 import { styles } from './NavigationItem.styles'
 
 type TypeProps = {
-	route: TypeRoute
+	route: EnumTabRoute
 }
 
 export const NavigationItem: FC<TypeProps> = memo(({ route }) => {
@@ -21,8 +22,7 @@ export const NavigationItem: FC<TypeProps> = memo(({ route }) => {
 	const Icon = useMemo(() => getIcon(route, isActive), [route, isActive])
 
 	const navigateToRoute = useCallback(() => {
-		// TODO: fix any
-		navigate(route as any)
+		navigate(route)
 	}, [navigate, route])
 
 	return (

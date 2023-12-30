@@ -179,6 +179,5 @@ export type TypeLanguage = {
 
 	termsOfUse: {
 		title: string
-		description: string
 	}
 }

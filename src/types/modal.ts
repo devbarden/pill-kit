@@ -10,9 +10,6 @@ export type TypeModalHandlers = {
 export type TypeModalSubmitProps = {
 	text: string
 	handler: () => void
-
-	isLoading?: boolean
-	isLoadingText?: string
 }
 
 export type TypeModalProps = {

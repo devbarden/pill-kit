@@ -8,6 +8,7 @@ import { GlobalStateContext } from '@app/context'
 import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 import {
 	MAIL_TO_LINK,
+	TERMS_OF_USE_LINK,
 	LANGUAGE_SELECT_ITEMS,
 	FALLBACK_LANGUAGE_LABEL,
 } from '@app/constants'
@@ -16,7 +17,6 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { i18n } = useTranslation()
 	const { setLanguage } = useContext(GlobalStateContext)
 
-	const termsOfUseRef = useRef<TypeModalHandlers>(null)
 	const removeAlertRef = useRef<TypeModalHandlers>(null)
 	const modalLanguageRef = useRef<TypeModalHandlers>(null)
 
@@ -41,6 +41,10 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		await Linking.openURL(MAIL_TO_LINK)
 	}, [])
 
+	const termsOfUseHandler = useCallback(async () => {
+		await Linking.openURL(TERMS_OF_USE_LINK)
+	}, [])
+
 	const openLanguageModal = useCallback(() => {
 		modalLanguageRef.current?.open()
 	}, [])
@@ -53,12 +57,7 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		removeAlertRef.current?.open()
 	}, [])
 
-	const openTermsOfUseModal = useCallback(() => {
-		termsOfUseRef.current?.open()
-	}, [])
-
 	return {
-		termsOfUseRef,
 		removeAlertRef,
 		modalLanguageRef,
 
@@ -67,11 +66,11 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		changeLanguageHandler,
 
 		mailHandler,
+		termsOfUseHandler,
 
 		openLanguageModal,
 		closeLanguageModal,
 
 		openRemoveDataModal,
-		openTermsOfUseModal,
 	}
 }

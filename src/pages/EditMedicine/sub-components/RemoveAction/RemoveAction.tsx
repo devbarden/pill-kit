@@ -18,7 +18,7 @@ export const RemoveAction: FC = memo(() => {
 	const { params } = useRoute<TypeEditMedicineRouteProp>()
 	const { id } = params
 	const { useRemoveMedicine } = useEndpoints()
-	const { mutateAsync: remove, isLoading: isRemoving } = useRemoveMedicine()
+	const { mutateAsync: remove } = useRemoveMedicine()
 
 	const openRemoveModal = useCallback(() => {
 		removeModalRef.current?.open()
@@ -45,9 +45,7 @@ export const RemoveAction: FC = memo(() => {
 				closeText={t('components:btn.cancel')}
 				submit={{
 					handler: deleteHandler,
-					isLoading: isRemoving,
 					text: t('components:btn.delete'),
-					isLoadingText: t('actions:removing'),
 				}}
 				ref={removeModalRef}
 			/>

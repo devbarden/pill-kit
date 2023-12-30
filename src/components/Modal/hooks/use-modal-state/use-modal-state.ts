@@ -25,21 +25,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		[closeText, t],
 	)
 
-	const isSubmitLoadingInfoProvided = useMemo(
-		() =>
-			Boolean(submit) &&
-			typeof submit?.isLoading === 'boolean' &&
-			Boolean(submit?.isLoadingText),
-		[submit],
-	)
-
-	const submitBtnText = useMemo(
-		() =>
-			(isSubmitLoadingInfoProvided && submit?.isLoading
-				? submit?.isLoadingText
-				: submit?.text) || '',
-		[submit, isSubmitLoadingInfoProvided],
-	)
+	const submitBtnText = useMemo(() => submit?.text || '', [submit])
 
 	const open = useCallback(() => {
 		setIsVisible(true)

@@ -1,7 +1,6 @@
-// TODO: create separate email for Pill Kit
-export const EMAIL = 'denis.bar1997@gmail.com'
+export const EMAIL = 'pill.kit@yahoo.com'
 
 export const MAIL_TO_LINK = `mailto:${EMAIL}?subject=PillKit`
 
-// TODO: add terms of use link
-export const TERMS_OF_USE_LINK = 'https://github.com/devbarden/pill-kit'
+export const TERMS_OF_USE_LINK =
+	'https://www.termsfeed.com/live/0c8d6715-c83a-4e20-9648-10f5e499e20f'

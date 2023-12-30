@@ -1,2 +1,1 @@
-export * from './NavigationItem'
 export * from './CreateMedicineNavigation'

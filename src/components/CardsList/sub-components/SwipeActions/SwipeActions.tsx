@@ -24,7 +24,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data, isLast }) => {
 	const { t } = useTranslation()
 	const { id, name } = useMemo(() => data, [data])
 	const { useRemoveMedicine } = useEndpoints()
-	const { mutateAsync: remove, isLoading: isRemoving } = useRemoveMedicine()
+	const { mutateAsync: remove } = useRemoveMedicine()
 
 	const openRemoveModal = useCallback(() => {
 		removeModalRef.current?.open()
@@ -46,9 +46,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data, isLast }) => {
 				closeText={t('components:btn.cancel')}
 				submit={{
 					handler: deleteHandler,
-					isLoading: isRemoving,
 					text: t('components:btn.delete'),
-					isLoadingText: t('actions:removing'),
 				}}
 				ref={removeModalRef}
 			/>

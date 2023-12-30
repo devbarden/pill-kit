@@ -1,4 +1,4 @@
-import BaseModal from 'react-native-modal'
+import BaseModal, { ModalProps } from 'react-native-modal'
 import { forwardRef, useMemo, useImperativeHandle } from 'react'
 
 import { EnumModalType } from '@app/enums'
@@ -17,44 +17,42 @@ const fadeAnimationConfig = {
 	animationOutTiming: 200,
 }
 
-// TODO: fix blinking after closing modal
+const MODAL_SETTINGS_MAP = {
+	[EnumModalType.top]: {
+		component: <Default />,
+		style: styles.top,
+		config: {
+			...fadeAnimationConfig,
+		},
+	},
+
+	[EnumModalType.bottom]: {
+		component: <Bottom />,
+		style: styles.bottom,
+		config: {
+			propagateSwipe: true,
+			swipeDirection: ['down'],
+		},
+	},
+
+	[EnumModalType.default]: {
+		component: <Default />,
+		style: {},
+		config: {
+			...fadeAnimationConfig,
+		},
+	},
+}
+
 export const Modal = forwardRef<TypeModalHandlers, TypeModalProps>(
 	(props, ref) => {
 		const state = useModalState(props)
 
 		const { type, open, close, isVisible } = useMemo(() => state, [state])
-		const { component, style, config } = useMemo(() => {
-			switch (type) {
-				case EnumModalType.top:
-					return {
-						component: <Default />,
-						style: styles.top,
-						config: {
-							...fadeAnimationConfig,
-						},
-					}
-
-				case EnumModalType.bottom:
-					return {
-						component: <Bottom />,
-						style: styles.bottom,
-						config: {
-							propagateSwipe: true,
-							swipeDirection: ['down'],
-							onSwipeComplete: close,
-						},
-					}
-
-				default:
-					return {
-						component: <Default />,
-						style: {},
-						config: {
-							...fadeAnimationConfig,
-						},
-					}
-			}
-		}, [close, type])
+		const { component, style, config } = useMemo(
+			() => MODAL_SETTINGS_MAP[type as EnumModalType],
+			[type],
+		)
 
 		useImperativeHandle(
 			ref,
@@ -67,13 +65,13 @@ export const Modal = forwardRef<TypeModalHandlers, TypeModalProps>(
 
 		return (
 			<ModalContext.Provider value={state}>
-				{/* TODO: refactoring + remove ignore comment */}
-				{/* @ts-ignore */}
 				<BaseModal
+					{...(config as ModalProps)}
+					backdropTransitionOutTiming={0}
 					style={style}
 					isVisible={isVisible}
 					onBackdropPress={close}
-					{...config}>
+					onSwipeComplete={close}>
 					{component}
 				</BaseModal>
 			</ModalContext.Provider>

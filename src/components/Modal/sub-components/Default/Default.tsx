@@ -103,11 +103,7 @@ export const Default: FC = memo(() => {
 					<Fragment>
 						<Box style={styles.separator} />
 
-						<Pressable
-							onPress={onSubmit}
-							// TODO: implement disabled behavior
-							// disabled={submit?.isLoading}
-							style={getSubmitBtnStyles}>
+						<Pressable onPress={onSubmit} style={getSubmitBtnStyles}>
 							<Text
 								fontSize="md"
 								textAlign="center"

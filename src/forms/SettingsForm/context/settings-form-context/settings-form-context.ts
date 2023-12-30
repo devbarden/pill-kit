@@ -4,7 +4,6 @@ import { FALLBACK_LANGUAGE_LABEL } from '@app/constants'
 import { TypeSettingsFormContextProps } from '@app/types'
 
 export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
-	termsOfUseRef: null,
 	removeAlertRef: null,
 	modalLanguageRef: null,
 
@@ -13,10 +12,10 @@ export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
 	changeLanguageHandler: () => {},
 
 	mailHandler: () => {},
+	termsOfUseHandler: () => {},
 
 	openLanguageModal: () => {},
 	closeLanguageModal: () => {},
 
 	openRemoveDataModal: () => {},
-	openTermsOfUseModal: () => {},
 })

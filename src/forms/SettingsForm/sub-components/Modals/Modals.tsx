@@ -6,21 +6,13 @@ import { useEndpoints } from '@app/hooks'
 import { EnumModalType } from '@app/enums'
 
 import { SettingsFormContext } from '../../context'
-import {
-	ModalLanguageContent,
-	ModalRemoveDataContent,
-	ModalTermsOfUseContent,
-} from './sub-components'
+import { ModalLanguageContent, ModalRemoveDataContent } from './sub-components'
 
 export const Modals: FC = memo(() => {
 	const { t } = useTranslation()
-
-	const { termsOfUseRef, removeAlertRef, modalLanguageRef } =
-		useContext(SettingsFormContext)
-
 	const { useRemoveAllMedicines } = useEndpoints()
-	const { mutateAsync: removeAllMedicines, isLoading: isRemoving } =
-		useRemoveAllMedicines()
+	const { mutateAsync: removeAllMedicines } = useRemoveAllMedicines()
+	const { removeAlertRef, modalLanguageRef } = useContext(SettingsFormContext)
 
 	return (
 		<Fragment>
@@ -38,18 +30,8 @@ export const Modals: FC = memo(() => {
 				submit={{
 					text: t('components:btn.delete'),
 					handler: removeAllMedicines,
-					isLoading: isRemoving,
-					isLoadingText: t('actions:removing'),
 				}}
 				ref={removeAlertRef}
-			/>
-
-			<Modal
-				onFullScreen
-				withContentScroll
-				title={t('termsOfUse:title')}
-				content={<ModalTermsOfUseContent />}
-				ref={termsOfUseRef}
 			/>
 		</Fragment>
 	)
