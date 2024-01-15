@@ -2,28 +2,21 @@ import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ru: TypeLanguage = {
-	main: {
-		appTitle: 'Pill Kit',
-		error: {
-			title:
-				'Что-то сломалось. Пожалуйста, свяжитесь с нами по электронной почте',
-			reset: 'Сбросить ошибку',
-		},
-	},
-
 	welcome: {
 		title:
 			'Добро Пожаловать! Пожалуйста, прочтите следующие документы прежде чем начать пользоваться приложением',
 		agreement: 'Я прочитал и принимаю',
 		continue: 'Продолжить',
-		validation: {
-			title: 'Внимание',
-			text: 'Вам необходимо прочитать и принять необходимые документы',
+
+		modal: {
+			validation: {
+				title: 'Внимание',
+				description: 'Вам необходимо прочитать и принять необходимые документы',
+			},
 		},
 	},
 
 	home: {
-		title: 'Домашняя страница',
 		add: 'Добавить',
 		empty: 'Активных или будущих лекарств не обнаружено',
 	},
@@ -42,16 +35,20 @@ export const ru: TypeLanguage = {
 	analytic: {
 		title: 'Аналитика',
 		empty: 'Пожалуйста, добавьте лекарство чтобы увидеть свою аналитику',
+
 		progress: {
 			title: 'Прогресс',
 			label: 'Активные лекарства',
 		},
+
 		bar: {
 			title: 'Количество принятых лекарств за последние 5 лет',
 		},
+
 		pie: {
 			title: 'Показатель использования различных видов лекарственных средств',
 		},
+
 		contribution: {
 			title: 'Активность использования лекарств за последние 2 месяца',
 		},
@@ -60,88 +57,87 @@ export const ru: TypeLanguage = {
 	history: {
 		title: 'История',
 		empty: 'Лекарства не найдены',
-		filtersTitle: 'Фильтры',
-		filters: {
-			[EnumCardFilter.active]: 'Активные',
-			[EnumCardFilter.future]: 'Будущие',
-			[EnumCardFilter.past]: 'Прошлые',
-		},
-		sortTypes: {
-			name: 'Имя',
-			startDate: 'Начало приема',
-			endDate: 'Конец приема',
-		},
-	},
 
-	sortSection: {
-		modal: {
-			title: 'Сортировать по',
-			apply: 'Применить',
+		filters: {
+			title: 'Фильтры',
+			items: {
+				[EnumCardFilter.active]: 'Активные',
+				[EnumCardFilter.future]: 'Будущие',
+				[EnumCardFilter.past]: 'Прошлые',
+			},
 		},
-		medicines: 'Лекарства',
-		sort: 'Сортировать',
+
+		sort: {
+			button: 'Сортировать',
+			medicines: 'Лекарства',
+
+			modal: {
+				title: 'Сортировать по',
+				apply: 'Применить',
+			},
+
+			types: {
+				name: 'Имя',
+				startDate: 'Начало приема',
+				endDate: 'Конец приема',
+			},
+		},
 	},
 
 	settings: {
 		title: 'Настройки',
-	},
 
-	settingsForm: {
-		language: 'Язык',
-		contact: 'Связь с нами',
-		clearData: 'Удалить все данные',
-		termsOfUse: 'Условия Использования',
-	},
+		field: {
+			language: 'Язык',
+			contact: 'Связь с нами',
+			clearAllData: 'Удалить все данные',
+			terms: 'Условия Использования',
+		},
 
-	medicineForm: {
-		name: 'Название',
-		type: 'Тип',
-		count: 'Доза',
-		perDay: 'Сколько в день ?',
-		startDate: 'Начало приема',
-		endDate: 'Конец приема',
-		notification: 'Уведомления',
-		time: 'Напоминания',
-		color: 'Цвет',
 		modal: {
-			times: {
-				notification: 'Доза',
+			clearAllData: {
+				title: 'Удалить все данные',
+				description:
+					'Вы действительно хотите удалить все данные? Это действие является необратимым',
 			},
-		},
-		validation: {
-			title: 'Некоторые поля не заполнены',
-			text: 'Пожалуйста, заполните следующие поля:',
-		},
-		pastWarning:
-			'Временной диапазон в прошлом. Вы не увидите это лекарство на главном экране',
-		futureWarning: 'Временной диапазон в будущем',
-	},
-
-	removeDataAlert: {
-		title: 'Удалить все данные',
-		description:
-			'Вы действительно хотите удалить все данные? Это действие является необратимым',
-	},
-
-	card: {
-		dose: 'Доза',
-		perDay: 'В день',
-		date: {
-			till: 'До',
-			from: 'С',
-			daily: 'Ежедневно',
-		},
-		label: {
-			active: 'Активно',
-			future: 'Ожидаемо',
-			past: 'Завершено',
 		},
 	},
 
 	medicine: {
+		field: {
+			name: 'Название',
+			type: 'Тип',
+			countPerUse: 'Доза',
+			countPerDay: 'Сколько в день ?',
+			startDate: 'Начало приема',
+			endDate: 'Конец приема',
+			notification: 'Уведомления',
+			times: 'Напоминания',
+			color: 'Цвет',
+		},
+
+		modal: {
+			validation: {
+				title: 'Некоторые поля не заполнены',
+				description: 'Пожалуйста, заполните следующие поля:',
+			},
+
+			remove: {
+				title: 'Удалить лекарство',
+				description:
+					'Вы действительно хотите удалить это лекарство? Это действие является необратимым',
+			},
+		},
+
+		warning: {
+			past: 'Временной диапазон в прошлом. Вы не увидите это лекарство на главном экране',
+			future: 'Временной диапазон в будущем',
+		},
+
 		indicator: {
 			ml: 'мл',
 		},
+
 		types: {
 			[EnumMedicineType.pill]: 'Таблетки / Капсулы',
 			[EnumMedicineType.liquid]: 'Настойка / Сироп',
@@ -156,8 +152,25 @@ export const ru: TypeLanguage = {
 		},
 	},
 
-	components: {
-		btn: {
+	terms: {
+		title: 'Условия Использования и Положения',
+	},
+
+	card: {
+		date: {
+			till: 'До',
+			from: 'С',
+		},
+
+		label: {
+			active: 'Активно',
+			future: 'Ожидаемо',
+			past: 'Завершено',
+		},
+	},
+
+	component: {
+		button: {
 			ok: 'Окей',
 			add: 'Добавить',
 			save: 'Сохранить',
@@ -179,18 +192,12 @@ export const ru: TypeLanguage = {
 	actions: {
 		loading: 'Загрузка...',
 		removing: 'Удаление...',
+		updating: 'Обновление...',
+		uploading: 'Загрузка...',
 	},
 
-	modal: {
-		removeMedicine: {
-			title: 'Удалить лекарство',
-			description:
-				'Вы действительно хотите удалить это лекарство? Это действие является необратимым',
-		},
-	},
-
-	notifications: {
-		medicines: {
+	notification: {
+		medicine: {
 			add: 'Лекарство успешно добавлено',
 			edit: 'Лекарство успешно обновлено',
 			remove: 'Лекарство успешно удалено',
@@ -199,7 +206,9 @@ export const ru: TypeLanguage = {
 		},
 	},
 
-	termsOfUse: {
-		title: 'Условия Использования и Положения',
+	error: {
+		title:
+			'Что-то сломалось. Пожалуйста, свяжитесь с нами по электронной почте',
+		reset: 'Сбросить ошибку',
 	},
 }

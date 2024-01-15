@@ -45,7 +45,7 @@ export const Navigator: FC = withErrorBoundary(() => {
 	)
 
 	const defaultRoute = useMemo(
-		() => (isUserAcceptAppDocs ? DEFAULT_STACK_ROUTE : EnumStackRoute.welcome),
+		() => (!isUserAcceptAppDocs ? DEFAULT_STACK_ROUTE : EnumStackRoute.welcome),
 		[isUserAcceptAppDocs],
 	)
 

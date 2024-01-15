@@ -1,28 +1,22 @@
 import { EnumMedicineType, EnumCardFilter } from '@app/enums'
 
-import { TypeMedicineSortableField } from './medicine'
+import { TypeMedicineSortableField, TypeMedicineWithoutId } from './medicine'
 
 export type TypeLanguage = {
-	main: {
-		appTitle: string
-		error: {
-			title: string
-			reset: string
-		}
-	}
-
 	welcome: {
 		title: string
 		agreement: string
 		continue: string
-		validation: {
-			title: string
-			text: string
+
+		modal: {
+			validation: {
+				title: string
+				description: string
+			}
 		}
 	}
 
 	home: {
-		title: string
 		add: string
 		empty: string
 	}
@@ -41,16 +35,20 @@ export type TypeLanguage = {
 	analytic: {
 		title: string
 		empty: string
+
 		progress: {
 			title: string
 			label: string
 		}
+
 		bar: {
 			title: string
 		}
+
 		pie: {
 			title: string
 		}
+
 		contribution: {
 			title: string
 		}
@@ -59,67 +57,79 @@ export type TypeLanguage = {
 	history: {
 		title: string
 		empty: string
-		filtersTitle: string
-		filters: Record<EnumCardFilter, string>
-		sortTypes: Record<TypeMedicineSortableField, string>
-	}
 
-	sortSection: {
-		modal: {
+		filters: {
 			title: string
-			apply: string
+
+			items: Record<EnumCardFilter, string>
 		}
-		medicines: string
-		sort: string
+
+		sort: {
+			button: string
+			medicines: string
+
+			modal: {
+				title: string
+				apply: string
+			}
+
+			types: Record<TypeMedicineSortableField, string>
+		}
 	}
 
 	settings: {
 		title: string
-	}
 
-	settingsForm: {
-		language: string
-		contact: string
-		clearData: string
-		termsOfUse: string
-	}
+		field: {
+			language: string
+			contact: string
+			clearAllData: string
+			terms: string
+		}
 
-	medicineForm: {
-		name: string
-		type: string
-		count: string
-		perDay: string
-		startDate: string
-		endDate: string
-		notification: string
-		time: string
-		color: string
 		modal: {
-			times: {
-				notification: string
+			clearAllData: {
+				title: string
+				description: string
 			}
 		}
-		validation: {
-			title: string
-			text: string
-		}
-		pastWarning: string
-		futureWarning: string
 	}
 
-	removeDataAlert: {
+	medicine: {
+		field: Record<keyof TypeMedicineWithoutId, string>
+
+		modal: {
+			validation: {
+				title: string
+				description: string
+			}
+
+			remove: {
+				title: string
+				description: string
+			}
+		}
+
+		warning: {
+			past: string
+			future: string
+		}
+
+		indicator: {
+			ml: string
+		}
+
+		types: Record<EnumMedicineType, string>
+	}
+
+	terms: {
 		title: string
-		description: string
 	}
 
 	card: {
-		dose: string
-		perDay: string
-
 		date: {
 			till: string
 			from: string
-			daily: string
 		}
 
 		label: {
@@ -129,15 +139,8 @@ export type TypeLanguage = {
 		}
 	}
 
-	medicine: {
-		indicator: {
-			ml: string
-		}
-		types: Record<EnumMedicineType, string>
-	}
-
-	components: {
-		btn: {
+	component: {
+		button: {
 			ok: string
 			add: string
 			save: string
@@ -159,17 +162,12 @@ export type TypeLanguage = {
 	actions: {
 		loading: string
 		removing: string
+		updating: string
+		uploading: string
 	}
 
-	modal: {
-		removeMedicine: {
-			title: string
-			description: string
-		}
-	}
-
-	notifications: {
-		medicines: {
+	notification: {
+		medicine: {
 			add: string
 			edit: string
 			remove: string
@@ -178,7 +176,8 @@ export type TypeLanguage = {
 		}
 	}
 
-	termsOfUse: {
+	error: {
 		title: string
+		reset: string
 	}
 }

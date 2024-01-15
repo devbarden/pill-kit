@@ -41,7 +41,7 @@ export const useMedicinesEndpoints = () => {
 					invalidateMedicines()
 				},
 				onError: () => {
-					toast.error(t('notifications:medicines.error'))
+					toast.error(t('notification:medicine.error'))
 				},
 			}),
 
@@ -53,7 +53,7 @@ export const useMedicinesEndpoints = () => {
 					invalidateMedicines()
 				},
 				onError: () => {
-					toast.error(t('notifications:medicines.error'))
+					toast.error(t('notification:medicine.error'))
 				},
 			}),
 
@@ -64,7 +64,7 @@ export const useMedicinesEndpoints = () => {
 					invalidateMedicines()
 				},
 				onError: () => {
-					toast.error(t('notifications:medicines.error'))
+					toast.error(t('notification:medicine.error'))
 				},
 			}),
 
@@ -72,11 +72,11 @@ export const useMedicinesEndpoints = () => {
 			useMutation({
 				mutationFn: api.removeAllMedicines,
 				onSuccess: () => {
-					toast.success(t('notifications:medicines.removeAll'))
+					toast.success(t('notification:medicine.removeAll'))
 					invalidateMedicines()
 				},
 				onError: () => {
-					toast.error(t('notifications:medicines.error'))
+					toast.error(t('notification:medicine.error'))
 				},
 			}),
 	}

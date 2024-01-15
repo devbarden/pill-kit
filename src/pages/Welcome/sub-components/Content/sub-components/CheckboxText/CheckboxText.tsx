@@ -20,7 +20,7 @@ export const CheckboxText: FC = memo(() => {
 					mt={-0.25}
 					_text={styles.link}
 					color={EnumColor.blue}>
-					{t('termsOfUse:title')}
+					{t('terms:title')}
 				</Link>
 			</Text>
 		</Box>

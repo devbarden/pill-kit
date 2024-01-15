@@ -35,7 +35,7 @@ export const Header: FC = memo(() => {
 					fontWeight="bold"
 					numberOfLines={1}
 					color={btnTextColor}>
-					{t('components:btn.save')}
+					{t('component:button.save')}
 				</Text>
 			</Pressable>
 		</Box>

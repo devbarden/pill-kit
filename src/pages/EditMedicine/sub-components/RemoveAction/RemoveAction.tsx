@@ -40,12 +40,12 @@ export const RemoveAction: FC = memo(() => {
 			/>
 
 			<Modal
-				title={t('modal:removeMedicine.title')}
-				content={<Text>{t('modal:removeMedicine.description')}</Text>}
-				closeText={t('components:btn.cancel')}
+				title={t('medicine:modal.remove.title')}
+				content={<Text>{t('medicine:modal.remove.description')}</Text>}
+				closeText={t('component:button.cancel')}
 				submit={{
 					handler: deleteHandler,
-					text: t('components:btn.delete'),
+					text: t('component:button.delete'),
 				}}
 				ref={removeModalRef}
 			/>

@@ -18,17 +18,17 @@ export const Modals: FC = memo(() => {
 		<Fragment>
 			<Modal
 				type={EnumModalType.bottom}
-				title={t('settingsForm:language')}
+				title={t('settings:field.language')}
 				content={<ModalLanguageContent />}
 				ref={modalLanguageRef}
 			/>
 
 			<Modal
-				title={t('removeDataAlert:title')}
+				title={t('settings:modal.clearAllData.title')}
 				content={<ModalRemoveDataContent />}
-				closeText={t('components:btn.cancel')}
+				closeText={t('component:button.cancel')}
 				submit={{
-					text: t('components:btn.delete'),
+					text: t('component:button.delete'),
 					handler: removeAllMedicines,
 				}}
 				ref={removeAlertRef}

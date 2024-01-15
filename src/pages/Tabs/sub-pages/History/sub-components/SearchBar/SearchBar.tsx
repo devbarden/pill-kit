@@ -63,7 +63,7 @@ export const SearchBar: FC = memo(() => {
 				value={searchValue}
 				onChangeText={onChangeSearchValueHandler}
 				returnKeyType="search"
-				placeholder={t('components:input.placeholder.search')}
+				placeholder={t('component:input.placeholder.search')}
 				leftElement={<Icon name={EnumIconName.search} {...commonIconProps} />}
 				rightElement={
 					<Box style={styles.actionsWrapper}>
@@ -84,7 +84,7 @@ export const SearchBar: FC = memo(() => {
 
 			<Modal
 				withGreyBackgroundColor
-				title={t('history:filtersTitle')}
+				title={t('history:filters.title')}
 				content={<FiltersModalContent />}
 				ref={filtersModalRef}
 			/>

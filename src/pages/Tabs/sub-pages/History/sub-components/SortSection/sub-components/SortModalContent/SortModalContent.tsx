@@ -28,7 +28,7 @@ export const SortModalContent: FC = memo(() => {
 				{values(CARD_SORT_TYPE).map((item, index, self) => (
 					<Fragment key={uid()}>
 						<Form.RadioItem
-							text={t(`history:sortTypes.${item}`)}
+							text={t(`history:sort.types.${item}`)}
 							value={item}
 							handler={() => onChangeSortType(item)}
 						/>

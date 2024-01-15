@@ -25,11 +25,11 @@ export const ErrorFallback: FC<TypeProps> = memo(({ error, resetError }) => {
 		<Box style={styles.wrapper}>
 			<Icon name={EnumIconName.clear} color={EnumColor.red} size={36} />
 			<Text fontSize="xl" textAlign="center" color={EnumColor.red}>
-				{t('main:error.title')}: {EMAIL}
+				{t('error:title')}: {EMAIL}
 			</Text>
 			<Text fontSize="sm">{error.message}</Text>
 			<Button colorScheme={EnumColor.red} onPress={resetHandler}>
-				{t('main:error.reset')}
+				{t('error:reset')}
 			</Button>
 		</Box>
 	)

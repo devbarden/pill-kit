@@ -85,10 +85,10 @@ export const Content: FC = memo(() => {
 			</Box>
 
 			<Modal
-				title={t('welcome:validation.title')}
-				content={<Text>{t('welcome:validation.text')}</Text>}
+				title={t('welcome:modal.validation.title')}
+				content={<Text>{t('welcome:modal.validation.description')}</Text>}
 				ref={modalValidationRef}
-				closeText={t('components:btn.ok')}
+				closeText={t('component:button.ok')}
 			/>
 		</Fragment>
 	)

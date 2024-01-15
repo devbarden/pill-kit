@@ -31,20 +31,20 @@ export const SortSection: FC = memo(() => {
 				numberOfLines={1}
 				color={EnumColor.darkGrey}
 				style={styles.maxWidthHalfOfRow}>
-				{t('sortSection:medicines')}: {medicines.length}
+				{t('history:sort.medicines')}: {medicines.length}
 			</Text>
 
 			<Pressable style={getPressableStyles} onPress={openSortModal}>
 				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
-					{t('sortSection:sort')}
+					{t('history:sort.button')}
 				</Text>
 				<Icon name={EnumIconName.sort} size={24} color={EnumColor.darkGrey} />
 			</Pressable>
 
 			<Modal
 				withGreyBackgroundColor
-				title={t('sortSection:modal.title')}
-				closeText={t('components:btn.cancel')}
+				title={t('history:sort.modal.title')}
+				closeText={t('component:button.cancel')}
 				content={<SortModalContent />}
 				ref={sortModalRef}
 			/>

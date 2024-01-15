@@ -12,9 +12,9 @@ export const ModalValidationContent: FC = memo(() => {
 
 	return (
 		<Fragment>
-			<Text>{t('medicineForm:validation.text')}</Text>
+			<Text>{t('medicine:modal.validation.description')}</Text>
 			{emptyFields.map((field) => (
-				<Text key={uid()}>- {t(`medicineForm:${field}`)}</Text>
+				<Text key={uid()}>- {t(`medicine:field.${field}`)}</Text>
 			))}
 		</Fragment>
 	)

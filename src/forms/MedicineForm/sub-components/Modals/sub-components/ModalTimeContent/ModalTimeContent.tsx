@@ -35,7 +35,7 @@ export const ModalTimeContent: FC = memo(() => {
 								<Icon name={EnumIconName.bell} size={18} />
 
 								<Text fontSize="lg" numberOfLines={1}>
-									{t('medicineForm:modal.times.notification')}: {index + 1}
+									{t('medicine:field.countPerUse')}: {index + 1}
 								</Text>
 							</Box>
 

@@ -23,7 +23,7 @@ export const FiltersModalContent: FC = memo(() => {
 		<Form.Wrapper>
 			{entries(filters).map(([filter, status], index, self) => (
 				<Fragment key={uid()}>
-					<Form.CustomItem text={t(`history:filters.${filter}`)}>
+					<Form.CustomItem text={t(`history:filters.items.${filter}`)}>
 						<Switch
 							isChecked={status}
 							onToggle={() => toggleFilter(filter as EnumCardFilter)}

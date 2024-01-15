@@ -49,7 +49,7 @@ export const Fields: FC = memo(() => {
 		<Fragment>
 			<Form.Wrapper>
 				<Form.PressableItem
-					text={t('medicineForm:name')}
+					text={t('medicine:field.name')}
 					iconName={EnumIconName.text}
 					handler={openNameModal}
 					value={name}
@@ -58,7 +58,7 @@ export const Fields: FC = memo(() => {
 				<Form.Separator />
 
 				<Form.PressableItem
-					text={t('medicineForm:type')}
+					text={t('medicine:field.type')}
 					iconName={EnumIconName.medical}
 					handler={openTypeModal}
 					value={
@@ -76,7 +76,7 @@ export const Fields: FC = memo(() => {
 					{getIsNeedToFillCountPerUse(type) && (
 						<Fragment>
 							<Form.PressableItem
-								text={t('medicineForm:count')}
+								text={t('medicine:field.countPerUse')}
 								iconName={EnumIconName.count}
 								handler={openCountPerUseModal}
 								value={getCountPerUseValueByType(countPerUse, type)}
@@ -89,7 +89,7 @@ export const Fields: FC = memo(() => {
 
 				<Form.PressableItem
 					isValueQuarterWidth
-					text={t('medicineForm:perDay')}
+					text={t('medicine:field.countPerDay')}
 					iconName={EnumIconName.count}
 					handler={openCountPerDayModal}
 					value={countPerDay}
@@ -98,7 +98,7 @@ export const Fields: FC = memo(() => {
 
 			<Form.Wrapper>
 				<Form.CustomItem
-					text={t('medicineForm:startDate')}
+					text={t('medicine:field.startDate')}
 					iconName={EnumIconName.calendar}>
 					<DateTimePicker
 						mode="date"
@@ -111,7 +111,7 @@ export const Fields: FC = memo(() => {
 				<Form.Separator />
 
 				<Form.CustomItem
-					text={t('medicineForm:endDate')}
+					text={t('medicine:field.endDate')}
 					iconName={EnumIconName.calendar}>
 					<DateTimePicker
 						mode="date"
@@ -126,7 +126,7 @@ export const Fields: FC = memo(() => {
 				<NotificationLabel
 					iconName={EnumIconName.warning}
 					iconColor={EnumColor.yellow}
-					text={t('medicineForm:pastWarning')}
+					text={t('medicine:warning.past')}
 				/>
 			)}
 
@@ -134,13 +134,13 @@ export const Fields: FC = memo(() => {
 				<NotificationLabel
 					iconName={EnumIconName.warning}
 					iconColor={EnumColor.yellow}
-					text={t('medicineForm:futureWarning')}
+					text={t('medicine:warning.future')}
 				/>
 			)}
 
 			<Form.Wrapper>
 				<Form.CustomItem
-					text={t('medicineForm:notification')}
+					text={t('medicine:field.notification')}
 					iconName={EnumIconName.bell}>
 					<Switch
 						isChecked={notification}
@@ -151,7 +151,7 @@ export const Fields: FC = memo(() => {
 				<Form.Separator />
 
 				<Form.PressableItem
-					text={t('medicineForm:time')}
+					text={t('medicine:field.times')}
 					iconName={EnumIconName.time}
 					handler={openTimeModal}
 				/>
@@ -160,7 +160,7 @@ export const Fields: FC = memo(() => {
 			<Form.Wrapper>
 				<Form.PressableItem
 					withoutChevronRight
-					text={t('medicineForm:color')}
+					text={t('medicine:field.color')}
 					iconName={EnumIconName.paint}
 					handler={openColorModal}
 					value={<ColorBox />}

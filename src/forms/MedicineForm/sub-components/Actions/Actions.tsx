@@ -16,7 +16,7 @@ export const Actions: FC = memo(() => {
 		<Box style={styles.wrapper}>
 			<Form.Wrapper>
 				<Form.Action
-					text={t('components:btn.save')}
+					text={t('component:button.save')}
 					handler={saveHandler}
 					isDisabled={isSaveBtnDisabled}
 				/>

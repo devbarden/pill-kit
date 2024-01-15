@@ -21,7 +21,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 	const [isVisible, setIsVisible] = useState(false)
 
 	const closeBtnText = useMemo(
-		() => closeText ?? t('components:btn.close'),
+		() => closeText ?? t('component:button.close'),
 		[closeText, t],
 	)
 

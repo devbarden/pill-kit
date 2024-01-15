@@ -32,28 +32,28 @@ export const Modals: FC = memo(() => {
 			<Modal
 				withGreyBackgroundColor
 				type={EnumModalType.top}
-				title={t('medicineForm:name')}
+				title={t('medicine:field.name')}
 				content={<ModalNameContent />}
 				ref={modalNameRef}
 			/>
 
 			<Modal
 				type={EnumModalType.bottom}
-				title={t('medicineForm:type')}
+				title={t('medicine:field.type')}
 				content={<ModalTypeContent />}
 				ref={modalTypeRef}
 			/>
 
 			<Modal
 				type={EnumModalType.bottom}
-				title={t('medicineForm:count')}
+				title={t('medicine:field.countPerUse')}
 				content={<ModalCountPerUseContent />}
 				ref={modalCountPerUseRef}
 			/>
 
 			<Modal
 				type={EnumModalType.bottom}
-				title={t('medicineForm:perDay')}
+				title={t('medicine:field.countPerDay')}
 				content={<ModalCountPerDayContent />}
 				ref={modalCountPerDayRef}
 			/>
@@ -61,23 +61,23 @@ export const Modals: FC = memo(() => {
 			<Modal
 				withGreyBackgroundColor
 				type={EnumModalType.bottom}
-				title={t('medicineForm:time')}
+				title={t('medicine:field.times')}
 				content={<ModalTimeContent />}
 				ref={modalTimeRef}
 			/>
 
 			<Modal
 				type={EnumModalType.bottom}
-				title={t('medicineForm:color')}
+				title={t('medicine:field.color')}
 				content={<ModalColorContent />}
 				ref={modalColorRef}
 			/>
 
 			<Modal
-				title={t('medicineForm:validation.title')}
+				title={t('medicine:modal.validation.title')}
 				content={<ModalValidationContent />}
 				ref={modalValidationRef}
-				closeText={t('components:btn.ok')}
+				closeText={t('component:button.ok')}
 			/>
 		</Fragment>
 	)

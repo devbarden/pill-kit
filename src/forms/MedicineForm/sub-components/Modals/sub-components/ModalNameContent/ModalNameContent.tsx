@@ -32,7 +32,7 @@ export const ModalNameContent: FC = memo(() => {
 				maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
 				onSubmitEditing={closeNameModal}
 				returnKeyType="done"
-				placeholder={t('components:input.placeholder.required')}
+				placeholder={t('component:input.placeholder.required')}
 				leftElement={
 					<Icon name={EnumIconName.text} color={EnumColor.darkGrey} size={20} />
 				}
