@@ -18,7 +18,7 @@ export const History: FC = memo(() => {
 	if (isLoading) {
 		return (
 			<Fragment>
-				<Header withoutBorder title={t('history:title')} />
+				<Header title={t('history:title')} />
 				<ContentWrapper withVerticalPaddings withHorizontalPaddings>
 					<Skeleton
 						h={200}
@@ -40,7 +40,7 @@ export const History: FC = memo(() => {
 
 	return (
 		<HistoryContext.Provider value={state}>
-			<Header withoutBorder title={t('history:title')} />
+			<Header title={t('history:title')} />
 			<ContentWrapper
 				withStretch={false}
 				withVerticalPaddings

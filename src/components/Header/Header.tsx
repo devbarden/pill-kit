@@ -15,17 +15,10 @@ type TypeProps = {
 	action?: ReactElement
 	withLogo?: boolean
 	withGoBack?: boolean
-	withoutBorder?: boolean
 }
 
 export const Header: FC<TypeProps> = memo(
-	({
-		title,
-		action = null,
-		withLogo = false,
-		withGoBack = false,
-		withoutBorder = false,
-	}) => {
+	({ title, action = null, withLogo = false, withGoBack = false }) => {
 		const { navigate } = useNavigation()
 		const { activeTab } = useContext(GlobalStateContext)
 
@@ -34,8 +27,7 @@ export const Header: FC<TypeProps> = memo(
 		}, [navigate, activeTab])
 
 		return (
-			<Box
-				style={[styles.wrapper, { borderBottomWidth: withoutBorder ? 0 : 1 }]}>
+			<Box style={styles.wrapper}>
 				{withGoBack && (
 					<Pressable style={styles.back} onPress={backHandler}>
 						<Icon name={EnumIconName.back} size={28} color={EnumColor.red} />

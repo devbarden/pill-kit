@@ -8,18 +8,17 @@ import {
 	useContext,
 	useCallback,
 } from 'react'
+import { Box, Text } from 'native-base'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import { Pressable, PressableStateCallbackType } from 'react-native'
-import { Box, Text } from 'native-base'
+import { Linking, Pressable, PressableStateCallbackType } from 'react-native'
 
 import { Modal } from '@app/components'
 import { Logo, PillKit } from '@app/svg'
 import { TypeModalHandlers } from '@app/types'
 import { GlobalStateContext } from '@app/context'
+import { TERMS_OF_USE_LINK } from '@app/constants'
 import { EnumColor, EnumStackRoute } from '@app/enums'
-
-import { CheckboxText } from './sub-components'
 
 import { styles } from './Content.styles'
 
@@ -49,6 +48,10 @@ export const Content: FC = memo(() => {
 		setIsChecked(value)
 	}, [])
 
+	const openTermsHandler = useCallback(async () => {
+		await Linking.openURL(TERMS_OF_USE_LINK)
+	}, [])
+
 	const goHomeHandler = useCallback(async () => {
 		if (!isChecked) {
 			openValidationModal()
@@ -69,13 +72,23 @@ export const Content: FC = memo(() => {
 					<PillKit />
 				</Box>
 
-				<BouncyCheckbox
-					fillColor={EnumColor.red}
-					unfillColor={EnumColor.white}
-					isChecked={isChecked}
-					onPress={checkboxHandler}
-					textComponent={<CheckboxText />}
-				/>
+				<Box style={styles.agreement}>
+					<BouncyCheckbox
+						fillColor={EnumColor.red}
+						unfillColor={EnumColor.white}
+						isChecked={isChecked}
+						onPress={checkboxHandler}
+						style={styles.checkbox}
+						textComponent={
+							<Text style={styles.fullFlex}>
+								<Text>{t('welcome:agreement')}</Text>{' '}
+								<Text style={styles.link} onPress={openTermsHandler}>
+									{t('terms:title')}
+								</Text>
+							</Text>
+						}
+					/>
+				</Box>
 
 				<Pressable style={getBtnStyles} onPress={goHomeHandler}>
 					<Text numberOfLines={1} color={EnumColor.white}>

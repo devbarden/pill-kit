@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native'
 
+import { EnumColor } from '@app/enums'
+
 export const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
 		gap: 32,
-		padding: 16,
+		margin: 16,
 		justifyContent: 'space-between',
 		alignItems: 'center',
 	},
@@ -14,6 +16,24 @@ export const styles = StyleSheet.create({
 		gap: 16,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+
+	checkbox: {
+		gap: 16,
+	},
+
+	agreement: {
+		width: '100%',
+		gap: 8,
+	},
+
+	fullFlex: {
+		flex: 1,
+	},
+
+	link: {
+		textDecorationLine: 'underline',
+		color: EnumColor.blue,
 	},
 
 	btn: {

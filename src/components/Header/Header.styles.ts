@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		paddingHorizontal: 16,
+		borderBottomWidth: 1,
 		borderColor: EnumColor.lightGrey,
 		backgroundColor: EnumColor.white,
 	},
