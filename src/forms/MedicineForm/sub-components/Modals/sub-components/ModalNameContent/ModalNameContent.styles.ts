@@ -11,4 +11,13 @@ export const styles = StyleSheet.create({
 		borderRadius: 24,
 		backgroundColor: EnumColor.lightGrey,
 	},
+
+	inputWrapper: {
+		paddingVertical: 8,
+		paddingHorizontal: 12,
+	},
+
+	input: {
+		fontSize: 16,
+	},
 })

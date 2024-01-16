@@ -1,2 +1,1 @@
-export * from './ColorBox'
 export * from './CalendarPress'

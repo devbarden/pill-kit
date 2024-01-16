@@ -20,6 +20,11 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	form: DEFAULT_EMPTY_MEDICINE,
 	emptyFields: [],
 	isSaveBtnDisabled: false,
+	isNeedToShowStartDateCalendar: false,
+	isNeedToShowEndDateCalendar: false,
+
+	openStartDateCalendar: () => {},
+	openEndDateCalendar: () => {},
 
 	openNameModal: () => {},
 	closeNameModal: () => {},
@@ -48,7 +53,8 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	changeStartDateHandler: () => {},
 	changeEndDateHandler: () => {},
 	changeSwitchToggleHandler: () => {},
-	changeTimeHandler: () => {},
+	changeIOSTimeHandler: () => {},
+	changeAndroidTimeHandler: () => {},
 	changeColorHandler: () => {},
 
 	backHandler: () => {},

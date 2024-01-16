@@ -2,12 +2,13 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { FC, Fragment, memo, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { medicineUtils } from '@app/utils'
+import { IS_IOS, IS_ANDROID } from '@app/constants'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { Form, Icon, Switch, NotificationLabel } from '@app/components'
 
-import { ColorBox } from './sub-components'
+import { CalendarPress, ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
-import { medicineUtils } from '@app/utils'
 
 export const Fields: FC = memo(() => {
 	const { t, i18n } = useTranslation()
@@ -21,6 +22,12 @@ export const Fields: FC = memo(() => {
 		openColorModal,
 
 		form,
+
+		isNeedToShowStartDateCalendar,
+		isNeedToShowEndDateCalendar,
+
+		openStartDateCalendar,
+		openEndDateCalendar,
 
 		getCountPerUseValueByType,
 		getIsNeedToFillCountPerUse,
@@ -100,12 +107,34 @@ export const Fields: FC = memo(() => {
 				<Form.CustomItem
 					text={t('medicine:field.startDate')}
 					iconName={EnumIconName.calendar}>
-					<DateTimePicker
-						mode="date"
-						value={new Date(startDate)}
-						onChange={changeStartDateHandler}
-						locale={i18n.language}
-					/>
+					<Fragment>
+						{IS_IOS && (
+							<DateTimePicker
+								mode="date"
+								value={new Date(startDate)}
+								onChange={changeStartDateHandler}
+								locale={i18n.language}
+							/>
+						)}
+
+						{IS_ANDROID && (
+							<Fragment>
+								{isNeedToShowStartDateCalendar ? (
+									<DateTimePicker
+										mode="date"
+										value={new Date(startDate)}
+										onChange={changeStartDateHandler}
+										locale={i18n.language}
+									/>
+								) : (
+									<CalendarPress
+										value={startDate}
+										handler={openStartDateCalendar}
+									/>
+								)}
+							</Fragment>
+						)}
+					</Fragment>
 				</Form.CustomItem>
 
 				<Form.Separator />
@@ -113,12 +142,34 @@ export const Fields: FC = memo(() => {
 				<Form.CustomItem
 					text={t('medicine:field.endDate')}
 					iconName={EnumIconName.calendar}>
-					<DateTimePicker
-						mode="date"
-						value={new Date(endDate)}
-						onChange={changeEndDateHandler}
-						locale={i18n.language}
-					/>
+					<Fragment>
+						{IS_IOS && (
+							<DateTimePicker
+								mode="date"
+								value={new Date(endDate)}
+								onChange={changeEndDateHandler}
+								locale={i18n.language}
+							/>
+						)}
+
+						{IS_ANDROID && (
+							<Fragment>
+								{isNeedToShowEndDateCalendar ? (
+									<DateTimePicker
+										mode="date"
+										value={new Date(endDate)}
+										onChange={changeEndDateHandler}
+										locale={i18n.language}
+									/>
+								) : (
+									<CalendarPress
+										value={endDate}
+										handler={openEndDateCalendar}
+									/>
+								)}
+							</Fragment>
+						)}
+					</Fragment>
 				</Form.CustomItem>
 			</Form.Wrapper>
 

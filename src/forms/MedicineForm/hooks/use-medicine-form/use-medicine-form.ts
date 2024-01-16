@@ -52,6 +52,10 @@ export const useMedicineForm = (
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
+	const [isNeedToShowStartDateCalendar, setIsNeedShowStartDateCalendar] =
+		useState(false)
+	const [isNeedToShowEndDateCalendar, setIsNeedToShowEndDateCalendar] =
+		useState(false)
 
 	const formToValidate = useMemo(
 		() => getMedicineWithoutCountPerUseField(form),
@@ -72,6 +76,14 @@ export const useMedicineForm = (
 		() => isSubmitting || isAnyFieldEmpty(formToValidate),
 		[isSubmitting, formToValidate],
 	)
+
+	const openStartDateCalendar = useCallback(() => {
+		setIsNeedShowStartDateCalendar(true)
+	}, [])
+
+	const openEndDateCalendar = useCallback(() => {
+		setIsNeedToShowEndDateCalendar(true)
+	}, [])
 
 	const openNameModal = useCallback(() => {
 		modalNameRef.current?.open()
@@ -218,6 +230,7 @@ export const useMedicineForm = (
 
 			const startDate = date.setHours(0, 0, 0, 0)
 
+			setIsNeedShowStartDateCalendar(false)
 			setForm((prev) => ({
 				...prev,
 				startDate,
@@ -233,6 +246,7 @@ export const useMedicineForm = (
 
 			const endDate = date.setHours(23, 59, 59, 999)
 
+			setIsNeedToShowEndDateCalendar(false)
 			setForm((prev) => ({
 				...prev,
 				startDate:
@@ -243,13 +257,35 @@ export const useMedicineForm = (
 		[],
 	)
 
-	const changeTimeHandler = useCallback(
+	const changeIOSTimeHandler = useCallback(
 		({ id }: TypeMedicineTime, date?: Date) => {
 			if (!date) return
 
 			const time = {
 				hours: date?.getHours(),
 				minutes: date?.getMinutes(),
+			}
+
+			setForm((prev) => ({
+				...prev,
+				times: prev.times.map((prevTime) =>
+					prevTime.id === id
+						? {
+								...prevTime,
+								...time,
+						  }
+						: prevTime,
+				),
+			}))
+		},
+		[],
+	)
+
+	const changeAndroidTimeHandler = useCallback(
+		({ id, hours, minutes }: TypeMedicineTime) => {
+			const time = {
+				hours,
+				minutes,
 			}
 
 			setForm((prev) => ({
@@ -312,6 +348,11 @@ export const useMedicineForm = (
 		form,
 		emptyFields,
 		isSaveBtnDisabled,
+		isNeedToShowStartDateCalendar,
+		isNeedToShowEndDateCalendar,
+
+		openStartDateCalendar,
+		openEndDateCalendar,
 
 		openNameModal,
 		closeNameModal,
@@ -340,7 +381,8 @@ export const useMedicineForm = (
 		changeStartDateHandler,
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
-		changeTimeHandler,
+		changeIOSTimeHandler,
+		changeAndroidTimeHandler,
 		changeColorHandler,
 
 		backHandler,

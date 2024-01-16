@@ -34,6 +34,11 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 	form: TypeMedicineWithoutId
 	emptyFields: string[]
 	isSaveBtnDisabled: boolean
+	isNeedToShowStartDateCalendar: boolean
+	isNeedToShowEndDateCalendar: boolean
+
+	openStartDateCalendar: () => void
+	openEndDateCalendar: () => void
 
 	openNameModal: () => void
 	closeNameModal: () => void
@@ -65,7 +70,8 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 	changeStartDateHandler: (event: DateTimePickerEvent, date?: Date) => void
 	changeEndDateHandler: (event: DateTimePickerEvent, date?: Date) => void
 	changeSwitchToggleHandler: () => void
-	changeTimeHandler: (time: TypeMedicineTime, date?: Date) => void
+	changeIOSTimeHandler: (time: TypeMedicineTime, date?: Date) => void
+	changeAndroidTimeHandler: (time: TypeMedicineTime) => void
 	changeColorHandler: (color: string) => void
 
 	backHandler: () => void
