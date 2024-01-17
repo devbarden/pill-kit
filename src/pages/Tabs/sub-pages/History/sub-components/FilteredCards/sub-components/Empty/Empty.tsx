@@ -14,7 +14,7 @@ export const Empty: FC = memo(() => {
 		<Box style={styles.wrapper}>
 			<Icon
 				size={72}
-				name={EnumIconName.magnifier}
+				name={EnumIconName.search}
 				color={EnumColor.transparentGrey}
 			/>
 			<Text fontSize="lg" color={EnumColor.transparentGrey}>

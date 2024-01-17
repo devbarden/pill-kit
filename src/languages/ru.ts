@@ -144,7 +144,7 @@ export const ru: TypeLanguage = {
 		types: {
 			[EnumMedicineType.pill]: 'Таблетки / Капсулы',
 			[EnumMedicineType.liquid]: 'Настойка / Сироп',
-			[EnumMedicineType.injection]: 'Укол',
+			[EnumMedicineType.injection]: 'Инъекция',
 			[EnumMedicineType.cream]: 'Крем / Мазь / Гель',
 			[EnumMedicineType.drops]: 'Капли',
 			[EnumMedicineType.candles]: 'Свечи',

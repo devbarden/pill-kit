@@ -43,7 +43,6 @@ export enum EnumIconName {
 	medicine = 'medicine',
 	bell = 'notification',
 	injection = 'injection',
-	magnifier = 'magnifier',
 	chartPlus = 'chartPlus',
 	bellOff = 'notificationOff',
 	chartTimeline = 'chartTimeline',

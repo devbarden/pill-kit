@@ -6,7 +6,6 @@ import {
 	Ionicons,
 	Foundation,
 	MaterialIcons,
-	SimpleLineIcons,
 	MaterialCommunityIcons,
 } from '@expo/vector-icons'
 
@@ -77,7 +76,6 @@ const getIconByName = (
 		[EnumIconName.sort]: <Octicons name="sort-desc" {...props} />,
 		[EnumIconName.clear]: <Octicons name="x-circle" {...props} />,
 		[EnumIconName.history]: <Octicons name="archive" {...props} />,
-		[EnumIconName.magnifier]: <SimpleLineIcons name="magnifier" {...props} />,
 		[EnumIconName.back]: <Octicons name="chevron-left" {...props} />,
 		[EnumIconName.bellOff]: <Octicons name="bell-slash" {...props} />,
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,
