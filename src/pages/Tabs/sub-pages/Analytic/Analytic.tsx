@@ -1,7 +1,13 @@
 import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Header, ScrollContent, ContentWrapper } from '@app/components'
+import {
+	Header,
+	ScrollContent,
+	ContentWrapper,
+	NotificationLabel,
+} from '@app/components'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { useAnalyticState } from './hooks'
 import { AnalyticContext } from './context'
@@ -26,7 +32,17 @@ export const Analytic: FC = memo(() => {
 			<ContentWrapper>
 				<ScrollContent>
 					<Fragment>
-						{isProgressChartAvailable && <Progress />}
+						{isProgressChartAvailable ? (
+							<Progress />
+						) : (
+							<ContentWrapper withHorizontalPaddings>
+								<NotificationLabel
+									iconName={EnumIconName.warning}
+									iconColor={EnumColor.yellow}
+									text={t('analytic:warning')}
+								/>
+							</ContentWrapper>
+						)}
 						<Bar />
 						<Pie />
 						<Contribution />

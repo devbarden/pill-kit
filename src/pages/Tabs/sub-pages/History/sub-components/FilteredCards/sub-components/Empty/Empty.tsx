@@ -12,8 +12,12 @@ export const Empty: FC = memo(() => {
 
 	return (
 		<Box style={styles.wrapper}>
-			<Icon name={EnumIconName.noData} size={96} color={EnumColor.darkGrey} />
-			<Text fontSize="xl" color={EnumColor.darkGrey}>
+			<Icon
+				size={72}
+				name={EnumIconName.magnifier}
+				color={EnumColor.transparentGrey}
+			/>
+			<Text fontSize="lg" color={EnumColor.transparentGrey}>
 				{t('history:empty')}
 			</Text>
 		</Box>

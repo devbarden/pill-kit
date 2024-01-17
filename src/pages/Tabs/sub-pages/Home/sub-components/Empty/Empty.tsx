@@ -16,7 +16,7 @@ export const Empty: FC = memo(() => {
 	const getButtonStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
 			styles.buttonWrapper,
-			{ backgroundColor: pressed ? EnumColor.transparentGrey : EnumColor.red },
+			{ backgroundColor: pressed ? EnumColor.darkRed : EnumColor.red },
 		],
 		[],
 	)
@@ -26,11 +26,14 @@ export const Empty: FC = memo(() => {
 			<Box style={styles.infoWrapper}>
 				<Box style={styles.info}>
 					<Icon
+						size={72}
 						name={EnumIconName.noData}
-						size={96}
-						color={EnumColor.darkGrey}
+						color={EnumColor.transparentGrey}
 					/>
-					<Text fontSize="xl" textAlign="center" color={EnumColor.darkGrey}>
+					<Text
+						fontSize="lg"
+						textAlign="center"
+						color={EnumColor.transparentGrey}>
 						{t('home:empty')}
 					</Text>
 				</Box>

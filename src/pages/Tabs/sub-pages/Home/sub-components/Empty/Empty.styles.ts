@@ -14,8 +14,9 @@ export const styles = StyleSheet.create({
 
 	buttonWrapper: {
 		gap: 8,
-		padding: 16,
-		borderRadius: 24,
+		paddingVertical: 16,
+		paddingHorizontal: 32,
+		borderRadius: 16,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',

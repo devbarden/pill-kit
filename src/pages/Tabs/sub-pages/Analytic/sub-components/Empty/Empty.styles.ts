@@ -7,4 +7,11 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+
+	iconsWrapper: {
+		flexDirection: 'row',
+		gap: 16,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
 })

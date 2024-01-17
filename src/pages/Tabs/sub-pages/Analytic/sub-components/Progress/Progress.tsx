@@ -76,7 +76,7 @@ export const Progress: FC = memo(() => {
 		if (length === 1) {
 			return {
 				radius: 48,
-				strokeWidth: 32,
+				strokeWidth: 16,
 			}
 		}
 

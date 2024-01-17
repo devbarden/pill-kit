@@ -1,4 +1,4 @@
-import { FC, ReactElement, memo, useMemo } from 'react'
+import React, { FC, ReactElement, memo, useMemo } from 'react'
 import {
 	Entypo,
 	Fontisto,
@@ -6,6 +6,7 @@ import {
 	Ionicons,
 	Foundation,
 	MaterialIcons,
+	SimpleLineIcons,
 	MaterialCommunityIcons,
 } from '@expo/vector-icons'
 
@@ -58,11 +59,25 @@ const getIconByName = (
 		[EnumIconName.search]: <Octicons name="search" {...props} />,
 		[EnumIconName.settings]: <Octicons name="gear" {...props} />,
 		[EnumIconName.star]: <Octicons name="star-fill" {...props} />,
+		[EnumIconName.pie]: <Ionicons name="pie-chart-outline" {...props} />,
+		[EnumIconName.chart]: (
+			<MaterialCommunityIcons name="chart-bell-curve-cumulative" {...props} />
+		),
+		[EnumIconName.chartPlus]: (
+			<MaterialCommunityIcons name="chart-box-plus-outline" {...props} />
+		),
+		[EnumIconName.chartTimeline]: (
+			<MaterialCommunityIcons
+				name="chart-timeline-variant-shimmer"
+				{...props}
+			/>
+		),
 		[EnumIconName.analytic]: <Octicons name="graph" {...props} />,
 		[EnumIconName.language]: <Octicons name="globe" {...props} />,
 		[EnumIconName.sort]: <Octicons name="sort-desc" {...props} />,
 		[EnumIconName.clear]: <Octicons name="x-circle" {...props} />,
 		[EnumIconName.history]: <Octicons name="archive" {...props} />,
+		[EnumIconName.magnifier]: <SimpleLineIcons name="magnifier" {...props} />,
 		[EnumIconName.back]: <Octicons name="chevron-left" {...props} />,
 		[EnumIconName.bellOff]: <Octicons name="bell-slash" {...props} />,
 		[EnumIconName.right]: <Octicons name="chevron-right" {...props} />,

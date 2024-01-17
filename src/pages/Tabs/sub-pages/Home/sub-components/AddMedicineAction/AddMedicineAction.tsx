@@ -13,7 +13,7 @@ export const AddMedicineAction: FC = memo(() => {
 
 	return (
 		<Pressable style={styles.wrapper} onPress={addNewMedicineHandler}>
-			<Icon name={EnumIconName.add} color={EnumColor.black} size={20} />
+			<Icon name={EnumIconName.add} color={EnumColor.red} size={24} />
 		</Pressable>
 	)
 })

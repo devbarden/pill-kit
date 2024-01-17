@@ -40,8 +40,8 @@ export const styles = StyleSheet.create({
 		width: '100%',
 		justifyContent: 'center',
 		alignItems: 'center',
+		borderRadius: 16,
 		paddingVertical: 16,
 		paddingHorizontal: 32,
-		borderRadius: 12,
 	},
 })

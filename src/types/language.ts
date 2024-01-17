@@ -35,6 +35,7 @@ export type TypeLanguage = {
 	analytic: {
 		title: string
 		empty: string
+		warning: string
 
 		progress: {
 			title: string

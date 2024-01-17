@@ -1,5 +1,6 @@
 export enum EnumIconName {
 	add = 'add',
+	pie = 'pie',
 	plus = 'plus',
 	time = 'time',
 	home = 'home',
@@ -13,6 +14,7 @@ export enum EnumIconName {
 	sort = 'sort',
 	pill = 'pill',
 	data = 'data',
+	chart = 'chart',
 	check = 'check',
 	error = 'error',
 	count = 'count',
@@ -41,5 +43,8 @@ export enum EnumIconName {
 	medicine = 'medicine',
 	bell = 'notification',
 	injection = 'injection',
+	magnifier = 'magnifier',
+	chartPlus = 'chartPlus',
 	bellOff = 'notificationOff',
+	chartTimeline = 'chartTimeline',
 }

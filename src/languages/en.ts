@@ -18,7 +18,8 @@ export const en: TypeLanguage = {
 
 	home: {
 		add: 'Add',
-		empty: 'No active or future medicines found',
+		empty:
+			'No active or upcoming medicines have been detected. Please add a medicine to monitor your treatment',
 	},
 
 	createMedicine: {
@@ -35,6 +36,8 @@ export const en: TypeLanguage = {
 	analytic: {
 		title: 'Analytics',
 		empty: 'Please add a medicine to see your analytics',
+		warning:
+			'It is not possible to display a progress graph because at the moment the number of active medicines is more than 20',
 
 		progress: {
 			title: 'Progress',

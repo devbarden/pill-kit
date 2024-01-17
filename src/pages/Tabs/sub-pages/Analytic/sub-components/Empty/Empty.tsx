@@ -15,12 +15,35 @@ export const Empty: FC = memo(() => {
 			<Header title={t('analytic:title')} />
 			<ContentWrapper withHorizontalPaddings withVerticalPaddings>
 				<Box style={styles.wrapper}>
-					<Icon
-						name={EnumIconName.noData}
-						size={96}
-						color={EnumColor.darkGrey}
-					/>
-					<Text fontSize="xl" textAlign="center" color={EnumColor.darkGrey}>
+					<Box style={styles.iconsWrapper}>
+						<Icon
+							size={72}
+							name={EnumIconName.chart}
+							color={EnumColor.transparentGrey}
+						/>
+						<Icon
+							size={72}
+							name={EnumIconName.chartPlus}
+							color={EnumColor.transparentGrey}
+						/>
+					</Box>
+					<Box style={styles.iconsWrapper}>
+						<Icon
+							size={72}
+							name={EnumIconName.chartTimeline}
+							color={EnumColor.transparentGrey}
+						/>
+						<Icon
+							size={72}
+							name={EnumIconName.pie}
+							color={EnumColor.transparentGrey}
+						/>
+					</Box>
+
+					<Text
+						fontSize="lg"
+						textAlign="center"
+						color={EnumColor.transparentGrey}>
 						{t('analytic:empty')}
 					</Text>
 				</Box>
