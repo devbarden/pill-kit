@@ -24,8 +24,8 @@ export const ModalBottomListContent: FC<TypeProps> = memo(
 		)
 
 		const pressHandler = useCallback(
-			(item: TypeSelectItem) => {
-				handler(item.value)
+			async (item: TypeSelectItem) => {
+				await handler(item.value)
 				close()
 			},
 			[handler, close],

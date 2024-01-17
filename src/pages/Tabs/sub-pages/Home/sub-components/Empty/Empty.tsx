@@ -26,7 +26,7 @@ export const Empty: FC = memo(() => {
 			<Box style={styles.infoWrapper}>
 				<Box style={styles.info}>
 					<Icon
-						size={72}
+						size={80}
 						name={EnumIconName.noData}
 						color={EnumColor.transparentGrey}
 					/>

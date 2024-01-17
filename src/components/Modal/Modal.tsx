@@ -13,8 +13,8 @@ import { styles } from './Modal.styles'
 const fadeAnimationConfig = {
 	animationIn: 'fadeIn',
 	animationOut: 'fadeOut',
-	animationInTiming: 200,
-	animationOutTiming: 200,
+	animationInTiming: 300,
+	animationOutTiming: 300,
 }
 
 const MODAL_SETTINGS_MAP = {

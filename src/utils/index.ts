@@ -1,4 +1,5 @@
 export * from './uid'
+export * from './delay'
 export * from './toast'
 export * from './weeks'
 export * from './is-last'

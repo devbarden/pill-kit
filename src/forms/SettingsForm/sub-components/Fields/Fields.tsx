@@ -23,7 +23,7 @@ export const Fields: FC = memo(() => {
 			<Form.Wrapper>
 				<Form.PressableItem
 					iconName={EnumIconName.language}
-					iconColor={EnumColor.darkBlue}
+					iconColor={EnumColor.blue}
 					text={t('settings:field.language')}
 					handler={openLanguageModal}
 					value={selectedLanguage}
@@ -33,7 +33,7 @@ export const Fields: FC = memo(() => {
 
 				<Form.PressableItem
 					iconName={EnumIconName.mail}
-					iconColor={EnumColor.black}
+					iconColor={EnumColor.darkGrey}
 					text={t('settings:field.contact')}
 					handler={mailHandler}
 				/>
