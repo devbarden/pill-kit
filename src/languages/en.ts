@@ -144,7 +144,7 @@ export const en: TypeLanguage = {
 
 		types: {
 			[EnumMedicineType.pill]: 'Pills / Capsules',
-			[EnumMedicineType.liquid]: 'Tincture / Syrup',
+			[EnumMedicineType.liquid]: 'Tincture / Syrup / Liquid',
 			[EnumMedicineType.injection]: 'Injection',
 			[EnumMedicineType.cream]: 'Cream / Ointment / Gel',
 			[EnumMedicineType.drops]: 'Drops',
