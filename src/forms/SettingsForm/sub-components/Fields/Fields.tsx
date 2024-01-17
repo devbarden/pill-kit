@@ -41,19 +41,19 @@ export const Fields: FC = memo(() => {
 
 			<Form.Wrapper>
 				<Form.PressableItem
-					iconName={EnumIconName.remove}
-					iconColor={EnumColor.red}
-					text={t('settings:field.clearAllData')}
-					handler={openRemoveDataModal}
+					iconName={EnumIconName.docs}
+					iconColor={EnumColor.black}
+					text={t('settings:field.terms')}
+					handler={termsOfUseHandler}
 				/>
 			</Form.Wrapper>
 
 			<Form.Wrapper>
 				<Form.PressableItem
-					iconName={EnumIconName.docs}
-					iconColor={EnumColor.black}
-					text={t('settings:field.terms')}
-					handler={termsOfUseHandler}
+					iconName={EnumIconName.remove}
+					iconColor={EnumColor.red}
+					text={t('settings:field.clearAllData')}
+					handler={openRemoveDataModal}
 				/>
 			</Form.Wrapper>
 		</Fragment>
