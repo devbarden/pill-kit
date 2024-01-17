@@ -94,7 +94,7 @@ export const ru: TypeLanguage = {
 			language: 'Язык',
 			contact: 'Связь с нами',
 			clearAllData: 'Удалить все данные',
-			terms: 'Условия Использования',
+			terms: 'Условия Использования и Положения',
 		},
 
 		modal: {

@@ -45,7 +45,7 @@ export const en: TypeLanguage = {
 		},
 
 		bar: {
-			title: 'The number of medications taken in the last 5 years',
+			title: 'The number of medicines taken in the last 5 years',
 		},
 
 		pie: {
@@ -59,7 +59,7 @@ export const en: TypeLanguage = {
 
 	history: {
 		title: 'History',
-		empty: 'No medications found',
+		empty: 'No medicines found',
 
 		filters: {
 			title: 'Filters',
@@ -95,7 +95,7 @@ export const en: TypeLanguage = {
 			language: 'Language',
 			contact: 'Contact',
 			clearAllData: 'Clear all data',
-			terms: 'Terms of Use',
+			terms: 'Terms And Conditions',
 		},
 
 		modal: {
