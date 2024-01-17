@@ -1,5 +1,4 @@
-import { FC, useEffect, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
+import { FC, useMemo } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import {
 	createStackNavigator,
@@ -38,8 +37,7 @@ const modalOptions: StackNavigationOptions = {
 export const Navigator: FC = withErrorBoundary(() => {
 	const globalState = useGlobalState()
 
-	const { i18n } = useTranslation()
-	const { isUserAcceptAppDocs, isConfigurationLoading, language } = useMemo(
+	const { isUserAcceptAppDocs, isConfigurationLoading } = useMemo(
 		() => globalState,
 		[globalState],
 	)
@@ -48,10 +46,6 @@ export const Navigator: FC = withErrorBoundary(() => {
 		() => (isUserAcceptAppDocs ? DEFAULT_STACK_ROUTE : EnumStackRoute.welcome),
 		[isUserAcceptAppDocs],
 	)
-
-	useEffect(() => {
-		i18n.changeLanguage(language)
-	}, [i18n, language])
 
 	if (isConfigurationLoading) {
 		return <Loader />

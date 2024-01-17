@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { TypeGlobalStateContextProps } from '@app/types'
 import { EnumLanguageCode, EnumTabRoute, EnumTheme } from '@app/enums'
@@ -7,6 +8,7 @@ import { DEFAULT_TAB_ROUTE, INITIAL_APP_CONFIGURATION } from '@app/constants'
 import { useEndpoints } from '../use-endpoints'
 
 export const useGlobalState = (): TypeGlobalStateContextProps => {
+	const { i18n } = useTranslation()
 	const { useConfiguration, useUpdateConfiguration } = useEndpoints()
 	const {
 		data: configuration = INITIAL_APP_CONFIGURATION,
@@ -46,6 +48,10 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 		},
 		[update, configuration],
 	)
+
+	useEffect(() => {
+		i18n.changeLanguage(configuration.language)
+	}, [i18n, configuration.language])
 
 	return {
 		...configuration,
