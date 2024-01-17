@@ -206,7 +206,7 @@ export const zh: TypeLanguage = {
 	},
 
 	error: {
-		title: `有东西坏了。 请通过电子邮件与我们联系`,
+		title: '有东西坏了。 请通过电子邮件与我们联系',
 		reset: 'Reset error',
 	},
 }

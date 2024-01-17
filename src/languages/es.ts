@@ -1,0 +1,218 @@
+import { TypeLanguage } from '@app/types'
+import { EnumCardFilter, EnumMedicineType } from '@app/enums'
+
+export const es: TypeLanguage = {
+	welcome: {
+		title:
+			'¡Bienvenidos! Lea los siguientes documentos antes de utilizar la aplicación',
+		agreement: 'He leído y acepto',
+		continue: 'Continuar',
+
+		modal: {
+			validation: {
+				title: 'Atención',
+				description: 'Debe leer y aceptar los documentos requeridos',
+			},
+		},
+	},
+
+	home: {
+		add: 'Añadir',
+		empty:
+			'No se han detectado medicamentos activos o futuros. Agregue un medicamento para controlar su tratamiento',
+	},
+
+	createMedicine: {
+		title: 'Crear',
+	},
+
+	editMedicine: {
+		title: 'Editar',
+		notFound: 'No Encontrado',
+		back: 'Volver Atrás',
+		remove: 'Eliminar',
+	},
+
+	analytic: {
+		title: 'Análisis',
+		empty: 'Agregue un medicamento para ver sus análisis',
+		warning:
+			'No es posible mostrar un gráfico de progreso porque en este momento el número de medicamentos activos es más de 20',
+
+		progress: {
+			title: 'Progreso',
+			label: 'Medicamentos activos',
+		},
+
+		bar: {
+			title: 'El número de medicamentos tomados en los últimos 5 años',
+		},
+
+		pie: {
+			title: 'El indicador del uso de diferentes tipos de medicamentos.',
+		},
+
+		contribution: {
+			title: 'La actividad del uso de medicamentos en los últimos 2 meses.',
+		},
+	},
+
+	history: {
+		title: 'Historia',
+		empty: 'No se encontraron medicamentos',
+
+		filters: {
+			title: 'Filtros',
+
+			items: {
+				[EnumCardFilter.active]: 'Activo',
+				[EnumCardFilter.future]: 'Futuro',
+				[EnumCardFilter.past]: 'Completado',
+			},
+		},
+
+		sort: {
+			button: 'Ordenar',
+			medicines: 'Medicamentos',
+
+			modal: {
+				title: 'Ordenar por',
+				apply: 'Aplicar',
+			},
+
+			types: {
+				name: 'Nombre',
+				startDate: 'Fecha de inicio',
+				endDate: 'Fecha de finalización',
+			},
+		},
+	},
+
+	settings: {
+		title: 'Ajustes',
+
+		field: {
+			language: 'Idioma',
+			contact: 'Contacto',
+			clearAllData: 'Borrar todos los datos',
+			terms: 'Términos Y Condiciones',
+		},
+
+		modal: {
+			clearAllData: {
+				title: 'Borrar todos los datos',
+				description:
+					'¿Realmente desea eliminar todos los datos ? Esta acción es irrevocable',
+			},
+		},
+	},
+
+	medicine: {
+		field: {
+			name: 'Nombre',
+			type: 'Tipo',
+			countPerUse: 'Dosis',
+			countPerDay: '¿Cuántos por día?',
+			startDate: 'Fecha de inicio',
+			endDate: 'Fecha de finalización',
+			notification: 'Notificación',
+			times: 'Recordatorios',
+			color: 'Color',
+		},
+
+		modal: {
+			validation: {
+				title: 'Algunos campos no están rellenados',
+				description: 'Por favor, rellene los siguientes campos:',
+			},
+
+			remove: {
+				title: 'Retire el medicamento',
+				description:
+					'¿Realmente desea eliminar este medicamento ? Esta acción es irrevocable',
+			},
+		},
+
+		warning: {
+			past: 'El rango de tiempo en el pasado. No verá este medicamento en la pantalla de inicio',
+			future: 'El rango de tiempo en el futuro',
+		},
+
+		indicator: {
+			ml: 'ml',
+		},
+
+		types: {
+			[EnumMedicineType.pill]: 'Pastillas / Cápsulas',
+			[EnumMedicineType.liquid]: 'Tintura / Jarabe / Líquido',
+			[EnumMedicineType.injection]: 'Inyección',
+			[EnumMedicineType.cream]: 'Crema / Ungüento / Gel',
+			[EnumMedicineType.drops]: 'Gotas',
+			[EnumMedicineType.candles]: 'Velas',
+			[EnumMedicineType.pencil]: 'Lápiz Medicinal',
+			[EnumMedicineType.powder]: 'Polvo',
+			[EnumMedicineType.spray]: 'Aerosoles',
+			[EnumMedicineType.bandage]: 'Curita',
+		},
+	},
+
+	terms: {
+		title: 'Términos Y Condiciones',
+	},
+
+	card: {
+		date: {
+			till: 'Hasta',
+			from: 'Desde',
+		},
+
+		label: {
+			active: 'Activo',
+			future: 'Próximamente',
+			past: 'Completado',
+		},
+	},
+
+	component: {
+		button: {
+			ok: 'OK',
+			add: 'Añadir',
+			save: 'Guardar',
+			back: 'Atrás',
+			cancel: 'Cancelar',
+			delete: 'Suprimir',
+			close: 'Cerrar',
+		},
+
+		input: {
+			placeholder: {
+				required: 'Requerido',
+				optional: 'Opcional',
+				search: 'Buscar',
+			},
+		},
+	},
+
+	actions: {
+		loading: 'Cargando...',
+		removing: 'Eliminación...',
+		updating: 'Actualización...',
+		uploading: 'Carga...',
+	},
+
+	notification: {
+		medicine: {
+			add: 'El medicamento se agregó con éxito',
+			edit: 'La medicina se actualizó con éxito',
+			remove: 'El medicamento se eliminó con éxito',
+			removeAll: 'Todos los medicamentos se han eliminado con éxito',
+			error: 'Algo salió mal. Estamos trabajando en el problema',
+		},
+	},
+
+	error: {
+		title:
+			'Algo está roto. Póngase en contacto con nosotros por correo electrónico',
+		reset: 'Error de reinicio',
+	},
+}
