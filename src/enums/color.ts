@@ -1,7 +1,7 @@
 export enum EnumColor {
 	red = 'rgb(164, 22, 26)',
 	darkRed = 'rgb(102, 7, 8)',
-	lightGrey = 'rgb(242, 242, 247)',
+	lightGrey = 'rgb(245, 247, 248)',
 	grey = 'rgb(230, 230, 233)',
 	darkGrey = 'rgb(128, 128, 128)',
 	lightBlue = 'rgb(141, 198, 255)',

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 	wrapper: {
 		overflow: 'hidden',
 		padding: 16,
-		borderRadius: 16,
+		borderRadius: 12,
 		marginHorizontal: 16,
 		backgroundColor: EnumColor.white,
 	},

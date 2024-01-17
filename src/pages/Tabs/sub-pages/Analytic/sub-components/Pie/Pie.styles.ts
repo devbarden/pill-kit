@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		overflow: 'hidden',
 		marginHorizontal: 16,
-		borderRadius: 16,
+		borderRadius: 12,
 		backgroundColor: EnumColor.white,
 	},
 
