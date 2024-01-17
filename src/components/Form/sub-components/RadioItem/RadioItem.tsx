@@ -42,7 +42,7 @@ export const RadioItem: FC<TypeProps> = memo(
 				</Box>
 
 				<Box style={styles.children}>
-					<Radio accessibilityLabel={value} value={value} />
+					<Radio accessibilityLabel={value} value={value} colorScheme="green" />
 				</Box>
 			</Pressable>
 		)
