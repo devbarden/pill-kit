@@ -6,8 +6,12 @@ import { EnumLanguageCode } from '@app/enums'
 export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.en]: 'English',
 	[EnumLanguageCode.ru]: 'Русский',
-	[EnumLanguageCode.zh]: '中文',
 	[EnumLanguageCode.es]: 'Español',
+	[EnumLanguageCode.de]: 'Deutsch',
+	[EnumLanguageCode.be]: 'Беларуская мова',
+	[EnumLanguageCode.pl]: 'Polski',
+	[EnumLanguageCode.uk]: 'Українська мова',
+	[EnumLanguageCode.zh]: '中国语文科',
 }
 
 export const LANGUAGE_SELECT_ITEMS: TypeSelectItem[] = entries(LANGUAGES).map(

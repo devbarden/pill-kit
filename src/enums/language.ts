@@ -3,4 +3,8 @@ export enum EnumLanguageCode {
 	ru = 'ru',
 	zh = 'zh',
 	es = 'es',
+	de = 'de',
+	be = 'be',
+	pl = 'pl',
+	uk = 'uk',
 }

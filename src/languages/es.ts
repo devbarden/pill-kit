@@ -149,7 +149,7 @@ export const es: TypeLanguage = {
 			[EnumMedicineType.cream]: 'Crema / Ungüento / Gel',
 			[EnumMedicineType.drops]: 'Gotas',
 			[EnumMedicineType.candles]: 'Velas',
-			[EnumMedicineType.pencil]: 'Lápiz Medicinal',
+			[EnumMedicineType.pencil]: 'Lápiz médico',
 			[EnumMedicineType.powder]: 'Polvo',
 			[EnumMedicineType.spray]: 'Aerosoles',
 			[EnumMedicineType.bandage]: 'Curita',

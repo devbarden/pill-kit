@@ -144,7 +144,7 @@ export const zh: TypeLanguage = {
 			[EnumMedicineType.cream]: '乳膏/软膏/凝胶',
 			[EnumMedicineType.drops]: '滴剂,滴剂',
 			[EnumMedicineType.candles]: '蜡烛',
-			[EnumMedicineType.pencil]: '药用铅笔',
+			[EnumMedicineType.pencil]: '医用铅笔',
 			[EnumMedicineType.powder]: '粉剂,粉剂',
 			[EnumMedicineType.spray]: '喷雾剂/喷雾剂',
 			[EnumMedicineType.bandage]: '创可贴',

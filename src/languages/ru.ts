@@ -80,7 +80,7 @@ export const ru: TypeLanguage = {
 			},
 
 			types: {
-				name: 'Имя',
+				name: 'Название',
 				startDate: 'Начало приема',
 				endDate: 'Конец приема',
 			},
