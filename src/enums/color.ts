@@ -5,7 +5,7 @@ export enum EnumColor {
 	grey = 'rgb(230, 230, 233)',
 	darkGrey = 'rgb(128, 128, 128)',
 	blue = 'rgb(39,158,255)',
-	green = 'rgb(74, 161, 83)',
+	green = 'rgb(5, 140, 66)',
 	black = 'rgb(53, 53, 53)',
 	yellow = 'rgb(255, 191, 0)',
 	white = 'rgb(255, 255, 255)',
@@ -25,7 +25,7 @@ export enum EnumMedicineColor {
 	purple = 'rgb(114,4,85)',
 	lightPurple = 'rgb(145,10,103)',
 	darkGreen = 'rgb(0,91,65)',
-	green = 'rgb(74, 161, 83)',
+	green = 'rgb(5, 140, 66)',
 	lightGreen = 'rgb(152,216,170)',
 	black = 'rgb(53, 53, 53)',
 }
