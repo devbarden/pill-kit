@@ -11,4 +11,5 @@ export enum EnumLanguageCode {
 	fr = 'fr',
 	pt = 'pt',
 	ja = 'ja',
+	tr = 'tr',
 }
