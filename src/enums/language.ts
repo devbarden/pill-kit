@@ -7,4 +7,6 @@ export enum EnumLanguageCode {
 	be = 'be',
 	pl = 'pl',
 	uk = 'uk',
+	it = 'it',
+	fr = 'fr',
 }

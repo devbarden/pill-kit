@@ -164,7 +164,7 @@ export const de: TypeLanguage = {
 
 	card: {
 		date: {
-			till: 'Ladenkasse',
+			till: 'Bis',
 			from: 'Von',
 		},
 

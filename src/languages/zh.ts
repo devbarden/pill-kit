@@ -157,7 +157,7 @@ export const zh: TypeLanguage = {
 
 	card: {
 		date: {
-			till: '直到',
+			till: '至',
 			from: '从',
 		},
 

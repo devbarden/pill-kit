@@ -162,8 +162,8 @@ export const es: TypeLanguage = {
 
 	card: {
 		date: {
-			till: 'Hasta',
-			from: 'Desde',
+			till: 'Hasta el',
+			from: 'A partir del',
 		},
 
 		label: {
