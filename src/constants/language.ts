@@ -8,6 +8,7 @@ export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.ru]: 'Русский',
 	[EnumLanguageCode.es]: 'Español',
 	[EnumLanguageCode.de]: 'Deutsch',
+	[EnumLanguageCode.ar]: 'اللغة العربية',
 	[EnumLanguageCode.be]: 'Беларуская мова',
 	[EnumLanguageCode.pl]: 'Polski',
 	[EnumLanguageCode.uk]: 'Українська мова',
