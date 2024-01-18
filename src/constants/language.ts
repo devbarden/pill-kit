@@ -15,6 +15,7 @@ export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.it]: 'Italiano',
 	[EnumLanguageCode.fr]: 'Français',
 	[EnumLanguageCode.pt]: 'Portugal',
+	[EnumLanguageCode.ja]: '日本語',
 }
 
 export const LANGUAGE_SELECT_ITEMS: TypeSelectItem[] = entries(LANGUAGES).map(
