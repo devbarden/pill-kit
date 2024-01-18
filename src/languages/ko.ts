@@ -99,7 +99,7 @@ export const ko: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: '모든 데이터 지우기',
-				description: '정말로 모든 데이터를 삭제하시겠습니까? ',
+				description: '정말로 모든 데이터를 삭제하시겠습니까?',
 			},
 		},
 	},
@@ -125,7 +125,7 @@ export const ko: TypeLanguage = {
 
 			remove: {
 				title: '약을 제거하다',
-				description: '정말로 이 약을 삭제하시겠습니까? ',
+				description: '정말로 이 약을 삭제하시겠습니까?',
 			},
 		},
 

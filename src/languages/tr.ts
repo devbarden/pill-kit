@@ -99,7 +99,7 @@ export const tr: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Tüm Verileri Temizle',
-				description: 'Gerçekten tüm verileri silmek istiyor musunuz? ',
+				description: 'Gerçekten tüm verileri silmek istiyor musunuz?',
 			},
 		},
 	},
@@ -125,7 +125,7 @@ export const tr: TypeLanguage = {
 
 			remove: {
 				title: 'İlacı kaldır',
-				description: 'Bu ilacı gerçekten silmek istiyor musunuz? ',
+				description: 'Bu ilacı gerçekten silmek istiyor musunuz?',
 			},
 		},
 

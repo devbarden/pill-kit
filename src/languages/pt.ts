@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const pt: TypeLanguage = {
 	welcome: {
-		title: 'Bem-vindo! ',
+		title: 'Bem-vindo!',
 		agreement: 'Eu li e aceito',
 		continue: 'Continuar',
 
@@ -99,7 +99,7 @@ export const pt: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Limpar todos os dados',
-				description: 'Você realmente deseja excluir todos os dados? ',
+				description: 'Você realmente deseja excluir todos os dados?',
 			},
 		},
 	},
@@ -125,7 +125,7 @@ export const pt: TypeLanguage = {
 
 			remove: {
 				title: 'Remover remédio',
-				description: 'Você realmente deseja excluir este medicamento? ',
+				description: 'Você realmente deseja excluir este medicamento?',
 			},
 		},
 

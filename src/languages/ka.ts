@@ -99,7 +99,7 @@ export const ka: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'ყველა მონაცემის გასუფთავება',
-				description: 'ნამდვილად გსურთ წაშალოთ ყველა მონაცემი? ',
+				description: 'ნამდვილად გსურთ წაშალოთ ყველა მონაცემი?',
 			},
 		},
 	},
@@ -125,7 +125,7 @@ export const ka: TypeLanguage = {
 
 			remove: {
 				title: 'წამალი ამოიღეთ',
-				description: 'ნამდვილად გსურთ ამ წამლის წაშლა? ',
+				description: 'ნამდვილად გსურთ ამ წამლის წაშლა?',
 			},
 		},
 

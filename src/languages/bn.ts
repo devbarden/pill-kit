@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const bn: TypeLanguage = {
 	welcome: {
-		title: 'স্বাগত! ',
+		title: 'স্বাগত!',
 		agreement: 'আমি পড়েছি এবং গ্রহণ করেছি',
 		continue: 'চালিয়ে যান',
 
@@ -17,7 +17,7 @@ export const bn: TypeLanguage = {
 
 	home: {
 		add: 'যোগ করুন',
-		empty: 'কোন সক্রিয় বা আসন্ন ঔষধ সনাক্ত করা হয়নি. ',
+		empty: 'কোন সক্রিয় বা আসন্ন ঔষধ সনাক্ত করা হয়নি.',
 	},
 
 	createMedicine: {
@@ -99,7 +99,7 @@ export const bn: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'সমস্ত ডেটা সাফ করুন',
-				description: 'আপনি কি সত্যিই সমস্ত ডেটা মুছে ফেলতে চান? ',
+				description: 'আপনি কি সত্যিই সমস্ত ডেটা মুছে ফেলতে চান?',
 			},
 		},
 	},
@@ -125,7 +125,7 @@ export const bn: TypeLanguage = {
 
 			remove: {
 				title: 'ওষুধ সরান',
-				description: 'আপনি কি সত্যিই এই ঔষধ মুছে ফেলতে চান? ',
+				description: 'আপনি কি সত্যিই এই ঔষধ মুছে ফেলতে চান?',
 			},
 		},
 
@@ -202,7 +202,7 @@ export const bn: TypeLanguage = {
 			edit: 'ঔষধ সফলভাবে আপডেট করা হয়েছে',
 			remove: 'ওষুধটি সফলভাবে অপসারণ করা হয়েছে',
 			removeAll: 'সমস্ত ওষুধ সফলভাবে অপসারণ করা হয়েছে',
-			error: 'কিছু ভুল হয়েছে. ',
+			error: 'কিছু ভুল হয়েছে.',
 		},
 	},
 

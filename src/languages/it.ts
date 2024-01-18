@@ -100,7 +100,7 @@ export const it: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Cancella tutti i dati',
-				description: 'Vuoi davvero cancellare tutti i dati? ',
+				description: 'Vuoi davvero cancellare tutti i dati?',
 			},
 		},
 	},
@@ -126,7 +126,7 @@ export const it: TypeLanguage = {
 
 			remove: {
 				title: 'Rimuovere la medicina',
-				description: 'Vuoi davvero eliminare questo medicinale? ',
+				description: 'Vuoi davvero eliminare questo medicinale?',
 			},
 		},
 
