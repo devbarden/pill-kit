@@ -11,6 +11,7 @@ export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.be]: 'Беларуская мова',
 	[EnumLanguageCode.pl]: 'Polski',
 	[EnumLanguageCode.uk]: 'Українська мова',
+	[EnumLanguageCode.ka]: 'ქართული ენა',
 	[EnumLanguageCode.zh]: '中国语文科',
 	[EnumLanguageCode.it]: 'Italiano',
 	[EnumLanguageCode.fr]: 'Français',
