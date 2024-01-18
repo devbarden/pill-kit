@@ -17,7 +17,7 @@ export const fr: TypeLanguage = {
 
 	home: {
 		add: 'Ajouter',
-		empty: 'Aucun médicament actif ou à venir n’a été détecté. ',
+		empty: 'Aucun médicament actif ou à venir n’a été détecté.',
 	},
 
 	createMedicine: {
@@ -131,7 +131,7 @@ export const fr: TypeLanguage = {
 		},
 
 		warning: {
-			past: 'La plage horaire dans le passé. ',
+			past: 'La plage horaire dans le passé.',
 			future: 'La plage horaire dans le futur',
 		},
 
@@ -208,7 +208,7 @@ export const fr: TypeLanguage = {
 	},
 
 	error: {
-		title: 'Quelque chose est cassé. ',
+		title: 'Quelque chose est cassé.',
 		reset: 'Erreur de réinitialisation',
 	},
 }

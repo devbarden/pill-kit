@@ -1,0 +1,213 @@
+import { TypeLanguage } from '@app/types'
+import { EnumCardFilter, EnumMedicineType } from '@app/enums'
+
+export const ko: TypeLanguage = {
+	welcome: {
+		title: '환영!',
+		agreement: '읽었으며 동의합니다.',
+		continue: '계속하다',
+
+		modal: {
+			validation: {
+				title: '주목',
+				description: '필수 서류를 읽고 동의해야 합니다.',
+			},
+		},
+	},
+
+	home: {
+		add: '추가하다',
+		empty: '활성 약물이나 출시 예정 약물이 감지되지 않았습니다.',
+	},
+
+	createMedicine: {
+		title: '만들다',
+	},
+
+	editMedicine: {
+		title: '편집하다',
+		notFound: '찾을 수 없음',
+		back: '돌아가기',
+		remove: '제거하다',
+	},
+
+	analytic: {
+		title: '해석학',
+		empty: '분석을 보려면 약을 추가하세요.',
+		warning:
+			'현재 활성 약물 수가 20개를 초과하므로 진행 그래프를 표시할 수 없습니다.',
+
+		progress: {
+			title: '진전',
+			label: '활성 의약품',
+		},
+
+		bar: {
+			title: '최근 5년간 복용한 약의 수',
+		},
+
+		pie: {
+			title: '다양한 종류의 의약품 사용에 대한 지표',
+		},
+
+		contribution: {
+			title: '지난 2개월간 의약품 사용 활동',
+		},
+	},
+
+	history: {
+		title: '역사',
+		empty: '약이 발견되지 않았습니다.',
+
+		filters: {
+			title: '필터',
+
+			items: {
+				[EnumCardFilter.active]: '활성',
+				[EnumCardFilter.future]: '미래',
+				[EnumCardFilter.past]: '과거',
+			},
+		},
+
+		sort: {
+			button: '종류',
+			medicines: '약',
+
+			modal: {
+				title: '정렬 기준',
+				apply: '적용하다',
+			},
+
+			types: {
+				name: '이름',
+				startDate: '시작일',
+				endDate: '종료일',
+			},
+		},
+	},
+
+	settings: {
+		title: '설정',
+
+		field: {
+			language: '언어',
+			contact: '연락하다',
+			clearAllData: '모든 데이터 지우기',
+			terms: '이용 약관',
+		},
+
+		modal: {
+			clearAllData: {
+				title: '모든 데이터 지우기',
+				description: '정말로 모든 데이터를 삭제하시겠습니까? ',
+			},
+		},
+	},
+
+	medicine: {
+		field: {
+			name: '이름',
+			type: '유형',
+			countPerUse: '정량',
+			countPerDay: '하루에 몇 개 ?',
+			startDate: '시작일',
+			endDate: '종료일',
+			notification: '공고',
+			times: '알림',
+			color: '색상',
+		},
+
+		modal: {
+			validation: {
+				title: '일부 필드가 채워지지 않았습니다.',
+				description: '다음 필드를 작성하십시오:',
+			},
+
+			remove: {
+				title: '약을 제거하다',
+				description: '정말로 이 약을 삭제하시겠습니까? ',
+			},
+		},
+
+		warning: {
+			past: '과거의 시간 범위입니다.',
+			future: '미래의 시간 범위',
+		},
+
+		indicator: {
+			ml: '밀리리터',
+		},
+
+		types: {
+			[EnumMedicineType.pill]: '알약/캡슐',
+			[EnumMedicineType.liquid]: '팅크/시럽/액체',
+			[EnumMedicineType.injection]: '주입',
+			[EnumMedicineType.cream]: '주입',
+			[EnumMedicineType.drops]: '방울',
+			[EnumMedicineType.candles]: '양초',
+			[EnumMedicineType.pencil]: '의료 연필',
+			[EnumMedicineType.powder]: '분말',
+			[EnumMedicineType.spray]: '에어로졸/스프레이',
+			[EnumMedicineType.bandage]: '반창고',
+		},
+	},
+
+	terms: {
+		title: '이용 약관',
+	},
+
+	card: {
+		date: {
+			till: '까지',
+			from: '부터',
+		},
+
+		label: {
+			active: '활동적인',
+			future: '예정',
+			past: '완전한',
+		},
+	},
+
+	component: {
+		button: {
+			ok: '좋아요',
+			add: '추가하다',
+			save: '구하다',
+			back: '뒤쪽에',
+			cancel: '취소',
+			delete: '삭제',
+			close: '닫다',
+		},
+
+		input: {
+			placeholder: {
+				required: '필수의',
+				optional: '선택 과목',
+				search: '찾다',
+			},
+		},
+	},
+
+	actions: {
+		loading: '로드 중...',
+		removing: '풀이...',
+		updating: '업데이트 중...',
+		uploading: '업로드 중...',
+	},
+
+	notification: {
+		medicine: {
+			add: '약이 성공적으로 추가되었습니다.',
+			edit: '약품이 성공적으로 업데이트되었습니다.',
+			remove: '약이 성공적으로 제거되었습니다',
+			removeAll: '모든 약이 성공적으로 제거되었습니다.',
+			error: '문제가 발생했습니다.',
+		},
+	},
+
+	error: {
+		title: '뭔가 고장났어요.',
+		reset: '오류 재설정',
+	},
+}

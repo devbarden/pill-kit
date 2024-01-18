@@ -207,7 +207,7 @@ export const tr: TypeLanguage = {
 	},
 
 	error: {
-		title: 'Bir şey bozuldu. ',
+		title: 'Bir şey bozuldu.',
 		reset: 'Hatayı sıfırla',
 	},
 }

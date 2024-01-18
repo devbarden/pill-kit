@@ -17,7 +17,7 @@ export const pt: TypeLanguage = {
 
 	home: {
 		add: 'Adicionar',
-		empty: 'Nenhum medicamento ativo ou futuro foi detectado. ',
+		empty: 'Nenhum medicamento ativo ou futuro foi detectado.',
 	},
 
 	createMedicine: {
@@ -130,7 +130,7 @@ export const pt: TypeLanguage = {
 		},
 
 		warning: {
-			past: 'O intervalo de tempo no passado. ',
+			past: 'O intervalo de tempo no passado.',
 			future: 'O intervalo de tempo no futuro',
 		},
 
@@ -202,12 +202,12 @@ export const pt: TypeLanguage = {
 			edit: 'O medicamento foi atualizado com sucesso',
 			remove: 'O medicamento foi removido com sucesso',
 			removeAll: 'Todos os medicamentos foram removidos com sucesso',
-			error: 'Algo deu errado. ',
+			error: 'Algo deu errado.',
 		},
 	},
 
 	error: {
-		title: 'Algo está quebrado. ',
+		title: 'Algo está quebrado.',
 		reset: 'Erro de redefinição',
 	},
 }
