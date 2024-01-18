@@ -18,6 +18,7 @@ export const LANGUAGES: Record<EnumLanguageCode, string> = {
 	[EnumLanguageCode.ja]: '日本語',
 	[EnumLanguageCode.tr]: 'Türk',
 	[EnumLanguageCode.ko]: '한국어',
+	[EnumLanguageCode.bn]: 'বাংলা ভাষা',
 }
 
 export const LANGUAGE_SELECT_ITEMS: TypeSelectItem[] = entries(LANGUAGES).map(

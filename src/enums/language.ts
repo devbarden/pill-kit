@@ -13,4 +13,5 @@ export enum EnumLanguageCode {
 	ja = 'ja',
 	tr = 'tr',
 	ko = 'ko',
+	bn = 'bn',
 }
