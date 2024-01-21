@@ -7,7 +7,7 @@ const baseConfig: ToastOptions = {
 	duration: Toast.durations.SHORT,
 	backgroundColor: EnumColor.black,
 	textColor: EnumColor.white,
-	shadow: false,
+	shadow: true,
 	animation: true,
 	hideOnPress: true,
 	opacity: 1,
@@ -19,6 +19,7 @@ export const toast = {
 			...baseConfig,
 			...customConfig,
 			backgroundColor: EnumColor.green,
+			shadowColor: EnumColor.green,
 		}),
 
 	error: (message: string, customConfig?: ToastOptions) =>
@@ -28,5 +29,6 @@ export const toast = {
 			shadow: true,
 			duration: Toast.durations.LONG,
 			backgroundColor: EnumColor.red,
+			shadowColor: EnumColor.red,
 		}),
 }
