@@ -11,6 +11,8 @@ export const Home: FC = memo(() => {
 
 	const { medicines, isLoading, isNoMedicines } = useMemo(() => state, [state])
 
+	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
+
 	return (
 		<HomeContext.Provider value={state}>
 			<Header withLogo action={<AddMedicineAction />} />
@@ -22,7 +24,7 @@ export const Home: FC = memo(() => {
 				<Empty />
 			) : (
 				<ContentWrapper>
-					<CardsList isDraggable items={medicines} />
+					<CardsList key={rerenderKey} isDraggable items={medicines} />
 				</ContentWrapper>
 			)}
 		</HomeContext.Provider>

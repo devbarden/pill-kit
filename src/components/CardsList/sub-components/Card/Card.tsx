@@ -3,7 +3,6 @@ import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
-import { CARD_MARGIN } from '@app/constants'
 import { EnumCardListMode, EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -15,89 +14,76 @@ type TypeProps = {
 	data: TypeMedicine
 	mode: EnumCardListMode
 	drag?: () => void
-	isLast?: boolean
 }
 
-export const Card: FC<TypeProps> = memo(
-	({ data, mode, drag, isLast = false }) => {
-		const {
-			isModeV1,
-			isModeV2,
+export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
+	const {
+		isModeV1,
+		isModeV2,
 
-			name,
-			type,
-			transformedCountPerUse,
-			countPerDay,
-			notification,
-			dateText,
+		name,
+		type,
+		transformedCountPerUse,
+		countPerDay,
+		notification,
+		dateText,
 
-			labelText,
+		labelText,
 
-			cardColor,
+		cardColor,
 
-			onCardPress,
-		} = useCardState(data, mode)
+		onCardPress,
+	} = useCardState(data, mode)
 
-		const baseTextProps: ITextProps = useMemo(
-			() => ({
-				color: EnumColor.black,
-				numberOfLines: 1,
-				ellipsizeMode: 'tail',
-			}),
-			[],
-		)
+	const baseTextProps: ITextProps = useMemo(
+		() => ({
+			color: EnumColor.black,
+			numberOfLines: 1,
+			ellipsizeMode: 'tail',
+		}),
+		[],
+	)
 
-		const cardStyles = useMemo(
-			() => [
-				styles.card,
-				{
-					marginBottom: isLast ? CARD_MARGIN : 0,
-				},
-			],
-			[isLast],
-		)
-
-		return (
-			<Pressable style={cardStyles} onPress={onCardPress} onLongPress={drag}>
-				<Box style={styles.content}>
-					<Box style={styles.iconWrapper}>
-						<Icon name={EnumIconName[type]} color={cardColor} size={28} />
-					</Box>
-
-					<Box style={styles.info}>
-						<Text fontSize="md" {...baseTextProps}>
-							{name}
-						</Text>
-
-						{isModeV2 && (
-							<Text fontSize="xs" {...baseTextProps}>
-								{dateText}
-							</Text>
-						)}
-					</Box>
-
-					<Icon
-						name={notification ? EnumIconName.bell : EnumIconName.bellOff}
-						color={cardColor}
-						size={16}
-					/>
+	return (
+		<Pressable style={styles.card} onPress={onCardPress} onLongPress={drag}>
+			<Box style={styles.content}>
+				<Box style={styles.iconWrapper}>
+					<Icon name={EnumIconName[type]} color={cardColor} size={28} />
 				</Box>
 
-				{isModeV1 && (
-					<Box style={[styles.leftLabel, { backgroundColor: cardColor }]}>
-						<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
-							{transformedCountPerUse && transformedCountPerUse + ' / '}
-							{countPerDay}
-						</Text>
-					</Box>
-				)}
+				<Box style={styles.info}>
+					<Text fontSize="md" {...baseTextProps}>
+						{name}
+					</Text>
 
-				<Box style={[styles.rightLabel, { backgroundColor: cardColor }]}>
+					{isModeV2 && (
+						<Text fontSize="xs" {...baseTextProps}>
+							{dateText}
+						</Text>
+					)}
+				</Box>
+
+				<Icon
+					name={notification ? EnumIconName.bell : EnumIconName.bellOff}
+					color={cardColor}
+					size={16}
+				/>
+			</Box>
+
+			{isModeV1 && (
+				<Box style={[styles.leftLabel, { backgroundColor: cardColor }]}>
 					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
-						{isModeV1 ? dateText : labelText}
+						{transformedCountPerUse && transformedCountPerUse + ' / '}
+						{countPerDay}
 					</Text>
 				</Box>
-			</Pressable>
-		)
-	},
-)
+			)}
+
+			<Box style={[styles.rightLabel, { backgroundColor: cardColor }]}>
+				<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
+					{isModeV1 ? dateText : labelText}
+				</Text>
+			</Box>
+		</Pressable>
+	)
+})

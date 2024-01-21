@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'
 import { FC, memo, useCallback } from 'react'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
@@ -28,8 +29,13 @@ export const RadioItem: FC<TypeProps> = memo(
 			[],
 		)
 
+		const pressHandler = useCallback(() => {
+			Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+			handler()
+		}, [handler])
+
 		return (
-			<Pressable style={getPressableStyles} onPress={handler}>
+			<Pressable style={getPressableStyles} onPress={pressHandler}>
 				<Box style={styles.fullFlex}>
 					<Box style={styles.title}>
 						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
@@ -42,7 +48,13 @@ export const RadioItem: FC<TypeProps> = memo(
 				</Box>
 
 				<Box style={styles.children}>
-					<Radio accessibilityLabel={value} value={value} colorScheme="green" />
+					<Radio
+						colorScheme="green"
+						value={value}
+						// @ts-ignore
+						onPress={pressHandler}
+						accessibilityLabel={value}
+					/>
 				</Box>
 			</Pressable>
 		)

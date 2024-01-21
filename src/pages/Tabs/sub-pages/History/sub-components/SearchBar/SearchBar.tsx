@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'
 import { FC, memo, useCallback, useContext, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { values, filter, size } from 'lodash'
@@ -53,6 +54,7 @@ export const SearchBar: FC = memo(() => {
 	}, [setSearchValue])
 
 	const openFiltersModal = useCallback(() => {
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
 		filtersModalRef.current?.open()
 	}, [])
 

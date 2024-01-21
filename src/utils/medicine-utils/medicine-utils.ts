@@ -1,4 +1,4 @@
-import { filter, get, includes, sortBy, toLower } from 'lodash'
+import { filter, get, includes, reverse, sortBy, toLower } from 'lodash'
 
 import {
 	TypeMedicine,
@@ -28,6 +28,7 @@ type TypeMedicineUtils = {
 	getSortedBy: (
 		items: TypeMedicine[],
 		sortType: TypeMedicineSortableField,
+		isReversed?: boolean,
 	) => TypeMedicine[]
 }
 
@@ -71,7 +72,13 @@ export const medicineUtils: TypeMedicineUtils = {
 			: medicines
 	},
 
-	getSortedBy(medicines, sortType) {
-		return sortBy(medicines, (item) => get(item, sortType))
+	getSortedBy(medicines, sortType, isReversed = false) {
+		const sortedList = sortBy(medicines, (item) => get(item, sortType))
+
+		if (isReversed) {
+			return reverse(sortedList)
+		}
+
+		return sortedList
 	},
 }

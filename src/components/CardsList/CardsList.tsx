@@ -1,9 +1,9 @@
+import * as Haptics from 'expo-haptics'
 import DraggableFlatList, {
 	DragEndParams,
 } from 'react-native-draggable-flatlist'
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useState, useCallback, useEffect } from 'react'
 import { SwipeListView } from 'react-native-swipe-list-view'
-import { last, get } from 'lodash'
 
 import { useEndpoints } from '@app/hooks'
 import { TypeMedicine } from '@app/types'
@@ -25,26 +25,40 @@ export const CardsList: FC<TypeProps> = memo(
 		const { useUpdateActiveAndFutureMedicines } = useEndpoints()
 		const { mutateAsync: update } = useUpdateActiveAndFutureMedicines()
 
-		const isLast = useCallback(
-			(item: TypeMedicine) => get(last(items), 'id') === get(item, 'id'),
-			[items],
-		)
+		const [dragState, setDragState] = useState(items)
+
+		const dragBeginHandler = useCallback(() => {
+			Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+		}, [])
 
 		const dragEndHandler = useCallback(
-			async ({ data }: DragEndParams<TypeMedicine>) => {
+			({ data }: DragEndParams<TypeMedicine>) => {
+				setDragState(() => data)
+			},
+			[],
+		)
+
+		const updateActiveAndFutureMedicines = useCallback(
+			async (data: TypeMedicine[]) => {
 				await update(data)
 			},
 			[update],
 		)
 
+		useEffect(() => {
+			updateActiveAndFutureMedicines(dragState)
+		}, [updateActiveAndFutureMedicines, dragState])
+
 		if (isDraggable) {
 			return (
 				<DraggableFlatList
-					data={items}
+					data={dragState}
+					contentContainerStyle={styles.paddingBottom}
 					style={styles.fullHeight}
 					activationDistance={OVER_SWIPE_DIST}
 					showsVerticalScrollIndicator={false}
 					keyExtractor={({ id }) => id}
+					onDragBegin={dragBeginHandler}
 					onDragEnd={dragEndHandler}
 					renderItem={({ item, drag }) => (
 						<DraggableAndSwipeableItem item={item} drag={drag} mode={mode} />
@@ -56,16 +70,13 @@ export const CardsList: FC<TypeProps> = memo(
 		return (
 			<SwipeListView
 				disableRightSwipe
+				contentContainerStyle={styles.paddingBottom}
 				showsVerticalScrollIndicator={false}
 				stopRightSwipe={-SWIPE_SIZE}
 				rightOpenValue={-SWIPE_SIZE}
 				data={items}
-				renderItem={({ item }) => (
-					<Card data={item} mode={mode} isLast={isLast(item)} />
-				)}
-				renderHiddenItem={({ item }) => (
-					<SwipeActions data={item} isLast={isLast(item)} />
-				)}
+				renderItem={({ item }) => <Card data={item} mode={mode} />}
+				renderHiddenItem={({ item }) => <SwipeActions data={item} />}
 			/>
 		)
 	},

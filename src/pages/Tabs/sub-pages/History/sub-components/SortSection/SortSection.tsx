@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'
 import { FC, memo, useContext, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
@@ -24,6 +25,11 @@ export const SortSection: FC = memo(() => {
 		[],
 	)
 
+	const pressHandler = useCallback(() => {
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+		openSortModal()
+	}, [openSortModal])
+
 	return (
 		<Box style={styles.wrapper}>
 			<Text
@@ -34,7 +40,7 @@ export const SortSection: FC = memo(() => {
 				{t('history:sort.medicines')}: {medicines.length}
 			</Text>
 
-			<Pressable style={getPressableStyles} onPress={openSortModal}>
+			<Pressable style={getPressableStyles} onPress={pressHandler}>
 				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
 					{t('history:sort.button')}
 				</Text>

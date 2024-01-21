@@ -1,3 +1,4 @@
+import * as Haptics from 'expo-haptics'
 import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
@@ -71,6 +72,11 @@ export const Default: FC = memo(() => {
 		[],
 	)
 
+	const submitHandler = useCallback(() => {
+		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+		onSubmit()
+	}, [onSubmit])
+
 	return (
 		<Box style={wrapperStyles}>
 			<Box style={titleStyles}>
@@ -103,7 +109,7 @@ export const Default: FC = memo(() => {
 					<Fragment>
 						<Box style={styles.separator} />
 
-						<Pressable onPress={onSubmit} style={getSubmitBtnStyles}>
+						<Pressable onPress={submitHandler} style={getSubmitBtnStyles}>
 							<Text
 								fontSize="md"
 								textAlign="center"

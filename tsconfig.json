@@ -16,8 +16,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@app/*": ["src/*"],
-			"@assets/*": ["assets/*"]
-		}
+			"@assets/*": ["assets/*"],
+		},
 	},
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules"],
 }

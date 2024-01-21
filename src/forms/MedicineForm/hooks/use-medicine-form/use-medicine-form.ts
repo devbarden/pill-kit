@@ -273,7 +273,7 @@ export const useMedicineForm = (
 						? {
 								...prevTime,
 								...time,
-						  }
+							}
 						: prevTime,
 				),
 			}))
@@ -295,7 +295,7 @@ export const useMedicineForm = (
 						? {
 								...prevTime,
 								...time,
-						  }
+							}
 						: prevTime,
 				),
 			}))
