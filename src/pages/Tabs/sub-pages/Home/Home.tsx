@@ -22,7 +22,7 @@ export const Home: FC = memo(() => {
 				<Empty />
 			) : (
 				<ContentWrapper>
-					<CardsList items={medicines} />
+					<CardsList isDraggable items={medicines} />
 				</ContentWrapper>
 			)}
 		</HomeContext.Provider>

@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
 import { EnumStackRoute } from '@app/enums'
+import { HOME_FILTERS } from '@app/constants'
 import { TypeHomeContextProps } from '@app/types'
-import { INITIAL_HOME_FILTERS } from '@app/constants'
 import { isDeserted, medicineUtils } from '@app/utils'
 
 export const useHomeState = (): TypeHomeContextProps => {
@@ -13,8 +13,7 @@ export const useHomeState = (): TypeHomeContextProps => {
 	const { data: allMedicines = [], isLoading } = useMedicines()
 
 	const filteredMedicines = useMemo(
-		() =>
-			medicineUtils.getMedicinesByFilters(allMedicines, INITIAL_HOME_FILTERS),
+		() => medicineUtils.getMedicinesByFilters(allMedicines, HOME_FILTERS),
 		[allMedicines],
 	)
 

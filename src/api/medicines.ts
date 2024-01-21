@@ -119,3 +119,19 @@ export const removeAllMedicines = async () => {
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 	} catch {}
 }
+
+export const updateActiveAndFutureMedicines = async (
+	medicines: TypeMedicine[],
+) => {
+	try {
+		const initialMedicines: TypeMedicine[] = await getMedicines()
+		const listOfUpdatedMedicinesIds: string[] = medicines.map(({ id }) => id)
+		const oldMedicines: TypeMedicine[] = initialMedicines.filter(
+			({ id }) => !listOfUpdatedMedicinesIds.includes(id),
+		)
+		const updatedMedicines: TypeMedicine[] = [...oldMedicines, ...medicines]
+		const stringifiedMedicines = JSON.stringify(updatedMedicines)
+
+		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+	} catch {}
+}

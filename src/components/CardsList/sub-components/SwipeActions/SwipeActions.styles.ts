@@ -12,6 +12,11 @@ export const styles = StyleSheet.create({
 		borderRadius: 4,
 	},
 
+	leftAction: {
+		paddingLeft: 16,
+		paddingRight: 24,
+	},
+
 	rightAction: {
 		paddingLeft: 24,
 		paddingRight: 16,

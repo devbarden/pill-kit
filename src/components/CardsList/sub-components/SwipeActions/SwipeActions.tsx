@@ -3,6 +3,7 @@ import { Box, Text } from 'native-base'
 import { useTranslation } from 'react-i18next'
 
 import { useEndpoints } from '@app/hooks'
+import { CARD_MARGIN } from '@app/constants'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { TypeMedicine, TypeModalHandlers } from '@app/types'
 
@@ -11,14 +12,13 @@ import { Modal } from '../../../Modal'
 import { Action } from './sub-components'
 
 import { styles } from './SwipeActions.styles'
-import { CARD_MARGIN } from '@app/constants'
 
 type TypeProps = {
 	data: TypeMedicine
-	isLast: boolean
+	isLast?: boolean
 }
 
-export const SwipeActions: FC<TypeProps> = memo(({ data, isLast }) => {
+export const SwipeActions: FC<TypeProps> = memo(({ data, isLast = false }) => {
 	const removeModalRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()

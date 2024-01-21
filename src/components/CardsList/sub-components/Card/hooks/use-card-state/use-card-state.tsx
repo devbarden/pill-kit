@@ -32,6 +32,9 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		endDate,
 	} = useMemo(() => data, [data])
 
+	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
+	const isModeV2 = useMemo(() => mode === EnumCardListMode.v2, [mode])
+
 	const transformedCountPerUse = useMemo(() => {
 		if (type === EnumMedicineType.liquid) {
 			return `${countPerUse}${t('medicine:indicator.ml')}`
@@ -116,6 +119,9 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	}, [navigate, id])
 
 	return {
+		isModeV1,
+		isModeV2,
+
 		isPast,
 		isFuture,
 		isActive,

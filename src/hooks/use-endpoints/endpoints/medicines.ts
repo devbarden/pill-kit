@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as api from '@app/api'
 import { toast } from '@app/utils'
-import { TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
+import { TypeMedicine, TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
 
 export const useMedicinesEndpoints = () => {
 	const queryClient = useQueryClient()
@@ -73,6 +73,18 @@ export const useMedicinesEndpoints = () => {
 				mutationFn: api.removeAllMedicines,
 				onSuccess: () => {
 					toast.success(t('notification:medicine.removeAll'))
+					invalidateMedicines()
+				},
+				onError: () => {
+					toast.error(t('notification:medicine.error'))
+				},
+			}),
+
+		useUpdateActiveAndFutureMedicines: () =>
+			useMutation({
+				mutationFn: (medicines: TypeMedicine[]) =>
+					api.updateActiveAndFutureMedicines(medicines),
+				onSuccess: () => {
 					invalidateMedicines()
 				},
 				onError: () => {
