@@ -1,6 +1,10 @@
 import * as Haptics from 'expo-haptics'
 import { FC, memo, useCallback } from 'react'
-import { Pressable, PressableStateCallbackType } from 'react-native'
+import {
+	Pressable,
+	TouchableWithoutFeedback,
+	PressableStateCallbackType,
+} from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
 import { EnumColor, EnumIconName } from '@app/enums'
@@ -47,15 +51,11 @@ export const RadioItem: FC<TypeProps> = memo(
 					</Box>
 				</Box>
 
-				<Box style={styles.children}>
-					<Radio
-						colorScheme="green"
-						value={value}
-						// @ts-ignore
-						onPress={pressHandler}
-						accessibilityLabel={value}
-					/>
-				</Box>
+				<TouchableWithoutFeedback
+					style={styles.children}
+					onPress={pressHandler}>
+					<Radio colorScheme="green" value={value} accessibilityLabel={value} />
+				</TouchableWithoutFeedback>
 			</Pressable>
 		)
 	},
