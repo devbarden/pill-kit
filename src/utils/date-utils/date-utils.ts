@@ -1,3 +1,7 @@
+import { EnumLanguageCode } from '@app/enums'
+
+import { ARABIC_NUMBER_CODE } from '../../constants/language'
+
 export const getDivideValueByDates = (
 	startDate: number,
 	endDate: number,
@@ -7,9 +11,6 @@ export const getDivideValueByDates = (
 
 	return result
 }
-
-export const dateToFormat = (value: number): string =>
-	new Date(value).toLocaleDateString()
 
 export const getDaysArrayInRange = (
 	startDate: number,
@@ -37,4 +38,28 @@ export const getTimeByDate = (value: Date | number) => {
 	}
 
 	return time
+}
+
+export const timeToFormat = (
+	value: number,
+	language: EnumLanguageCode,
+): string => {
+	const options: Record<string, string> = { hour: '2-digit', minute: '2-digit' }
+
+	if (language === EnumLanguageCode.ar) {
+		return new Date(value).toLocaleTimeString(ARABIC_NUMBER_CODE, options)
+	}
+
+	return new Date(value).toLocaleTimeString(language, options)
+}
+
+export const dateToFormat = (
+	value: number,
+	language: EnumLanguageCode,
+): string => {
+	if (language === EnumLanguageCode.ar) {
+		return new Date(value).toLocaleDateString(ARABIC_NUMBER_CODE)
+	}
+
+	return new Date(value).toLocaleDateString(language)
 }

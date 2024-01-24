@@ -1,7 +1,7 @@
-import { FC, ReactElement, memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
+import { FC, ReactElement, memo, useContext, useMemo } from 'react'
 import { Box, Text } from 'native-base'
 
+import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -17,12 +17,9 @@ type TypeProps = {
 
 export const CustomItem: FC<TypeProps> = memo(
 	({ text, iconName, iconColor = EnumColor.darkGrey, children }) => {
-		const { i18n } = useTranslation()
+		const { language } = useContext(GlobalStateContext)
 
-		const isArabic = useMemo(
-			() => i18n.language === EnumLanguageCode.ar,
-			[i18n.language],
-		)
+		const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
 
 		const styleProps: TypeStyleProps = useMemo(
 			() => ({

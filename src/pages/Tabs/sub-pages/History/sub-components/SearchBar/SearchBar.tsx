@@ -5,7 +5,9 @@ import { values, filter, size } from 'lodash'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { getNumberByLocale } from '@app/utils'
 import { TypeModalHandlers } from '@app/types'
+import { GlobalStateContext } from '@app/context'
 import { Form, Icon, Modal } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
@@ -17,6 +19,7 @@ import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
 	const { t } = useTranslation()
+	const { language } = useContext(GlobalStateContext)
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
 	const filtersModalRef = useRef<TypeModalHandlers>(null)
@@ -29,9 +32,13 @@ export const SearchBar: FC = memo(() => {
 		[],
 	)
 
-	const activeFilters: number = useMemo(
-		() => size(filter(values(filters), (isFilterActive) => isFilterActive)),
-		[filters],
+	const activeFilters = useMemo(
+		() =>
+			getNumberByLocale(
+				size(filter(values(filters), (isFilterActive) => isFilterActive)),
+				language,
+			),
+		[filters, language],
 	)
 
 	const getPressableStyles = useCallback(

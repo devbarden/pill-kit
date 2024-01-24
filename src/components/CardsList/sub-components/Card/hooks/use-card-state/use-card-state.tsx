@@ -1,8 +1,9 @@
-import { useMemo, useCallback } from 'react'
+import { useMemo, useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 
 import { TypeMedicine } from '@app/types'
+import { GlobalStateContext } from '@app/context'
 import { dateToFormat, medicineUtils } from '@app/utils'
 import {
 	EnumColor,
@@ -13,8 +14,9 @@ import {
 } from '@app/enums'
 
 export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const { navigate } = useNavigation()
+	const { language } = useContext(GlobalStateContext)
 
 	const { isActive, isFuture, isPast } = useMemo(
 		() => medicineUtils.getMedicineStatusByDate(data),
@@ -36,10 +38,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
 	const isModeV2 = useMemo(() => mode === EnumCardListMode.v2, [mode])
 
-	const isArabic = useMemo(
-		() => i18n.language === EnumLanguageCode.ar,
-		[i18n.language],
-	)
+	const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
 
 	const transformedCountPerUse = useMemo(() => {
 		if (type === EnumMedicineType.liquid) {
@@ -50,21 +49,21 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	}, [t, type, countPerUse])
 
 	const fromDate = useMemo(
-		() => `${t('card:date.from')} ${dateToFormat(startDate)}`,
-		[t, startDate],
+		() => `${t('card:date.from')} ${dateToFormat(startDate, language)}`,
+		[t, startDate, language],
 	)
 
 	const tillDate = useMemo(
-		() => `${t('card:date.till')} ${dateToFormat(endDate)}`,
-		[t, endDate],
+		() => `${t('card:date.till')} ${dateToFormat(endDate, language)}`,
+		[t, endDate, language],
 	)
 
 	const dateRange = useMemo(
 		() =>
 			isArabic
-				? `${dateToFormat(endDate)} - ${dateToFormat(startDate)}`
-				: `${dateToFormat(startDate)} - ${dateToFormat(endDate)}`,
-		[isArabic, startDate, endDate],
+				? `${dateToFormat(endDate, language)} - ${dateToFormat(startDate, language)}`
+				: `${dateToFormat(startDate, language)} - ${dateToFormat(endDate, language)}`,
+		[isArabic, startDate, endDate, language],
 	)
 
 	const dateToShow = useMemo(() => {

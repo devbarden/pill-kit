@@ -1,9 +1,10 @@
-import { FC, memo, useMemo, useCallback } from 'react'
+import { FC, memo, useMemo, useCallback, useContext } from 'react'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Text } from 'native-base'
 
-import { dateToFormat, getTimeByDate } from '@app/utils'
+import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumDateMode } from '@app/enums'
+import { dateToFormat, timeToFormat } from '@app/utils'
 
 import { styles } from './DateTimePress.styles'
 
@@ -15,15 +16,15 @@ type TypeProps = {
 
 export const DateTimePress: FC<TypeProps> = memo(
 	({ value, handler, mode = EnumDateMode.date }) => {
+		const { language } = useContext(GlobalStateContext)
+
 		const date = useMemo(() => {
 			if (mode === EnumDateMode.time) {
-				const { hours, minutes } = getTimeByDate(value)
-
-				return `${hours < 10 ? '0' + hours : hours} : ${minutes < 10 ? '0' + minutes : minutes}`
+				return timeToFormat(value, language)
 			}
 
-			return dateToFormat(value)
-		}, [mode, value])
+			return dateToFormat(value, language)
+		}, [mode, value, language])
 
 		const getStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [

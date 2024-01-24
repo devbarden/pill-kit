@@ -1,10 +1,12 @@
 import * as Haptics from 'expo-haptics'
-import { FC, memo, useContext, useCallback } from 'react'
+import { FC, memo, useContext, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
 import { Icon, Modal } from '@app/components'
+import { getNumberByLocale } from '@app/utils'
+import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { HistoryContext } from '../../context'
@@ -14,7 +16,13 @@ import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
 	const { t } = useTranslation()
+	const { language } = useContext(GlobalStateContext)
 	const { medicines, sortModalRef, openSortModal } = useContext(HistoryContext)
+
+	const medicinesCount = useMemo(
+		() => getNumberByLocale(medicines.length, language),
+		[medicines.length, language],
+	)
 
 	const getPressableStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
@@ -37,7 +45,7 @@ export const SortSection: FC = memo(() => {
 				numberOfLines={1}
 				color={EnumColor.darkGrey}
 				style={styles.maxWidthHalfOfRow}>
-				{t('history:sort.medicines')} : {medicines.length}
+				{t('history:sort.medicines')} : {medicinesCount}
 			</Text>
 
 			<Pressable style={getPressableStyles} onPress={pressHandler}>

@@ -2,9 +2,9 @@ import DatePicker from 'react-native-date-picker'
 import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { medicineUtils } from '@app/utils'
 import { GlobalStateContext } from '@app/context'
 import { IS_ANDROID, IS_IOS } from '@app/constants'
+import { getNumberByLocale, medicineUtils } from '@app/utils'
 import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
 import {
 	Form,
@@ -18,8 +18,8 @@ import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
-	const { t, i18n } = useTranslation()
-	const { theme } = useContext(GlobalStateContext)
+	const { t } = useTranslation()
+	const { theme, language } = useContext(GlobalStateContext)
 	const {
 		openNameModal,
 		openTypeModal,
@@ -75,6 +75,17 @@ export const Fields: FC = memo(() => {
 		[isAvailableToShowDateModalByDevice, isNeedToShowEndDateModal],
 	)
 
+	const countPerUseByLocale = useMemo(
+		() =>
+			getNumberByLocale(getCountPerUseValueByType(countPerUse, type), language),
+		[getCountPerUseValueByType, countPerUse, type, language],
+	)
+
+	const countPerDayByLocale = useMemo(
+		() => getNumberByLocale(countPerDay, language),
+		[countPerDay, language],
+	)
+
 	return (
 		<Fragment>
 			<Form.Wrapper>
@@ -110,7 +121,7 @@ export const Fields: FC = memo(() => {
 								text={t('medicine:field.countPerUse')}
 								iconName={EnumIconName.count}
 								handler={openCountPerUseModal}
-								value={getCountPerUseValueByType(countPerUse, type)}
+								value={countPerUseByLocale}
 							/>
 
 							<Form.Separator />
@@ -123,7 +134,7 @@ export const Fields: FC = memo(() => {
 					text={t('medicine:field.countPerDay')}
 					iconName={EnumIconName.count}
 					handler={openCountPerDayModal}
-					value={countPerDay}
+					value={countPerDayByLocale}
 				/>
 			</Form.Wrapper>
 
@@ -144,7 +155,7 @@ export const Fields: FC = memo(() => {
 								date={new Date(startDate)}
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
-								locale={i18n.language}
+								locale={language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>
@@ -172,7 +183,7 @@ export const Fields: FC = memo(() => {
 								date={new Date(endDate)}
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
-								locale={i18n.language}
+								locale={language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>

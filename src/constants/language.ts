@@ -34,3 +34,5 @@ export const LANGUAGE_SELECT_ITEMS: TypeSelectItem[] = entries(LANGUAGES).map(
 export const FALLBACK_LANGUAGE_CODE = EnumLanguageCode.en
 
 export const FALLBACK_LANGUAGE_LABEL = LANGUAGES[FALLBACK_LANGUAGE_CODE]
+
+export const ARABIC_NUMBER_CODE = `${EnumLanguageCode.ar}-EG`

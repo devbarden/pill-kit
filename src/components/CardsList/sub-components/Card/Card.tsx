@@ -1,8 +1,10 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo, useContext, useMemo } from 'react'
 import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
+import { getNumberByLocale } from '@app/utils'
+import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName, EnumCardListMode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -17,6 +19,7 @@ type TypeProps = {
 }
 
 export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
+	const { language } = useContext(GlobalStateContext)
 	const {
 		isModeV1,
 		isModeV2,
@@ -89,8 +92,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 			{isModeV1 && (
 				<Box style={[style.leftLabel, backgroundCardColorStyle]}>
 					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
-						{transformedCountPerUse && transformedCountPerUse + ' / '}
-						{countPerDay}
+						{transformedCountPerUse &&
+							getNumberByLocale(transformedCountPerUse, language) + ' / '}
+						{getNumberByLocale(countPerDay, language)}
 					</Text>
 				</Box>
 			)}
