@@ -1,18 +1,25 @@
-import DateTimePicker from '@react-native-community/datetimepicker'
-import { FC, Fragment, memo, useContext, useMemo } from 'react'
+import DatePicker from 'react-native-date-picker'
+import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { medicineUtils } from '@app/utils'
-import { IS_IOS, IS_ANDROID } from '@app/constants'
-import { EnumColor, EnumIconName } from '@app/enums'
-import { Form, Icon, Switch, NotificationLabel } from '@app/components'
+import { GlobalStateContext } from '@app/context'
+import { IS_ANDROID, IS_IOS } from '@app/constants'
+import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
+import {
+	Form,
+	Icon,
+	Switch,
+	DateTimePress,
+	NotificationLabel,
+} from '@app/components'
 
-import { CalendarPress, ColorBox } from './sub-components'
+import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
 	const { t, i18n } = useTranslation()
-
+	const { theme } = useContext(GlobalStateContext)
 	const {
 		openNameModal,
 		openTypeModal,
@@ -20,14 +27,15 @@ export const Fields: FC = memo(() => {
 		openCountPerDayModal,
 		openTimeModal,
 		openColorModal,
+		openStartDateModal,
+		closeStartDateModal,
+		openEndDateModal,
+		closeEndDateModal,
 
 		form,
 
-		isNeedToShowStartDateCalendar,
-		isNeedToShowEndDateCalendar,
-
-		openStartDateCalendar,
-		openEndDateCalendar,
+		isNeedToShowStartDateModal,
+		isNeedToShowEndDateModal,
 
 		getCountPerUseValueByType,
 		getIsNeedToFillCountPerUse,
@@ -50,6 +58,21 @@ export const Fields: FC = memo(() => {
 	const { isPast, isFuture } = useMemo(
 		() => medicineUtils.getMedicineStatusByDate(form),
 		[form],
+	)
+
+	const isAvailableToShowDateModalByDevice = useCallback(
+		(availability: boolean) => IS_IOS || (IS_ANDROID && availability),
+		[],
+	)
+
+	const isStartDateModalAvailableToShow = useMemo(
+		() => isAvailableToShowDateModalByDevice(isNeedToShowStartDateModal),
+		[isAvailableToShowDateModalByDevice, isNeedToShowStartDateModal],
+	)
+
+	const isEndDateModalAvailableToShow = useMemo(
+		() => isAvailableToShowDateModalByDevice(isNeedToShowEndDateModal),
+		[isAvailableToShowDateModalByDevice, isNeedToShowEndDateModal],
 	)
 
 	return (
@@ -83,6 +106,7 @@ export const Fields: FC = memo(() => {
 					{getIsNeedToFillCountPerUse(type) && (
 						<Fragment>
 							<Form.PressableItem
+								isValueQuarterWidth
 								text={t('medicine:field.countPerUse')}
 								iconName={EnumIconName.count}
 								handler={openCountPerUseModal}
@@ -108,32 +132,25 @@ export const Fields: FC = memo(() => {
 					text={t('medicine:field.startDate')}
 					iconName={EnumIconName.calendar}>
 					<Fragment>
-						{IS_IOS && (
-							<DateTimePicker
-								mode="date"
-								value={new Date(startDate)}
-								onChange={changeStartDateHandler}
+						{isStartDateModalAvailableToShow && (
+							<DatePicker
+								modal
+								mode={EnumDateMode.date}
+								is24hourSource="locale"
+								androidVariant="iosClone"
+								title={t('medicine:field.startDate')}
+								theme={theme}
+								open={isNeedToShowStartDateModal}
+								date={new Date(startDate)}
+								onConfirm={changeStartDateHandler}
+								onCancel={closeStartDateModal}
 								locale={i18n.language}
+								confirmText={t('component:button.save')}
+								cancelText={t('component:button.cancel')}
 							/>
 						)}
 
-						{IS_ANDROID && (
-							<Fragment>
-								{isNeedToShowStartDateCalendar ? (
-									<DateTimePicker
-										mode="date"
-										value={new Date(startDate)}
-										onChange={changeStartDateHandler}
-										locale={i18n.language}
-									/>
-								) : (
-									<CalendarPress
-										value={startDate}
-										handler={openStartDateCalendar}
-									/>
-								)}
-							</Fragment>
-						)}
+						<DateTimePress value={startDate} handler={openStartDateModal} />
 					</Fragment>
 				</Form.CustomItem>
 
@@ -143,32 +160,25 @@ export const Fields: FC = memo(() => {
 					text={t('medicine:field.endDate')}
 					iconName={EnumIconName.calendar}>
 					<Fragment>
-						{IS_IOS && (
-							<DateTimePicker
-								mode="date"
-								value={new Date(endDate)}
-								onChange={changeEndDateHandler}
+						{isEndDateModalAvailableToShow && (
+							<DatePicker
+								modal
+								is24hourSource="locale"
+								androidVariant="iosClone"
+								title={t('medicine:field.endDate')}
+								mode={EnumDateMode.date}
+								theme={theme}
+								open={isNeedToShowEndDateModal}
+								date={new Date(endDate)}
+								onConfirm={changeEndDateHandler}
+								onCancel={closeEndDateModal}
 								locale={i18n.language}
+								confirmText={t('component:button.save')}
+								cancelText={t('component:button.cancel')}
 							/>
 						)}
 
-						{IS_ANDROID && (
-							<Fragment>
-								{isNeedToShowEndDateCalendar ? (
-									<DateTimePicker
-										mode="date"
-										value={new Date(endDate)}
-										onChange={changeEndDateHandler}
-										locale={i18n.language}
-									/>
-								) : (
-									<CalendarPress
-										value={endDate}
-										handler={openEndDateCalendar}
-									/>
-								)}
-							</Fragment>
-						)}
+						<DateTimePress value={endDate} handler={openEndDateModal} />
 					</Fragment>
 				</Form.CustomItem>
 			</Form.Wrapper>

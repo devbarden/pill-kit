@@ -6,14 +6,15 @@ import {
 	ReactElement,
 	isValidElement,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { EnumColor, EnumIconName } from '@app/enums'
+import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
-import { styles } from './PressableItem.styles'
+import { styles, TypeStyleProps } from './PressableItem.styles'
 
 type TypeProps = {
 	text: string
@@ -35,54 +36,71 @@ export const PressableItem: FC<TypeProps> = memo(
 		withoutChevronRight = false,
 		isValueQuarterWidth = false,
 	}) => {
+		const { i18n } = useTranslation()
+
+		const isArabic = useMemo(
+			() => i18n.language === EnumLanguageCode.ar,
+			[i18n.language],
+		)
+
 		const isValueString = useMemo(() => typeof value === 'string', [value])
 
-		const valueStyles = useMemo(
-			() =>
-				isValueQuarterWidth ? styles.valueQuarterWidth : styles.valueHalfWidth,
-			[isValueQuarterWidth],
+		const styleProps: TypeStyleProps = useMemo(
+			() => ({
+				isArabic,
+			}),
+			[isArabic],
+		)
+
+		const style = useMemo(() => styles(styleProps), [styleProps])
+
+		const valueWidth = useMemo(
+			() => [
+				isValueQuarterWidth ? style.valueQuarterWidth : style.valueHalfWidth,
+			],
+			[style, isValueQuarterWidth],
 		)
 
 		const getPressableStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [
-				styles.wrapper,
+				style.wrapper,
 				{
 					backgroundColor: pressed ? EnumColor.lightGrey : EnumColor.white,
 				},
 			],
-			[],
+			[style],
 		)
 
 		return (
 			<Pressable style={getPressableStyles} onPress={handler}>
-				<Box style={styles.fullFlex}>
-					<Box style={styles.title}>
+				<Box style={style.fullFlex}>
+					<Box style={style.titleWrapper}>
 						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
-						<Box style={styles.fullFlex}>
-							<Text numberOfLines={1} style={styles.text}>
+						<Box style={style.title}>
+							<Text numberOfLines={1} style={style.text}>
 								{text}
 							</Text>
 						</Box>
 					</Box>
 				</Box>
 
-				<Box style={value ? valueStyles : {}}>
-					<Box style={styles.value}>
+				<Box style={value ? valueWidth : {}}>
+					<Box style={style.valueWrapper}>
 						{!withoutChevronRight && (
 							<Icon
 								size={20}
-								name={EnumIconName.right}
+								name={isArabic ? EnumIconName.left : EnumIconName.right}
 								color={EnumColor.darkGrey}
 							/>
 						)}
 						{isValidElement(value) && value}
 						{isValueString && (
-							<Box style={styles.fullFlex}>
+							<Box style={style.value}>
 								<Text
 									numberOfLines={1}
 									textAlign="right"
 									color={EnumColor.darkGrey}
-									style={styles.text}>
+									style={style.text}>
 									{value}
 								</Text>
 							</Box>

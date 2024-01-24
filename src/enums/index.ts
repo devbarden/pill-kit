@@ -1,5 +1,6 @@
 export * from './icon'
 export * from './card'
+export * from './date'
 export * from './route'
 export * from './error'
 export * from './color'

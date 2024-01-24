@@ -1,11 +1,12 @@
-import { FC, ReactElement, memo } from 'react'
+import { FC, ReactElement, memo, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Box, Text } from 'native-base'
 
-import { EnumColor, EnumIconName } from '@app/enums'
+import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
-import { styles } from './CustomItem.styles'
+import { styles, TypeStyleProps } from './CustomItem.styles'
 
 type TypeProps = {
 	text: string
@@ -15,20 +16,38 @@ type TypeProps = {
 }
 
 export const CustomItem: FC<TypeProps> = memo(
-	({ text, iconName, iconColor = EnumColor.darkGrey, children }) => (
-		<Box style={styles.wrapper}>
-			<Box style={styles.fullFlex}>
-				<Box style={styles.title}>
-					{iconName && <Icon name={iconName} color={iconColor} size={20} />}
-					<Box style={styles.fullFlex}>
-						<Text numberOfLines={1} style={styles.text}>
-							{text}
-						</Text>
+	({ text, iconName, iconColor = EnumColor.darkGrey, children }) => {
+		const { i18n } = useTranslation()
+
+		const isArabic = useMemo(
+			() => i18n.language === EnumLanguageCode.ar,
+			[i18n.language],
+		)
+
+		const styleProps: TypeStyleProps = useMemo(
+			() => ({
+				isArabic,
+			}),
+			[isArabic],
+		)
+
+		const style = useMemo(() => styles(styleProps), [styleProps])
+
+		return (
+			<Box style={style.wrapper}>
+				<Box style={style.fullFlex}>
+					<Box style={style.titleWrapper}>
+						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
+						<Box style={style.title}>
+							<Text numberOfLines={1} style={style.text}>
+								{text}
+							</Text>
+						</Box>
 					</Box>
 				</Box>
-			</Box>
 
-			<Box style={styles.children}>{children}</Box>
-		</Box>
-	),
+				<Box style={style.children}>{children}</Box>
+			</Box>
+		)
+	},
 )

@@ -1,6 +1,7 @@
 export enum EnumIconName {
 	add = 'add',
 	pie = 'pie',
+	left = 'left',
 	plus = 'plus',
 	time = 'time',
 	home = 'home',

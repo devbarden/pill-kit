@@ -27,3 +27,14 @@ export const getDaysArrayInRange = (
 
 	return result
 }
+
+export const getTimeByDate = (value: Date | number) => {
+	const date = typeof value === 'object' ? value : new Date(value)
+
+	const time = {
+		hours: date.getHours(),
+		minutes: date.getMinutes(),
+	}
+
+	return time
+}

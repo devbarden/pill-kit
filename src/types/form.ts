@@ -1,5 +1,4 @@
 import { ReactElement, RefObject } from 'react'
-import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
 import { EnumMedicineType } from '@app/enums'
 
@@ -33,12 +32,11 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 
 	form: TypeMedicineWithoutId
 	emptyFields: string[]
-	isSaveBtnDisabled: boolean
-	isNeedToShowStartDateCalendar: boolean
-	isNeedToShowEndDateCalendar: boolean
+	mapOfRemindersToShow: Record<string, boolean>
 
-	openStartDateCalendar: () => void
-	openEndDateCalendar: () => void
+	isSaveBtnDisabled: boolean
+	isNeedToShowStartDateModal: boolean
+	isNeedToShowEndDateModal: boolean
 
 	openNameModal: () => void
 	closeNameModal: () => void
@@ -54,6 +52,12 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 	closeColorModal: () => void
 	openValidationModal: () => void
 	closeValidationModal: () => void
+	openStartDateModal: () => void
+	closeStartDateModal: () => void
+	openEndDateModal: () => void
+	closeEndDateModal: () => void
+	openReminderModal: (id: string) => void
+	closeReminderModal: (id: string) => void
 
 	getCountPerUseValueByType: (
 		countPerUse: TypeMedicineCountPerUse,
@@ -67,11 +71,10 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 	changeTypeHandler: (type: string) => void
 	changeCountPerUseHandler: (countPerUse: string) => void
 	changeCountPerDayHandler: (countPerDay: string) => void
-	changeStartDateHandler: (event: DateTimePickerEvent, date?: Date) => void
-	changeEndDateHandler: (event: DateTimePickerEvent, date?: Date) => void
+	changeStartDateHandler: (date: Date) => void
+	changeEndDateHandler: (date: Date) => void
 	changeSwitchToggleHandler: () => void
-	changeIOSTimeHandler: (time: TypeMedicineTime, date?: Date) => void
-	changeAndroidTimeHandler: (time: TypeMedicineTime) => void
+	changeTimeHandler: (time: TypeMedicineTime, date: Date) => void
 	changeColorHandler: (color: string) => void
 
 	backHandler: () => void

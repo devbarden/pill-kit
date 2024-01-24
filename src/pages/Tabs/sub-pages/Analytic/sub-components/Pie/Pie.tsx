@@ -7,15 +7,29 @@ import { entries, groupBy, map, sumBy } from 'lodash'
 import { TypeMedicine } from '@app/types'
 import { getPercentageValue, uid } from '@app/utils'
 import { MEDICINE_TYPE_COLORS } from '@app/constants'
-import { EnumColor, EnumMedicineType } from '@app/enums'
+import { EnumColor, EnumLanguageCode, EnumMedicineType } from '@app/enums'
 
 import { AnalyticContext } from '../../context'
 
-import { styles } from './Pie.styles'
+import { styles, TypeStyleProps } from './Pie.styles'
 
 export const Pie: FC = memo(() => {
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
+
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
+
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isArabic,
+		}),
+		[isArabic],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
 
 	const chartConfig = useMemo(
 		() => ({
@@ -48,25 +62,25 @@ export const Pie: FC = memo(() => {
 
 	const getIndicatorStyles = useCallback(
 		(color: string) => [
-			styles.indicator,
+			style.indicator,
 			{
 				backgroundColor: color,
 			},
 		],
-		[],
+		[style],
 	)
 
 	if (isLoading) {
 		return (
-			<Box style={styles.wrapper}>
+			<Box style={style.wrapper}>
 				<Skeleton h={240} />
 			</Box>
 		)
 	}
 
 	return (
-		<Box style={styles.wrapper}>
-			<Box style={styles.content}>
+		<Box style={style.wrapper}>
+			<Box style={style.content}>
 				<PieChart
 					paddingLeft="48"
 					accessor="length"
@@ -77,18 +91,18 @@ export const Pie: FC = memo(() => {
 					data={pieChartData}
 					chartConfig={chartConfig}
 				/>
-				<Box style={styles.title}>
+				<Box style={style.title}>
 					<Text fontSize="md" textAlign="center" numberOfLines={6}>
 						{t('analytic:pie.title')}
 					</Text>
 				</Box>
 			</Box>
 
-			<Box style={styles.items}>
+			<Box style={style.items}>
 				{pieChartData.map(({ name, length, color }) => (
-					<Box key={uid()} style={styles.item}>
+					<Box key={uid()} style={style.item}>
 						<Box style={getIndicatorStyles(color)} />
-						<Text numberOfLines={1}>{t(`medicine:types.${name}`)}:</Text>
+						<Text numberOfLines={1}>{t(`medicine:types.${name}`)}</Text>
 						<Text>{getPercentageValue(length / commonCount)}</Text>
 					</Box>
 				))}

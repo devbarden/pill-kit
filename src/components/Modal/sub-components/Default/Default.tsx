@@ -1,16 +1,18 @@
 import * as Haptics from 'expo-haptics'
 import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { EnumColor } from '@app/enums'
+import { EnumColor, EnumLanguageCode } from '@app/enums'
 
 import { ModalContext } from '../../context'
 import { ScrollContent } from '../../../ScrollContent'
 
-import { styles } from './Default.styles'
+import { styles, TypeStyleProps } from './Default.styles'
 
 export const Default: FC = memo(() => {
+	const { i18n } = useTranslation()
 	const {
 		title,
 		submit,
@@ -26,50 +28,69 @@ export const Default: FC = memo(() => {
 		submitBtnText,
 	} = useContext(ModalContext)
 
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
+
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isArabic,
+		}),
+		[isArabic],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
+
 	const wrapperStyles = useMemo(
-		() => [styles.wrapper, onFullScreen ? styles.fullScreen : {}],
-		[onFullScreen],
+		() => [style.wrapper, onFullScreen ? style.fullScreen : {}],
+		[style, onFullScreen],
 	)
 
 	const titleStyles = useMemo(
-		() => [styles.title, styles.paddingVertical, styles.paddingHorizontal],
-		[],
+		() => [style.title, style.paddingVertical, style.paddingHorizontal],
+		[style],
 	)
 
 	const contentStyles = useMemo(
 		() => [
-			styles.paddingHorizontal,
-			onFullScreen ? styles.fullFlex : {},
+			style.paddingHorizontal,
+			style.alignItemsByLocale,
+			onFullScreen ? style.fullFlex : {},
 			{
 				backgroundColor: withGreyBackgroundColor
 					? EnumColor.grey
 					: EnumColor.white,
 			},
 		],
-		[onFullScreen, withGreyBackgroundColor],
+		[style, onFullScreen, withGreyBackgroundColor],
+	)
+
+	const getCommonBtnStyles = useCallback(
+		(pressed: boolean) => [
+			style.fullFlex,
+			style.paddingVertical,
+			style.paddingHorizontal,
+			pressed ? style.pressedBg : style.defaultBg,
+		],
+		[style],
 	)
 
 	const getCloseBtnStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
-			styles.fullFlex,
-			styles.paddingVertical,
-			styles.paddingHorizontal,
-			styles.bottomLeftRadius,
-			submit ? {} : styles.bottomRightRadius,
-			pressed ? styles.pressedBg : styles.defaultBg,
+			getCommonBtnStyles(pressed),
+			style.bottomLeftRadius,
+			submit ? {} : style.bottomRightRadius,
 		],
-		[submit],
+		[getCommonBtnStyles, style, submit],
 	)
 
 	const getSubmitBtnStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
-			styles.fullFlex,
-			styles.paddingVertical,
-			styles.paddingHorizontal,
-			styles.bottomRightRadius,
-			pressed ? styles.pressedBg : styles.defaultBg,
+			getCommonBtnStyles(pressed),
+			style.bottomRightRadius,
 		],
-		[],
+		[getCommonBtnStyles, style],
 	)
 
 	const submitHandler = useCallback(() => {
@@ -95,10 +116,10 @@ export const Default: FC = memo(() => {
 					<Box style={contentStyles}>{content}</Box>
 				</ScrollContent>
 			) : (
-				<Box style={[contentStyles, styles.paddingVertical]}>{content}</Box>
+				<Box style={[contentStyles, style.paddingVertical]}>{content}</Box>
 			)}
 
-			<Box style={styles.actions}>
+			<Box style={style.actions}>
 				<Pressable onPress={closeInside} style={getCloseBtnStyles}>
 					<Text fontSize="md" textAlign="center" color={EnumColor.red}>
 						{closeBtnText}
@@ -107,7 +128,7 @@ export const Default: FC = memo(() => {
 
 				{submit && (
 					<Fragment>
-						<Box style={styles.separator} />
+						<Box style={style.separator} />
 
 						<Pressable onPress={submitHandler} style={getSubmitBtnStyles}>
 							<Text

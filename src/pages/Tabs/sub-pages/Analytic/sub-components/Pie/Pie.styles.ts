@@ -2,50 +2,56 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flex: 1,
-		overflow: 'hidden',
-		marginHorizontal: 16,
-		borderRadius: 12,
-		backgroundColor: EnumColor.white,
-	},
+export type TypeStyleProps = {
+	isArabic: boolean
+}
 
-	content: {
-		flexDirection: 'row',
-	},
+export const styles = ({ isArabic }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flex: 1,
+			overflow: 'hidden',
+			marginHorizontal: 16,
+			borderRadius: 12,
+			backgroundColor: EnumColor.white,
+		},
 
-	title: {
-		flex: 1,
-		padding: 16,
-		paddingLeft: 0,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
+		content: {
+			flexDirection: 'row',
+		},
 
-	info: {
-		borderWidth: 1,
-		padding: 16,
-		gap: 8,
-	},
+		title: {
+			flex: 1,
+			padding: 16,
+			paddingLeft: 0,
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
 
-	items: {
-		flex: 1,
-		paddingBottom: 16,
-		paddingHorizontal: 16,
-	},
+		info: {
+			borderWidth: 1,
+			padding: 16,
+			gap: 8,
+		},
 
-	item: {
-		flex: 1,
-		gap: 4,
-		maxWidth: '70%',
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
+		items: {
+			flex: 1,
+			alignItems: isArabic ? 'flex-end' : 'flex-start',
+			paddingBottom: 16,
+			paddingHorizontal: 16,
+		},
 
-	indicator: {
-		width: 12,
-		height: 12,
-		borderRadius: 12,
-	},
-})
+		item: {
+			flex: 1,
+			gap: 4,
+			maxWidth: '70%',
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			alignItems: 'center',
+		},
+
+		indicator: {
+			width: 12,
+			height: 12,
+			borderRadius: 12,
+		},
+	})

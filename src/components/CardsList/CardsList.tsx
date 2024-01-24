@@ -8,7 +8,7 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import { useEndpoints } from '@app/hooks'
 import { TypeMedicine } from '@app/types'
 import { EnumCardListMode } from '@app/enums'
-import { OVER_SWIPE_DIST, SWIPE_SIZE } from '@app/constants'
+import { IS_IOS, OVER_SWIPE_DIST, SWIPE_SIZE } from '@app/constants'
 
 import { Card, SwipeActions, DraggableAndSwipeableItem } from './sub-components'
 
@@ -52,6 +52,7 @@ export const CardsList: FC<TypeProps> = memo(
 		if (isDraggable) {
 			return (
 				<DraggableFlatList
+					dragItemOverflow={IS_IOS}
 					data={dragState}
 					contentContainerStyle={styles.paddingBottom}
 					style={styles.fullHeight}

@@ -1,31 +1,40 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		padding: 16,
-		gap: 16,
-		height: 54,
-	},
+export type TypeStyleProps = {
+	isArabic: boolean
+}
 
-	fullFlex: {
-		flex: 1,
-	},
+export const styles = ({ isArabic }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+			padding: 16,
+			gap: 16,
+		},
 
-	title: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		gap: 12,
-	},
+		fullFlex: {
+			flex: 1,
+		},
 
-	children: {
-		flexDirection: 'row-reverse',
-		alignItems: 'center',
-	},
+		titleWrapper: {
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			alignItems: 'center',
+			gap: 12,
+		},
 
-	text: {
-		fontSize: 16,
-	},
-})
+		title: {
+			flex: 1,
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+		},
+
+		children: {
+			flexDirection: 'row-reverse',
+			alignItems: 'center',
+		},
+
+		text: {
+			fontSize: 16,
+		},
+	})

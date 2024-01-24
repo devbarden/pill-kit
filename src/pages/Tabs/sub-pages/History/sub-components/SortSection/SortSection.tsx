@@ -37,7 +37,7 @@ export const SortSection: FC = memo(() => {
 				numberOfLines={1}
 				color={EnumColor.darkGrey}
 				style={styles.maxWidthHalfOfRow}>
-				{t('history:sort.medicines')}: {medicines.length}
+				{t('history:sort.medicines')} : {medicines.length}
 			</Text>
 
 			<Pressable style={getPressableStyles} onPress={pressHandler}>

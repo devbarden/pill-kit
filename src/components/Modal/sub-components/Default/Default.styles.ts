@@ -2,63 +2,72 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		width: '100%',
-		maxHeight: '50%',
-		borderRadius: 16,
-		backgroundColor: EnumColor.white,
-	},
+export type TypeStyleProps = {
+	isArabic: boolean
+}
 
-	title: {
-		alignItems: 'center',
-		borderBottomWidth: 1,
-		borderColor: EnumColor.grey,
-	},
+export const styles = ({ isArabic }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			width: '100%',
+			maxHeight: '50%',
+			borderRadius: 16,
+			backgroundColor: EnumColor.white,
+		},
 
-	actions: {
-		flexDirection: 'row',
-		borderTopWidth: 1,
-		borderColor: EnumColor.grey,
-	},
+		title: {
+			alignItems: 'center',
+			borderBottomWidth: 1,
+			borderColor: EnumColor.grey,
+		},
 
-	separator: {
-		borderRightWidth: 1,
-		borderColor: EnumColor.grey,
-	},
+		actions: {
+			flexDirection: 'row',
+			borderTopWidth: 1,
+			borderColor: EnumColor.grey,
+		},
 
-	fullScreen: {
-		flex: 1,
-		marginTop: 80,
-		marginBottom: 66,
-		maxHeight: '100%',
-	},
+		separator: {
+			borderRightWidth: 1,
+			borderColor: EnumColor.grey,
+		},
 
-	fullFlex: {
-		flex: 1,
-	},
+		fullScreen: {
+			flex: 1,
+			marginTop: 80,
+			marginBottom: 66,
+			maxHeight: '100%',
+		},
 
-	paddingVertical: {
-		paddingVertical: 16,
-	},
+		fullFlex: {
+			flex: 1,
+		},
 
-	paddingHorizontal: {
-		paddingHorizontal: 16,
-	},
+		paddingVertical: {
+			paddingVertical: 16,
+		},
 
-	pressedBg: {
-		backgroundColor: EnumColor.grey,
-	},
+		paddingHorizontal: {
+			paddingHorizontal: 16,
+		},
 
-	defaultBg: {
-		backgroundColor: EnumColor.white,
-	},
+		pressedBg: {
+			backgroundColor: EnumColor.grey,
+		},
 
-	bottomLeftRadius: {
-		borderBottomLeftRadius: 16,
-	},
+		defaultBg: {
+			backgroundColor: EnumColor.white,
+		},
 
-	bottomRightRadius: {
-		borderBottomRightRadius: 16,
-	},
-})
+		bottomLeftRadius: {
+			borderBottomLeftRadius: 16,
+		},
+
+		bottomRightRadius: {
+			borderBottomRightRadius: 16,
+		},
+
+		alignItemsByLocale: {
+			alignItems: isArabic ? 'flex-end' : 'flex-start',
+		},
+	})

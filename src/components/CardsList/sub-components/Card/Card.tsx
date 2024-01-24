@@ -3,12 +3,12 @@ import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
-import { EnumCardListMode, EnumColor, EnumIconName } from '@app/enums'
+import { EnumColor, EnumIconName, EnumCardListMode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 import { useCardState } from './hooks'
 
-import { styles } from './Card.styles'
+import { styles, TypeStyleProps } from './Card.styles'
 
 type TypeProps = {
 	data: TypeMedicine
@@ -20,6 +20,8 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 	const {
 		isModeV1,
 		isModeV2,
+
+		isArabic,
 
 		name,
 		type,
@@ -44,14 +46,28 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 		[],
 	)
 
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isArabic,
+		}),
+		[isArabic],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
+
+	const backgroundCardColorStyle = useMemo(
+		() => ({ backgroundColor: cardColor }),
+		[cardColor],
+	)
+
 	return (
-		<Pressable style={styles.card} onPress={onCardPress} onLongPress={drag}>
-			<Box style={styles.content}>
-				<Box style={styles.iconWrapper}>
+		<Pressable style={style.card} onPress={onCardPress} onLongPress={drag}>
+			<Box style={style.content}>
+				<Box style={style.iconWrapper}>
 					<Icon name={EnumIconName[type]} color={cardColor} size={28} />
 				</Box>
 
-				<Box style={styles.info}>
+				<Box style={style.info}>
 					<Text fontSize="md" {...baseTextProps}>
 						{name}
 					</Text>
@@ -71,7 +87,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 			</Box>
 
 			{isModeV1 && (
-				<Box style={[styles.leftLabel, { backgroundColor: cardColor }]}>
+				<Box style={[style.leftLabel, backgroundCardColorStyle]}>
 					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
 						{transformedCountPerUse && transformedCountPerUse + ' / '}
 						{countPerDay}
@@ -79,7 +95,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 				</Box>
 			)}
 
-			<Box style={[styles.rightLabel, { backgroundColor: cardColor }]}>
+			<Box style={[style.rightLabel, backgroundCardColorStyle]}>
 				<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
 					{isModeV1 ? dateText : labelText}
 				</Text>

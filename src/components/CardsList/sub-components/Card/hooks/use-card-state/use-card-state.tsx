@@ -9,10 +9,11 @@ import {
 	EnumStackRoute,
 	EnumCardListMode,
 	EnumMedicineType,
+	EnumLanguageCode,
 } from '@app/enums'
 
 export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 	const { navigate } = useNavigation()
 
 	const { isActive, isFuture, isPast } = useMemo(
@@ -35,6 +36,11 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
 	const isModeV2 = useMemo(() => mode === EnumCardListMode.v2, [mode])
 
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
+
 	const transformedCountPerUse = useMemo(() => {
 		if (type === EnumMedicineType.liquid) {
 			return `${countPerUse}${t('medicine:indicator.ml')}`
@@ -54,8 +60,11 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	)
 
 	const dateRange = useMemo(
-		() => `${dateToFormat(startDate)} - ${dateToFormat(endDate)}`,
-		[startDate, endDate],
+		() =>
+			isArabic
+				? `${dateToFormat(endDate)} - ${dateToFormat(startDate)}`
+				: `${dateToFormat(startDate)} - ${dateToFormat(endDate)}`,
+		[isArabic, startDate, endDate],
 	)
 
 	const dateToShow = useMemo(() => {
@@ -121,6 +130,8 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	return {
 		isModeV1,
 		isModeV2,
+
+		isArabic,
 
 		isPast,
 		isFuture,

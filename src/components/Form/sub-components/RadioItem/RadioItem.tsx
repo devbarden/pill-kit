@@ -1,5 +1,6 @@
 import * as Haptics from 'expo-haptics'
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
 	Pressable,
 	TouchableWithoutFeedback,
@@ -7,11 +8,11 @@ import {
 } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
-import { EnumColor, EnumIconName } from '@app/enums'
+import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
-import { styles } from './RadioItem.styles'
+import { styles, TypeStyleProps } from './RadioItem.styles'
 
 type TypeProps = {
 	text: string
@@ -23,14 +24,30 @@ type TypeProps = {
 
 export const RadioItem: FC<TypeProps> = memo(
 	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
+		const { i18n } = useTranslation()
+
+		const isArabic = useMemo(
+			() => i18n.language === EnumLanguageCode.ar,
+			[i18n.language],
+		)
+
+		const styleProps: TypeStyleProps = useMemo(
+			() => ({
+				isArabic,
+			}),
+			[isArabic],
+		)
+
+		const style = useMemo(() => styles(styleProps), [styleProps])
+
 		const getPressableStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [
-				styles.wrapper,
+				style.wrapper,
 				{
 					backgroundColor: pressed ? EnumColor.lightGrey : EnumColor.white,
 				},
 			],
-			[],
+			[style],
 		)
 
 		const pressHandler = useCallback(() => {
@@ -40,20 +57,18 @@ export const RadioItem: FC<TypeProps> = memo(
 
 		return (
 			<Pressable style={getPressableStyles} onPress={pressHandler}>
-				<Box style={styles.fullFlex}>
-					<Box style={styles.title}>
+				<Box style={style.fullFlex}>
+					<Box style={style.titleWrapper}>
 						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
-						<Box style={styles.fullFlex}>
-							<Text numberOfLines={1} style={styles.text}>
+						<Box style={style.title}>
+							<Text numberOfLines={1} style={style.text}>
 								{text}
 							</Text>
 						</Box>
 					</Box>
 				</Box>
 
-				<TouchableWithoutFeedback
-					style={styles.children}
-					onPress={pressHandler}>
+				<TouchableWithoutFeedback style={style.children} onPress={pressHandler}>
 					<Radio colorScheme="green" value={value} accessibilityLabel={value} />
 				</TouchableWithoutFeedback>
 			</Pressable>

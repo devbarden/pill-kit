@@ -4,16 +4,30 @@ import { ProgressChart } from 'react-native-chart-kit'
 import { Box, Text, Skeleton } from 'native-base'
 import { map } from 'lodash'
 
-import { EnumColor } from '@app/enums'
+import { EnumColor, EnumLanguageCode } from '@app/enums'
 import { uid, getPercentageValue, getDivideValueByDates } from '@app/utils'
 
 import { AnalyticContext } from '../../context'
 
-import { styles } from './Progress.styles'
+import { styles, TypeStyleProps } from './Progress.styles'
 
 export const Progress: FC = memo(() => {
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 	const { activeMedicines, isLoading } = useContext(AnalyticContext)
+
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
+
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isArabic,
+		}),
+		[isArabic],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
 
 	const chartConfig = useMemo(
 		() => ({
@@ -93,17 +107,17 @@ export const Progress: FC = memo(() => {
 
 	const getIndicatorStyles = useCallback(
 		(index: number) => [
-			styles.indicator,
+			style.indicator,
 			{
 				backgroundColor: progressChartData.colors[index],
 			},
 		],
-		[progressChartData.colors],
+		[style, progressChartData.colors],
 	)
 
 	if (isLoading) {
 		return (
-			<Box style={styles.wrapper}>
+			<Box style={style.wrapper}>
 				<Skeleton h={200} />
 			</Box>
 		)
@@ -111,13 +125,13 @@ export const Progress: FC = memo(() => {
 
 	return (
 		<Box>
-			<Box style={styles.label}>
+			<Box style={style.label}>
 				<Text numberOfLines={1} color={EnumColor.white}>
 					{t('analytic:progress.label')}
 				</Text>
 			</Box>
 
-			<Box style={styles.wrapper}>
+			<Box style={style.wrapper}>
 				<ProgressChart
 					hideLegend
 					withCustomBarColorFromData
@@ -128,15 +142,15 @@ export const Progress: FC = memo(() => {
 					{...flexibleConfig}
 				/>
 
-				<Box style={styles.content}>
+				<Box style={style.content}>
 					<Text fontSize="md" textAlign="center" numberOfLines={1}>
 						{t('analytic:progress.title')}
 					</Text>
 
-					<Box style={styles.items}>
+					<Box style={style.items}>
 						{progressChartData.labels.map((name, index) => (
-							<Box key={uid()} style={styles.item}>
-								<Box style={styles.name}>
+							<Box key={uid()} style={style.item}>
+								<Box style={style.name}>
 									<Box style={getIndicatorStyles(index)} />
 									<Text numberOfLines={1}>{name}</Text>
 								</Box>

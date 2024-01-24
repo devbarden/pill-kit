@@ -2,56 +2,61 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		overflow: 'hidden',
-		flexDirection: 'row',
-		marginHorizontal: 16,
-		borderRadius: 12,
-		backgroundColor: EnumColor.white,
-	},
+export type TypeStyleProps = {
+	isArabic: boolean
+}
 
-	label: {
-		marginHorizontal: 44,
-		position: 'absolute',
-		zIndex: 1,
-		top: -10,
-		maxWidth: '100%',
-		flex: 1,
+export const styles = ({ isArabic }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			overflow: 'hidden',
+			flexDirection: 'row',
+			marginHorizontal: 16,
+			borderRadius: 12,
+			backgroundColor: EnumColor.white,
+		},
 
-		paddingHorizontal: 12,
-		borderRadius: 4,
+		label: {
+			marginHorizontal: 44,
+			position: 'absolute',
+			zIndex: 1,
+			top: -10,
+			maxWidth: '100%',
+			flex: 1,
 
-		backgroundColor: EnumColor.green,
-	},
+			paddingHorizontal: 12,
+			borderRadius: 4,
 
-	content: {
-		flex: 1,
-		gap: 16,
-		paddingRight: 16,
-		paddingVertical: 16,
-	},
+			backgroundColor: EnumColor.green,
+		},
 
-	items: {
-		flex: 1,
-	},
+		content: {
+			flex: 1,
+			gap: 16,
+			paddingRight: 16,
+			paddingVertical: 16,
+		},
 
-	item: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		gap: 16,
-	},
+		items: {
+			flex: 1,
+		},
 
-	name: {
-		flex: 1,
-		gap: 4,
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
+		item: {
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			justifyContent: 'space-between',
+			gap: 16,
+		},
 
-	indicator: {
-		width: 12,
-		height: 12,
-		borderRadius: 12,
-	},
-})
+		name: {
+			flex: 1,
+			gap: 4,
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			alignItems: 'center',
+		},
+
+		indicator: {
+			width: 12,
+			height: 12,
+			borderRadius: 12,
+		},
+	})

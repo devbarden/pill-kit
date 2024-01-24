@@ -9,17 +9,17 @@ import {
 import { entries, filter, map } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import { DateTimePickerEvent } from '@react-native-community/datetimepicker'
 
 import { EnumMedicineType } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
 import {
 	addWeeks,
+	isDeserted,
 	removeWeeks,
+	getTimeByDate,
 	isAnyFieldEmpty,
 	getFirstValueFromSelectItems,
 	getMedicineWithoutCountPerUseField,
-	isDeserted,
 } from '@app/utils'
 import {
 	MEDICINE_DEFAULT_TIMES_MAP,
@@ -52,10 +52,19 @@ export const useMedicineForm = (
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
-	const [isNeedToShowStartDateCalendar, setIsNeedShowStartDateCalendar] =
+
+	const initialMapOfRemindersToShow = useMemo(
+		() => form.times.reduce((acc, { id }) => ({ ...acc, [id]: false }), {}),
+		[form.times],
+	)
+
+	const [isNeedToShowStartDateModal, setIsNeedToShowStartDateModal] =
 		useState(false)
-	const [isNeedToShowEndDateCalendar, setIsNeedToShowEndDateCalendar] =
+	const [isNeedToShowEndDateModal, setIsNeedToShowEndDateModal] =
 		useState(false)
+	const [mapOfRemindersToShow, setMapOfRemindersToShow] = useState(
+		initialMapOfRemindersToShow,
+	)
 
 	const formToValidate = useMemo(
 		() => getMedicineWithoutCountPerUseField(form),
@@ -76,14 +85,6 @@ export const useMedicineForm = (
 		() => isSubmitting || isAnyFieldEmpty(formToValidate),
 		[isSubmitting, formToValidate],
 	)
-
-	const openStartDateCalendar = useCallback(() => {
-		setIsNeedShowStartDateCalendar(true)
-	}, [])
-
-	const openEndDateCalendar = useCallback(() => {
-		setIsNeedToShowEndDateCalendar(true)
-	}, [])
 
 	const openNameModal = useCallback(() => {
 		modalNameRef.current?.open()
@@ -139,6 +140,30 @@ export const useMedicineForm = (
 
 	const closeValidationModal = useCallback(() => {
 		modalValidationRef.current?.close()
+	}, [])
+
+	const openStartDateModal = useCallback(() => {
+		setIsNeedToShowStartDateModal(() => true)
+	}, [])
+
+	const closeStartDateModal = useCallback(() => {
+		setIsNeedToShowStartDateModal(() => false)
+	}, [])
+
+	const openEndDateModal = useCallback(() => {
+		setIsNeedToShowEndDateModal(() => true)
+	}, [])
+
+	const closeEndDateModal = useCallback(() => {
+		setIsNeedToShowEndDateModal(() => false)
+	}, [])
+
+	const openReminderModal = useCallback((id: string) => {
+		setMapOfRemindersToShow((prev) => ({ ...prev, [id]: true }))
+	}, [])
+
+	const closeReminderModal = useCallback((id: string) => {
+		setMapOfRemindersToShow((prev) => ({ ...prev, [id]: false }))
 	}, [])
 
 	const getCountPerUseValueByType = useCallback(
@@ -225,28 +250,26 @@ export const useMedicineForm = (
 	}, [])
 
 	const changeStartDateHandler = useCallback(
-		(event: DateTimePickerEvent, date?: Date) => {
-			if (!date) return
+		(date: Date) => {
+			closeStartDateModal()
 
 			const startDate = date.setHours(0, 0, 0, 0)
 
-			setIsNeedShowStartDateCalendar(false)
 			setForm((prev) => ({
 				...prev,
 				startDate,
 				endDate: startDate > prev.endDate ? addWeeks(date, 2) : prev.endDate,
 			}))
 		},
-		[],
+		[closeStartDateModal],
 	)
 
 	const changeEndDateHandler = useCallback(
-		(event: DateTimePickerEvent, date?: Date) => {
-			if (!date) return
+		(date: Date) => {
+			closeEndDateModal()
 
 			const endDate = date.setHours(23, 59, 59, 999)
 
-			setIsNeedToShowEndDateCalendar(false)
 			setForm((prev) => ({
 				...prev,
 				startDate:
@@ -254,17 +277,14 @@ export const useMedicineForm = (
 				endDate,
 			}))
 		},
-		[],
+		[closeEndDateModal],
 	)
 
-	const changeIOSTimeHandler = useCallback(
-		({ id }: TypeMedicineTime, date?: Date) => {
-			if (!date) return
+	const changeTimeHandler = useCallback(
+		({ id }: TypeMedicineTime, date: Date) => {
+			closeReminderModal(id)
 
-			const time = {
-				hours: date?.getHours(),
-				minutes: date?.getMinutes(),
-			}
+			const time = getTimeByDate(date)
 
 			setForm((prev) => ({
 				...prev,
@@ -278,29 +298,7 @@ export const useMedicineForm = (
 				),
 			}))
 		},
-		[],
-	)
-
-	const changeAndroidTimeHandler = useCallback(
-		({ id, hours, minutes }: TypeMedicineTime) => {
-			const time = {
-				hours,
-				minutes,
-			}
-
-			setForm((prev) => ({
-				...prev,
-				times: prev.times.map((prevTime) =>
-					prevTime.id === id
-						? {
-								...prevTime,
-								...time,
-							}
-						: prevTime,
-				),
-			}))
-		},
-		[],
+		[closeReminderModal],
 	)
 
 	const changeColorHandler = useCallback((color: string) => {
@@ -347,12 +345,11 @@ export const useMedicineForm = (
 
 		form,
 		emptyFields,
-		isSaveBtnDisabled,
-		isNeedToShowStartDateCalendar,
-		isNeedToShowEndDateCalendar,
+		mapOfRemindersToShow,
 
-		openStartDateCalendar,
-		openEndDateCalendar,
+		isSaveBtnDisabled,
+		isNeedToShowStartDateModal,
+		isNeedToShowEndDateModal,
 
 		openNameModal,
 		closeNameModal,
@@ -368,6 +365,12 @@ export const useMedicineForm = (
 		closeColorModal,
 		openValidationModal,
 		closeValidationModal,
+		openStartDateModal,
+		closeStartDateModal,
+		openEndDateModal,
+		closeEndDateModal,
+		openReminderModal,
+		closeReminderModal,
 
 		getCountPerUseValueByType,
 		getCountPerUseSelectItems,
@@ -381,8 +384,7 @@ export const useMedicineForm = (
 		changeStartDateHandler,
 		changeEndDateHandler,
 		changeSwitchToggleHandler,
-		changeIOSTimeHandler,
-		changeAndroidTimeHandler,
+		changeTimeHandler,
 		changeColorHandler,
 
 		backHandler,

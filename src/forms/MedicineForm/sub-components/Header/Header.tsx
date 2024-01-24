@@ -24,7 +24,7 @@ export const Header: FC = memo(() => {
 			<Pressable style={styles.backAction} onPress={backHandler}>
 				<Icon name={EnumIconName.back} size={32} />
 				<Box style={styles.title}>
-					<Text fontSize="md" numberOfLines={1}>
+					<Text fontSize="md" textAlign="left" numberOfLines={1}>
 						{title}
 					</Text>
 				</Box>

@@ -1,40 +1,54 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		padding: 16,
-		gap: 16,
-		height: 54,
-	},
+export type TypeStyleProps = {
+	isArabic: boolean
+}
 
-	fullFlex: {
-		flex: 1,
-	},
+export const styles = ({ isArabic }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+			padding: 16,
+			gap: 16,
+		},
 
-	valueHalfWidth: {
-		width: '50%',
-	},
+		fullFlex: {
+			flex: 1,
+		},
 
-	valueQuarterWidth: {
-		width: '25%',
-	},
+		valueHalfWidth: {
+			width: '50%',
+		},
 
-	title: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		gap: 12,
-	},
+		valueQuarterWidth: {
+			width: '25%',
+		},
 
-	value: {
-		flexDirection: 'row-reverse',
-		alignItems: 'center',
-		gap: 16,
-	},
+		titleWrapper: {
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+			alignItems: 'center',
+			gap: 12,
+		},
 
-	text: {
-		fontSize: 16,
-	},
-})
+		title: {
+			flex: 1,
+			flexDirection: isArabic ? 'row-reverse' : 'row',
+		},
+
+		valueWrapper: {
+			flexDirection: isArabic ? 'row' : 'row-reverse',
+			alignItems: 'center',
+			gap: 16,
+		},
+
+		value: {
+			flex: 1,
+			alignItems: isArabic ? 'flex-start' : 'flex-end',
+		},
+
+		text: {
+			fontSize: 16,
+		},
+	})
