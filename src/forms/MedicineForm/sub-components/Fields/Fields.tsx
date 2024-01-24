@@ -76,9 +76,8 @@ export const Fields: FC = memo(() => {
 	)
 
 	const countPerUseByLocale = useMemo(
-		() =>
-			getNumberByLocale(getCountPerUseValueByType(countPerUse, type), language),
-		[getCountPerUseValueByType, countPerUse, type, language],
+		() => getCountPerUseValueByType(countPerUse, type),
+		[getCountPerUseValueByType, countPerUse, type],
 	)
 
 	const countPerDayByLocale = useMemo(
@@ -150,11 +149,11 @@ export const Fields: FC = memo(() => {
 								is24hourSource="locale"
 								androidVariant="iosClone"
 								title={t('medicine:field.startDate')}
-								theme={theme}
 								open={isNeedToShowStartDateModal}
 								date={new Date(startDate)}
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
+								theme={theme}
 								locale={language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
@@ -178,11 +177,11 @@ export const Fields: FC = memo(() => {
 								androidVariant="iosClone"
 								title={t('medicine:field.endDate')}
 								mode={EnumDateMode.date}
-								theme={theme}
 								open={isNeedToShowEndDateModal}
 								date={new Date(endDate)}
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
+								theme={theme}
 								locale={language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}

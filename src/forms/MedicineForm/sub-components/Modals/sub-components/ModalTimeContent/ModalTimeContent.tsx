@@ -17,7 +17,7 @@ import { styles, TypeStyleProps } from './ModalTimeContent.styles'
 
 export const ModalTimeContent: FC = memo(() => {
 	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { theme, language } = useContext(GlobalStateContext)
 	const {
 		form,
 		mapOfRemindersToShow,
@@ -82,6 +82,7 @@ export const ModalTimeContent: FC = memo(() => {
 									is24hourSource="locale"
 									title={getDoseText(index + 1)}
 									mode={EnumDateMode.time}
+									theme={theme}
 									locale={language}
 									open={mapOfRemindersToShow[time.id]}
 									date={new Date(getValue(time))}

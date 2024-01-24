@@ -18,6 +18,8 @@ import {
 	removeWeeks,
 	getTimeByDate,
 	isAnyFieldEmpty,
+	getNumberByLocale,
+	getSelectNumberItemsByLocale,
 	getFirstValueFromSelectItems,
 	getMedicineWithoutCountPerUseField,
 } from '@app/utils'
@@ -48,7 +50,7 @@ export const useMedicineForm = (
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab } = useContext(GlobalStateContext)
+	const { activeTab, language } = useContext(GlobalStateContext)
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
@@ -168,35 +170,47 @@ export const useMedicineForm = (
 
 	const getCountPerUseValueByType = useCallback(
 		(countPerUse: TypeMedicineCountPerUse, type: EnumMedicineType) => {
+			const value = getNumberByLocale(countPerUse, language)
+
 			if (type === EnumMedicineType.liquid) {
-				return `${countPerUse} ${t('medicine:indicator.ml')}`
+				return `${value} ${t('medicine:indicator.ml')}`
 			}
 
-			return countPerUse
+			return value
 		},
-		[t],
+		[t, language],
 	)
 
 	const getCountPerUseSelectItems = useCallback(
 		(type: EnumMedicineType) => {
+			const defaultItemsByLocale = getSelectNumberItemsByLocale(
+				MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS,
+				language,
+			)
+
+			const liquidItemsByLocale = map(
+				MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS,
+				(item) => ({
+					...item,
+					label: `${getNumberByLocale(item.label, language)} ${t('medicine:indicator.ml')}`,
+				}),
+			)
+
 			if (type === EnumMedicineType.pill) {
-				return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+				return defaultItemsByLocale
 			}
 
 			if (type === EnumMedicineType.liquid) {
-				return map(MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS, (item) => ({
-					...item,
-					label: `${item.label} ${t('medicine:indicator.ml')}`,
-				}))
+				return liquidItemsByLocale
 			}
 
 			if (type === EnumMedicineType.drops) {
-				return MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS
+				return defaultItemsByLocale
 			}
 
 			return []
 		},
-		[t],
+		[t, language],
 	)
 
 	const getIsNeedToFillCountPerUse = useCallback(

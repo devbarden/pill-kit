@@ -14,7 +14,9 @@ import {
 	toString,
 } from 'lodash'
 
-import { EnumColor } from '@app/enums'
+import { getNumberByLocale } from '@app/utils'
+import { GlobalStateContext } from '@app/context'
+import { EnumColor, EnumLanguageCode } from '@app/enums'
 
 import { AnalyticContext } from '../../context'
 
@@ -22,7 +24,13 @@ import { styles } from './Bar.styles'
 
 export const Bar: FC = memo(() => {
 	const { t } = useTranslation()
+	const { language } = useContext(GlobalStateContext)
 	const { allMedicines, isLoading, screenWidth } = useContext(AnalyticContext)
+
+	const isAvailableToShowValuesOnBars = useMemo(
+		() => language !== EnumLanguageCode.ar && language !== EnumLanguageCode.bn,
+		[language],
+	)
 
 	const hiddenSpaceSize = useMemo(() => 80, [])
 
@@ -72,7 +80,7 @@ export const Bar: FC = memo(() => {
 		const data: number[] = []
 
 		forEach(entries(countOfMedicinesMap), ([year, { length }]) => {
-			labels.push(toString(year))
+			labels.push(getNumberByLocale(toString(year), language))
 			data.push(length)
 		})
 
@@ -84,7 +92,7 @@ export const Bar: FC = memo(() => {
 				},
 			],
 		}
-	}, [allMedicines])
+	}, [allMedicines, language])
 
 	if (isLoading) {
 		return (
@@ -103,7 +111,7 @@ export const Bar: FC = memo(() => {
 				fromZero
 				yAxisLabel="auto"
 				yAxisSuffix="auto"
-				showValuesOnTopOfBars
+				showValuesOnTopOfBars={isAvailableToShowValuesOnBars}
 				withInnerLines={false}
 				withHorizontalLabels={false}
 				height={160}
