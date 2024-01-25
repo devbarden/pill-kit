@@ -1,4 +1,3 @@
-import * as Notifications from 'expo-notifications'
 import { FC, memo, useMemo } from 'react'
 
 import { useLocalNotification } from '@app/hooks'
@@ -7,14 +6,6 @@ import { Header, CardsList, ContentWrapper } from '@app/components'
 import { useHomeState } from './hooks'
 import { HomeContext } from './context'
 import { Empty, Loading, AddMedicineAction } from './sub-components'
-
-Notifications.setNotificationHandler({
-	handleNotification: async () => ({
-		shouldShowAlert: true,
-		shouldPlaySound: true,
-		shouldSetBadge: false,
-	}),
-})
 
 export const Home: FC = memo(() => {
 	useLocalNotification()

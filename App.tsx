@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler'
+import * as Notifications from 'expo-notifications'
 import { FC, memo } from 'react'
 import { NativeBaseProvider } from 'native-base'
 import { Platform, UIManager } from 'react-native'
@@ -15,6 +16,14 @@ if (Platform.OS === 'android') {
 }
 
 registerLogs()
+
+Notifications.setNotificationHandler({
+	handleNotification: async () => ({
+		shouldShowAlert: true,
+		shouldPlaySound: false,
+		shouldSetBadge: false,
+	}),
+})
 
 const queryClient = new QueryClient()
 
