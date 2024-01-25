@@ -1,11 +1,12 @@
 {
 	"expo": {
-		"name": "pill-kit",
+		"name": "Pill Kit",
 		"slug": "pill-kit",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/logo.png",
 		"userInterfaceStyle": "light",
+		"platforms": ["ios", "android"],
 		"splash": {
 			"image": "./assets/logo.png",
 			"resizeMode": "contain",
@@ -13,7 +14,7 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"supportsTablet": true,
+			"supportsTablet": false,
 			"bundleIdentifier": "com.devbarden.pillkit"
 		},
 		"android": {
@@ -22,9 +23,6 @@
 				"backgroundColor": "#ffffff"
 			},
 			"package": "com.devbarden.pillkit"
-		},
-		"web": {
-			"favicon": "./assets/logo.png"
 		},
 		"plugins": [
 			["expo-localization"],
