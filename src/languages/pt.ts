@@ -12,6 +12,12 @@ export const pt: TypeLanguage = {
 				title: 'Atenção',
 				description: 'Você precisa ler e aceitar os documentos exigidos',
 			},
+
+			notification: {
+				title: 'Notificações',
+				description:
+					'Para receber lembretes, permita que o aplicativo envie notificações, caso contrário não poderemos lembrá-lo de quando tomar seus medicamentos.',
+			},
 		},
 	},
 

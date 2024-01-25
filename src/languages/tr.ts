@@ -12,6 +12,12 @@ export const tr: TypeLanguage = {
 				title: 'Dikkat',
 				description: 'Gerekli belgeleri okuyup kabul etmeniz gerekiyor',
 			},
+
+			notification: {
+				title: 'Bildirimler',
+				description:
+					'Hatırlatıcı almak için lütfen uygulamanın bildirim göndermesine izin verin, aksi takdirde ilaçlarınızı ne zaman alacağınızı size hatırlatamayız.',
+			},
 		},
 	},
 

@@ -18,8 +18,9 @@ export type TypeModalProps = {
 
 	type?: EnumModalType
 	submit?: TypeModalSubmitProps
+	onClose?: () => void
 	closeText?: string
-	onFullScreen?: boolean
+	isFullScreen?: boolean
 	withContentScroll?: boolean
 	isPossibleCloseOutside?: boolean
 	withGreyBackgroundColor?: boolean

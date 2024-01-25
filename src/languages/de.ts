@@ -14,6 +14,12 @@ export const de: TypeLanguage = {
 				description:
 					'Sie müssen die erforderlichen Dokumente lesen und akzeptieren',
 			},
+
+			notification: {
+				title: 'Benachrichtigungen',
+				description:
+					'Um Erinnerungen zu erhalten, erlauben Sie bitte der App, Benachrichtigungen zu senden. Andernfalls können wir Sie nicht daran erinnern, wann Sie Ihre Medikamente einnehmen müssen.',
+			},
 		},
 	},
 

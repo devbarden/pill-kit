@@ -13,6 +13,12 @@ export const es: TypeLanguage = {
 				title: 'Atención',
 				description: 'Debe leer y aceptar los documentos requeridos',
 			},
+
+			notification: {
+				title: 'Notificaciones',
+				description:
+					'Para recibir recordatorios, permita que la aplicación envíe notificaciones; de lo contrario, no podremos recordarle cuándo debe tomar sus medicamentos.',
+			},
 		},
 	},
 

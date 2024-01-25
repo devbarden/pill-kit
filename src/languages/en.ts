@@ -13,6 +13,11 @@ export const en: TypeLanguage = {
 				title: 'Attention',
 				description: 'You need to read and accept the required documents',
 			},
+
+			notification: {
+				title: 'Notifications',
+				description: `To receive reminders, please allow the app to send notifications. Otherwise, we won't be able to remind you when to take your medicines.`,
+			},
 		},
 	},
 

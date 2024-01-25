@@ -13,6 +13,11 @@ export type TypeLanguage = {
 				title: string
 				description: string
 			}
+
+			notification: {
+				title: string
+				description: string
+			}
 		}
 	}
 

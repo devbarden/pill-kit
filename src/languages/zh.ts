@@ -12,6 +12,12 @@ export const zh: TypeLanguage = {
 				title: '注意事项',
 				description: '您需要阅读并接受所需的文件',
 			},
+
+			notification: {
+				title: '通知',
+				description:
+					'要接收提醒，请允许应用程序发送通知，否则我们将无法提醒您何时服药。',
+			},
 		},
 	},
 

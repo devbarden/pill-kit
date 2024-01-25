@@ -11,8 +11,9 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		title,
 		content,
 		submit,
+		onClose,
 		closeText,
-		onFullScreen = false,
+		isFullScreen = false,
 		withContentScroll = false,
 		isPossibleCloseOutside = true,
 		withGreyBackgroundColor = false,
@@ -41,7 +42,11 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 
 	const closeInside = useCallback(() => {
 		setIsVisible(false)
-	}, [])
+
+		if (onClose) {
+			onClose()
+		}
+	}, [onClose])
 
 	const onSubmit = useCallback(async () => {
 		if (!submit?.handler) {
@@ -59,7 +64,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		content,
 		submit,
 		closeText,
-		onFullScreen,
+		isFullScreen,
 		withContentScroll,
 		isPossibleCloseOutside,
 		withGreyBackgroundColor,

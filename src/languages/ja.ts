@@ -12,6 +12,12 @@ export const ja: TypeLanguage = {
 				title: '注意',
 				description: '必要な書類を読んで同意する必要があります',
 			},
+
+			notification: {
+				title: '通知',
+				description:
+					'リマインダーを受け取るには、アプリに通知の送信を許可してください。そうしないと、薬を服用する時間をリマインドすることができなくなります。',
+			},
 		},
 	},
 

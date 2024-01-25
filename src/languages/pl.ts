@@ -13,6 +13,12 @@ export const pl: TypeLanguage = {
 				title: 'Uwaga',
 				description: 'Musisz przeczytać i zaakceptować wymagane dokumenty',
 			},
+
+			notification: {
+				title: 'Powiadomienia',
+				description:
+					'Aby otrzymywać przypomnienia, zezwól aplikacji na wysyłanie powiadomień, w przeciwnym razie nie będziemy mogli przypomnieć Ci, kiedy wziąć leki.',
+			},
 		},
 	},
 

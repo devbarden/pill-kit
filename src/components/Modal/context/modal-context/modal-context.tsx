@@ -12,9 +12,10 @@ export const ModalContext = createContext<TypeModalContextProps>({
 		text: '',
 		handler: () => {},
 	},
+	onClose: () => {},
 
 	closeText: '',
-	onFullScreen: false,
+	isFullScreen: false,
 	withContentScroll: false,
 	isPossibleCloseOutside: true,
 	withGreyBackgroundColor: false,

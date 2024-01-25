@@ -12,6 +12,12 @@ export const ko: TypeLanguage = {
 				title: '주목',
 				description: '필수 서류를 읽고 동의해야 합니다.',
 			},
+
+			notification: {
+				title: '알림',
+				description:
+					'알림을 받으려면 앱에서 알림을 보낼 수 있도록 허용하세요. 그렇지 않으면 약 복용 시기를 알려드릴 수 없습니다.',
+			},
 		},
 	},
 

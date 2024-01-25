@@ -17,7 +17,7 @@ export const Default: FC = memo(() => {
 		title,
 		submit,
 		content,
-		onFullScreen,
+		isFullScreen,
 		withContentScroll,
 		withGreyBackgroundColor,
 
@@ -40,8 +40,8 @@ export const Default: FC = memo(() => {
 	const style = useMemo(() => styles(styleProps), [styleProps])
 
 	const wrapperStyles = useMemo(
-		() => [style.wrapper, onFullScreen ? style.fullScreen : {}],
-		[style, onFullScreen],
+		() => [style.wrapper, isFullScreen ? style.fullScreen : {}],
+		[style, isFullScreen],
 	)
 
 	const titleStyles = useMemo(
@@ -53,14 +53,14 @@ export const Default: FC = memo(() => {
 		() => [
 			style.paddingHorizontal,
 			style.alignItemsByLocale,
-			onFullScreen ? style.fullFlex : {},
+			isFullScreen ? style.fullFlex : {},
 			{
 				backgroundColor: withGreyBackgroundColor
 					? EnumColor.grey
 					: EnumColor.white,
 			},
 		],
-		[style, onFullScreen, withGreyBackgroundColor],
+		[style, isFullScreen, withGreyBackgroundColor],
 	)
 
 	const getCommonBtnStyles = useCallback(

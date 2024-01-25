@@ -24,6 +24,7 @@ import { styles } from './Content.styles'
 
 export const Content: FC = memo(() => {
 	const modalValidationRef = useRef<TypeModalHandlers>(null)
+	const modalNotificationRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
@@ -44,6 +45,10 @@ export const Content: FC = memo(() => {
 		modalValidationRef.current?.open()
 	}, [])
 
+	const openNotificationModal = useCallback(() => {
+		modalNotificationRef.current?.open()
+	}, [])
+
 	const checkboxHandler = useCallback((value: boolean) => {
 		setIsChecked(value)
 	}, [])
@@ -52,17 +57,26 @@ export const Content: FC = memo(() => {
 		await Linking.openURL(TERMS_OF_USE_LINK)
 	}, [])
 
-	const goHomeHandler = useCallback(async () => {
+	const continueHandler = useCallback(async () => {
 		if (!isChecked) {
 			openValidationModal()
 
 			return
 		}
 
-		await setIsUserAcceptAppDocs(isChecked)
+		openNotificationModal()
 
+		await setIsUserAcceptAppDocs(isChecked)
+	}, [
+		isChecked,
+		openValidationModal,
+		openNotificationModal,
+		setIsUserAcceptAppDocs,
+	])
+
+	const navigateToTabsHandler = useCallback(() => {
 		navigate(EnumStackRoute.tabs)
-	}, [openValidationModal, isChecked, setIsUserAcceptAppDocs, navigate])
+	}, [navigate])
 
 	return (
 		<Fragment>
@@ -90,7 +104,7 @@ export const Content: FC = memo(() => {
 					/>
 				</Box>
 
-				<Pressable style={getBtnStyles} onPress={goHomeHandler}>
+				<Pressable style={getBtnStyles} onPress={continueHandler}>
 					<Text numberOfLines={1} color={EnumColor.white}>
 						{t('welcome:continue')}
 					</Text>
@@ -101,6 +115,14 @@ export const Content: FC = memo(() => {
 				title={t('welcome:modal.validation.title')}
 				content={<Text>{t('welcome:modal.validation.description')}</Text>}
 				ref={modalValidationRef}
+				closeText={t('component:button.ok')}
+			/>
+
+			<Modal
+				title={t('welcome:modal.notification.title')}
+				content={<Text>{t('welcome:modal.notification.description')}</Text>}
+				ref={modalNotificationRef}
+				onClose={navigateToTabsHandler}
 				closeText={t('component:button.ok')}
 			/>
 		</Fragment>

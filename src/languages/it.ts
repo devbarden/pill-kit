@@ -12,6 +12,12 @@ export const it: TypeLanguage = {
 				title: 'Attenzione',
 				description: 'È necessario leggere e accettare i documenti richiesti',
 			},
+
+			notification: {
+				title: 'Notifiche',
+				description:
+					"Per ricevere promemoria, consenti all'app di inviare notifiche, altrimenti non saremo in grado di ricordarti quando prendere i medicinali.",
+			},
 		},
 	},
 
