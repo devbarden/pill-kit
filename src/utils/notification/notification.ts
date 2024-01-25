@@ -1,8 +1,9 @@
 import * as Notifications from 'expo-notifications'
+import Constants from 'expo-constants'
 import { Platform } from 'react-native'
 
-import { TypeNotification } from '@app/types'
 import { EnumColor } from '@app/enums'
+import { TypeNotification } from '@app/types'
 
 export const schedulePushNotification = async ({
 	time,
@@ -48,7 +49,11 @@ export const registerForPushNotificationsAsync = async () => {
 		return
 	}
 
-	token = (await Notifications.getExpoPushTokenAsync()).data
+	token = (
+		await Notifications.getExpoPushTokenAsync({
+			projectId: Constants?.expoConfig?.extra?.eas.projectId,
+		})
+	).data
 
 	return token
 }
