@@ -3,7 +3,8 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ja: TypeLanguage = {
 	welcome: {
-		title: 'いらっしゃいませ！',
+		title:
+			'ようこそ！アプリケーションを使用する前に、以下の文書をお読みください',
 		agreement: '読んで同意します',
 		continue: '続く',
 
@@ -16,14 +17,15 @@ export const ja: TypeLanguage = {
 			notification: {
 				title: '通知',
 				description:
-					'リマインダーを受け取るには、アプリに通知の送信を許可してください。そうしないと、薬を服用する時間をリマインドすることができなくなります。',
+					'リマインダーを受け取るには、アプリに通知を送信することを許可してください。さもないと、お薬を飲むタイミングをお知らせすることができません',
 			},
 		},
 	},
 
 	home: {
 		add: '追加',
-		empty: '有効な薬剤や今後発売予定の薬剤は検出されていません。',
+		empty:
+			'アクティブな薬または今後の薬は検出されていません。治療を監視するために薬を追加してください',
 	},
 
 	createMedicine: {
@@ -105,7 +107,8 @@ export const ja: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'すべてのデータをクリア',
-				description: '本当にすべてのデータを削除しますか?',
+				description:
+					'本当にすべてのデータを削除しますか？このアクションは取り消し不能です',
 			},
 		},
 	},
@@ -131,12 +134,13 @@ export const ja: TypeLanguage = {
 
 			remove: {
 				title: '薬を取り除く',
-				description: '本当にこの薬を削除してもよろしいですか?',
+				description:
+					'本当にこの薬を削除しますか？このアクションは取り消し不能です',
 			},
 		},
 
 		warning: {
-			past: '過去の時間範囲。',
+			past: '時間範囲は過去です。この薬はホーム画面に表示されません',
 			future: '未来の時間範囲',
 		},
 
@@ -208,12 +212,12 @@ export const ja: TypeLanguage = {
 			edit: '薬は正常に更新されました',
 			remove: '薬は無事に除去されました',
 			removeAll: 'すべての薬剤は正常に除去されました',
-			error: '何か問題が発生しました。',
+			error: '何か問題が発生しました。問題解決に取り組んでいます',
 		},
 	},
 
 	error: {
-		title: '何かが壊れています。',
+		title: '何かが壊れました。メールでお問い合わせください',
 		reset: 'リセットエラー',
 	},
 }

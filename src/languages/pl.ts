@@ -4,7 +4,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 export const pl: TypeLanguage = {
 	welcome: {
 		title:
-			'Zapraszamy! Przeczytaj poniższe dokumenty przed rozpoczęciem korzystania z aplikacji',
+			'Witamy! Przed użyciem aplikacji proszę przeczytać następujące dokumenty',
 		agreement: 'Przeczytałem i akceptuję',
 		continue: 'Kontynuować',
 
@@ -17,7 +17,7 @@ export const pl: TypeLanguage = {
 			notification: {
 				title: 'Powiadomienia',
 				description:
-					'Aby otrzymywać przypomnienia, zezwól aplikacji na wysyłanie powiadomień, w przeciwnym razie nie będziemy mogli przypomnieć Ci, kiedy wziąć leki.',
+					'Aby otrzymywać przypomnienia, zezwól aplikacji na wysyłanie powiadomień. W przeciwnym razie nie będziemy mogli przypomnieć Ci, kiedy należy wziąć leki',
 			},
 		},
 	},
@@ -25,7 +25,7 @@ export const pl: TypeLanguage = {
 	home: {
 		add: 'Dodać',
 		empty:
-			'Nie znaleziono żadnych aktywnych ani nadchodzących leków. Dodaj lek, aby kontrolować swoje leczenie',
+			'Nie wykryto aktywnych lub nadchodzących leków. Proszę dodać lek, aby monitorować swoje leczenie',
 	},
 
 	createMedicine: {
@@ -134,7 +134,7 @@ export const pl: TypeLanguage = {
 			remove: {
 				title: 'Usuń lek',
 				description:
-					'Czy naprawdę chcesz usunąć ten lek? Działanie to jest nieodwracalne',
+					'Czy na pewno chcesz usunąć ten lek? Ta akcja jest nieodwracalna',
 			},
 		},
 
@@ -211,12 +211,12 @@ export const pl: TypeLanguage = {
 			edit: 'Lek został pomyślnie zaktualizowany',
 			remove: 'Lek został pomyślnie usunięty',
 			removeAll: 'Wszystkie leki zostały pomyślnie usunięte',
-			error: 'Coś poszło nie tak. Pracujemy nad tym problemem',
+			error: 'Coś poszło nie tak. Pracujemy nad rozwiązaniem problemu',
 		},
 	},
 
 	error: {
-		title: 'Coś się zepsuło. Prosimy o kontakt mailowy',
+		title: 'Coś się zepsuło. Proszę skontaktować się z nami drogą mailową',
 		reset: 'Zresetuj błąd',
 	},
 }

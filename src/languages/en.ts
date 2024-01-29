@@ -16,7 +16,7 @@ export const en: TypeLanguage = {
 
 			notification: {
 				title: 'Notifications',
-				description: `To receive reminders, please allow the app to send notifications. Otherwise, we won't be able to remind you when to take your medicines.`,
+				description: `To receive reminders, please allow the app to send notifications. Otherwise, we won't be able to remind you when to take your medicines`,
 			},
 		},
 	},
@@ -42,7 +42,7 @@ export const en: TypeLanguage = {
 		title: 'Analytics',
 		empty: 'Please add a medicine to see your analytics',
 		warning:
-			'It is not possible to display a progress graph because at the moment the number of active medicines is more than 20',
+			'It is not possible to display a progress graph because at the moment the number of active medicines is more than twenty',
 
 		progress: {
 			title: 'Progress',
@@ -50,7 +50,7 @@ export const en: TypeLanguage = {
 		},
 
 		bar: {
-			title: 'The number of medicines taken in the last 5 years',
+			title: 'The number of medicines taken in the last five years',
 		},
 
 		pie: {
@@ -58,7 +58,7 @@ export const en: TypeLanguage = {
 		},
 
 		contribution: {
-			title: 'The activity of medicines use over the last 2 months',
+			title: 'The activity of medicines use over the last two months',
 		},
 	},
 

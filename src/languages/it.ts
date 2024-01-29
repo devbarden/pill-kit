@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const it: TypeLanguage = {
 	welcome: {
-		title: `Benvenuti! Si prega di leggere i seguenti documenti prima di utilizzare l'applicazione`,
+		title: `Benvenuto! Si prega di leggere i seguenti documenti prima di utilizzare l'applicazione`,
 		agreement: 'Ho letto e accetto',
 		continue: 'Continuare',
 
@@ -16,7 +16,7 @@ export const it: TypeLanguage = {
 			notification: {
 				title: 'Notifiche',
 				description:
-					"Per ricevere promemoria, consenti all'app di inviare notifiche, altrimenti non saremo in grado di ricordarti quando prendere i medicinali.",
+					"Per ricevere promemoria, si prega di consentire all'app di inviare notifiche. Altrimenti, non saremo in grado di ricordarti quando prendere i tuoi medicinali",
 			},
 		},
 	},
@@ -24,7 +24,7 @@ export const it: TypeLanguage = {
 	home: {
 		add: 'Aggiungere',
 		empty:
-			'Non sono stati rilevati farmaci attivi o imminenti. Si prega di aggiungere un farmaco per monitorare il trattamento',
+			'Non sono stati rilevati farmaci attivi o imminenti. Si prega di aggiungere un medicinale per monitorare il proprio trattamento',
 	},
 
 	createMedicine: {
@@ -106,7 +106,8 @@ export const it: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Cancella tutti i dati',
-				description: 'Vuoi davvero cancellare tutti i dati?',
+				description:
+					'Vuoi davvero cancellare tutti i dati? Questa azione è irrevocabile',
 			},
 		},
 	},
@@ -132,12 +133,13 @@ export const it: TypeLanguage = {
 
 			remove: {
 				title: 'Rimuovere la medicina',
-				description: 'Vuoi davvero eliminare questo medicinale?',
+				description:
+					'Vuoi davvero cancellare questo medicinale? Questa azione è irrevocabile',
 			},
 		},
 
 		warning: {
-			past: "L'intervallo di tempo nel passato. ",
+			past: "L'intervallo di tempo è nel passato. Non vedrai questo medicinale nella schermata principale",
 			future: "L'intervallo di tempo nel futuro",
 		},
 
@@ -209,12 +211,12 @@ export const it: TypeLanguage = {
 			edit: 'La medicina è stata aggiornata con successo',
 			remove: 'La medicina è stata rimossa con successo',
 			removeAll: 'Tutti i medicinali sono stati rimossi con successo',
-			error: 'Qualcosa è andato storto.',
+			error: 'Qualcosa è andato storto. Stiamo lavorando al problema',
 		},
 	},
 
 	error: {
-		title: 'Qualcosa è rotto.',
+		title: 'Qualcosa si è rotto. Si prega di contattarci via email',
 		reset: "Reimpostare l'errore",
 	},
 }

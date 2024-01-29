@@ -18,7 +18,7 @@ export const de: TypeLanguage = {
 			notification: {
 				title: 'Benachrichtigungen',
 				description:
-					'Um Erinnerungen zu erhalten, erlauben Sie bitte der App, Benachrichtigungen zu senden. Andernfalls können wir Sie nicht daran erinnern, wann Sie Ihre Medikamente einnehmen müssen.',
+					'Um Erinnerungen zu erhalten, erlauben Sie bitte der App, Benachrichtigungen zu senden. Andernfalls können wir Sie nicht daran erinnern, Ihre Medikamente einzunehmen',
 			},
 		},
 	},
@@ -26,7 +26,7 @@ export const de: TypeLanguage = {
 	home: {
 		add: 'Hinzufügen',
 		empty:
-			'Es wurden keine aktiven oder bevorstehenden Medikamente festgestellt. Bitte fügen Sie ein Arzneimittel hinzu, um Ihre Behandlung zu überwachen',
+			'Es wurden keine aktiven oder bevorstehenden Medikamente erkannt. Bitte fügen Sie ein Medikament hinzu, um Ihre Behandlung zu überwachen',
 	},
 
 	createMedicine: {

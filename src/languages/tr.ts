@@ -3,7 +3,8 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const tr: TypeLanguage = {
 	welcome: {
-		title: 'Hoş geldin!',
+		title:
+			'Hoş geldiniz! Uygulamayı kullanmadan önce lütfen aşağıdaki belgeleri okuyun',
 		agreement: 'okudum ve kabul ediyorum',
 		continue: 'Devam etmek',
 
@@ -16,14 +17,15 @@ export const tr: TypeLanguage = {
 			notification: {
 				title: 'Bildirimler',
 				description:
-					'Hatırlatıcı almak için lütfen uygulamanın bildirim göndermesine izin verin, aksi takdirde ilaçlarınızı ne zaman alacağınızı size hatırlatamayız.',
+					'Hatırlatıcıları almak için, lütfen uygulamanın bildirim göndermesine izin verin. Aksi takdirde, ilaçlarınızı ne zaman almanız gerektiğini hatırlatamayız',
 			},
 		},
 	},
 
 	home: {
 		add: 'Eklemek',
-		empty: 'Aktif veya gelecek ilaç tespit edilmedi.',
+		empty:
+			'Aktif veya yaklaşan hiçbir ilaç tespit edilmedi. Lütfen tedavinizi izlemek için bir ilaç ekleyin',
 	},
 
 	createMedicine: {
@@ -105,7 +107,8 @@ export const tr: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Tüm Verileri Temizle',
-				description: 'Gerçekten tüm verileri silmek istiyor musunuz?',
+				description:
+					'Tüm verileri gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz',
 			},
 		},
 	},
@@ -131,12 +134,13 @@ export const tr: TypeLanguage = {
 
 			remove: {
 				title: 'İlacı kaldır',
-				description: 'Bu ilacı gerçekten silmek istiyor musunuz?',
+				description:
+					'Bu ilacı gerçekten silmek istiyor musunuz? Bu işlem geri alınamaz',
 			},
 		},
 
 		warning: {
-			past: 'Geçmişteki zaman aralığı.',
+			past: 'Geçmişte zaman aralığı. Bu ilacı ana ekranda görmeyeceksiniz',
 			future: 'Gelecekteki zaman aralığı',
 		},
 
@@ -208,12 +212,12 @@ export const tr: TypeLanguage = {
 			edit: 'İlaç başarıyla güncellendi',
 			remove: 'İlaç başarıyla kaldırıldı',
 			removeAll: 'Tüm ilaçlar başarıyla kaldırıldı',
-			error: 'Bir şeyler yanlış gitti.',
+			error: 'Bir şeyler ters gitti. Sorun üzerinde çalışıyoruz',
 		},
 	},
 
 	error: {
-		title: 'Bir şey bozuldu.',
+		title: 'Bir şeyler kırıldı. Lütfen e-posta yoluyla bize ulaşın',
 		reset: 'Hatayı sıfırla',
 	},
 }

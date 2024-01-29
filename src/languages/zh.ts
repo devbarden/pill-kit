@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const zh: TypeLanguage = {
 	welcome: {
-		title: '欢迎！ 在使用应用程序之前，请阅读以下文件',
+		title: '欢迎！请在使用应用程序之前阅读以下文件',
 		agreement: '我已阅读并接受',
 		continue: '继续',
 
@@ -16,14 +16,14 @@ export const zh: TypeLanguage = {
 			notification: {
 				title: '通知',
 				description:
-					'要接收提醒，请允许应用程序发送通知，否则我们将无法提醒您何时服药。',
+					'要接收提醒，请允许应用程序发送通知。否则，我们将无法提醒您何时服药',
 			},
 		},
 	},
 
 	home: {
 		add: '添加',
-		empty: '没有发现活性或即将到来的药物。 请添加一种药物来监测您的治疗',
+		empty: '未检测到活跃或即将到来的药物。请添加药物以监控您的治疗',
 	},
 
 	createMedicine: {
@@ -104,7 +104,7 @@ export const zh: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: '清除所有数据',
-				description: '你真的想删除所有的数据？ 这一行动是不可撤销的',
+				description: '您真的要删除所有数据吗？此操作不可撤销',
 			},
 		},
 	},
@@ -130,12 +130,12 @@ export const zh: TypeLanguage = {
 
 			remove: {
 				title: '取出药物',
-				description: '你真的想删除这种药吗？ 这一行动是不可撤销的',
+				description: '您真的要删除这种药物吗？此操作不可撤销',
 			},
 		},
 
 		warning: {
-			past: '过去的时间范围。 你不会在主屏幕上看到这种药物',
+			past: '时间范围在过去。您将不会在主屏幕上看到这种药物',
 			future: '未来的时间范围',
 		},
 
@@ -207,12 +207,12 @@ export const zh: TypeLanguage = {
 			edit: '医学更新成功',
 			remove: '药成功取出',
 			removeAll: '所有药物都已成功移除',
-			error: '出了点问题。 我们正在解决这个问题',
+			error: '出现了一些问题。我们正在解决这个问题',
 		},
 	},
 
 	error: {
-		title: '有东西坏了。 请通过电子邮件与我们联系',
+		title: '出了点问题。请通过电子邮件与我们联系',
 		reset: 'Reset error',
 	},
 }

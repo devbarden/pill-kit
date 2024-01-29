@@ -3,7 +3,8 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const pt: TypeLanguage = {
 	welcome: {
-		title: 'Bem-vindo!',
+		title:
+			'Bem-vindo! Por favor, leia os seguintes documentos antes de usar o aplicativo',
 		agreement: 'Eu li e aceito',
 		continue: 'Continuar',
 
@@ -16,14 +17,15 @@ export const pt: TypeLanguage = {
 			notification: {
 				title: 'Notificações',
 				description:
-					'Para receber lembretes, permita que o aplicativo envie notificações, caso contrário não poderemos lembrá-lo de quando tomar seus medicamentos.',
+					'Para receber lembretes, por favor permita que o aplicativo envie notificações. Caso contrário, não poderemos lembrá-lo de quando tomar seus medicamentos',
 			},
 		},
 	},
 
 	home: {
 		add: 'Adicionar',
-		empty: 'Nenhum medicamento ativo ou futuro foi detectado.',
+		empty:
+			'Não foram detectados medicamentos ativos ou próximos. Por favor, adicione um medicamento para monitorar seu tratamento',
 	},
 
 	createMedicine: {
@@ -105,7 +107,8 @@ export const pt: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Limpar todos os dados',
-				description: 'Você realmente deseja excluir todos os dados?',
+				description:
+					'Você realmente quer deletar todos os dados? Esta ação é irrevogável',
 			},
 		},
 	},
@@ -131,12 +134,13 @@ export const pt: TypeLanguage = {
 
 			remove: {
 				title: 'Remover remédio',
-				description: 'Você realmente deseja excluir este medicamento?',
+				description:
+					'Você realmente quer deletar este medicamento? Esta ação é irrevogável',
 			},
 		},
 
 		warning: {
-			past: 'O intervalo de tempo no passado.',
+			past: 'O intervalo de tempo está no passado. Você não verá este medicamento na tela inicial',
 			future: 'O intervalo de tempo no futuro',
 		},
 
@@ -208,12 +212,12 @@ export const pt: TypeLanguage = {
 			edit: 'O medicamento foi atualizado com sucesso',
 			remove: 'O medicamento foi removido com sucesso',
 			removeAll: 'Todos os medicamentos foram removidos com sucesso',
-			error: 'Algo deu errado.',
+			error: 'Algo deu errado. Estamos trabalhando no problema',
 		},
 	},
 
 	error: {
-		title: 'Algo está quebrado.',
+		title: 'Algo quebrou. Por favor, entre em contato conosco via e-mail',
 		reset: 'Erro de redefinição',
 	},
 }

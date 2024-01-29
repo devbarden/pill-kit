@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ko: TypeLanguage = {
 	welcome: {
-		title: '환영!',
+		title: '환영합니다! 애플리케이션을 사용하기 전에 다음 문서를 읽어주세요',
 		agreement: '읽었으며 동의합니다.',
 		continue: '계속하다',
 
@@ -16,14 +16,15 @@ export const ko: TypeLanguage = {
 			notification: {
 				title: '알림',
 				description:
-					'알림을 받으려면 앱에서 알림을 보낼 수 있도록 허용하세요. 그렇지 않으면 약 복용 시기를 알려드릴 수 없습니다.',
+					'알림을 받으려면 앱이 알림을 보낼 수 있도록 허용해 주세요. 그렇지 않으면 귀하께 언제 약을 복용해야 하는지 알려드릴 수 없습니다',
 			},
 		},
 	},
 
 	home: {
 		add: '추가하다',
-		empty: '활성 약물이나 출시 예정 약물이 감지되지 않았습니다.',
+		empty:
+			'활성화된 약이나 예정된 약이 감지되지 않았습니다. 치료를 모니터링하기 위해 약을 추가해 주세요',
 	},
 
 	createMedicine: {
@@ -105,7 +106,8 @@ export const ko: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: '모든 데이터 지우기',
-				description: '정말로 모든 데이터를 삭제하시겠습니까?',
+				description:
+					'정말로 모든 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다',
 			},
 		},
 	},
@@ -131,12 +133,13 @@ export const ko: TypeLanguage = {
 
 			remove: {
 				title: '약을 제거하다',
-				description: '정말로 이 약을 삭제하시겠습니까?',
+				description:
+					'정말로 이 약을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다',
 			},
 		},
 
 		warning: {
-			past: '과거의 시간 범위입니다.',
+			past: '시간 범위는 과거입니다. 홈 화면에서 이 약을 볼 수 없습니다',
 			future: '미래의 시간 범위',
 		},
 
@@ -208,12 +211,12 @@ export const ko: TypeLanguage = {
 			edit: '약품이 성공적으로 업데이트되었습니다.',
 			remove: '약이 성공적으로 제거되었습니다',
 			removeAll: '모든 약이 성공적으로 제거되었습니다.',
-			error: '문제가 발생했습니다.',
+			error: '문제가 발생했습니다. 문제 해결을 위해 노력하고 있습니다',
 		},
 	},
 
 	error: {
-		title: '뭔가 고장났어요.',
+		title: '무언가가 고장났습니다. 이메일로 문의해 주세요',
 		reset: '오류 재설정',
 	},
 }

@@ -4,7 +4,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 export const es: TypeLanguage = {
 	welcome: {
 		title:
-			'¡Bienvenidos! Lea los siguientes documentos antes de utilizar la aplicación',
+			'¡Bienvenido! Por favor, lea los siguientes documentos antes de utilizar la aplicación',
 		agreement: 'He leído y acepto',
 		continue: 'Continuar',
 
@@ -17,7 +17,7 @@ export const es: TypeLanguage = {
 			notification: {
 				title: 'Notificaciones',
 				description:
-					'Para recibir recordatorios, permita que la aplicación envíe notificaciones; de lo contrario, no podremos recordarle cuándo debe tomar sus medicamentos.',
+					'Para recibir recordatorios, por favor permita que la aplicación envíe notificaciones. De lo contrario, no podremos recordarte cuándo tomar tus medicamentos',
 			},
 		},
 	},
@@ -25,7 +25,7 @@ export const es: TypeLanguage = {
 	home: {
 		add: 'Añadir',
 		empty:
-			'No se han detectado medicamentos activos o futuros. Agregue un medicamento para controlar su tratamiento',
+			'No se han detectado medicamentos activos o próximos. Por favor, añada un medicamento para monitorear su tratamiento',
 	},
 
 	createMedicine: {

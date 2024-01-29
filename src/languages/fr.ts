@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const fr: TypeLanguage = {
 	welcome: {
-		title: 'Accueillir!',
+		title: `Bienvenue! Veuillez lire les documents suivants avant d'utiliser l'application`,
 		agreement: "j'ai lu et accepté",
 		continue: 'Continuer',
 
@@ -16,14 +16,14 @@ export const fr: TypeLanguage = {
 			notification: {
 				title: 'Notifications',
 				description:
-					"Pour recevoir des rappels, veuillez autoriser l'application à envoyer des notifications, sinon nous ne pourrons pas vous rappeler quand prendre vos médicaments.",
+					"Pour recevoir des rappels, veuillez autoriser l'application à envoyer des notifications. Sinon, nous ne pourrons pas vous rappeler quand prendre vos médicaments",
 			},
 		},
 	},
 
 	home: {
 		add: 'Ajouter',
-		empty: 'Aucun médicament actif ou à venir n’a été détecté.',
+		empty: `Aucun médicament actif ou à venir n'a été détecté. Veuillez ajouter un médicament pour surveiller votre traitement`,
 	},
 
 	createMedicine: {
@@ -106,7 +106,8 @@ export const fr: TypeLanguage = {
 		modal: {
 			clearAllData: {
 				title: 'Effacer toutes les données',
-				description: 'Voulez-vous vraiment supprimer toutes les données ?',
+				description:
+					'Voulez-vous vraiment supprimer toutes les données? Cette action est irréversible',
 			},
 		},
 	},
@@ -132,12 +133,13 @@ export const fr: TypeLanguage = {
 
 			remove: {
 				title: 'Supprimer le médicament',
-				description: 'Voulez-vous vraiment supprimer ce médicament ?',
+				description:
+					'Voulez-vous vraiment supprimer ce médicament? Cette action est irréversible',
 			},
 		},
 
 		warning: {
-			past: 'La plage horaire dans le passé.',
+			past: `La plage horaire est dans le passé. Vous ne verrez pas ce médicament sur l'écran d'accueil`,
 			future: 'La plage horaire dans le futur',
 		},
 
@@ -209,12 +211,12 @@ export const fr: TypeLanguage = {
 			edit: 'Le médicament a été mis à jour avec succès',
 			remove: 'Le médicament a été retiré avec succès',
 			removeAll: 'Tous les médicaments ont été supprimés avec succès',
-			error: "Quelque chose s'est mal passé. ",
+			error: "Quelque chose s'est mal passé. Nous travaillons sur le problème",
 		},
 	},
 
 	error: {
-		title: 'Quelque chose est cassé.',
+		title: 'Quelque chose est cassé. Veuillez nous contacter par email',
 		reset: 'Erreur de réinitialisation',
 	},
 }
