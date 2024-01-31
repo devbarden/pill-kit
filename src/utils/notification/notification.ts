@@ -3,24 +3,43 @@ import Constants from 'expo-constants'
 import { Platform } from 'react-native'
 
 import { EnumColor } from '@app/enums'
-import { TypeNotification } from '@app/types'
+import { TypeScheduleNotification } from '@app/types'
 
 export const schedulePushNotification = async ({
-	time,
 	title,
 	subtitle,
 	body,
-}: TypeNotification) => {
+	trigger,
+}: TypeScheduleNotification) =>
 	await Notifications.scheduleNotificationAsync({
 		content: {
 			title,
 			subtitle,
 			body,
 		},
+		trigger,
+	})
+
+export const scheduleNotificationCallback = async (
+	date: Date,
+	title: string,
+	subtitle: string,
+) => {
+	const isAvailableToScheduleNotification = date.getTime() >= Date.now()
+
+	if (!isAvailableToScheduleNotification) {
+		return null
+	}
+
+	const notificationId = await schedulePushNotification({
+		title,
+		subtitle,
 		trigger: {
-			seconds: time,
+			date,
 		},
 	})
+
+	return notificationId
 }
 
 export const registerForPushNotificationsAsync = async () => {

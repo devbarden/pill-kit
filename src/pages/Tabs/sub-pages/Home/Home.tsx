@@ -8,13 +8,28 @@ import { HomeContext } from './context'
 import { Empty, Loading, AddMedicineAction } from './sub-components'
 
 export const Home: FC = memo(() => {
-	useLocalNotification()
-
 	const state = useHomeState()
 
 	const { medicines, isLoading, isNoMedicines } = useMemo(() => state, [state])
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
+
+	// TODO: fix Android notifications permissions
+	useLocalNotification()
+
+	// TODO: testing notifications
+	// const getData = async () => {
+	// 	const notifications =
+	// 		await Notifications.getAllScheduledNotificationsAsync()
+
+	// 	console.log(notifications)
+	// }
+
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		getData()
+	// 	}, 5000)
+	// }, [])
 
 	return (
 		<HomeContext.Provider value={state}>

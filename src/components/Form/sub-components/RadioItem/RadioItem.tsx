@@ -1,5 +1,6 @@
 import * as Haptics from 'expo-haptics'
-import { FC, memo, useMemo, useCallback, useContext } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
 	Pressable,
 	TouchableWithoutFeedback,
@@ -7,7 +8,6 @@ import {
 } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -24,9 +24,12 @@ type TypeProps = {
 
 export const RadioItem: FC<TypeProps> = memo(
 	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
-		const { language } = useContext(GlobalStateContext)
+		const { i18n } = useTranslation()
 
-		const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
+		const isArabic = useMemo(
+			() => i18n.language === EnumLanguageCode.ar,
+			[i18n.language],
+		)
 
 		const styleProps: TypeStyleProps = useMemo(
 			() => ({

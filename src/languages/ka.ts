@@ -2,6 +2,10 @@ import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ka: TypeLanguage = {
+	reminders: {
+		takeMedicine: `დროა წამლის მიღების`,
+	},
+
 	welcome: {
 		title:
 			'კეთილი მოსვლა! გთხოვთ, წაიკითხოთ შემდეგი დოკუმენტები აპლიკაციის გამოყენებამდე',

@@ -18,8 +18,8 @@ import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
-	const { t } = useTranslation()
-	const { theme, language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
+	const { theme } = useContext(GlobalStateContext)
 	const {
 		openNameModal,
 		openTypeModal,
@@ -81,8 +81,8 @@ export const Fields: FC = memo(() => {
 	)
 
 	const countPerDayByLocale = useMemo(
-		() => getNumberByLocale(countPerDay, language),
-		[countPerDay, language],
+		() => getNumberByLocale(countPerDay, i18n.language),
+		[countPerDay, i18n.language],
 	)
 
 	return (
@@ -154,7 +154,7 @@ export const Fields: FC = memo(() => {
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
 								theme={theme}
-								locale={language}
+								locale={i18n.language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>
@@ -182,7 +182,7 @@ export const Fields: FC = memo(() => {
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
 								theme={theme}
-								locale={language}
+								locale={i18n.language}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>

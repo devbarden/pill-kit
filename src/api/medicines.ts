@@ -15,6 +15,13 @@ import {
 	TypeMedicineWithoutId,
 } from '@app/types'
 
+import {
+	setNotifications,
+	updateNotifications,
+	cancelAllNotifications,
+	cancelNotificationsById,
+} from './notification'
+
 export const initMedicines = async () => {
 	try {
 		const data: TypeStorageData = await AsyncStorage.getItem(
@@ -60,7 +67,10 @@ export const getMedicine = async (id: TypeMedicineId) => {
 	}
 }
 
-export const setMedicine = async (data: TypeMedicineWithoutId) => {
+export const setMedicine = async (
+	data: TypeMedicineWithoutId,
+	subtitle: string,
+) => {
 	const medicineToValidate = getMedicineWithoutCountPerUseField(data)
 
 	if (isAnyFieldEmpty(medicineToValidate)) {
@@ -69,17 +79,20 @@ export const setMedicine = async (data: TypeMedicineWithoutId) => {
 
 	try {
 		const medicines: TypeMedicine[] = await getMedicines()
-		const newMedicine = { id: uid(), ...data }
+		const id = uid()
+		const newMedicine = { id, ...data }
 		const newMedicines: TypeMedicine[] = [...medicines, newMedicine]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+		await setNotifications(newMedicine, subtitle)
 	} catch {}
 }
 
 export const editMedicine = async (
 	id: TypeMedicineId,
 	data: TypeMedicineWithoutId,
+	subtitle: string,
 ) => {
 	const medicineToValidate = getMedicineWithoutCountPerUseField(data)
 
@@ -96,6 +109,7 @@ export const editMedicine = async (
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+		await updateNotifications(updatedMedicine, subtitle)
 	} catch {}
 }
 
@@ -108,6 +122,7 @@ export const removeMedicine = async (id: TypeMedicineId) => {
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+		await cancelNotificationsById(id)
 	} catch {}
 }
 
@@ -117,10 +132,11 @@ export const removeAllMedicines = async () => {
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+		await cancelAllNotifications()
 	} catch {}
 }
 
-export const updateActiveAndFutureMedicines = async (
+export const updateActiveAndFutureMedicinesOrder = async (
 	medicines: TypeMedicine[],
 ) => {
 	try {
@@ -133,5 +149,19 @@ export const updateActiveAndFutureMedicines = async (
 		const stringifiedMedicines = JSON.stringify(updatedMedicines)
 
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
+	} catch {}
+}
+
+export const updateMedicinesNotificationsByLanguage = async (
+	subtitle: string,
+) => {
+	try {
+		await cancelAllNotifications()
+
+		const medicines: TypeMedicine[] = await getMedicines()
+
+		for await (const medicine of medicines) {
+			await setNotifications(medicine, subtitle)
+		}
 	} catch {}
 }

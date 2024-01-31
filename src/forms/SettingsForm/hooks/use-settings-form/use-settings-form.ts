@@ -1,10 +1,8 @@
 import { useMemo, useCallback, useRef, useContext } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Linking } from 'react-native'
 
-import { EnumLanguageCode } from '@app/enums'
 import { GlobalStateContext } from '@app/context'
-import { delay, getSelectedLanguage } from '@app/utils'
+import { getSelectedLanguage } from '@app/utils'
 import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 import {
 	MAIL_TO_LINK,
@@ -12,6 +10,7 @@ import {
 	LANGUAGE_SELECT_ITEMS,
 	FALLBACK_LANGUAGE_LABEL,
 } from '@app/constants'
+import { useTranslation } from 'react-i18next'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { i18n } = useTranslation()
@@ -32,8 +31,7 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 
 	const changeLanguageHandler = useCallback(
 		async (language: string) => {
-			await setLanguage(language as EnumLanguageCode)
-			await delay(200)
+			await setLanguage(language)
 		},
 		[setLanguage],
 	)

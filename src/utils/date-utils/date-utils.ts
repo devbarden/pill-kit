@@ -1,3 +1,4 @@
+import { TypeMedicine } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
 
 import { ARABIC_NUMBER_CODE } from '../../constants/language'
@@ -40,10 +41,7 @@ export const getTimeByDate = (value: Date | number) => {
 	return time
 }
 
-export const timeToFormat = (
-	value: number,
-	language: EnumLanguageCode,
-): string => {
+export const timeToFormat = (value: number, language: string): string => {
 	const options: Record<string, string> = { hour: '2-digit', minute: '2-digit' }
 
 	if (language === EnumLanguageCode.ar) {
@@ -53,13 +51,36 @@ export const timeToFormat = (
 	return new Date(value).toLocaleTimeString(language, options)
 }
 
-export const dateToFormat = (
-	value: number,
-	language: EnumLanguageCode,
-): string => {
+export const dateToFormat = (value: number, language: string): string => {
 	if (language === EnumLanguageCode.ar) {
 		return new Date(value).toLocaleDateString(ARABIC_NUMBER_CODE)
 	}
 
 	return new Date(value).toLocaleDateString(language)
+}
+
+export const getAllDatesByDaysAndTimes = ({
+	startDate,
+	endDate,
+	times,
+}: TypeMedicine): Date[] => {
+	const days = getDaysArrayInRange(startDate, endDate)
+
+	const dates: Date[] = days.reduce(
+		(acc: Date[], value) => [
+			...acc,
+			...times.map(({ hours, minutes }) => {
+				const date = new Date(value)
+
+				date.setHours(hours)
+				date.setMinutes(minutes)
+				date.setSeconds(0)
+
+				return date
+			}),
+		],
+		[],
+	)
+
+	return dates
 }

@@ -8,7 +8,7 @@
 		"userInterfaceStyle": "light",
 		"platforms": ["ios", "android"],
 		"splash": {
-			"image": "./assets/logo.png",
+			"image": "./assets/logo-without-bg.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
@@ -29,8 +29,9 @@
 			[
 				"expo-notifications",
 				{
-					"icon": "./assets/logo.png",
-					"color": "#ffffff"
+					"icon": "./assets/logo-without-bg.png",
+					"color": "#A4161A",
+					"backgroundColor": "#ffffff"
 				}
 			]
 		],

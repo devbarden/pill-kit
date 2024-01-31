@@ -15,7 +15,6 @@ import {
 } from 'lodash'
 
 import { getNumberByLocale } from '@app/utils'
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumLanguageCode } from '@app/enums'
 
 import { AnalyticContext } from '../../context'
@@ -23,13 +22,14 @@ import { AnalyticContext } from '../../context'
 import { styles } from './Bar.styles'
 
 export const Bar: FC = memo(() => {
-	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
 	const { allMedicines, isLoading, screenWidth } = useContext(AnalyticContext)
 
 	const isAvailableToShowValuesOnBars = useMemo(
-		() => language !== EnumLanguageCode.ar && language !== EnumLanguageCode.bn,
-		[language],
+		() =>
+			i18n.language !== EnumLanguageCode.ar &&
+			i18n.language !== EnumLanguageCode.bn,
+		[i18n.language],
 	)
 
 	const hiddenSpaceSize = useMemo(() => 80, [])
@@ -80,7 +80,7 @@ export const Bar: FC = memo(() => {
 		const data: number[] = []
 
 		forEach(entries(countOfMedicinesMap), ([year, { length }]) => {
-			labels.push(getNumberByLocale(toString(year), language))
+			labels.push(getNumberByLocale(toString(year), i18n.language))
 			data.push(length)
 		})
 
@@ -92,7 +92,7 @@ export const Bar: FC = memo(() => {
 				},
 			],
 		}
-	}, [allMedicines, language])
+	}, [allMedicines, i18n.language])
 
 	if (isLoading) {
 		return (

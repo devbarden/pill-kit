@@ -1,8 +1,8 @@
-import { FC, memo, useMemo, useCallback, useContext } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Text } from 'native-base'
 
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumDateMode } from '@app/enums'
 import { dateToFormat, timeToFormat } from '@app/utils'
 
@@ -16,15 +16,15 @@ type TypeProps = {
 
 export const DateTimePress: FC<TypeProps> = memo(
 	({ value, handler, mode = EnumDateMode.date }) => {
-		const { language } = useContext(GlobalStateContext)
+		const { i18n } = useTranslation()
 
 		const date = useMemo(() => {
 			if (mode === EnumDateMode.time) {
-				return timeToFormat(value, language)
+				return timeToFormat(value, i18n.language)
 			}
 
-			return dateToFormat(value, language)
-		}, [mode, value, language])
+			return dateToFormat(value, i18n.language)
+		}, [mode, value, i18n.language])
 
 		const getStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [

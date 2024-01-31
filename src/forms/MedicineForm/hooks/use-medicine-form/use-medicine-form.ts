@@ -48,9 +48,9 @@ export const useMedicineForm = (
 	const modalColorRef = useRef<TypeModalHandlers>(null)
 	const modalValidationRef = useRef<TypeModalHandlers>(null)
 
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab, language } = useContext(GlobalStateContext)
+	const { activeTab } = useContext(GlobalStateContext)
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
@@ -170,7 +170,7 @@ export const useMedicineForm = (
 
 	const getCountPerUseValueByType = useCallback(
 		(countPerUse: TypeMedicineCountPerUse, type: EnumMedicineType) => {
-			const value = getNumberByLocale(countPerUse, language)
+			const value = getNumberByLocale(countPerUse, i18n.language)
 
 			if (type === EnumMedicineType.liquid) {
 				return `${value} ${t('medicine:indicator.ml')}`
@@ -178,21 +178,21 @@ export const useMedicineForm = (
 
 			return value
 		},
-		[t, language],
+		[t, i18n.language],
 	)
 
 	const getCountPerUseSelectItems = useCallback(
 		(type: EnumMedicineType) => {
 			const defaultItemsByLocale = getSelectNumberItemsByLocale(
 				MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS,
-				language,
+				i18n.language,
 			)
 
 			const liquidItemsByLocale = map(
 				MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS,
 				(item) => ({
 					...item,
-					label: `${getNumberByLocale(item.label, language)} ${t('medicine:indicator.ml')}`,
+					label: `${getNumberByLocale(item.label, i18n.language)} ${t('medicine:indicator.ml')}`,
 				}),
 			)
 
@@ -210,7 +210,7 @@ export const useMedicineForm = (
 
 			return []
 		},
-		[t, language],
+		[t, i18n.language],
 	)
 
 	const getIsNeedToFillCountPerUse = useCallback(

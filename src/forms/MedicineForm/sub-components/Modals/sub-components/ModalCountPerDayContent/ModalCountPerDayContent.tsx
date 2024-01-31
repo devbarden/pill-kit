@@ -1,6 +1,6 @@
 import { FC, memo, useContext, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
-import { GlobalStateContext } from '@app/context'
 import { ModalBottomListContent } from '@app/components'
 import { getSelectNumberItemsByLocale } from '@app/utils'
 import { MEDICINE_COUNT_PER_DAY_SELECT_ITEMS } from '@app/constants'
@@ -8,7 +8,7 @@ import { MEDICINE_COUNT_PER_DAY_SELECT_ITEMS } from '@app/constants'
 import { MedicineFormContext } from '../../../../context'
 
 export const ModalCountPerDayContent: FC = memo(() => {
-	const { language } = useContext(GlobalStateContext)
+	const { i18n } = useTranslation()
 	const { changeCountPerDayHandler, closeCountPerDayModal } =
 		useContext(MedicineFormContext)
 
@@ -16,9 +16,9 @@ export const ModalCountPerDayContent: FC = memo(() => {
 		() =>
 			getSelectNumberItemsByLocale(
 				MEDICINE_COUNT_PER_DAY_SELECT_ITEMS,
-				language,
+				i18n.language,
 			),
-		[language],
+		[i18n.language],
 	)
 	return (
 		<ModalBottomListContent

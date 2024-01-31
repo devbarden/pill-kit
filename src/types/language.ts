@@ -3,6 +3,10 @@ import { EnumMedicineType, EnumCardFilter } from '@app/enums'
 import { TypeMedicineSortableField, TypeMedicineWithoutId } from './medicine'
 
 export type TypeLanguage = {
+	reminders: {
+		takeMedicine: string
+	}
+
 	welcome: {
 		title: string
 		agreement: string

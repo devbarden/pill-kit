@@ -1,6 +1,5 @@
 import { FC, memo, useMemo } from 'react'
 
-import { Loader } from '@app/components'
 import { useEndpoints } from '@app/hooks'
 import { Navigator } from '@app/navigator'
 
@@ -16,7 +15,7 @@ export const Initialization: FC = memo(() => {
 	)
 
 	if (isInitializing) {
-		return <Loader />
+		return null
 	}
 
 	return <Navigator />

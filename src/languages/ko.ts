@@ -2,6 +2,10 @@ import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const ko: TypeLanguage = {
+	reminders: {
+		takeMedicine: `약을 복용할 시간이에요`,
+	},
+
 	welcome: {
 		title: '환영합니다! 애플리케이션을 사용하기 전에 다음 문서를 읽어주세요',
 		agreement: '읽었으며 동의합니다.',

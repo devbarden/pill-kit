@@ -22,8 +22,8 @@ type TypeProps = {
 
 export const CardsList: FC<TypeProps> = memo(
 	({ items, mode = EnumCardListMode.v1, isDraggable = false }) => {
-		const { useUpdateActiveAndFutureMedicines } = useEndpoints()
-		const { mutateAsync: update } = useUpdateActiveAndFutureMedicines()
+		const { useUpdateActiveAndFutureMedicinesOrder } = useEndpoints()
+		const { mutateAsync: update } = useUpdateActiveAndFutureMedicinesOrder()
 
 		const [dragState, setDragState] = useState(items)
 
@@ -38,7 +38,7 @@ export const CardsList: FC<TypeProps> = memo(
 			[],
 		)
 
-		const updateActiveAndFutureMedicines = useCallback(
+		const updateActiveAndFutureMedicinesOrder = useCallback(
 			async (data: TypeMedicine[]) => {
 				await update(data)
 			},
@@ -46,8 +46,8 @@ export const CardsList: FC<TypeProps> = memo(
 		)
 
 		useEffect(() => {
-			updateActiveAndFutureMedicines(dragState)
-		}, [updateActiveAndFutureMedicines, dragState])
+			updateActiveAndFutureMedicinesOrder(dragState)
+		}, [updateActiveAndFutureMedicinesOrder, dragState])
 
 		if (isDraggable) {
 			return (

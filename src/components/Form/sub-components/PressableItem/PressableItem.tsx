@@ -2,15 +2,14 @@ import {
 	FC,
 	memo,
 	useMemo,
-	useContext,
 	useCallback,
 	ReactElement,
 	isValidElement,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
@@ -37,9 +36,12 @@ export const PressableItem: FC<TypeProps> = memo(
 		withoutChevronRight = false,
 		isValueQuarterWidth = false,
 	}) => {
-		const { language } = useContext(GlobalStateContext)
+		const { i18n } = useTranslation()
 
-		const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
+		const isArabic = useMemo(
+			() => i18n.language === EnumLanguageCode.ar,
+			[i18n.language],
+		)
 
 		const isValueString = useMemo(() => typeof value === 'string', [value])
 

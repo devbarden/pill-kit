@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
+import { Animated } from 'react-native'
 
-import { EnumTheme, EnumLanguageCode, EnumTabRoute } from '@app/enums'
+import { EnumTheme, EnumTabRoute } from '@app/enums'
 
 import { TypeConfiguration } from './configuration'
 
@@ -9,9 +10,11 @@ export type TypeGlobalStateContextProps = TypeConfiguration & {
 	isConfigurationUpdating: boolean
 
 	setTheme: (theme: EnumTheme) => void
-	setLanguage: (language: EnumLanguageCode) => void
+	setLanguage: (language: string) => void
 	setIsUserAcceptAppDocs: (isUserAcceptAppDocs: boolean) => void
 
 	activeTab: EnumTabRoute
 	setActiveTab: Dispatch<SetStateAction<EnumTabRoute>>
+
+	opacity: Animated.Value
 }

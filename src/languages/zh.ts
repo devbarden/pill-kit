@@ -2,6 +2,10 @@ import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const zh: TypeLanguage = {
+	reminders: {
+		takeMedicine: `该吃药了`,
+	},
+
 	welcome: {
 		title: '欢迎！请在使用应用程序之前阅读以下文件',
 		agreement: '我已阅读并接受',

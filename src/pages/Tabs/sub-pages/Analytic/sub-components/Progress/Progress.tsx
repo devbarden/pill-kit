@@ -4,7 +4,6 @@ import { ProgressChart } from 'react-native-chart-kit'
 import { Box, Text, Skeleton } from 'native-base'
 import { map } from 'lodash'
 
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumLanguageCode } from '@app/enums'
 import { uid, getPercentageValue, getDivideValueByDates } from '@app/utils'
 
@@ -13,11 +12,13 @@ import { AnalyticContext } from '../../context'
 import { styles, TypeStyleProps } from './Progress.styles'
 
 export const Progress: FC = memo(() => {
-	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
 	const { activeMedicines, isLoading } = useContext(AnalyticContext)
 
-	const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
 
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
@@ -101,8 +102,8 @@ export const Progress: FC = memo(() => {
 
 	const getProgressPercentage = useCallback(
 		(index: number) =>
-			getPercentageValue(progressChartData.data[index], language),
-		[progressChartData.data, language],
+			getPercentageValue(progressChartData.data[index], i18n.language),
+		[progressChartData.data, i18n.language],
 	)
 
 	const getIndicatorStyles = useCallback(

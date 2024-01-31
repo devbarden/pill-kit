@@ -2,6 +2,10 @@ import { TypeLanguage } from '@app/types'
 import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const be: TypeLanguage = {
+	reminders: {
+		takeMedicine: `Прышла пара прымаць лякарства`,
+	},
+
 	welcome: {
 		title:
 			'Сардэчна Запрашаем! Калі ласка, прачытайце наступныя дакументы перш чым пачаць карыстацца праграмай',

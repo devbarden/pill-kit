@@ -16,8 +16,8 @@ import { MedicineFormContext } from '../../../../context'
 import { styles, TypeStyleProps } from './ModalTimeContent.styles'
 
 export const ModalTimeContent: FC = memo(() => {
-	const { t } = useTranslation()
-	const { theme, language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
+	const { theme } = useContext(GlobalStateContext)
 	const {
 		form,
 		mapOfRemindersToShow,
@@ -28,7 +28,10 @@ export const ModalTimeContent: FC = memo(() => {
 		closeReminderModal,
 	} = useContext(MedicineFormContext)
 
-	const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
 
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
@@ -52,8 +55,8 @@ export const ModalTimeContent: FC = memo(() => {
 
 	const getDoseText = useCallback(
 		(n: number) =>
-			`${t('medicine:field.countPerUse')} : ${getNumberByLocale(n, language)}`,
-		[t, language],
+			`${t('medicine:field.countPerUse')} : ${getNumberByLocale(n, i18n.language)}`,
+		[t, i18n.language],
 	)
 
 	return (
@@ -83,7 +86,7 @@ export const ModalTimeContent: FC = memo(() => {
 									title={getDoseText(index + 1)}
 									mode={EnumDateMode.time}
 									theme={theme}
-									locale={language}
+									locale={i18n.language}
 									open={mapOfRemindersToShow[time.id]}
 									date={new Date(getValue(time))}
 									onConfirm={(date) => changeTimeHandler(time, date)}

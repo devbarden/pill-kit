@@ -5,7 +5,6 @@ import { Box, Skeleton, Text } from 'native-base'
 import { entries, groupBy, map, sumBy } from 'lodash'
 
 import { TypeMedicine } from '@app/types'
-import { GlobalStateContext } from '@app/context'
 import { getPercentageValue, uid } from '@app/utils'
 import { MEDICINE_TYPE_COLORS } from '@app/constants'
 import { EnumColor, EnumLanguageCode, EnumMedicineType } from '@app/enums'
@@ -15,11 +14,13 @@ import { AnalyticContext } from '../../context'
 import { styles, TypeStyleProps } from './Pie.styles'
 
 export const Pie: FC = memo(() => {
-	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
 
-	const isArabic = useMemo(() => language === EnumLanguageCode.ar, [language])
+	const isArabic = useMemo(
+		() => i18n.language === EnumLanguageCode.ar,
+		[i18n.language],
+	)
 
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
@@ -102,7 +103,9 @@ export const Pie: FC = memo(() => {
 					<Box key={uid()} style={style.item}>
 						<Box style={getIndicatorStyles(color)} />
 						<Text numberOfLines={1}>{t(`medicine:types.${name}`)}</Text>
-						<Text>{getPercentageValue(length / commonCount, language)}</Text>
+						<Text>
+							{getPercentageValue(length / commonCount, i18n.language)}
+						</Text>
 					</Box>
 				))}
 			</Box>

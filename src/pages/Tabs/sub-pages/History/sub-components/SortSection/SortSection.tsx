@@ -6,7 +6,6 @@ import { Box, Text } from 'native-base'
 
 import { Icon, Modal } from '@app/components'
 import { getNumberByLocale } from '@app/utils'
-import { GlobalStateContext } from '@app/context'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { HistoryContext } from '../../context'
@@ -15,13 +14,12 @@ import { SortModalContent } from './sub-components'
 import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
-	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
 	const { medicines, sortModalRef, openSortModal } = useContext(HistoryContext)
 
 	const medicinesCount = useMemo(
-		() => getNumberByLocale(medicines.length, language),
-		[medicines.length, language],
+		() => getNumberByLocale(medicines.length, i18n.language),
+		[medicines.length, i18n.language],
 	)
 
 	const getPressableStyles = useCallback(

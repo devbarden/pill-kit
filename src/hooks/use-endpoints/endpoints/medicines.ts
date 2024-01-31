@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -7,12 +7,16 @@ import { toast } from '@app/utils'
 import { TypeMedicine, TypeMedicineId, TypeMedicineWithoutId } from '@app/types'
 
 export const useMedicinesEndpoints = () => {
-	const queryClient = useQueryClient()
 	const { t } = useTranslation()
 
+	const queryClient = useQueryClient()
+	const mainQueryKey = useMemo(() => ['medicines'], [])
+
 	const invalidateMedicines = useCallback(() => {
-		queryClient.invalidateQueries({ queryKey: ['medicines'] })
-	}, [queryClient])
+		queryClient.invalidateQueries({ queryKey: mainQueryKey })
+	}, [queryClient, mainQueryKey])
+
+	const reminderText = useMemo(() => t('reminders:takeMedicine'), [t])
 
 	return {
 		useInitMedicines: () =>
@@ -23,7 +27,7 @@ export const useMedicinesEndpoints = () => {
 
 		useMedicines: () =>
 			useQuery({
-				queryKey: ['medicines'],
+				queryKey: mainQueryKey,
 				queryFn: api.getMedicines,
 			}),
 
@@ -36,7 +40,7 @@ export const useMedicinesEndpoints = () => {
 		useAddMedicine: () =>
 			useMutation({
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
-					api.setMedicine(medicine),
+					api.setMedicine(medicine, reminderText),
 				onSuccess: () => {
 					invalidateMedicines()
 				},
@@ -48,7 +52,7 @@ export const useMedicinesEndpoints = () => {
 		useEditMedicine: (id: TypeMedicineId) =>
 			useMutation({
 				mutationFn: (medicine: TypeMedicineWithoutId) =>
-					api.editMedicine(id, medicine),
+					api.editMedicine(id, medicine, reminderText),
 				onSuccess: () => {
 					invalidateMedicines()
 				},
@@ -80,10 +84,10 @@ export const useMedicinesEndpoints = () => {
 				},
 			}),
 
-		useUpdateActiveAndFutureMedicines: () =>
+		useUpdateActiveAndFutureMedicinesOrder: () =>
 			useMutation({
 				mutationFn: (medicines: TypeMedicine[]) =>
-					api.updateActiveAndFutureMedicines(medicines),
+					api.updateActiveAndFutureMedicinesOrder(medicines),
 				onSuccess: () => {
 					invalidateMedicines()
 				},

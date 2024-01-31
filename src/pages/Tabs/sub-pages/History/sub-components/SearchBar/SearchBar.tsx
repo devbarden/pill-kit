@@ -7,7 +7,6 @@ import { Box, Text } from 'native-base'
 
 import { getNumberByLocale } from '@app/utils'
 import { TypeModalHandlers } from '@app/types'
-import { GlobalStateContext } from '@app/context'
 import { Form, Icon, Modal } from '@app/components'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
@@ -18,8 +17,7 @@ import { FiltersModalContent } from './sub-components'
 import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
-	const { t } = useTranslation()
-	const { language } = useContext(GlobalStateContext)
+	const { t, i18n } = useTranslation()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
 	const filtersModalRef = useRef<TypeModalHandlers>(null)
@@ -36,9 +34,9 @@ export const SearchBar: FC = memo(() => {
 		() =>
 			getNumberByLocale(
 				size(filter(values(filters), (isFilterActive) => isFilterActive)),
-				language,
+				i18n.language,
 			),
-		[filters, language],
+		[filters, i18n.language],
 	)
 
 	const getPressableStyles = useCallback(

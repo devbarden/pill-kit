@@ -1,7 +1,7 @@
-import { EnumTheme, EnumLanguageCode } from '@app/enums'
+import { EnumTheme } from '@app/enums'
 
 export type TypeConfiguration = {
 	theme: EnumTheme
-	language: EnumLanguageCode
+	language: string
 	isUserAcceptAppDocs: boolean
 }

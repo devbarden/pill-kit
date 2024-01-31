@@ -7,24 +7,25 @@ import { ARABIC_NUMBER_CODE } from '../../constants/language'
 
 export const getNumberByLocale = (
 	value: number | string | undefined,
-	language: EnumLanguageCode,
+	language: string,
 ): string => {
 	if (typeof value === 'undefined') {
 		return ''
 	}
 
+	const options = { useGrouping: false }
 	const parsedValue = typeof value === 'string' ? parseFloat(value) : value
 
 	if (language === EnumLanguageCode.ar) {
-		return parsedValue.toLocaleString(ARABIC_NUMBER_CODE)
+		return parsedValue.toLocaleString(ARABIC_NUMBER_CODE, options)
 	}
 
-	return parsedValue.toLocaleString(language)
+	return parsedValue.toLocaleString(language, options)
 }
 
 export const getSelectNumberItemsByLocale = (
 	items: TypeSelectItem[],
-	language: EnumLanguageCode,
+	language: string,
 ) =>
 	map(items, (item) => ({
 		...item,

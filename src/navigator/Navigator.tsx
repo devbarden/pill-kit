@@ -1,11 +1,11 @@
 import { FC, useMemo } from 'react'
+import { Animated } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import {
 	createStackNavigator,
 	StackNavigationOptions,
 } from '@react-navigation/stack'
 
-import { Loader } from '@app/components'
 import { useGlobalState } from '@app/hooks'
 import { EnumStackRoute } from '@app/enums'
 import { withErrorBoundary } from '@app/hocs'
@@ -37,7 +37,7 @@ const modalOptions: StackNavigationOptions = {
 export const Navigator: FC = withErrorBoundary(() => {
 	const globalState = useGlobalState()
 
-	const { isUserAcceptAppDocs, isConfigurationLoading } = useMemo(
+	const { isUserAcceptAppDocs, isConfigurationLoading, opacity } = useMemo(
 		() => globalState,
 		[globalState],
 	)
@@ -48,29 +48,31 @@ export const Navigator: FC = withErrorBoundary(() => {
 	)
 
 	if (isConfigurationLoading) {
-		return <Loader />
+		return null
 	}
 
 	return (
-		<GlobalStateContext.Provider value={globalState}>
-			<NavigationContainer>
-				<Stack.Navigator
-					initialRouteName={defaultRoute}
-					screenOptions={screenOptions}>
-					<Stack.Screen name={EnumStackRoute.welcome} component={Welcome} />
-					<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
-					<Stack.Screen
-						options={modalOptions}
-						name={EnumStackRoute.createMedicine}
-						component={CreateMedicine}
-					/>
-					<Stack.Screen
-						options={modalOptions}
-						name={EnumStackRoute.editMedicine}
-						component={EditMedicine}
-					/>
-				</Stack.Navigator>
-			</NavigationContainer>
-		</GlobalStateContext.Provider>
+		<Animated.View style={{ flex: 1, opacity }}>
+			<GlobalStateContext.Provider value={globalState}>
+				<NavigationContainer>
+					<Stack.Navigator
+						initialRouteName={defaultRoute}
+						screenOptions={screenOptions}>
+						<Stack.Screen name={EnumStackRoute.welcome} component={Welcome} />
+						<Stack.Screen name={EnumStackRoute.tabs} component={Tabs} />
+						<Stack.Screen
+							options={modalOptions}
+							name={EnumStackRoute.createMedicine}
+							component={CreateMedicine}
+						/>
+						<Stack.Screen
+							options={modalOptions}
+							name={EnumStackRoute.editMedicine}
+							component={EditMedicine}
+						/>
+					</Stack.Navigator>
+				</NavigationContainer>
+			</GlobalStateContext.Provider>
+		</Animated.View>
 	)
 })

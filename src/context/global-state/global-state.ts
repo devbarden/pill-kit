@@ -1,4 +1,5 @@
 import { createContext } from 'react'
+import { Animated } from 'react-native'
 
 import { TypeGlobalStateContextProps } from '@app/types'
 import { DEFAULT_TAB_ROUTE, INITIAL_APP_CONFIGURATION } from '@app/constants'
@@ -15,4 +16,6 @@ export const GlobalStateContext = createContext<TypeGlobalStateContextProps>({
 
 	activeTab: DEFAULT_TAB_ROUTE,
 	setActiveTab: () => {},
+
+	opacity: new Animated.Value(0),
 })

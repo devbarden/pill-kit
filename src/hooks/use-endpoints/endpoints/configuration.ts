@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useMemo, useCallback } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 import * as api from '@app/api'
@@ -6,10 +6,11 @@ import { TypeConfiguration } from '@app/types'
 
 export const useConfigurationEndpoints = () => {
 	const queryClient = useQueryClient()
+	const mainQueryKey = useMemo(() => ['configuration'], [])
 
 	const invalidateConfiguration = useCallback(() => {
-		queryClient.invalidateQueries({ queryKey: ['configuration'] })
-	}, [queryClient])
+		queryClient.invalidateQueries({ queryKey: mainQueryKey })
+	}, [queryClient, mainQueryKey])
 
 	return {
 		useInitConfiguration: () =>
@@ -20,7 +21,7 @@ export const useConfigurationEndpoints = () => {
 
 		useConfiguration: () =>
 			useQuery({
-				queryKey: ['configuration'],
+				queryKey: mainQueryKey,
 				queryFn: api.getConfiguration,
 			}),
 

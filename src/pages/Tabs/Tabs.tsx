@@ -6,10 +6,10 @@ import {
 } from '@react-navigation/bottom-tabs'
 
 import { EnumTabRoute } from '@app/enums'
-import { Navigation, SafeArea } from '@app/components'
 import { TypeNavigatorTab } from '@app/types'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_TAB_ROUTE } from '@app/constants'
+import { Navigation, SafeArea } from '@app/components'
 
 import { Home, History, Settings, Analytic } from './sub-pages'
 
