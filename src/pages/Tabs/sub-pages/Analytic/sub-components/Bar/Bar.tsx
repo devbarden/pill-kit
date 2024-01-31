@@ -27,8 +27,8 @@ export const Bar: FC = memo(() => {
 
 	const isAvailableToShowValuesOnBars = useMemo(
 		() =>
-			i18n.language !== EnumLanguageCode.ar &&
-			i18n.language !== EnumLanguageCode.bn,
+			!i18n.language.includes(EnumLanguageCode.ar) &&
+			!i18n.language.includes(EnumLanguageCode.bn),
 		[i18n.language],
 	)
 

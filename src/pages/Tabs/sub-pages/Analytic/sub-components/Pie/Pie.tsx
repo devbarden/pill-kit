@@ -18,7 +18,7 @@ export const Pie: FC = memo(() => {
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
 
 	const isArabic = useMemo(
-		() => i18n.language === EnumLanguageCode.ar,
+		() => i18n.language.includes(EnumLanguageCode.ar),
 		[i18n.language],
 	)
 

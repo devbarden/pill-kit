@@ -29,7 +29,7 @@ export const Default: FC = memo(() => {
 	} = useContext(ModalContext)
 
 	const isArabic = useMemo(
-		() => i18n.language === EnumLanguageCode.ar,
+		() => i18n.language.includes(EnumLanguageCode.ar),
 		[i18n.language],
 	)
 

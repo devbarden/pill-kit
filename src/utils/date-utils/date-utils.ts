@@ -44,7 +44,7 @@ export const getTimeByDate = (value: Date | number) => {
 export const timeToFormat = (value: number, language: string): string => {
 	const options: Record<string, string> = { hour: '2-digit', minute: '2-digit' }
 
-	if (language === EnumLanguageCode.ar) {
+	if (language.includes(EnumLanguageCode.ar)) {
 		return new Date(value).toLocaleTimeString(ARABIC_NUMBER_CODE, options)
 	}
 
@@ -52,7 +52,7 @@ export const timeToFormat = (value: number, language: string): string => {
 }
 
 export const dateToFormat = (value: number, language: string): string => {
-	if (language === EnumLanguageCode.ar) {
+	if (language.includes(EnumLanguageCode.ar)) {
 		return new Date(value).toLocaleDateString(ARABIC_NUMBER_CODE)
 	}
 

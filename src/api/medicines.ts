@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { EnumStorage, EnumError } from '@app/enums'
+import { EnumStorage, EnumError, EnumCardFilter } from '@app/enums'
 import {
 	uid,
+	medicineUtils,
 	isAnyFieldEmpty,
 	getMedicineWithoutId,
 	getMedicineWithoutCountPerUseField,
@@ -11,6 +12,7 @@ import {
 	TypeMedicine,
 	TypeMedicineId,
 	TypeStorageData,
+	TypeCardFilters,
 	TypePossibleMedicine,
 	TypeMedicineWithoutId,
 } from '@app/types'
@@ -160,7 +162,18 @@ export const updateMedicinesNotificationsByLanguage = async (
 
 		const medicines: TypeMedicine[] = await getMedicines()
 
-		for await (const medicine of medicines) {
+		const activeMedicineFilter: TypeCardFilters = {
+			[EnumCardFilter.active]: true,
+			[EnumCardFilter.future]: true,
+			[EnumCardFilter.past]: false,
+		}
+
+		const activeAndFutureMedicines = medicineUtils.getMedicinesByFilters(
+			medicines,
+			activeMedicineFilter,
+		)
+
+		for await (const medicine of activeAndFutureMedicines) {
 			await setNotifications(medicine, subtitle)
 		}
 	} catch {}

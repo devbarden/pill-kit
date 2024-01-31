@@ -16,7 +16,7 @@ export const getNumberByLocale = (
 	const options = { useGrouping: false }
 	const parsedValue = typeof value === 'string' ? parseFloat(value) : value
 
-	if (language === EnumLanguageCode.ar) {
+	if (language.includes(EnumLanguageCode.ar)) {
 		return parsedValue.toLocaleString(ARABIC_NUMBER_CODE, options)
 	}
 

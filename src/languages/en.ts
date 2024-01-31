@@ -3,7 +3,7 @@ import { EnumCardFilter, EnumMedicineType } from '@app/enums'
 
 export const en: TypeLanguage = {
 	reminders: {
-		takeMedicine: `It's time to take your medicine {{name}} asdasd`,
+		takeMedicine: `It's time to take your medicine`,
 	},
 
 	welcome: {

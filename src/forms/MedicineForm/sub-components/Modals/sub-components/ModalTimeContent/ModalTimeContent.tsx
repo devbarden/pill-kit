@@ -29,7 +29,7 @@ export const ModalTimeContent: FC = memo(() => {
 	} = useContext(MedicineFormContext)
 
 	const isArabic = useMemo(
-		() => i18n.language === EnumLanguageCode.ar,
+		() => i18n.language.includes(EnumLanguageCode.ar),
 		[i18n.language],
 	)
 

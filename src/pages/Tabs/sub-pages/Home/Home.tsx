@@ -14,22 +14,9 @@ export const Home: FC = memo(() => {
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
 
+	// TODO: fix Arabic RTL converting
 	// TODO: fix Android notifications permissions
 	useLocalNotification()
-
-	// TODO: testing notifications
-	// const getData = async () => {
-	// 	const notifications =
-	// 		await Notifications.getAllScheduledNotificationsAsync()
-
-	// 	console.log(notifications)
-	// }
-
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		getData()
-	// 	}, 5000)
-	// }, [])
 
 	return (
 		<HomeContext.Provider value={state}>
