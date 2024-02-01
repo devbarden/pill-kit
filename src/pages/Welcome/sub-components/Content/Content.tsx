@@ -123,6 +123,7 @@ export const Content: FC = memo(() => {
 				content={<Text>{t('welcome:modal.notification.description')}</Text>}
 				ref={modalNotificationRef}
 				onClose={navigateToTabsHandler}
+				closeWaitMs={250}
 				closeText={t('component:button.ok')}
 			/>
 		</Fragment>

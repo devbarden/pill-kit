@@ -3,13 +3,13 @@ import { useRef, useState, useEffect } from 'react'
 
 import { registerForPushNotificationsAsync } from '@app/utils'
 
-interface ILocalNotificationHook {
+type TypeLocalNotificationHook = {
 	expoPushToken: string | undefined
 	notification: Notifications.Notification
 }
 
-export const useLocalNotification = (): ILocalNotificationHook => {
-	const [expoPushToken, setExpoPushToken] = useState('')
+export const useLocalNotification = (): TypeLocalNotificationHook => {
+	const [expoPushToken, setExpoPushToken] = useState<string | undefined>('')
 	const [notification, setNotification] = useState(
 		{} as Notifications.Notification,
 	)
@@ -18,7 +18,7 @@ export const useLocalNotification = (): ILocalNotificationHook => {
 
 	useEffect(() => {
 		registerForPushNotificationsAsync().then((token) => {
-			setExpoPushToken(token || '')
+			setExpoPushToken(token)
 		})
 
 		notificationListener.current =

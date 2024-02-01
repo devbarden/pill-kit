@@ -14,7 +14,6 @@ export const Home: FC = memo(() => {
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
 
-	// TODO: fix Android notifications permissions
 	useLocalNotification()
 
 	return (

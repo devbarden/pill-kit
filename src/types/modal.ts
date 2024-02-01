@@ -20,6 +20,7 @@ export type TypeModalProps = {
 	submit?: TypeModalSubmitProps
 	onClose?: () => void
 	closeText?: string
+	closeWaitMs?: number
 	isFullScreen?: boolean
 	withContentScroll?: boolean
 	isPossibleCloseOutside?: boolean

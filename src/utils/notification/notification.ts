@@ -1,9 +1,9 @@
 import * as Notifications from 'expo-notifications'
 import Constants from 'expo-constants'
-import { Platform } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { TypeScheduleNotification } from '@app/types'
+
+import { delay } from '../delay'
 
 export const schedulePushNotification = async ({
 	title,
@@ -45,15 +45,7 @@ export const scheduleNotificationCallback = async (
 export const registerForPushNotificationsAsync = async () => {
 	let token: string = ''
 
-	if (Platform.OS === 'android') {
-		await Notifications.setNotificationChannelAsync('default', {
-			name: 'default',
-			importance: Notifications.AndroidImportance.MAX,
-			vibrationPattern: [0, 250, 250, 250],
-			lightColor: EnumColor.white,
-			showBadge: false,
-		})
-	}
+	await delay(1000)
 
 	const { status: existingStatus } = await Notifications.getPermissionsAsync()
 

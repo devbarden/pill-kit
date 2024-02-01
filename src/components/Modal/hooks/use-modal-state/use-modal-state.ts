@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { delay } from '@app/utils'
 import { EnumModalType } from '@app/enums'
 import { TypeModalContextProps, TypeModalProps } from '@app/types'
 
@@ -13,6 +14,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		submit,
 		onClose,
 		closeText,
+		closeWaitMs = 0,
 		isFullScreen = false,
 		withContentScroll = false,
 		isPossibleCloseOutside = true,
@@ -40,13 +42,15 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		setIsVisible(false)
 	}, [isPossibleCloseOutside])
 
-	const closeInside = useCallback(() => {
+	const closeInside = useCallback(async () => {
 		setIsVisible(false)
 
 		if (onClose) {
+			await delay(closeWaitMs)
+
 			onClose()
 		}
-	}, [onClose])
+	}, [onClose, closeWaitMs])
 
 	const onSubmit = useCallback(async () => {
 		if (!submit?.handler) {

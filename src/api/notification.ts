@@ -1,5 +1,6 @@
 import * as Notifications from 'expo-notifications'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Platform } from 'react-native'
 
 import { EnumStorage } from '@app/enums'
 import { INITIAL_NOTIFICATION_STORAGE } from '@app/constants'
@@ -8,6 +9,24 @@ import {
 	getAllDatesByDaysAndTimes,
 	scheduleNotificationCallback,
 } from '@app/utils'
+
+export const initNotificationChannel = async () => {
+	try {
+		if (Platform.OS === 'android') {
+			await Notifications.setNotificationChannelAsync('default', {
+				name: 'default',
+				importance: Notifications.AndroidImportance.MAX,
+				vibrationPattern: [0, 250, 250, 250],
+				lightColor: '#FFFFFF',
+				showBadge: false,
+			})
+		}
+
+		return true
+	} catch {
+		return false
+	}
+}
 
 const getNotificationStorage = async () => {
 	try {
