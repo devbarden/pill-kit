@@ -1,0 +1,218 @@
+{
+	"reminders": {
+		"takeMedicine": "È ora di prendere la medicina"
+	},
+
+	"welcome": {
+		"title": "Benvenuto! Si prega di leggere i seguenti documenti prima di utilizzare l'applicazione",
+		"agreement": "Ho letto e accetto",
+		"continue": "Continuare",
+
+		"modal": {
+			"validation": {
+				"title": "Attenzione",
+				"description": "È necessario leggere e accettare i documenti richiesti"
+			},
+
+			"notification": {
+				"title": "Notifiche",
+				"description": "Per ricevere promemoria, si prega di consentire all'app di inviare notifiche. Altrimenti, non saremo in grado di ricordarti quando prendere i tuoi medicinali"
+			}
+		}
+	},
+
+	"home": {
+		"add": "Aggiungere",
+		"empty": "Non sono stati rilevati farmaci attivi o imminenti. Si prega di aggiungere un medicinale per monitorare il proprio trattamento"
+	},
+
+	"createMedicine": {
+		"title": "Creare"
+	},
+
+	"editMedicine": {
+		"title": "Modificare",
+		"notFound": "Non trovato",
+		"back": "Torna indietro",
+		"remove": "Rimuovere"
+	},
+
+	"analytic": {
+		"title": "Analytics",
+		"empty": "Aggiungi un medicinale per visualizzare le tue analisi",
+		"warning": "Non è possibile visualizzare un grafico di avanzamento perché al momento il numero di farmaci attivi è superiore a 20",
+
+		"progress": {
+			"title": "Progresso",
+			"label": "Farmaci attivi"
+		},
+
+		"bar": {
+			"title": "Il numero di farmaci assunti negli ultimi 5 anni"
+		},
+
+		"pie": {
+			"title": "L'indicatore dell'uso di diversi tipi di medicinali"
+		},
+
+		"contribution": {
+			"title": "L'attività dei farmaci utilizzati negli ultimi 2 mesi"
+		}
+	},
+
+	"history": {
+		"title": "Storia",
+		"empty": "Nessun farmaco trovato",
+
+		"filters": {
+			"title": "Filtro",
+
+			"items": {
+				"active": "Attivo",
+				"future": "Futuro",
+				"past": "Passato"
+			}
+		},
+
+		"sort": {
+			"button": "Ordine",
+			"medicines": "Medicina",
+
+			"modal": {
+				"title": "Ordina per",
+				"apply": "Applicare"
+			},
+
+			"types": {
+				"name": "Nome",
+				"startDate": "Data di inizio",
+				"endDate": "Data di fine"
+			}
+		}
+	},
+
+	"settings": {
+		"title": "Impostazioni",
+
+		"field": {
+			"language": "Lingua",
+			"contact": "Contatto",
+			"clearAllData": "Cancella tutti i dati",
+			"terms": "Termini e Condizioni"
+		},
+
+		"modal": {
+			"clearAllData": {
+				"title": "Cancella tutti i dati",
+				"description": "Vuoi davvero cancellare tutti i dati? Questa azione è irrevocabile"
+			}
+		}
+	},
+
+	"medicine": {
+		"field": {
+			"name": "Nome",
+			"type": "Tipo",
+			"countPerUse": "Dose",
+			"countPerDay": "Quanti al giorno?",
+			"startDate": "Data d'inizio",
+			"endDate": "Data di fine",
+			"notification": "Notifica",
+			"times": "Promemoria",
+			"color": "Colore"
+		},
+
+		"modal": {
+			"validation": {
+				"title": "Alcuni campi non sono compilati",
+				"description": "Si prega di compilare i campi successivi:"
+			},
+
+			"remove": {
+				"title": "Rimuovere la medicina",
+				"description": "Vuoi davvero cancellare questo medicinale? Questa azione è irrevocabile"
+			}
+		},
+
+		"warning": {
+			"past": "L'intervallo di tempo è nel passato. Non vedrai questo medicinale nella schermata principale",
+			"future": "L'intervallo di tempo nel futuro"
+		},
+
+		"indicator": {
+			"ml": "ml"
+		},
+
+		"types": {
+			"pill": "Pillole / Capsule",
+			"liquid": "Tintura / Sciroppo / Liquido",
+			"injection": "Iniezione",
+			"cream": "Crema / Unguento / Gel",
+			"drops": "Goccia",
+			"candles": "Candela",
+			"pencil": "Matita medica",
+			"powder": "Polvere",
+			"spray": "Aerosol / Spray",
+			"bandage": "Cerotto"
+		}
+	},
+
+	"terms": {
+		"title": "Termini e Condizioni"
+	},
+
+	"card": {
+		"date": {
+			"till": "Fino al",
+			"from": "Dal"
+		},
+
+		"label": {
+			"active": "Attivo",
+			"future": "Prossimamente",
+			"past": "Completato"
+		}
+	},
+
+	"component": {
+		"button": {
+			"ok": "OK",
+			"add": "Aggiungere",
+			"save": "Salva",
+			"back": "Indietro",
+			"cancel": "Annulla",
+			"delete": "Eliminare",
+			"close": "Vicino"
+		},
+
+		"input": {
+			"placeholder": {
+				"required": "Necessario",
+				"optional": "Opzionale",
+				"search": "Ricerca"
+			}
+		}
+	},
+
+	"actions": {
+		"loading": "Caricamento...",
+		"removing": "Rimozione...",
+		"updating": "In aggiornamento...",
+		"uploading": "Caricamento..."
+	},
+
+	"notification": {
+		"medicine": {
+			"add": "La medicina è stata aggiunta con successo",
+			"edit": "La medicina è stata aggiornata con successo",
+			"remove": "La medicina è stata rimossa con successo",
+			"removeAll": "Tutti i medicinali sono stati rimossi con successo",
+			"error": "Qualcosa è andato storto. Stiamo lavorando al problema"
+		}
+	},
+
+	"error": {
+		"title": "Qualcosa si è rotto. Si prega di contattarci via email",
+		"reset": "Reimpostare l'errore"
+	}
+}

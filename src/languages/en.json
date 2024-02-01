@@ -1,0 +1,218 @@
+{
+	"reminders": {
+		"takeMedicine": "It's time to take your medicine"
+	},
+
+	"welcome": {
+		"title": "Welcome! Please read the following documents before using the application",
+		"agreement": "I have read and accept",
+		"continue": "Continue",
+
+		"modal": {
+			"validation": {
+				"title": "Attention",
+				"description": "You need to read and accept the required documents"
+			},
+
+			"notification": {
+				"title": "Notifications",
+				"description": "To receive reminders, please allow the app to send notifications. Otherwise, we won't be able to remind you when to take your medicines"
+			}
+		}
+	},
+
+	"home": {
+		"add": "Add",
+		"empty": "No active or upcoming medicines have been detected. Please add a medicine to monitor your treatment"
+	},
+
+	"createMedicine": {
+		"title": "Create"
+	},
+
+	"editMedicine": {
+		"title": "Edit",
+		"notFound": "Not Found",
+		"back": "Go Back",
+		"remove": "Remove"
+	},
+
+	"analytic": {
+		"title": "Analytics",
+		"empty": "Please add a medicine to see your analytics",
+		"warning": "It is not possible to display a progress graph because at the moment the number of active medicines is more than twenty",
+
+		"progress": {
+			"title": "Progress",
+			"label": "Active medicines"
+		},
+
+		"bar": {
+			"title": "The number of medicines taken in the last five years"
+		},
+
+		"pie": {
+			"title": "The indicator of the use of different types of medicines"
+		},
+
+		"contribution": {
+			"title": "The activity of medicines use over the last two months"
+		}
+	},
+
+	"history": {
+		"title": "History",
+		"empty": "No medicines found",
+
+		"filters": {
+			"title": "Filters",
+
+			"items": {
+				"active": "Active",
+				"future": "Future",
+				"past": "Past"
+			}
+		},
+
+		"sort": {
+			"button": "Sort",
+			"medicines": "Medicines",
+
+			"modal": {
+				"title": "Sort by",
+				"apply": "Apply"
+			},
+
+			"types": {
+				"name": "Name",
+				"startDate": "Start date",
+				"endDate": "End date"
+			}
+		}
+	},
+
+	"settings": {
+		"title": "Settings",
+
+		"field": {
+			"language": "Language",
+			"contact": "Contact",
+			"clearAllData": "Clear all data",
+			"terms": "Terms And Conditions"
+		},
+
+		"modal": {
+			"clearAllData": {
+				"title": "Clear All Data",
+				"description": "Do you really want to delete all the data ? This action is irrevocable"
+			}
+		}
+	},
+
+	"medicine": {
+		"field": {
+			"name": "Name",
+			"type": "Type",
+			"countPerUse": "Dose",
+			"countPerDay": "How many per day ?",
+			"startDate": "Start date",
+			"endDate": "End date",
+			"notification": "Notification",
+			"times": "Reminders",
+			"color": "Color"
+		},
+
+		"modal": {
+			"validation": {
+				"title": "Some fields are not filled in",
+				"description": "Please fill next fields:"
+			},
+
+			"remove": {
+				"title": "Remove medicine",
+				"description": "Do you really want to delete this medicine ? This action is irrevocable"
+			}
+		},
+
+		"warning": {
+			"past": "The time range in the past. You will not see this medicine on the home screen",
+			"future": "The time range in the future"
+		},
+
+		"indicator": {
+			"ml": "ml"
+		},
+
+		"types": {
+			"pill": "Pills / Capsules",
+			"liquid": "Tincture / Syrup / Liquid",
+			"injection": "Injection",
+			"cream": "Cream / Ointment / Gel",
+			"drops": "Drops",
+			"candles": "Candles",
+			"pencil": "Medical Pencil",
+			"powder": "Powder",
+			"spray": "Aerosols / Sprays",
+			"bandage": "Band-Aid"
+		}
+	},
+
+	"terms": {
+		"title": "Terms And Conditions"
+	},
+
+	"card": {
+		"date": {
+			"till": "Till",
+			"from": "From"
+		},
+
+		"label": {
+			"active": "Active",
+			"future": "Upcoming",
+			"past": "Completed"
+		}
+	},
+
+	"component": {
+		"button": {
+			"ok": "OK",
+			"add": "Add",
+			"save": "Save",
+			"back": "Back",
+			"cancel": "Cancel",
+			"delete": "Delete",
+			"close": "Close"
+		},
+
+		"input": {
+			"placeholder": {
+				"required": "Required",
+				"optional": "Optional",
+				"search": "Search"
+			}
+		}
+	},
+
+	"actions": {
+		"loading": "Loading...",
+		"removing": "Removing...",
+		"updating": "Updating...",
+		"uploading": "Uploading..."
+	},
+
+	"notification": {
+		"medicine": {
+			"add": "Medicine was added successfully",
+			"edit": "Medicine was updated successfully",
+			"remove": "Medicine was removed successfully",
+			"removeAll": "All medicines have been successfully removed",
+			"error": "Something went wrong. We are working on the problem"
+		}
+	},
+
+	"error": {
+		"title": "Something's broken. Please contact us via email",
+		"reset": "Reset error"
+	}
+}

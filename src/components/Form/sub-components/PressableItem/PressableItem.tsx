@@ -10,11 +10,12 @@ import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
 import { styles, TypeStyleProps } from './PressableItem.styles'
+import { isRTL } from '@app/utils'
 
 type TypeProps = {
 	text: string
@@ -38,18 +39,20 @@ export const PressableItem: FC<TypeProps> = memo(
 	}) => {
 		const { i18n } = useTranslation()
 
-		const isArabic = useMemo(
-			() => i18n.language.includes(EnumLanguageCode.ar),
-			[i18n.language],
+		const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
+
+		const arrowIcon = useMemo(
+			() => (isLanguageRTL ? EnumIconName.left : EnumIconName.right),
+			[isLanguageRTL],
 		)
 
 		const isValueString = useMemo(() => typeof value === 'string', [value])
 
 		const styleProps: TypeStyleProps = useMemo(
 			() => ({
-				isArabic,
+				isLanguageRTL,
 			}),
-			[isArabic],
+			[isLanguageRTL],
 		)
 
 		const style = useMemo(() => styles(styleProps), [styleProps])
@@ -87,11 +90,7 @@ export const PressableItem: FC<TypeProps> = memo(
 				<Box style={value ? valueWidth : {}}>
 					<Box style={style.valueWrapper}>
 						{!withoutChevronRight && (
-							<Icon
-								size={20}
-								name={isArabic ? EnumIconName.left : EnumIconName.right}
-								color={EnumColor.darkGrey}
-							/>
+							<Icon size={20} name={arrowIcon} color={EnumColor.darkGrey} />
 						)}
 						{isValidElement(value) && value}
 						{isValueString && (

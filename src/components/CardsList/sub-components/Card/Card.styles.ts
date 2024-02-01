@@ -8,13 +8,13 @@ const HALF_SPACE = SPACE / 2
 const RADIUS = 12
 
 export type TypeStyleProps = {
-	isArabic: boolean
+	isLanguageRTL: boolean
 }
 
-export const styles = ({ isArabic }: TypeStyleProps) =>
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
 	StyleSheet.create({
 		card: {
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			justifyContent: 'space-between',
 			alignItems: 'center',
 			gap: SPACE,
@@ -44,14 +44,14 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 		content: {
 			flex: 1,
 			gap: HALF_SPACE,
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			alignItems: 'center',
 		},
 
 		info: {
 			flex: 1,
 			justifyContent: 'space-between',
-			alignItems: isArabic ? 'flex-end' : 'flex-start',
+			alignItems: isLanguageRTL ? 'flex-end' : 'flex-start',
 		},
 
 		leftLabel: {

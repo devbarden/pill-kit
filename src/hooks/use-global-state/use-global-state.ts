@@ -3,8 +3,8 @@ import { useCallback, useState, useMemo, useEffect } from 'react'
 import { Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
-import { TypeGlobalStateContextProps } from '@app/types'
 import { EnumTabRoute, EnumTheme } from '@app/enums'
+import { TypeGlobalStateContextProps } from '@app/types'
 import { DEFAULT_TAB_ROUTE, INITIAL_APP_CONFIGURATION } from '@app/constants'
 
 import { useEndpoints } from '../use-endpoints'

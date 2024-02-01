@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native'
 import { EnumColor } from '@app/enums'
 
 export type TypeStyleProps = {
-	isArabic: boolean
+	isLanguageRTL: boolean
 }
 
-export const styles = ({ isArabic }: TypeStyleProps) =>
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			overflow: 'hidden',
@@ -42,7 +42,7 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 		},
 
 		item: {
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			justifyContent: 'space-between',
 			gap: 16,
 		},
@@ -50,7 +50,7 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 		name: {
 			flex: 1,
 			gap: 4,
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			alignItems: 'center',
 		},
 

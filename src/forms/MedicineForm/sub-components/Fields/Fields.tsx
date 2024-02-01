@@ -3,9 +3,14 @@ import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { GlobalStateContext } from '@app/context'
-import { IS_ANDROID, IS_IOS } from '@app/constants'
 import { getNumberByLocale, medicineUtils } from '@app/utils'
-import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
+import { ARABIC_NUMBER_CODE, IS_ANDROID, IS_IOS } from '@app/constants'
+import {
+	EnumColor,
+	EnumDateMode,
+	EnumIconName,
+	EnumLanguageCode,
+} from '@app/enums'
 import {
 	Form,
 	Icon,
@@ -85,6 +90,14 @@ export const Fields: FC = memo(() => {
 		[countPerDay, i18n.language],
 	)
 
+	const locale = useMemo(() => {
+		if (i18n.language.includes(EnumLanguageCode.ar)) {
+			return ARABIC_NUMBER_CODE
+		}
+
+		return i18n.language
+	}, [i18n.language])
+
 	return (
 		<Fragment>
 			<Form.Wrapper>
@@ -154,7 +167,7 @@ export const Fields: FC = memo(() => {
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
 								theme={theme}
-								locale={i18n.language}
+								locale={locale}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>
@@ -182,7 +195,7 @@ export const Fields: FC = memo(() => {
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
 								theme={theme}
-								locale={i18n.language}
+								locale={locale}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
 							/>

@@ -6,9 +6,9 @@ import { Box, Text } from 'native-base'
 
 import { TypeMedicineTime } from '@app/types'
 import { GlobalStateContext } from '@app/context'
-import { IS_ANDROID, IS_IOS } from '@app/constants'
-import { getNumberByLocale, uid } from '@app/utils'
 import { Icon, DateTimePress } from '@app/components'
+import { getNumberByLocale, isRTL, uid } from '@app/utils'
+import { ARABIC_NUMBER_CODE, IS_ANDROID, IS_IOS } from '@app/constants'
 import { EnumDateMode, EnumIconName, EnumLanguageCode } from '@app/enums'
 
 import { MedicineFormContext } from '../../../../context'
@@ -28,19 +28,23 @@ export const ModalTimeContent: FC = memo(() => {
 		closeReminderModal,
 	} = useContext(MedicineFormContext)
 
-	const isArabic = useMemo(
-		() => i18n.language.includes(EnumLanguageCode.ar),
-		[i18n.language],
-	)
-
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
-			isArabic,
+			isLanguageRTL,
 		}),
-		[isArabic],
+		[isLanguageRTL],
 	)
 
 	const style = useMemo(() => styles(styleProps), [styleProps])
+
+	const locale = useMemo(() => {
+		if (i18n.language.includes(EnumLanguageCode.ar)) {
+			return ARABIC_NUMBER_CODE
+		}
+
+		return i18n.language
+	}, [i18n.language])
 
 	const getValue = useCallback(
 		(time: TypeMedicineTime) =>
@@ -86,7 +90,7 @@ export const ModalTimeContent: FC = memo(() => {
 									title={getDoseText(index + 1)}
 									mode={EnumDateMode.time}
 									theme={theme}
-									locale={i18n.language}
+									locale={locale}
 									open={mapOfRemindersToShow[time.id]}
 									date={new Date(getValue(time))}
 									onConfirm={(date) => changeTimeHandler(time, date)}

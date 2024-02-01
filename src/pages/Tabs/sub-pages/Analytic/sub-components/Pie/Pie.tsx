@@ -5,9 +5,9 @@ import { Box, Skeleton, Text } from 'native-base'
 import { entries, groupBy, map, sumBy } from 'lodash'
 
 import { TypeMedicine } from '@app/types'
-import { getPercentageValue, uid } from '@app/utils'
 import { MEDICINE_TYPE_COLORS } from '@app/constants'
-import { EnumColor, EnumLanguageCode, EnumMedicineType } from '@app/enums'
+import { EnumColor, EnumMedicineType } from '@app/enums'
+import { getPercentageValue, isRTL, uid } from '@app/utils'
 
 import { AnalyticContext } from '../../context'
 
@@ -17,16 +17,12 @@ export const Pie: FC = memo(() => {
 	const { t, i18n } = useTranslation()
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
 
-	const isArabic = useMemo(
-		() => i18n.language.includes(EnumLanguageCode.ar),
-		[i18n.language],
-	)
-
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
-			isArabic,
+			isLanguageRTL,
 		}),
-		[isArabic],
+		[isLanguageRTL],
 	)
 
 	const style = useMemo(() => styles(styleProps), [styleProps])

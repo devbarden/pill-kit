@@ -8,11 +8,12 @@ import {
 } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
-import { EnumColor, EnumIconName, EnumLanguageCode } from '@app/enums'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
 import { styles, TypeStyleProps } from './RadioItem.styles'
+import { isRTL } from '@app/utils'
 
 type TypeProps = {
 	text: string
@@ -26,16 +27,13 @@ export const RadioItem: FC<TypeProps> = memo(
 	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
 		const { i18n } = useTranslation()
 
-		const isArabic = useMemo(
-			() => i18n.language.includes(EnumLanguageCode.ar),
-			[i18n.language],
-		)
+		const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 
 		const styleProps: TypeStyleProps = useMemo(
 			() => ({
-				isArabic,
+				isLanguageRTL,
 			}),
-			[isArabic],
+			[isLanguageRTL],
 		)
 
 		const style = useMemo(() => styles(styleProps), [styleProps])

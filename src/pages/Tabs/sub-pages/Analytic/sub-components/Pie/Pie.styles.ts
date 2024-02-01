@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native'
 import { EnumColor } from '@app/enums'
 
 export type TypeStyleProps = {
-	isArabic: boolean
+	isLanguageRTL: boolean
 }
 
-export const styles = ({ isArabic }: TypeStyleProps) =>
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			flex: 1,
@@ -36,7 +36,7 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 
 		items: {
 			flex: 1,
-			alignItems: isArabic ? 'flex-end' : 'flex-start',
+			alignItems: isLanguageRTL ? 'flex-end' : 'flex-start',
 			paddingBottom: 16,
 			paddingHorizontal: 16,
 		},
@@ -45,7 +45,7 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 			flex: 1,
 			gap: 4,
 			maxWidth: '70%',
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			alignItems: 'center',
 		},
 

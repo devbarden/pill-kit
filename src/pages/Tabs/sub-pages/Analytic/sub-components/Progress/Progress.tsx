@@ -4,8 +4,13 @@ import { ProgressChart } from 'react-native-chart-kit'
 import { Box, Text, Skeleton } from 'native-base'
 import { map } from 'lodash'
 
-import { EnumColor, EnumLanguageCode } from '@app/enums'
-import { uid, getPercentageValue, getDivideValueByDates } from '@app/utils'
+import { EnumColor } from '@app/enums'
+import {
+	uid,
+	isRTL,
+	getPercentageValue,
+	getDivideValueByDates,
+} from '@app/utils'
 
 import { AnalyticContext } from '../../context'
 
@@ -15,16 +20,12 @@ export const Progress: FC = memo(() => {
 	const { t, i18n } = useTranslation()
 	const { activeMedicines, isLoading } = useContext(AnalyticContext)
 
-	const isArabic = useMemo(
-		() => i18n.language.includes(EnumLanguageCode.ar),
-		[i18n.language],
-	)
-
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
-			isArabic,
+			isLanguageRTL,
 		}),
-		[isArabic],
+		[isLanguageRTL],
 	)
 
 	const style = useMemo(() => styles(styleProps), [styleProps])

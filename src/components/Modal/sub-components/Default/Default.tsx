@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { EnumColor, EnumLanguageCode } from '@app/enums'
+import { isRTL } from '@app/utils'
+import { EnumColor } from '@app/enums'
 
 import { ModalContext } from '../../context'
 import { ScrollContent } from '../../../ScrollContent'
@@ -28,16 +29,12 @@ export const Default: FC = memo(() => {
 		submitBtnText,
 	} = useContext(ModalContext)
 
-	const isArabic = useMemo(
-		() => i18n.language.includes(EnumLanguageCode.ar),
-		[i18n.language],
-	)
-
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
-			isArabic,
+			isLanguageRTL,
 		}),
-		[isArabic],
+		[isLanguageRTL],
 	)
 
 	const style = useMemo(() => styles(styleProps), [styleProps])

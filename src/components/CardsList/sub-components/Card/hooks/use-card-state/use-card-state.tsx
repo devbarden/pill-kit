@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 
 import { TypeMedicine } from '@app/types'
-import { dateToFormat, medicineUtils } from '@app/utils'
+import { dateToFormat, medicineUtils, isRTL } from '@app/utils'
 import {
 	EnumColor,
 	EnumStackRoute,
 	EnumCardListMode,
 	EnumMedicineType,
-	EnumLanguageCode,
 } from '@app/enums'
 
 export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
@@ -36,10 +35,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	const isModeV1 = useMemo(() => mode === EnumCardListMode.v1, [mode])
 	const isModeV2 = useMemo(() => mode === EnumCardListMode.v2, [mode])
 
-	const isArabic = useMemo(
-		() => i18n.language.includes(EnumLanguageCode.ar),
-		[i18n.language],
-	)
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
 
 	const transformedCountPerUse = useMemo(() => {
 		if (type === EnumMedicineType.liquid) {
@@ -61,10 +57,10 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 
 	const dateRange = useMemo(
 		() =>
-			isArabic
+			isLanguageRTL
 				? `${dateToFormat(endDate, i18n.language)} - ${dateToFormat(startDate, i18n.language)}`
 				: `${dateToFormat(startDate, i18n.language)} - ${dateToFormat(endDate, i18n.language)}`,
-		[isArabic, startDate, endDate, i18n.language],
+		[isLanguageRTL, startDate, endDate, i18n.language],
 	)
 
 	const dateToShow = useMemo(() => {
@@ -131,7 +127,7 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 		isModeV1,
 		isModeV2,
 
-		isArabic,
+		isLanguageRTL,
 
 		isPast,
 		isFuture,

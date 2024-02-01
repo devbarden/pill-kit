@@ -24,7 +24,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 		isModeV1,
 		isModeV2,
 
-		isArabic,
+		isLanguageRTL,
 
 		name,
 		type,
@@ -51,9 +51,9 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 
 	const styleProps: TypeStyleProps = useMemo(
 		() => ({
-			isArabic,
+			isLanguageRTL,
 		}),
-		[isArabic],
+		[isLanguageRTL],
 	)
 
 	const style = useMemo(() => styles(styleProps), [styleProps])

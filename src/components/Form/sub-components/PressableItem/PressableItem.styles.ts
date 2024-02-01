@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native'
 
 export type TypeStyleProps = {
-	isArabic: boolean
+	isLanguageRTL: boolean
 }
 
-export const styles = ({ isArabic }: TypeStyleProps) =>
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			justifyContent: 'space-between',
 			alignItems: 'center',
 			padding: 16,
@@ -27,25 +27,25 @@ export const styles = ({ isArabic }: TypeStyleProps) =>
 		},
 
 		titleWrapper: {
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 			alignItems: 'center',
 			gap: 12,
 		},
 
 		title: {
 			flex: 1,
-			flexDirection: isArabic ? 'row-reverse' : 'row',
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
 		},
 
 		valueWrapper: {
-			flexDirection: isArabic ? 'row' : 'row-reverse',
+			flexDirection: isLanguageRTL ? 'row' : 'row-reverse',
 			alignItems: 'center',
 			gap: 16,
 		},
 
 		value: {
 			flex: 1,
-			alignItems: isArabic ? 'flex-start' : 'flex-end',
+			alignItems: isLanguageRTL ? 'flex-start' : 'flex-end',
 		},
 
 		text: {
