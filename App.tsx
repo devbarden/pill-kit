@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler'
-import * as SplashScreen from 'expo-splash-screen'
 import * as Notifications from 'expo-notifications'
 import Application from 'react-native-restart'
 import { FC, memo } from 'react'
 import { NativeBaseProvider } from 'native-base'
+import { preventAutoHideAsync } from 'expo-splash-screen'
 import { RootSiblingParent } from 'react-native-root-siblings'
 import { Platform, UIManager, I18nManager } from 'react-native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -11,6 +11,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import '@app/i18n'
 import { registerLogs } from '@app/utils'
 import { Initialization } from '@app/initialization'
+
+registerLogs()
+preventAutoHideAsync()
 
 I18nManager.forceRTL(false)
 I18nManager.allowRTL(false)
@@ -23,10 +26,6 @@ if (Platform.OS === 'android') {
 	UIManager.setLayoutAnimationEnabledExperimental &&
 		UIManager.setLayoutAnimationEnabledExperimental(true)
 }
-
-SplashScreen.preventAutoHideAsync()
-
-registerLogs()
 
 Notifications.setNotificationHandler({
 	handleNotification: async () => ({
