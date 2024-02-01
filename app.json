@@ -25,6 +25,7 @@
 			"package": "com.devbarden.pillkit"
 		},
 		"plugins": [
+			["./plugins/with-modified-gradle.js"],
 			["expo-localization"],
 			[
 				"expo-notifications",
