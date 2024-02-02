@@ -2,46 +2,52 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flex: 1,
-		gap: 32,
-		margin: 16,
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
+export type TypeStyleProps = {
+	isLanguageRTL: boolean
+}
 
-	logo: {
-		flex: 1,
-		gap: 16,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flex: 1,
+			gap: 32,
+			margin: 16,
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		},
 
-	checkbox: {
-		gap: 16,
-	},
+		logo: {
+			flex: 1,
+			gap: 16,
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
 
-	agreement: {
-		width: '100%',
-		gap: 8,
-	},
+		checkbox: {
+			gap: 16,
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
+		},
 
-	fullFlex: {
-		flex: 1,
-	},
+		agreement: {
+			width: '100%',
+			gap: 8,
+		},
 
-	link: {
-		textDecorationLine: 'underline',
-		color: EnumColor.blue,
-	},
+		fullFlex: {
+			flex: 1,
+		},
 
-	btn: {
-		width: '100%',
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderRadius: 16,
-		paddingVertical: 16,
-		paddingHorizontal: 32,
-	},
-})
+		link: {
+			textDecorationLine: 'underline',
+			color: EnumColor.blue,
+		},
+
+		btn: {
+			width: '100%',
+			justifyContent: 'center',
+			alignItems: 'center',
+			borderRadius: 16,
+			paddingVertical: 16,
+			paddingHorizontal: 32,
+		},
+	})

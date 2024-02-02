@@ -4,6 +4,7 @@ import {
 	FC,
 	memo,
 	useRef,
+	useMemo,
 	useState,
 	useContext,
 	useCallback,
@@ -13,6 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { Linking, Pressable, PressableStateCallbackType } from 'react-native'
 
+import { isRTL } from '@app/utils'
 import { Modal } from '@app/components'
 import { Logo, PillKit } from '@app/svg'
 import { TypeModalHandlers } from '@app/types'
@@ -20,25 +22,36 @@ import { GlobalStateContext } from '@app/context'
 import { TERMS_OF_USE_LINK } from '@app/constants'
 import { EnumColor, EnumStackRoute } from '@app/enums'
 
-import { styles } from './Content.styles'
+import { styles, TypeStyleProps } from './Content.styles'
 
 export const Content: FC = memo(() => {
 	const modalValidationRef = useRef<TypeModalHandlers>(null)
 	const modalNotificationRef = useRef<TypeModalHandlers>(null)
 
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
 	const { navigate } = useNavigation()
 	const { isUserAcceptAppDocs, setIsUserAcceptAppDocs } =
 		useContext(GlobalStateContext)
 
 	const [isChecked, setIsChecked] = useState(isUserAcceptAppDocs)
 
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
+
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isLanguageRTL,
+		}),
+		[isLanguageRTL],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
+
 	const getBtnStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
-			styles.btn,
+			style.btn,
 			{ backgroundColor: pressed ? EnumColor.darkRed : EnumColor.red },
 		],
-		[],
+		[style],
 	)
 
 	const openValidationModal = useCallback(() => {
@@ -80,23 +93,25 @@ export const Content: FC = memo(() => {
 
 	return (
 		<Fragment>
-			<Box style={styles.wrapper}>
-				<Box style={styles.logo}>
+			<Box style={style.wrapper}>
+				<Box style={style.logo}>
 					<Logo />
 					<PillKit />
 				</Box>
 
-				<Box style={styles.agreement}>
+				<Box style={style.agreement}>
 					<BouncyCheckbox
 						fillColor={EnumColor.red}
 						unfillColor={EnumColor.white}
 						isChecked={isChecked}
 						onPress={checkboxHandler}
-						style={styles.checkbox}
+						style={style.checkbox}
 						textComponent={
-							<Text style={styles.fullFlex}>
+							<Text
+								textAlign={isLanguageRTL ? 'right' : 'left'}
+								style={style.fullFlex}>
 								<Text>{t('welcome:agreement')}</Text>{' '}
-								<Text style={styles.link} onPress={openTermsHandler}>
+								<Text style={style.link} onPress={openTermsHandler}>
 									{t('terms:title')}
 								</Text>
 							</Text>
