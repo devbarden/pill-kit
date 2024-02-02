@@ -2,22 +2,27 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	action: {
-		padding: 8,
-	},
+export type TypeStyleProps = {
+	isLanguageRTL: boolean
+}
 
-	pressed: {
-		borderRadius: 24,
-		backgroundColor: EnumColor.lightGrey,
-	},
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+	StyleSheet.create({
+		action: {
+			padding: 8,
+		},
 
-	inputWrapper: {
-		paddingVertical: 8,
-		paddingHorizontal: 12,
-	},
+		pressed: {
+			borderRadius: 24,
+			backgroundColor: EnumColor.lightGrey,
+		},
 
-	input: {
-		fontSize: 16,
-	},
-})
+		inputWrapper: {
+			paddingVertical: 8,
+			paddingHorizontal: 12,
+		},
+
+		input: {
+			fontSize: 16,
+		},
+	})

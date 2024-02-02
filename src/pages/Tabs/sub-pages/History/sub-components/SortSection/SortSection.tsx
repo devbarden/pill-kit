@@ -5,17 +5,28 @@ import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
 import { Icon, Modal } from '@app/components'
-import { getNumberByLocale } from '@app/utils'
 import { EnumColor, EnumIconName } from '@app/enums'
+import { getNumberByLocale, isRTL } from '@app/utils'
 
 import { HistoryContext } from '../../context'
 import { SortModalContent } from './sub-components'
 
-import { styles } from './SortSection.styles'
+import { styles, TypeStyleProps } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
 	const { t, i18n } = useTranslation()
 	const { medicines, sortModalRef, openSortModal } = useContext(HistoryContext)
+
+	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
+
+	const styleProps: TypeStyleProps = useMemo(
+		() => ({
+			isLanguageRTL,
+		}),
+		[isLanguageRTL],
+	)
+
+	const style = useMemo(() => styles(styleProps), [styleProps])
 
 	const medicinesCount = useMemo(
 		() => getNumberByLocale(medicines.length, i18n.language),
@@ -24,11 +35,11 @@ export const SortSection: FC = memo(() => {
 
 	const getPressableStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
-			styles.sort,
-			styles.maxWidthHalfOfRow,
-			pressed ? styles.pressed : {},
+			style.sort,
+			style.maxWidthHalfOfRow,
+			pressed ? style.pressed : {},
 		],
-		[],
+		[style],
 	)
 
 	const pressHandler = useCallback(() => {
@@ -37,12 +48,12 @@ export const SortSection: FC = memo(() => {
 	}, [openSortModal])
 
 	return (
-		<Box style={styles.wrapper}>
+		<Box style={style.wrapper}>
 			<Text
 				fontSize="lg"
 				numberOfLines={1}
 				color={EnumColor.darkGrey}
-				style={styles.maxWidthHalfOfRow}>
+				style={style.maxWidthHalfOfRow}>
 				{t('history:sort.medicines')} : {medicinesCount}
 			</Text>
 

@@ -1,12 +1,17 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		paddingVertical: 8,
-		paddingHorizontal: 12,
-	},
+export type TypeStyleProps = {
+	isLanguageRTL: boolean
+}
 
-	input: {
-		fontSize: 16,
-	},
-})
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			paddingVertical: 8,
+			paddingHorizontal: 12,
+		},
+
+		input: {
+			fontSize: 16,
+		},
+	})

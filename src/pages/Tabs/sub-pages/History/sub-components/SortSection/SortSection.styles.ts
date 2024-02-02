@@ -2,29 +2,34 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-	},
+export type TypeStyleProps = {
+	isLanguageRTL: boolean
+}
 
-	maxWidthHalfOfRow: {
-		maxWidth: '50%',
-	},
+export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+		},
 
-	sort: {
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		gap: 8,
-		paddingVertical: 6,
-		paddingHorizontal: 12,
-		borderRadius: 12,
-		backgroundColor: EnumColor.white,
-	},
+		maxWidthHalfOfRow: {
+			maxWidth: '50%',
+		},
 
-	pressed: {
-		backgroundColor: EnumColor.lightGrey,
-	},
-})
+		sort: {
+			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
+			justifyContent: 'center',
+			alignItems: 'center',
+			gap: 8,
+			paddingVertical: 6,
+			paddingHorizontal: 12,
+			borderRadius: 12,
+			backgroundColor: EnumColor.white,
+		},
+
+		pressed: {
+			backgroundColor: EnumColor.lightGrey,
+		},
+	})
