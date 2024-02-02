@@ -14,7 +14,7 @@ export const Home: FC = memo(() => {
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
 
-	useLocalNotification()
+	useLocalNotification(1000)
 
 	return (
 		<HomeContext.Provider value={state}>

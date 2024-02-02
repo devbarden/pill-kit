@@ -1,46 +1,20 @@
 import * as Notifications from 'expo-notifications'
-import { useRef, useState, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
-import { registerForPushNotificationsAsync } from '@app/utils'
+import { delay } from '@app/utils'
 
-type TypeLocalNotificationHook = {
-	expoPushToken: string | undefined
-	notification: Notifications.Notification
-}
+export const useLocalNotification = (delayMs: number = 0) => {
+	const registerForPushNotificationsAsync = useCallback(async () => {
+		await delay(delayMs)
 
-export const useLocalNotification = (): TypeLocalNotificationHook => {
-	const [expoPushToken, setExpoPushToken] = useState<string | undefined>('')
-	const [notification, setNotification] = useState(
-		{} as Notifications.Notification,
-	)
-	const notificationListener = useRef<Notifications.Subscription | undefined>()
-	const responseListener = useRef<Notifications.Subscription | undefined>()
+		const { status: existingStatus } = await Notifications.getPermissionsAsync()
+
+		if (existingStatus !== 'granted') {
+			await Notifications.requestPermissionsAsync()
+		}
+	}, [delayMs])
 
 	useEffect(() => {
-		registerForPushNotificationsAsync().then((token) => {
-			setExpoPushToken(token)
-		})
-
-		notificationListener.current =
-			Notifications.addNotificationReceivedListener((notification) => {
-				setNotification(notification)
-			})
-
-		responseListener.current =
-			Notifications.addNotificationResponseReceivedListener((response) => {
-				setNotification(response.notification)
-			})
-
-		return () => {
-			if (notificationListener.current?.remove) {
-				notificationListener.current.remove()
-			}
-
-			if (responseListener.current?.remove) {
-				responseListener.current.remove()
-			}
-		}
-	}, [])
-
-	return { expoPushToken, notification }
+		registerForPushNotificationsAsync()
+	}, [registerForPushNotificationsAsync])
 }

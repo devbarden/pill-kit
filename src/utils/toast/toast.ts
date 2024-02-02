@@ -1,9 +1,11 @@
 import Toast, { ToastOptions } from 'react-native-root-toast'
+import { Platform } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 
 const baseConfig: ToastOptions = {
-	position: Toast.positions.TOP,
+	position:
+		Platform.OS === 'android' ? Toast.positions.CENTER : Toast.positions.TOP,
 	duration: Toast.durations.SHORT,
 	backgroundColor: EnumColor.black,
 	textColor: EnumColor.white,
