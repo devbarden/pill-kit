@@ -95,7 +95,7 @@
 		"title": "Einstellung",
 
 		"field": {
-			"language": "Sprachlich",
+			"language": "Sprache",
 			"contact": "Kontakt",
 			"clearAllData": "Alle Daten löschen",
 			"terms": "Allgemeine Geschäftsbedingungen"
@@ -164,7 +164,7 @@
 	"card": {
 		"date": {
 			"till": "Bis",
-			"from": "Von"
+			"from": "Seit"
 		},
 
 		"label": {
