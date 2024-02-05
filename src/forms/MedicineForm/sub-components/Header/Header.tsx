@@ -11,7 +11,7 @@ import { styles } from './Header.styles'
 
 export const Header: FC = memo(() => {
 	const { t } = useTranslation()
-	const { title, saveHandler, backHandler, isSaveBtnDisabled } =
+	const { saveHandler, backHandler, isSaveBtnDisabled } =
 		useContext(MedicineFormContext)
 
 	const btnTextColor = useMemo(
@@ -25,7 +25,7 @@ export const Header: FC = memo(() => {
 				<Icon name={EnumIconName.back} size={32} />
 				<Box style={styles.title}>
 					<Text fontSize="md" textAlign="left" numberOfLines={1}>
-						{title}
+						{t('component:button.back')}
 					</Text>
 				</Box>
 			</Pressable>

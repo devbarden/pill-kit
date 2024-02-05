@@ -13,8 +13,6 @@ import {
 export type TypeMedicineFormProps = {
 	data: TypeMedicineWithoutId
 
-	title: string
-
 	submitHandler: (medicine: TypeMedicineWithoutId) => void
 	isSubmitting: boolean
 

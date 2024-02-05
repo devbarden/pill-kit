@@ -13,7 +13,6 @@ export const MedicineFormContext = createContext<TypeMedicineFormContextProps>({
 	modalValidationRef: null,
 
 	data: DEFAULT_EMPTY_MEDICINE,
-	title: '',
 	submitHandler: () => {},
 	isSubmitting: false,
 
