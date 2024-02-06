@@ -97,6 +97,10 @@ export const Content: FC = memo(() => {
 				<Box style={style.logo}>
 					<Logo />
 					<PillKit />
+
+					<Box style={{ marginTop: 64 }}>
+						<Text textAlign="center">{t('welcome:title')}</Text>
+					</Box>
 				</Box>
 
 				<Box style={style.agreement}>

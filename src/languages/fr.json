@@ -11,7 +11,7 @@
 		"modal": {
 			"validation": {
 				"title": "Attention",
-				"description": "Vous devez lire et accepter les documents requis"
+				"description": "Vous devez lire et accepter les documents nécessaires"
 			},
 
 			"notification": {
@@ -27,14 +27,14 @@
 	},
 
 	"createMedicine": {
-		"title": "Créer"
+		"title": "Ajouter"
 	},
 
 	"editMedicine": {
 		"title": "Modifier",
 		"notFound": "Pas trouvé",
-		"back": "Retourner",
-		"remove": "Retirer"
+		"back": "Retour",
+		"remove": "Supprimer"
 	},
 
 	"analytic": {
@@ -163,8 +163,8 @@
 
 	"card": {
 		"date": {
-			"till": "Jusqu'au",
-			"from": "À partir du"
+			"till": "Date de fin",
+			"from": "Date de début"
 		},
 
 		"label": {
@@ -179,7 +179,7 @@
 			"ok": "D'ACCORD",
 			"add": "Ajouter",
 			"save": "Sauvegarder",
-			"back": "Dos",
+			"back": "Retour",
 			"cancel": "Annuler",
 			"delete": "Supprimer",
 			"close": "Fermer"
