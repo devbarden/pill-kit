@@ -6,7 +6,6 @@ import {
 	useRef,
 	useMemo,
 	useState,
-	useContext,
 	useCallback,
 } from 'react'
 import { Box, Text } from 'native-base'
@@ -14,37 +13,31 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { Linking, Pressable, PressableStateCallbackType } from 'react-native'
 
-import { isRTL } from '@app/utils'
 import { Modal } from '@app/components'
 import { Logo, PillKit } from '@app/svg'
 import { TypeModalHandlers } from '@app/types'
-import { GlobalStateContext } from '@app/context'
 import { TERMS_OF_USE_LINK } from '@app/constants'
 import { EnumColor, EnumStackRoute } from '@app/enums'
 
-import { styles, TypeStyleProps } from './Content.styles'
+import { styles } from './Content.styles'
+import { useGlobalContext } from '@app/hooks'
 
 export const Content: FC = memo(() => {
 	const modalValidationRef = useRef<TypeModalHandlers>(null)
 	const modalNotificationRef = useRef<TypeModalHandlers>(null)
 
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { isUserAcceptAppDocs, setIsUserAcceptAppDocs } =
-		useContext(GlobalStateContext)
+	const {
+		isLocaleRTL,
+		globalStyleProps,
+		isUserAcceptAppDocs,
+		setIsUserAcceptAppDocs,
+	} = useGlobalContext()
 
 	const [isChecked, setIsChecked] = useState(isUserAcceptAppDocs)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const getBtnStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
@@ -112,7 +105,7 @@ export const Content: FC = memo(() => {
 						style={style.checkbox}
 						textComponent={
 							<Text
-								textAlign={isLanguageRTL ? 'right' : 'left'}
+								textAlign={isLocaleRTL ? 'right' : 'left'}
 								style={style.fullFlex}>
 								<Text>{t('welcome:agreement')}</Text>{' '}
 								<Text style={style.link} onPress={openTermsHandler}>

@@ -1,19 +1,18 @@
-import { FC, memo, useCallback, useContext, useRef } from 'react'
+import { FC, memo, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Text } from 'native-base'
 
-import { useEndpoints } from '@app/hooks'
-import { GlobalStateContext } from '@app/context'
-import { EnumColor, EnumIconName } from '@app/enums'
-import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/types'
 import { Form, Modal } from '@app/components'
+import { EnumColor, EnumIconName } from '@app/enums'
+import { useEndpoints, useGlobalContext } from '@app/hooks'
+import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/types'
 
 export const RemoveAction: FC = memo(() => {
 	const removeModalRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
-	const { activeTab } = useContext(GlobalStateContext)
+	const { activeTab } = useGlobalContext()
 	const { navigate } = useNavigation()
 	const { params } = useRoute<TypeEditMedicineRouteProp>()
 	const { id } = params

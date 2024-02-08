@@ -2,19 +2,16 @@ import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
 import { CARD_MARGIN } from '@app/constants'
+import { TypeGlobalStyleProps } from '@app/types'
 
 const SPACE = 16
 const HALF_SPACE = SPACE / 2
 const RADIUS = 12
 
-export type TypeStyleProps = {
-	isLanguageRTL: boolean
-}
-
-export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		card: {
-			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
+			flexDirection: isLocaleRTL ? 'row-reverse' : 'row',
 			justifyContent: 'space-between',
 			alignItems: 'center',
 			gap: SPACE,
@@ -44,14 +41,14 @@ export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
 		content: {
 			flex: 1,
 			gap: HALF_SPACE,
-			flexDirection: isLanguageRTL ? 'row-reverse' : 'row',
+			flexDirection: isLocaleRTL ? 'row-reverse' : 'row',
 			alignItems: 'center',
 		},
 
 		info: {
 			flex: 1,
 			justifyContent: 'space-between',
-			alignItems: isLanguageRTL ? 'flex-end' : 'flex-start',
+			alignItems: isLocaleRTL ? 'flex-end' : 'flex-start',
 		},
 
 		leftLabel: {

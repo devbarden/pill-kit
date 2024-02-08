@@ -24,6 +24,26 @@
 			},
 			"package": "com.devbarden.pillkit"
 		},
+		"locales": {
+			"en": "./src/languages/en.json",
+			"ru": "./src/languages/ru.json",
+			"es": "./src/languages/es.json",
+			"de": "./src/languages/de.json",
+			"ar": "./src/languages/ar.json",
+			"be": "./src/languages/be.json",
+			"pl": "./src/languages/pl.json",
+			"uk": "./src/languages/uk.json",
+			"ka": "./src/languages/ka.json",
+			"zh": "./src/languages/zh.json",
+			"it": "./src/languages/it.json",
+			"fr": "./src/languages/fr.json",
+			"pt": "./src/languages/pt.json",
+			"ja": "./src/languages/ja.json",
+			"tr": "./src/languages/tr.json",
+			"ko": "./src/languages/ko.json",
+			"bn": "./src/languages/bn.json",
+			"hi": "./src/languages/hi.json"
+		},
 		"plugins": [
 			["./plugins/with-modified-gradle.js"],
 			["expo-localization"],

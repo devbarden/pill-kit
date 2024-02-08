@@ -2,6 +2,6 @@ import { TypeSelectItem } from '@app/types'
 
 export const getSelectedLanguage = (
 	items: TypeSelectItem[],
-	language: string,
+	locale: string,
 	fallback: string,
-) => items.find(({ value }) => language.includes(value))?.label ?? fallback
+) => items.find(({ value }) => locale.includes(value))?.label ?? fallback

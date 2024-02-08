@@ -1,13 +1,12 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Box, Text } from 'native-base'
 
+import { useGlobalContext } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
-import { isRTL } from '@app/utils'
 
 import { Icon } from '../../../Icon'
 
-import { styles, TypeStyleProps } from './CustomItem.styles'
+import { styles } from './CustomItem.styles'
 
 type TypeProps = {
 	text: string
@@ -18,18 +17,9 @@ type TypeProps = {
 
 export const CustomItem: FC<TypeProps> = memo(
 	({ text, iconName, iconColor = EnumColor.darkGrey, children }) => {
-		const { i18n } = useTranslation()
+		const { globalStyleProps } = useGlobalContext()
 
-		const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-		const styleProps: TypeStyleProps = useMemo(
-			() => ({
-				isLanguageRTL,
-			}),
-			[isLanguageRTL],
-		)
-
-		const style = useMemo(() => styles(styleProps), [styleProps])
+		const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 		return (
 			<Box style={style.wrapper}>

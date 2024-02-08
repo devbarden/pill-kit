@@ -12,32 +12,24 @@ import { TextInput, Pressable, PressableStateCallbackType } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Box, Input } from 'native-base'
 
-import { isRTL } from '@app/utils'
 import { Icon, Form } from '@app/components'
+import { useGlobalContext } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
 import { IS_ANDROID, IS_IOS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
 import { MedicineFormContext } from '../../../../context'
 
-import { styles, TypeStyleProps } from './ModalNameContent.styles'
+import { styles } from './ModalNameContent.styles'
 
 export const ModalNameContent: FC = memo(() => {
 	const inputRef = useRef<TextInput>(null)
 
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
+	const { isLocaleRTL, globalStyleProps } = useGlobalContext()
 	const { form, changeNameHandler, changeNameToEmptyHandler, closeNameModal } =
 		useContext(MedicineFormContext)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const getPressableStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
@@ -62,8 +54,8 @@ export const ModalNameContent: FC = memo(() => {
 					isFullWidth
 					variant="unstyled"
 					returnKeyType="done"
-					textAlign={isLanguageRTL ? 'right' : 'left'}
-					flexDirection={isLanguageRTL ? 'row-reverse' : 'row'}
+					textAlign={isLocaleRTL ? 'right' : 'left'}
+					flexDirection={isLocaleRTL ? 'row-reverse' : 'row'}
 					style={style.input}
 					autoFocus={IS_IOS}
 					ref={inputRef}

@@ -5,19 +5,19 @@ import { TouchableWithoutFeedback } from 'react-native'
 import { Box, Text } from 'native-base'
 
 import { TypeMedicineTime } from '@app/types'
-import { GlobalStateContext } from '@app/context'
+import { IS_ANDROID, IS_IOS } from '@app/constants'
+import { getNumberByLocale, uid } from '@app/utils'
 import { Icon, DateTimePress } from '@app/components'
-import { getNumberByLocale, isRTL, uid } from '@app/utils'
-import { ARABIC_NUMBER_CODE, IS_ANDROID, IS_IOS } from '@app/constants'
-import { EnumDateMode, EnumIconName, EnumLanguageCode } from '@app/enums'
+import { EnumDateMode, EnumIconName } from '@app/enums'
 
 import { MedicineFormContext } from '../../../../context'
 
-import { styles, TypeStyleProps } from './ModalTimeContent.styles'
+import { styles } from './ModalTimeContent.styles'
+import { useGlobalContext } from '@app/hooks'
 
 export const ModalTimeContent: FC = memo(() => {
-	const { t, i18n } = useTranslation()
-	const { theme } = useContext(GlobalStateContext)
+	const { t } = useTranslation()
+	const { theme, locale, globalStyleProps } = useGlobalContext()
 	const {
 		form,
 		mapOfRemindersToShow,
@@ -28,23 +28,7 @@ export const ModalTimeContent: FC = memo(() => {
 		closeReminderModal,
 	} = useContext(MedicineFormContext)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
-
-	const locale = useMemo(() => {
-		if (i18n.language.includes(EnumLanguageCode.ar)) {
-			return ARABIC_NUMBER_CODE
-		}
-
-		return i18n.language
-	}, [i18n.language])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const getValue = useCallback(
 		(time: TypeMedicineTime) =>
@@ -59,8 +43,8 @@ export const ModalTimeContent: FC = memo(() => {
 
 	const getDoseText = useCallback(
 		(n: number) =>
-			`${t('medicine:field.countPerUse')} : ${getNumberByLocale(n, i18n.language)}`,
-		[t, i18n.language],
+			`${t('medicine:field.countPerUse')} : ${getNumberByLocale(n, locale)}`,
+		[t, locale],
 	)
 
 	return (

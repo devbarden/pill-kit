@@ -1,12 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
+import { TypeGlobalStyleProps } from '@app/types'
 
-export type TypeStyleProps = {
-	isLanguageRTL: boolean
-}
-
-export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		action: {
 			padding: 8,

@@ -1,10 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-export type TypeStyleProps = {
-	isLanguageRTL: boolean
-}
+import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLanguageRTL }: TypeStyleProps) =>
+export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			paddingVertical: 8,

@@ -1,6 +1,5 @@
 import * as Haptics from 'expo-haptics'
 import { FC, memo, useMemo, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
 import {
 	Pressable,
 	TouchableWithoutFeedback,
@@ -8,12 +7,12 @@ import {
 } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
+import { useGlobalContext } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
-import { styles, TypeStyleProps } from './RadioItem.styles'
-import { isRTL } from '@app/utils'
+import { styles } from './RadioItem.styles'
 
 type TypeProps = {
 	text: string
@@ -25,18 +24,9 @@ type TypeProps = {
 
 export const RadioItem: FC<TypeProps> = memo(
 	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
-		const { i18n } = useTranslation()
+		const { globalStyleProps } = useGlobalContext()
 
-		const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-		const styleProps: TypeStyleProps = useMemo(
-			() => ({
-				isLanguageRTL,
-			}),
-			[isLanguageRTL],
-		)
-
-		const style = useMemo(() => styles(styleProps), [styleProps])
+		const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 		const getPressableStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [

@@ -6,16 +6,15 @@ import {
 	ReactElement,
 	isValidElement,
 } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { useGlobalContext } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
-import { styles, TypeStyleProps } from './PressableItem.styles'
-import { isRTL } from '@app/utils'
+import { styles } from './PressableItem.styles'
 
 type TypeProps = {
 	text: string
@@ -37,25 +36,16 @@ export const PressableItem: FC<TypeProps> = memo(
 		withoutChevronRight = false,
 		isValueQuarterWidth = false,
 	}) => {
-		const { i18n } = useTranslation()
-
-		const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
+		const { globalStyleProps, isLocaleRTL } = useGlobalContext()
 
 		const arrowIcon = useMemo(
-			() => (isLanguageRTL ? EnumIconName.left : EnumIconName.right),
-			[isLanguageRTL],
+			() => (isLocaleRTL ? EnumIconName.left : EnumIconName.right),
+			[isLocaleRTL],
 		)
 
 		const isValueString = useMemo(() => typeof value === 'string', [value])
 
-		const styleProps: TypeStyleProps = useMemo(
-			() => ({
-				isLanguageRTL,
-			}),
-			[isLanguageRTL],
-		)
-
-		const style = useMemo(() => styles(styleProps), [styleProps])
+		const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 		const valueWidth = useMemo(
 			() => [

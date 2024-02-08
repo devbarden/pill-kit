@@ -1,19 +1,18 @@
 import * as Haptics from 'expo-haptics'
 import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { isRTL } from '@app/utils'
 import { EnumColor } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { ModalContext } from '../../context'
 import { ScrollContent } from '../../../ScrollContent'
 
-import { styles, TypeStyleProps } from './Default.styles'
+import { styles } from './Default.styles'
 
 export const Default: FC = memo(() => {
-	const { i18n } = useTranslation()
+	const { globalStyleProps } = useGlobalContext()
 	const {
 		title,
 		submit,
@@ -29,15 +28,7 @@ export const Default: FC = memo(() => {
 		submitBtnText,
 	} = useContext(ModalContext)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const wrapperStyles = useMemo(
 		() => [style.wrapper, isFullScreen ? style.fullScreen : {}],

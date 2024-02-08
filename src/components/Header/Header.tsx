@@ -1,9 +1,9 @@
-import { FC, ReactElement, memo, useCallback, useContext } from 'react'
+import { FC, ReactElement, memo, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Box, Pressable, Text } from 'native-base'
 
 import { PillKit } from '@app/svg'
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
 import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../Icon'
@@ -20,7 +20,7 @@ type TypeProps = {
 export const Header: FC<TypeProps> = memo(
 	({ title, action = null, withLogo = false, withGoBack = false }) => {
 		const { navigate } = useNavigation()
-		const { activeTab } = useContext(GlobalStateContext)
+		const { activeTab } = useGlobalContext()
 
 		const backHandler = useCallback(() => {
 			navigate(activeTab)

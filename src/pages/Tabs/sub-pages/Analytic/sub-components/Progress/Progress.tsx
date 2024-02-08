@@ -5,30 +5,19 @@ import { Box, Text, Skeleton } from 'native-base'
 import { map } from 'lodash'
 
 import { EnumColor } from '@app/enums'
-import {
-	uid,
-	isRTL,
-	getPercentageValue,
-	getDivideValueByDates,
-} from '@app/utils'
+import { uid, getPercentageValue, getDivideValueByDates } from '@app/utils'
 
 import { AnalyticContext } from '../../context'
 
-import { styles, TypeStyleProps } from './Progress.styles'
+import { styles } from './Progress.styles'
+import { useGlobalContext } from '@app/hooks'
 
 export const Progress: FC = memo(() => {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
+	const { locale, globalStyleProps } = useGlobalContext()
 	const { activeMedicines, isLoading } = useContext(AnalyticContext)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const chartConfig = useMemo(
 		() => ({
@@ -103,8 +92,8 @@ export const Progress: FC = memo(() => {
 
 	const getProgressPercentage = useCallback(
 		(index: number) =>
-			getPercentageValue(progressChartData.data[index], i18n.language),
-		[progressChartData.data, i18n.language],
+			getPercentageValue(progressChartData.data[index], locale),
+		[progressChartData.data, locale],
 	)
 
 	const getIndicatorStyles = useCallback(

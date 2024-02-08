@@ -1,9 +1,9 @@
-import { FC, memo, useMemo, useCallback, useContext } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { EnumTabRoute } from '@app/enums'
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
 
 import { getIcon } from '../../utils'
 
@@ -15,7 +15,7 @@ type TypeProps = {
 
 export const NavigationItem: FC<TypeProps> = memo(({ route }) => {
 	const { navigate } = useNavigation()
-	const { activeTab } = useContext(GlobalStateContext)
+	const { activeTab } = useGlobalContext()
 
 	const isActive = useMemo(() => route === activeTab, [route, activeTab])
 

@@ -1,7 +1,6 @@
-import { useMemo, useCallback, useRef, useContext } from 'react'
+import { useMemo, useCallback, useRef } from 'react'
 import { Linking } from 'react-native'
 
-import { GlobalStateContext } from '@app/context'
 import { getSelectedLanguage } from '@app/utils'
 import { TypeModalHandlers, TypeSettingsFormContextProps } from '@app/types'
 import {
@@ -10,11 +9,10 @@ import {
 	LANGUAGE_SELECT_ITEMS,
 	FALLBACK_LANGUAGE_LABEL,
 } from '@app/constants'
-import { useTranslation } from 'react-i18next'
+import { useGlobalContext } from '@app/hooks'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
-	const { i18n } = useTranslation()
-	const { setLanguage } = useContext(GlobalStateContext)
+	const { locale, setLocale } = useGlobalContext()
 
 	const removeAlertRef = useRef<TypeModalHandlers>(null)
 	const modalLanguageRef = useRef<TypeModalHandlers>(null)
@@ -23,17 +21,17 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		() =>
 			getSelectedLanguage(
 				LANGUAGE_SELECT_ITEMS,
-				i18n.language,
+				locale,
 				FALLBACK_LANGUAGE_LABEL,
 			),
-		[i18n.language],
+		[locale],
 	)
 
 	const changeLanguageHandler = useCallback(
-		async (language: string) => {
-			await setLanguage(language)
+		async (locale: string) => {
+			await setLocale(locale)
 		},
-		[setLanguage],
+		[setLocale],
 	)
 
 	const mailHandler = useCallback(async () => {

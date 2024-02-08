@@ -1,27 +1,17 @@
 import { FC, memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Box } from 'native-base'
 
-import { isRTL } from '@app/utils'
 import { EnumTabRoute } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { NavigationItem, CreateMedicineNavigation } from './sub-components'
 
-import { styles, TypeStyleProps } from './Navigation.styles'
+import { styles } from './Navigation.styles'
 
 export const Navigation: FC = memo(() => {
-	const { i18n } = useTranslation()
+	const { globalStyleProps } = useGlobalContext()
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	return (
 		<Box style={style.wrapper}>

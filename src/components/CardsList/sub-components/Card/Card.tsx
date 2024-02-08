@@ -1,16 +1,16 @@
 import { FC, memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Pressable } from 'react-native'
 import { Box, Text, ITextProps } from 'native-base'
 
 import { TypeMedicine } from '@app/types'
+import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
 import { EnumColor, EnumIconName, EnumCardListMode } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 import { useCardState } from './hooks'
 
-import { styles, TypeStyleProps } from './Card.styles'
+import { styles } from './Card.styles'
 
 type TypeProps = {
 	data: TypeMedicine
@@ -19,12 +19,10 @@ type TypeProps = {
 }
 
 export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
-	const { i18n } = useTranslation()
+	const { locale, globalStyleProps } = useGlobalContext()
 	const {
 		isModeV1,
 		isModeV2,
-
-		isLanguageRTL,
 
 		name,
 		type,
@@ -49,14 +47,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 		[],
 	)
 
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const backgroundCardColorStyle = useMemo(
 		() => ({ backgroundColor: cardColor }),
@@ -93,8 +84,8 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 				<Box style={[style.leftLabel, backgroundCardColorStyle]}>
 					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
 						{transformedCountPerUse &&
-							getNumberByLocale(transformedCountPerUse, i18n.language) + ' / '}
-						{getNumberByLocale(countPerDay, i18n.language)}
+							getNumberByLocale(transformedCountPerUse, locale) + ' / '}
+						{getNumberByLocale(countPerDay, locale)}
 					</Text>
 				</Box>
 			)}

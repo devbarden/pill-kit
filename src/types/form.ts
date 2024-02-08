@@ -85,7 +85,7 @@ export type TypeSettingsFormContextProps = {
 
 	selectedLanguage: string
 
-	changeLanguageHandler: (language: string) => void
+	changeLanguageHandler: (locale: string) => void
 
 	mailHandler: () => void
 	termsOfUseHandler: () => void

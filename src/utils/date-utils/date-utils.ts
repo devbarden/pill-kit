@@ -1,8 +1,6 @@
 import { TypeMedicine } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
 
-import { ARABIC_NUMBER_CODE } from '../../constants/language'
-
 export const getDivideValueByDates = (
 	startDate: number,
 	endDate: number,
@@ -41,22 +39,25 @@ export const getTimeByDate = (value: Date | number) => {
 	return time
 }
 
-export const timeToFormat = (value: number, language: string): string => {
-	const options: Record<string, string> = { hour: '2-digit', minute: '2-digit' }
+export const timeToFormat = (value: number, locale: string): string => {
+	const is12HourFormat =
+		locale.includes(EnumLanguageCode.en) ||
+		locale.includes(EnumLanguageCode.ar) ||
+		locale.includes(EnumLanguageCode.ko) ||
+		locale.includes(EnumLanguageCode.bn) ||
+		locale.includes(EnumLanguageCode.hi)
 
-	if (language.includes(EnumLanguageCode.ar)) {
-		return new Date(value).toLocaleTimeString(ARABIC_NUMBER_CODE, options)
+	const options: Record<string, string | boolean> = {
+		hour: '2-digit',
+		minute: '2-digit',
+		hour12: is12HourFormat,
 	}
 
-	return new Date(value).toLocaleTimeString(language, options)
+	return new Date(value).toLocaleTimeString(locale, options)
 }
 
-export const dateToFormat = (value: number, language: string): string => {
-	if (language.includes(EnumLanguageCode.ar)) {
-		return new Date(value).toLocaleDateString(ARABIC_NUMBER_CODE)
-	}
-
-	return new Date(value).toLocaleDateString(language)
+export const dateToFormat = (value: number, locale: string): string => {
+	return new Date(value).toLocaleDateString(locale)
 }
 
 export const getAllDatesByDaysAndTimes = ({

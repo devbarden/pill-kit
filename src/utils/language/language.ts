@@ -1,7 +1,7 @@
 import { EnumLanguageCode } from '@app/enums'
 
-export const isRTL = (language: string) => {
-	if (language.includes(EnumLanguageCode.ar)) {
+export const isRTL = (locale: string) => {
+	if (locale.includes(EnumLanguageCode.ar)) {
 		return true
 	}
 

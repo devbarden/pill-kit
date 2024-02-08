@@ -1,17 +1,10 @@
-import {
-	useRef,
-	useMemo,
-	useState,
-	useEffect,
-	useContext,
-	useCallback,
-} from 'react'
+import { useRef, useMemo, useState, useEffect, useCallback } from 'react'
 import { entries, filter, map } from 'lodash'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 
 import { EnumMedicineType } from '@app/enums'
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
 import {
 	addWeeks,
 	isDeserted,
@@ -48,9 +41,9 @@ export const useMedicineForm = (
 	const modalColorRef = useRef<TypeModalHandlers>(null)
 	const modalValidationRef = useRef<TypeModalHandlers>(null)
 
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab } = useContext(GlobalStateContext)
+	const { activeTab, locale } = useGlobalContext()
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
@@ -170,7 +163,7 @@ export const useMedicineForm = (
 
 	const getCountPerUseValueByType = useCallback(
 		(countPerUse: TypeMedicineCountPerUse, type: EnumMedicineType) => {
-			const value = getNumberByLocale(countPerUse, i18n.language)
+			const value = getNumberByLocale(countPerUse, locale)
 
 			if (type === EnumMedicineType.liquid) {
 				return `${value} ${t('medicine:indicator.ml')}`
@@ -178,21 +171,21 @@ export const useMedicineForm = (
 
 			return value
 		},
-		[t, i18n.language],
+		[t, locale],
 	)
 
 	const getCountPerUseSelectItems = useCallback(
 		(type: EnumMedicineType) => {
 			const defaultItemsByLocale = getSelectNumberItemsByLocale(
 				MEDICINE_ITEMS_COUNT_PER_USE_SELECT_ITEMS,
-				i18n.language,
+				locale,
 			)
 
 			const liquidItemsByLocale = map(
 				MEDICINE_LIQUID_COUNT_PER_USE_SELECT_ITEMS,
 				(item) => ({
 					...item,
-					label: `${getNumberByLocale(item.label, i18n.language)} ${t('medicine:indicator.ml')}`,
+					label: `${getNumberByLocale(item.label, locale)} ${t('medicine:indicator.ml')}`,
 				}),
 			)
 
@@ -210,7 +203,7 @@ export const useMedicineForm = (
 
 			return []
 		},
-		[t, i18n.language],
+		[t, locale],
 	)
 
 	const getIsNeedToFillCountPerUse = useCallback(

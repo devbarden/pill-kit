@@ -2,15 +2,10 @@ import DatePicker from 'react-native-date-picker'
 import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
+import { IS_ANDROID, IS_IOS } from '@app/constants'
 import { getNumberByLocale, medicineUtils } from '@app/utils'
-import { ARABIC_NUMBER_CODE, IS_ANDROID, IS_IOS } from '@app/constants'
-import {
-	EnumColor,
-	EnumDateMode,
-	EnumIconName,
-	EnumLanguageCode,
-} from '@app/enums'
+import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
 import {
 	Form,
 	Icon,
@@ -23,8 +18,8 @@ import { ColorBox } from './sub-components'
 import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
-	const { t, i18n } = useTranslation()
-	const { theme } = useContext(GlobalStateContext)
+	const { t } = useTranslation()
+	const { theme, locale } = useGlobalContext()
 	const {
 		openNameModal,
 		openTypeModal,
@@ -86,17 +81,9 @@ export const Fields: FC = memo(() => {
 	)
 
 	const countPerDayByLocale = useMemo(
-		() => getNumberByLocale(countPerDay, i18n.language),
-		[countPerDay, i18n.language],
+		() => getNumberByLocale(countPerDay, locale),
+		[countPerDay, locale],
 	)
-
-	const locale = useMemo(() => {
-		if (i18n.language.includes(EnumLanguageCode.ar)) {
-			return ARABIC_NUMBER_CODE
-		}
-
-		return i18n.language
-	}, [i18n.language])
 
 	return (
 		<Fragment>

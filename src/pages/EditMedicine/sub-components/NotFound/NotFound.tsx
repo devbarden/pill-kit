@@ -1,15 +1,15 @@
-import { FC, Fragment, memo, useCallback, useContext } from 'react'
+import { FC, Fragment, memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import { Button, Text } from 'native-base'
 
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
 import { ContentWrapper, Header } from '@app/components'
 
 export const NotFound: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab } = useContext(GlobalStateContext)
+	const { activeTab } = useGlobalContext()
 
 	const backHandler = useCallback(() => {
 		navigate(activeTab)

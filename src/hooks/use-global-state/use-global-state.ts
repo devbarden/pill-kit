@@ -3,25 +3,24 @@ import { useCallback, useState, useMemo, useEffect } from 'react'
 import { Animated } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
-import { EnumTabRoute, EnumTheme } from '@app/enums'
-import { TypeGlobalStateContextProps } from '@app/types'
-import { DEFAULT_TAB_ROUTE, INITIAL_APP_CONFIGURATION } from '@app/constants'
+import { isRTL } from '@app/utils'
+import { EnumLanguageCode, EnumTabRoute, EnumTheme } from '@app/enums'
+import { TypeGlobalStateContextProps, TypeGlobalStyleProps } from '@app/types'
+import {
+	DEFAULT_TAB_ROUTE,
+	ARABIC_NUMBER_CODE,
+	INITIAL_APP_CONFIGURATION,
+} from '@app/constants'
 
 import { useEndpoints } from '../use-endpoints'
 
 export const useGlobalState = (): TypeGlobalStateContextProps => {
 	const { i18n } = useTranslation()
-	const {
-		useConfiguration,
-		useUpdateConfiguration,
-		useUpdateNotificationsByLanguage,
-	} = useEndpoints()
+	const { useConfiguration, useUpdateConfiguration } = useEndpoints()
 	const {
 		data: configuration = INITIAL_APP_CONFIGURATION,
 		isLoading: isConfigurationLoading,
 	} = useConfiguration()
-	const { mutateAsync: updateNotificationsByLanguage } =
-		useUpdateNotificationsByLanguage()
 	const {
 		mutateAsync: updateConfiguration,
 		isLoading: isConfigurationUpdating,
@@ -30,6 +29,24 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 	const [activeTab, setActiveTab] = useState<EnumTabRoute>(DEFAULT_TAB_ROUTE)
 
 	const opacity = useMemo(() => new Animated.Value(0), [])
+
+	const locale = useMemo(() => {
+		if (i18n.language.includes(EnumLanguageCode.ar)) {
+			return ARABIC_NUMBER_CODE
+		}
+
+		return i18n.language.substring(0, 2)
+	}, [i18n.language])
+
+	const isLocaleRTL = useMemo(() => isRTL(locale), [locale])
+
+	const globalStyleProps: TypeGlobalStyleProps = useMemo(
+		() => ({
+			theme: configuration.theme,
+			isLocaleRTL,
+		}),
+		[configuration.theme, isLocaleRTL],
+	)
 
 	const setTheme = useCallback(
 		async (theme: EnumTheme) => {
@@ -41,12 +58,11 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 		[updateConfiguration, configuration],
 	)
 
-	const setLanguage = useCallback(
-		async (language: string) => {
-			await i18n.changeLanguage(language)
-			await updateNotificationsByLanguage()
+	const setLocale = useCallback(
+		async (locale: string) => {
+			await i18n.changeLanguage(locale)
 		},
-		[i18n, updateNotificationsByLanguage],
+		[i18n],
 	)
 
 	const setIsUserAcceptAppDocs = useCallback(
@@ -78,16 +94,18 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 	return {
 		...configuration,
 
+		locale,
+		opacity,
+		activeTab,
+		globalStyleProps,
+
+		isLocaleRTL,
 		isConfigurationLoading,
 		isConfigurationUpdating,
 
 		setTheme,
-		setLanguage,
-		setIsUserAcceptAppDocs,
-
-		activeTab,
+		setLocale,
 		setActiveTab,
-
-		opacity,
+		setIsUserAcceptAppDocs,
 	}
 }

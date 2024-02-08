@@ -5,32 +5,25 @@ import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
 import { Icon, Modal } from '@app/components'
+import { useGlobalContext } from '@app/hooks'
+import { getNumberByLocale } from '@app/utils'
 import { EnumColor, EnumIconName } from '@app/enums'
-import { getNumberByLocale, isRTL } from '@app/utils'
 
 import { HistoryContext } from '../../context'
 import { SortModalContent } from './sub-components'
 
-import { styles, TypeStyleProps } from './SortSection.styles'
+import { styles } from './SortSection.styles'
 
 export const SortSection: FC = memo(() => {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
+	const { locale, globalStyleProps } = useGlobalContext()
 	const { medicines, sortModalRef, openSortModal } = useContext(HistoryContext)
 
-	const isLanguageRTL = useMemo(() => isRTL(i18n.language), [i18n.language])
-
-	const styleProps: TypeStyleProps = useMemo(
-		() => ({
-			isLanguageRTL,
-		}),
-		[isLanguageRTL],
-	)
-
-	const style = useMemo(() => styles(styleProps), [styleProps])
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const medicinesCount = useMemo(
-		() => getNumberByLocale(medicines.length, i18n.language),
-		[medicines.length, i18n.language],
+		() => getNumberByLocale(medicines.length, locale),
+		[medicines.length, locale],
 	)
 
 	const getPressableStyles = useCallback(

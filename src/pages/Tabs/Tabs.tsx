@@ -1,4 +1,4 @@
-import { FC, memo, useContext, useMemo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { RouteProp } from '@react-navigation/native'
 import {
 	BottomTabNavigationOptions,
@@ -7,7 +7,7 @@ import {
 
 import { EnumTabRoute } from '@app/enums'
 import { TypeNavigatorTab } from '@app/types'
-import { GlobalStateContext } from '@app/context'
+import { useGlobalContext } from '@app/hooks'
 import { DEFAULT_TAB_ROUTE } from '@app/constants'
 import { Navigation, SafeArea } from '@app/components'
 
@@ -24,7 +24,7 @@ type TypeTabListeners = {
 }
 
 export const Tabs: FC = memo(() => {
-	const { setActiveTab } = useContext(GlobalStateContext)
+	const { setActiveTab } = useGlobalContext()
 
 	const commonListenersProps = useMemo(
 		() => ({

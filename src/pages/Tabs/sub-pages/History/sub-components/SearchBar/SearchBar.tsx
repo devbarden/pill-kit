@@ -5,6 +5,7 @@ import { values, filter, size } from 'lodash'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
 import { TypeModalHandlers } from '@app/types'
 import { Form, Icon, Modal } from '@app/components'
@@ -17,7 +18,8 @@ import { FiltersModalContent } from './sub-components'
 import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
+	const { locale } = useGlobalContext()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
 	const filtersModalRef = useRef<TypeModalHandlers>(null)
@@ -34,9 +36,9 @@ export const SearchBar: FC = memo(() => {
 		() =>
 			getNumberByLocale(
 				size(filter(values(filters), (isFilterActive) => isFilterActive)),
-				i18n.language,
+				locale,
 			),
-		[filters, i18n.language],
+		[filters, locale],
 	)
 
 	const getPressableStyles = useCallback(
