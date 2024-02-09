@@ -22,6 +22,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 	} = useMemo(() => props, [props])
 
 	const [isVisible, setIsVisible] = useState(false)
+	const [isRequesting, setIsRequesting] = useState(false)
 
 	const closeBtnText = useMemo(
 		() => closeText ?? t('component:button.close'),
@@ -35,12 +36,12 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 	}, [])
 
 	const close = useCallback(() => {
-		if (!isPossibleCloseOutside) {
+		if (!isPossibleCloseOutside || isRequesting) {
 			return
 		}
 
 		setIsVisible(false)
-	}, [isPossibleCloseOutside])
+	}, [isPossibleCloseOutside, isRequesting])
 
 	const closeInside = useCallback(async () => {
 		setIsVisible(false)
@@ -57,9 +58,13 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 			return
 		}
 
-		await submit.handler()
+		setIsRequesting(true)
 
-		closeInside()
+		await submit.handler()
+		await closeInside()
+		await delay(300)
+
+		setIsRequesting(false)
 	}, [submit, closeInside])
 
 	return {
@@ -79,6 +84,7 @@ export const useModalState = (props: TypeModalProps): TypeModalContextProps => {
 		closeInside,
 
 		isVisible,
+		isRequesting,
 		closeBtnText,
 		submitBtnText,
 	}

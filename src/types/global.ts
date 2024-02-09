@@ -15,9 +15,11 @@ export type TypeGlobalStateContextProps = TypeConfiguration & {
 	isLocaleRTL: boolean
 	isConfigurationLoading: boolean
 	isConfigurationUpdating: boolean
+	isMedicineActionEnabled: boolean
 
 	setTheme: (theme: EnumTheme) => void
 	setLocale: (locale: string) => void
 	setActiveTab: Dispatch<SetStateAction<EnumTabRoute>>
 	setIsUserAcceptAppDocs: (isUserAcceptAppDocs: boolean) => void
+	setIsMedicineActionEnabled: Dispatch<SetStateAction<boolean>>
 }

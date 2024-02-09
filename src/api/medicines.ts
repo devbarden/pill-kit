@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { EnumStorage, EnumError } from '@app/enums'
 import {
 	uid,
+	delay,
 	isAnyFieldEmpty,
 	getMedicineWithoutId,
 	getMedicineWithoutCountPerUseField,
@@ -84,6 +85,7 @@ export const setMedicine = async (
 		const newMedicines: TypeMedicine[] = [...medicines, newMedicine]
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
+		await delay(400)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 		await setNotifications(newMedicine, subtitle)
 	} catch {}
@@ -108,6 +110,7 @@ export const editMedicine = async (
 		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
+		await delay(400)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 		await updateNotifications(updatedMedicine, subtitle)
 	} catch {}
@@ -121,6 +124,7 @@ export const removeMedicine = async (id: TypeMedicineId) => {
 		)
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
+		await delay(800)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
 		await cancelNotificationsById(id)
 	} catch {}

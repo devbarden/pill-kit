@@ -31,3 +31,5 @@ export const isDeserted = <T>(value: T): boolean => {
 
 	return true
 }
+
+export const isNoDeserted = <T>(value: T): boolean => !isDeserted(value)

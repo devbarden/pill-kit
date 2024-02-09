@@ -23,9 +23,11 @@ export const GlobalStateContext = createContext<TypeGlobalStateContextProps>({
 	isLocaleRTL: false,
 	isConfigurationLoading: true,
 	isConfigurationUpdating: false,
+	isMedicineActionEnabled: true,
 
 	setTheme: () => {},
 	setLocale: () => {},
 	setActiveTab: () => {},
 	setIsUserAcceptAppDocs: () => {},
+	setIsMedicineActionEnabled: () => {},
 })

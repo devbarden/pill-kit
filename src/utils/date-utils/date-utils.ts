@@ -1,6 +1,15 @@
 import { TypeMedicine } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
 
+export const getNextYear = (n: number = 1) => {
+	const date = new Date()
+	const currentYear = date.getFullYear()
+
+	date.setFullYear(currentYear + n)
+
+	return date
+}
+
 export const getDivideValueByDates = (
 	startDate: number,
 	endDate: number,
@@ -11,15 +20,12 @@ export const getDivideValueByDates = (
 	return result
 }
 
-export const getDaysArrayInRange = (
-	startDate: number,
-	endDate: number,
-): string[] => {
+export const getDaysArrayInRange = (start: number, end: number): string[] => {
 	const result = []
 
 	for (
-		let date = new Date(startDate);
-		date <= new Date(endDate);
+		let date = new Date(start);
+		date <= new Date(end);
 		date.setDate(date.getDate() + 1)
 	) {
 		result.push(new Date(date).toISOString().split('T')[0])
@@ -60,12 +66,14 @@ export const dateToFormat = (value: number, locale: string): string => {
 	return new Date(value).toLocaleDateString(locale)
 }
 
-export const getAllDatesByDaysAndTimes = ({
+export const getDatesToNotify = ({
 	startDate,
 	endDate,
 	times,
 }: TypeMedicine): Date[] => {
-	const days = getDaysArrayInRange(startDate, endDate)
+	const now = Date.now()
+	const start = startDate >= now ? startDate : now
+	const days = getDaysArrayInRange(start, endDate)
 
 	const dates: Date[] = days.reduce(
 		(acc: Date[], value) => [

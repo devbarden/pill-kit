@@ -1,12 +1,14 @@
 import * as Notifications from 'expo-notifications'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Platform } from 'react-native'
+import { map, filter } from 'lodash'
 
 import { EnumStorage } from '@app/enums'
 import { INITIAL_NOTIFICATION_STORAGE } from '@app/constants'
 import { TypeMedicine, TypeNotificationStorage } from '@app/types'
 import {
-	getAllDatesByDaysAndTimes,
+	isNoDeserted,
+	getDatesToNotify,
 	scheduleNotificationCallback,
 } from '@app/utils'
 
@@ -61,13 +63,15 @@ export const cancelNotificationsById = async (id: string) => {
 		const notificationStorage = await getNotificationStorage()
 		const notificationIds: string[] = notificationStorage[id] ?? []
 
-		for await (const notificationId of notificationIds) {
-			await Notifications.cancelScheduledNotificationAsync(notificationId)
-		}
-
 		delete notificationStorage[id]
 
 		await setNotificationStorage(notificationStorage)
+
+		await Promise.all(
+			map(notificationIds, (notificationId) =>
+				Notifications.cancelScheduledNotificationAsync(notificationId),
+			),
+		)
 	} catch {}
 }
 
@@ -82,22 +86,17 @@ export const setNotifications = async (
 			return
 		}
 
-		const dates = getAllDatesByDaysAndTimes(medicine)
-		const notificationsIds = []
-
-		for await (const date of dates) {
-			const notificationId = await scheduleNotificationCallback(
-				date,
-				name,
-				subtitle,
-			)
-
-			if (notificationId) {
-				notificationsIds.push(notificationId)
-			}
-		}
-
 		const notificationStorage = await getNotificationStorage()
+		const dates = getDatesToNotify(medicine)
+
+		const response = await Promise.all(
+			map(dates, (date) => scheduleNotificationCallback(date, name, subtitle)),
+		)
+
+		const notificationsIds = filter(response, (value) =>
+			isNoDeserted(value),
+		) as string[]
+
 		const updatedNotificationsStorage = {
 			...notificationStorage,
 			[id]: notificationsIds,

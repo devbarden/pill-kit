@@ -27,6 +27,7 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 	} = useUpdateConfiguration()
 
 	const [activeTab, setActiveTab] = useState<EnumTabRoute>(DEFAULT_TAB_ROUTE)
+	const [isMedicineActionEnabled, setIsMedicineActionEnabled] = useState(true)
 
 	const opacity = useMemo(() => new Animated.Value(0), [])
 
@@ -102,10 +103,12 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 		isLocaleRTL,
 		isConfigurationLoading,
 		isConfigurationUpdating,
+		isMedicineActionEnabled,
 
 		setTheme,
 		setLocale,
 		setActiveTab,
 		setIsUserAcceptAppDocs,
+		setIsMedicineActionEnabled,
 	}
 }

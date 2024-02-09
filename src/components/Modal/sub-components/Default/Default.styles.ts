@@ -67,4 +67,11 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 		alignItemsByLocale: {
 			alignItems: isLocaleRTL ? 'flex-end' : 'flex-start',
 		},
+
+		spinner: {
+			flex: 1,
+			padding: 8,
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
 	})

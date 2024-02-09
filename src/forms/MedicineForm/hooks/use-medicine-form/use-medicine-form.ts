@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { EnumMedicineType } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
 import {
+	delay,
 	addWeeks,
 	isDeserted,
 	removeWeeks,
@@ -43,7 +44,12 @@ export const useMedicineForm = (
 
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab, locale } = useGlobalContext()
+	const {
+		locale,
+		activeTab,
+		isMedicineActionEnabled,
+		setIsMedicineActionEnabled,
+	} = useGlobalContext()
 	const { data, submitHandler, isSubmitting } = props
 
 	const [form, setForm] = useState<TypeMedicineWithoutId>(data)
@@ -77,8 +83,11 @@ export const useMedicineForm = (
 	}, [formToValidate])
 
 	const isSaveBtnDisabled = useMemo(
-		() => isSubmitting || isAnyFieldEmpty(formToValidate),
-		[isSubmitting, formToValidate],
+		() =>
+			isSubmitting ||
+			!isMedicineActionEnabled ||
+			isAnyFieldEmpty(formToValidate),
+		[isSubmitting, isMedicineActionEnabled, formToValidate],
 	)
 
 	const openNameModal = useCallback(() => {
@@ -330,10 +339,23 @@ export const useMedicineForm = (
 			return
 		}
 
+		setIsMedicineActionEnabled(false)
+
 		await submitHandler(form)
+		await delay(200)
+
+		setIsMedicineActionEnabled(true)
 
 		backHandler()
-	}, [submitHandler, form, backHandler, isSaveBtnDisabled, disableHandler])
+	}, [
+		form,
+		isSaveBtnDisabled,
+
+		backHandler,
+		submitHandler,
+		disableHandler,
+		setIsMedicineActionEnabled,
+	])
 
 	useEffect(() => {
 		setForm((prev) => ({ ...prev, ...data }))

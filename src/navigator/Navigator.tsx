@@ -29,22 +29,28 @@ const screenOptions: StackNavigationOptions = {
 	cardStyle: styles.wrapper,
 }
 
-const modalOptions: StackNavigationOptions = {
-	presentation: 'modal',
-	cardStyle: styles.modal,
-}
-
 export const Navigator: FC = withErrorBoundary(() => {
 	const globalState = useGlobalState()
 
-	const { isUserAcceptAppDocs, isConfigurationLoading, opacity } = useMemo(
-		() => globalState,
-		[globalState],
-	)
+	const {
+		opacity,
+		isUserAcceptAppDocs,
+		isConfigurationLoading,
+		isMedicineActionEnabled,
+	} = useMemo(() => globalState, [globalState])
 
 	const defaultRoute = useMemo(
 		() => (isUserAcceptAppDocs ? DEFAULT_STACK_ROUTE : EnumStackRoute.welcome),
 		[isUserAcceptAppDocs],
+	)
+
+	const modalOptions: StackNavigationOptions = useMemo(
+		() => ({
+			presentation: 'modal',
+			cardStyle: styles.modal,
+			gestureEnabled: isMedicineActionEnabled,
+		}),
+		[isMedicineActionEnabled],
 	)
 
 	if (isConfigurationLoading) {

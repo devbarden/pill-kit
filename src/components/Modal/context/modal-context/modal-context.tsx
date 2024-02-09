@@ -26,6 +26,7 @@ export const ModalContext = createContext<TypeModalContextProps>({
 	closeInside: () => {},
 
 	isVisible: false,
+	isRequesting: false,
 	closeBtnText: '',
 	submitBtnText: '',
 })

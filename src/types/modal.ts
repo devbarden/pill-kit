@@ -34,6 +34,7 @@ export type TypeModalContextProps = TypeModalProps & {
 	closeInside: () => void
 
 	isVisible: boolean
+	isRequesting: boolean
 	closeBtnText: string
 	submitBtnText: string
 }

@@ -6,6 +6,7 @@ import { Box, Text } from 'native-base'
 import { EnumColor } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
 
+import { Spinner } from '../../../Spinner'
 import { ModalContext } from '../../context'
 import { ScrollContent } from '../../../ScrollContent'
 
@@ -18,6 +19,7 @@ export const Default: FC = memo(() => {
 		submit,
 		content,
 		isFullScreen,
+		isRequesting,
 		withContentScroll,
 		withGreyBackgroundColor,
 
@@ -108,25 +110,33 @@ export const Default: FC = memo(() => {
 			)}
 
 			<Box style={style.actions}>
-				<Pressable onPress={closeInside} style={getCloseBtnStyles}>
-					<Text fontSize="md" textAlign="center" color={EnumColor.red}>
-						{closeBtnText}
-					</Text>
-				</Pressable>
-
-				{submit && (
+				{isRequesting ? (
+					<Box style={style.spinner}>
+						<Spinner size={40} />
+					</Box>
+				) : (
 					<Fragment>
-						<Box style={style.separator} />
-
-						<Pressable onPress={submitHandler} style={getSubmitBtnStyles}>
-							<Text
-								fontSize="md"
-								textAlign="center"
-								fontWeight="bold"
-								color={EnumColor.red}>
-								{submitBtnText}
+						<Pressable onPress={closeInside} style={getCloseBtnStyles}>
+							<Text fontSize="md" textAlign="center" color={EnumColor.red}>
+								{closeBtnText}
 							</Text>
 						</Pressable>
+
+						{submit && (
+							<Fragment>
+								<Box style={style.separator} />
+
+								<Pressable onPress={submitHandler} style={getSubmitBtnStyles}>
+									<Text
+										fontSize="md"
+										textAlign="center"
+										fontWeight="bold"
+										color={EnumColor.red}>
+										{submitBtnText}
+									</Text>
+								</Pressable>
+							</Fragment>
+						)}
 					</Fragment>
 				)}
 			</Box>

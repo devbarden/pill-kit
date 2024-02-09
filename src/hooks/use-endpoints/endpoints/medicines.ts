@@ -65,6 +65,7 @@ export const useMedicinesEndpoints = () => {
 			useMutation({
 				mutationFn: (id: TypeMedicineId) => api.removeMedicine(id),
 				onSuccess: () => {
+					toast.success(t('notification:medicine.remove'))
 					invalidateMedicines()
 				},
 				onError: () => {
