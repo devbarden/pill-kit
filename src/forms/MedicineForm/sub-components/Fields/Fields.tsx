@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 
 import { useGlobalContext } from '@app/hooks'
 import { IS_ANDROID, IS_IOS } from '@app/constants'
-import { getNumberByLocale, medicineUtils } from '@app/utils'
 import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
+import { medicineUtils, getNumberByLocale } from '@app/utils'
 import {
 	Form,
 	Icon,
@@ -173,10 +173,10 @@ export const Fields: FC = memo(() => {
 						{isEndDateModalAvailableToShow && (
 							<DatePicker
 								modal
+								mode={EnumDateMode.date}
 								is24hourSource="locale"
 								androidVariant="iosClone"
 								title={t('medicine:field.endDate')}
-								mode={EnumDateMode.date}
 								open={isNeedToShowEndDateModal}
 								date={new Date(endDate)}
 								onConfirm={changeEndDateHandler}
