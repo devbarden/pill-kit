@@ -113,7 +113,7 @@
 			"name": "Название",
 			"type": "Тип",
 			"countPerUse": "Доза",
-			"countPerDay": "Сколько в день ?",
+			"countPerDay": "Сколько раз в день ?",
 			"startDate": "Начало приема",
 			"endDate": "Конец приема",
 			"notification": "Уведомления",
