@@ -86,11 +86,15 @@ export const Bar: FC = memo(() => {
 			data.push(length)
 		})
 
+		const lastFiveLabels =
+			labels.length > 5 ? labels.slice(1).slice(-5) : labels
+		const lastFiveData = data.length > 5 ? data.slice(1).slice(-5) : data
+
 		return {
-			labels,
+			labels: lastFiveLabels,
 			datasets: [
 				{
-					data,
+					data: lastFiveData,
 				},
 			],
 		}
