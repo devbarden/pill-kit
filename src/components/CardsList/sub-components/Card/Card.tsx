@@ -83,8 +83,7 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 			{isModeV1 && (
 				<Box style={[style.leftLabel, backgroundCardColorStyle]}>
 					<Text fontSize="xs" {...baseTextProps} color={EnumColor.white}>
-						{transformedCountPerUse &&
-							getNumberByLocale(transformedCountPerUse, locale) + ' / '}
+						{transformedCountPerUse && transformedCountPerUse + ' / '}
 						{getNumberByLocale(countPerDay, locale)}
 					</Text>
 				</Box>

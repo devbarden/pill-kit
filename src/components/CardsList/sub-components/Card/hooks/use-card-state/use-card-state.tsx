@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import { TypeMedicine } from '@app/types'
 import { useGlobalContext } from '@app/hooks'
-import { dateToFormat, medicineUtils } from '@app/utils'
+import { dateToFormat, getNumberByLocale, medicineUtils } from '@app/utils'
 import {
 	EnumColor,
 	EnumStackRoute,
@@ -38,11 +38,11 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 
 	const transformedCountPerUse = useMemo(() => {
 		if (type === EnumMedicineType.liquid) {
-			return `${countPerUse}${t('medicine:indicator.ml')}`
+			return `${getNumberByLocale(countPerUse, locale)} ${t('medicine:indicator.ml')}`
 		}
 
 		return countPerUse
-	}, [t, type, countPerUse])
+	}, [t, type, countPerUse, locale])
 
 	const fromDate = useMemo(
 		() => `${t('card:date.from')} ${dateToFormat(startDate, locale)}`,
