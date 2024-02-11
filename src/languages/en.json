@@ -145,7 +145,7 @@
 
 		"types": {
 			"pill": "Pills / Capsules",
-			"liquid": "Tincture / Syrup / Liquid",
+			"liquid": "Tincture / Syrup / Suspension",
 			"injection": "Injection",
 			"cream": "Cream / Ointment / Gel",
 			"drops": "Drops",
@@ -203,9 +203,9 @@
 
 	"notification": {
 		"medicine": {
-			"add": "Medicine was added successfully",
-			"edit": "Medicine was updated successfully",
-			"remove": "Medicine was removed successfully",
+			"add": "Medicine has been added successfully",
+			"edit": "Medicine has been updated successfully",
+			"remove": "Medicine has been removed successfully",
 			"removeAll": "All medicines have been successfully removed",
 			"error": "Something went wrong. We are working on the problem"
 		}
