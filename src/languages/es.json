@@ -1,29 +1,29 @@
 {
 	"reminders": {
-		"takeMedicine": "Es hora de tomar tu medicina"
+		"takeMedicine": "Es la hora de tomar los medicamentos"
 	},
 
 	"welcome": {
-		"title": "¡Bienvenido! Por favor, lea los siguientes documentos antes de utilizar la aplicación",
+		"title": "¡Bienvenido! Por favor, lea los siguientes documentos antes de empezar a utilizar la aplicación",
 		"agreement": "He leído y acepto",
 		"continue": "Continuar",
 
 		"modal": {
 			"validation": {
 				"title": "Atención",
-				"description": "Debe leer y aceptar los documentos requeridos"
+				"description": "Debe leer y aceptar los documentos necesarios"
 			},
 
 			"notification": {
 				"title": "Notificaciones",
-				"description": "Para recibir recordatorios, por favor permita que la aplicación envíe notificaciones. De lo contrario, no podremos recordarte cuándo tomar tus medicamentos"
+				"description": "Para recibir recordatorios, permita que la aplicación acceda a enviar notificaciones. De lo contrario, no podremos recordarle cuándo tiene que tomar los medicamentos"
 			}
 		}
 	},
 
 	"home": {
 		"add": "Añadir",
-		"empty": "No se han detectado medicamentos activos o próximos. Por favor, añada un medicamento para monitorear su tratamiento"
+		"empty": "No se han encontrado medicamentos activos o próximos. Por favor, agregue medicamentos para el control de su tratamiento"
 	},
 
 	"createMedicine": {
@@ -32,15 +32,15 @@
 
 	"editMedicine": {
 		"title": "Editar",
-		"notFound": "No Encontrado",
+		"notFound": "El medicamento no se ha encontrado",
 		"back": "Volver Atrás",
 		"remove": "Eliminar"
 	},
 
 	"analytic": {
 		"title": "Análisis",
-		"empty": "Agregue un medicamento para ver sus análisis",
-		"warning": "No es posible mostrar un gráfico de progreso porque en este momento el número de medicamentos activos es más de 20",
+		"empty": "Por favor, agregue el medicamento para ver su análisis",
+		"warning": "No es posible mostrar un gráfico de progreso ya que actualmente hay más de 20 medicamentos activos",
 
 		"progress": {
 			"title": "Progreso",
@@ -52,41 +52,41 @@
 		},
 
 		"pie": {
-			"title": "El indicador del uso de diferentes tipos de medicamentos."
+			"title": "El indicador de uso de diferentes tipos de medicamentos"
 		},
 
 		"contribution": {
-			"title": "La actividad del uso de medicamentos en los últimos 2 meses."
+			"title": "La actividad del uso de medicamentos en los últimos 2 meses"
 		}
 	},
 
 	"history": {
 		"title": "Historia",
-		"empty": "No se encontraron medicamentos",
+		"empty": "Los medicamentos no se han encontrados",
 
 		"filters": {
 			"title": "Filtros",
 
 			"items": {
-				"active": "Activo",
-				"future": "Futuro",
-				"past": "Completado"
+				"active": "Activos",
+				"future": "Próximos",
+				"past": "Pasados"
 			}
 		},
 
 		"sort": {
-			"button": "Ordenar",
+			"button": "Clasificar",
 			"medicines": "Medicamentos",
 
 			"modal": {
-				"title": "Ordenar por",
+				"title": "Clasificar por",
 				"apply": "Aplicar"
 			},
 
 			"types": {
 				"name": "Nombre",
-				"startDate": "Fecha de inicio",
-				"endDate": "Fecha de finalización"
+				"startDate": "Inicio de la medicación",
+				"endDate": "Fin de la medicación"
 			}
 		}
 	},
@@ -96,15 +96,15 @@
 
 		"field": {
 			"language": "Idioma",
-			"contact": "Contacto",
-			"clearAllData": "Borrar todos los datos",
+			"contact": "Contáctenos",
+			"clearAllData": "Eliminar todos los datos",
 			"terms": "Términos Y Condiciones"
 		},
 
 		"modal": {
 			"clearAllData": {
-				"title": "Borrar todos los datos",
-				"description": "¿Realmente desea eliminar todos los datos ? Esta acción es irrevocable"
+				"title": "Eliminar todos los datos",
+				"description": "¿Está seguro de eliminar todos los datos? Esta acción es irreversible"
 			}
 		}
 	},
@@ -114,9 +114,9 @@
 			"name": "Nombre",
 			"type": "Tipo",
 			"countPerUse": "Dosis",
-			"countPerDay": "¿Cuántos por día?",
-			"startDate": "Fecha de inicio",
-			"endDate": "Fecha de finalización",
+			"countPerDay": "¿Cuánto por día?",
+			"startDate": "Inicio de la medicación",
+			"endDate": "Fin de la medicación",
 			"notification": "Notificación",
 			"times": "Recordatorios",
 			"color": "Color"
@@ -124,18 +124,18 @@
 
 		"modal": {
 			"validation": {
-				"title": "Algunos campos no están rellenados",
+				"title": "Algunos campos no están completados",
 				"description": "Por favor, rellene los siguientes campos:"
 			},
 
 			"remove": {
 				"title": "Retire el medicamento",
-				"description": "¿Realmente desea eliminar este medicamento ? Esta acción es irrevocable"
+				"description": "¿Realmente desea eliminar este medicamento? Esta acción es irrevocable"
 			}
 		},
 
 		"warning": {
-			"past": "El rango de tiempo en el pasado. No verá este medicamento en la pantalla de inicio",
+			"past": "El rango de tiempo en el pasado. Usted no verá este medicamento en la pantalla de inicio",
 			"future": "El rango de tiempo en el futuro"
 		},
 
@@ -145,15 +145,15 @@
 
 		"types": {
 			"pill": "Pastillas / Cápsulas",
-			"liquid": "Tintura / Jarabe / Líquido",
+			"liquid": "Tintura / Jarabe / Suspensión",
 			"injection": "Inyección",
 			"cream": "Crema / Ungüento / Gel",
 			"drops": "Gotas",
-			"candles": "Velas",
+			"candles": "Supositorios",
 			"pencil": "Lápiz médico",
 			"powder": "Polvo",
-			"spray": "Aerosoles",
-			"bandage": "Curita"
+			"spray": "Aerosol",
+			"bandage": "Parche"
 		}
 	},
 
@@ -164,12 +164,12 @@
 	"card": {
 		"date": {
 			"till": "Hasta el",
-			"from": "A partir del"
+			"from": "Antes del"
 		},
 
 		"label": {
 			"active": "Activo",
-			"future": "Próximamente",
+			"future": "En espera",
 			"past": "Completado"
 		}
 	},
@@ -177,18 +177,18 @@
 	"component": {
 		"button": {
 			"ok": "OK",
-			"add": "Añadir",
+			"add": "Agregar",
 			"save": "Guardar",
-			"back": "Atrás",
+			"back": "Volver",
 			"cancel": "Cancelar",
-			"delete": "Suprimir",
+			"delete": "Eliminar",
 			"close": "Cerrar"
 		},
 
 		"input": {
 			"placeholder": {
-				"required": "Requerido",
-				"optional": "Opcional",
+				"required": "Necesario",
+				"optional": "No necesario",
 				"search": "Buscar"
 			}
 		}
@@ -198,21 +198,21 @@
 		"loading": "Cargando...",
 		"removing": "Eliminación...",
 		"updating": "Actualización...",
-		"uploading": "Carga..."
+		"uploading": "Cargando..."
 	},
 
 	"notification": {
 		"medicine": {
-			"add": "El medicamento se agregó con éxito",
-			"edit": "La medicina se actualizó con éxito",
-			"remove": "El medicamento se eliminó con éxito",
+			"add": "El medicamento agregado con éxito",
+			"edit": "El medicamento actualizado con éxito",
+			"remove": "El medicamento eliminado con éxito",
 			"removeAll": "Todos los medicamentos se han eliminado con éxito",
-			"error": "Algo salió mal. Estamos trabajando en el problema"
+			"error": "Algo salió mal. Estamos trabajando para solucionarlo"
 		}
 	},
 
 	"error": {
-		"title": "Algo está roto. Póngase en contacto con nosotros por correo electrónico",
-		"reset": "Error de reinicio"
+		"title": "Algo está roto, por favor contáctenos por correo electrónico",
+		"reset": "Restablecer los errores"
 	}
 }
