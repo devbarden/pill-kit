@@ -1,29 +1,29 @@
 {
 	"reminders": {
-		"takeMedicine": "Il est temps de prendre ton médicament"
+		"takeMedicine": "L'heure de prendre vos medicaments!"
 	},
 
 	"welcome": {
 		"title": "Bienvenue! Veuillez lire les documents suivants avant d'utiliser l'application",
-		"agreement": "j'ai lu et accepté",
+		"agreement": "J'ai lu et j'accepte",
 		"continue": "Continuer",
 
 		"modal": {
 			"validation": {
 				"title": "Attention",
-				"description": "Vous devez lire et accepter les documents nécessaires"
+				"description": "Vous devez lire et accepter les documents requis"
 			},
 
 			"notification": {
 				"title": "Notifications",
-				"description": "Pour recevoir des rappels, veuillez autoriser l'application à envoyer des notifications. Sinon, nous ne pourrons pas vous rappeler quand prendre vos médicaments"
+				"description": "Pour recevoir des rappels, veuillez autoriser l'application à envoyer des notifications. Sinon, nous ne serrons pas vous rappeler quand prendre vos médicaments"
 			}
 		}
 	},
 
 	"home": {
 		"add": "Ajouter",
-		"empty": "Aucun médicament actif ou à venir n'a été détecté. Veuillez ajouter un médicament pour surveiller votre traitement"
+		"empty": "Aucun médicament actuel ou à venir n'a été détecté. Veuillez ajouter un médicament pour contrôler votre traitement."
 	},
 
 	"createMedicine": {
@@ -32,31 +32,31 @@
 
 	"editMedicine": {
 		"title": "Modifier",
-		"notFound": "Pas trouvé",
+		"notFound": "Aucun résultat trouvé",
 		"back": "Retour",
 		"remove": "Supprimer"
 	},
 
 	"analytic": {
-		"title": "Analytique",
-		"empty": "Veuillez ajouter un médicament pour voir vos analyses",
-		"warning": "Il n'est pas possible d'afficher un graphique de progression car actuellement le nombre de médicaments actifs est supérieur à 20.",
+		"title": "Raport",
+		"empty": "Pour accéder à vos données analytiques, veuillez ajouter un médicament",
+		"warning": "Il est impossible d'afficher une représentation visuelle du progrès car actuellement le nombre de médicaments actuels est supérieur à 20.",
 
 		"progress": {
 			"title": "Progrès",
-			"label": "Médicaments actifs"
+			"label": "Médicaments actuels"
 		},
 
 		"bar": {
-			"title": "Le nombre de médicaments pris au cours des 5 dernières années"
+			"title": "Médicaments pris au cours des 5 dernières années"
 		},
 
 		"pie": {
-			"title": "L'indicateur de l'utilisation de différents types de médicaments"
+			"title": "Diagramme circulaire illustrant l'utilisation des différents types de médicaments"
 		},
 
 		"contribution": {
-			"title": "L'activité de consommation de médicaments au cours des 2 derniers mois"
+			"title": "Graphique de l'activité de l'utilisation des médicaments au cours des 2 derniers mois"
 		}
 	},
 
@@ -68,9 +68,9 @@
 			"title": "Filtres",
 
 			"items": {
-				"active": "Actif",
-				"future": "Avenir",
-				"past": "Passé"
+				"active": "Actuels",
+				"future": "Futures",
+				"past": "Terminés"
 			}
 		},
 
@@ -96,14 +96,14 @@
 
 		"field": {
 			"language": "Langue",
-			"contact": "Contact",
-			"clearAllData": "Effacer toutes les données",
-			"terms": "Termes et conditions"
+			"contact": "Nous contacter",
+			"clearAllData": "Supprimer toutes les données",
+			"terms": "Conditions D'Utilisation"
 		},
 
 		"modal": {
 			"clearAllData": {
-				"title": "Effacer toutes les données",
+				"title": "Supprimer toutes les données",
 				"description": "Voulez-vous vraiment supprimer toutes les données? Cette action est irréversible"
 			}
 		}
@@ -112,9 +112,9 @@
 	"medicine": {
 		"field": {
 			"name": "Nom",
-			"type": "Taper",
-			"countPerUse": "Dose",
-			"countPerDay": "Combien par jour ?",
+			"type": "Type",
+			"countPerUse": "Dosage",
+			"countPerDay": "Nombre de prises par jour",
 			"startDate": "Date de début",
 			"endDate": "Date de fin",
 			"notification": "Notification",
@@ -124,8 +124,8 @@
 
 		"modal": {
 			"validation": {
-				"title": "Certains champs ne sont pas renseignés",
-				"description": "Veuillez remplir les champs suivants :"
+				"title": "Il y a des champs de saisie qui sont vides",
+				"description": "Veuillez remplir les champs de saisie suivants:"
 			},
 
 			"remove": {
@@ -135,8 +135,8 @@
 		},
 
 		"warning": {
-			"past": "La plage horaire est dans le passé. Vous ne verrez pas ce médicament sur l'écran d'accueil",
-			"future": "La plage horaire dans le futur"
+			"past": "Vous avez choisi une date qui est déjà passée. Vous ne verrez pas ce médicament sur l'écran d'accueil",
+			"future": "La date que vous avez sélectionnée n'est pas encore arrivée"
 		},
 
 		"indicator": {
@@ -144,33 +144,33 @@
 		},
 
 		"types": {
-			"pill": "Pilules / Capsules",
-			"liquid": "Teinture / Sirop / Liquide",
-			"injection": "Par Injection",
+			"pill": "Comprimé / Capsules",
+			"liquid": "Teinture / Sirop",
+			"injection": "Injection",
 			"cream": "Crème / Pommade / Gel",
 			"drops": "Gouttes",
-			"candles": "Bougies",
-			"pencil": "Crayon Médical",
+			"candles": "Suppositoire",
+			"pencil": "Crayon Médicamenteux",
 			"powder": "Poudre",
-			"spray": "Aérosols / Sprays",
+			"spray": "Aérosol / Spray",
 			"bandage": "Pansement"
 		}
 	},
 
 	"terms": {
-		"title": "Termes et conditions"
+		"title": "Conditions D'Utilisation"
 	},
 
 	"card": {
 		"date": {
-			"till": "Date de fin",
-			"from": "Date de début"
+			"till": "Jusqu'au",
+			"from": "À partir du"
 		},
 
 		"label": {
-			"active": "Actif",
-			"future": "A venir",
-			"past": "Complété"
+			"active": "Actuels",
+			"future": "À prendre bientôt",
+			"past": "Déjà prises"
 		}
 	},
 
@@ -187,7 +187,7 @@
 
 		"input": {
 			"placeholder": {
-				"required": "Requis",
+				"required": "Obligatoire",
 				"optional": "Facultatif",
 				"search": "Recherche"
 			}
@@ -203,11 +203,11 @@
 
 	"notification": {
 		"medicine": {
-			"add": "Le médicament a été ajouté avec succès",
-			"edit": "Le médicament a été mis à jour avec succès",
-			"remove": "Le médicament a été retiré avec succès",
+			"add": "Ajouté avec succès",
+			"edit": "Mis à jour avec succès",
+			"remove": "Supprimé avec succès",
 			"removeAll": "Tous les médicaments ont été supprimés avec succès",
-			"error": "Quelque chose s'est mal passé. Nous travaillons sur le problème"
+			"error": "Quelque chose s'est mal passé. Nous sommes déjà en train de résoudre le problème"
 		}
 	},
 
