@@ -1,16 +1,16 @@
 {
 	"reminders": {
-		"takeMedicine": "Es ist Zeit, deine Medizin zu nehmen"
+		"takeMedicine": "Es ist Zeit Medizin zu einzunehmen"
 	},
 
 	"welcome": {
-		"title": "Willkommen! Bitte lesen Sie die folgenden Dokumente, bevor Sie die Anwendung verwenden",
+		"title": "Willkommen! Bitte lesen Sie die folgende Dokumentation, bevor Sie Applikation benutzen",
 		"agreement": "Ich habe gelesen und akzeptiere",
 		"continue": "Weiterhin",
 
 		"modal": {
 			"validation": {
-				"title": "Aufmerksamkeit",
+				"title": "Achtung",
 				"description": "Sie müssen die erforderlichen Dokumente lesen und akzeptieren"
 			},
 
@@ -23,18 +23,18 @@
 
 	"home": {
 		"add": "Hinzufügen",
-		"empty": "Es wurden keine aktiven oder bevorstehenden Medikamente erkannt. Bitte fügen Sie ein Medikament hinzu, um Ihre Behandlung zu überwachen"
+		"empty": "Keine aktiven oder bevorstehenden Medikamente. Bitte fügen Sie ein Medikament hinzu, um Ihre Behandlung zu überwachen"
 	},
 
 	"createMedicine": {
-		"title": "Erstellen"
+		"title": "Hinzufügen"
 	},
 
 	"editMedicine": {
 		"title": "Bearbeiten",
 		"notFound": "Nicht gefunden",
-		"back": "Gehe zurück",
-		"remove": "Entfernen"
+		"back": "Zurückkehren",
+		"remove": "Medikament löschen"
 	},
 
 	"analytic": {
@@ -44,7 +44,7 @@
 
 		"progress": {
 			"title": "Fortschritt",
-			"label": "Aktive Arzneimittel"
+			"label": "Aktive Medikamente"
 		},
 
 		"bar": {
@@ -52,7 +52,7 @@
 		},
 
 		"pie": {
-			"title": "Der Indikator für die Verwendung verschiedener Arten von Arzneimitteln"
+			"title": "Der Indikator für die Verwendung verschiedener Arten von Medikamenten"
 		},
 
 		"contribution": {
@@ -65,22 +65,22 @@
 		"empty": "Keine Medikamente gefunden",
 
 		"filters": {
-			"title": "Preisauswahl",
+			"title": "Filters",
 
 			"items": {
-				"active": "Aktiv",
-				"future": "Zukunft",
-				"past": "Vergangenheit"
+				"active": "Aktive",
+				"future": "Zukunfte",
+				"past": "Vorige"
 			}
 		},
 
 		"sort": {
 			"button": "Sortieren",
-			"medicines": "Medizin",
+			"medicines": "Medikamente",
 
 			"modal": {
 				"title": "Sortieren nach",
-				"apply": "Gelten"
+				"apply": "Anwenden"
 			},
 
 			"types": {
@@ -114,12 +114,12 @@
 			"name": "Name",
 			"type": "Art",
 			"countPerUse": "Dosis",
-			"countPerDay": "Wie viele pro Tag ?",
+			"countPerDay": "Wie viel mal pro Tag ?",
 			"startDate": "Startdatum",
 			"endDate": "Enddatum",
 			"notification": "Benachrichtigung",
 			"times": "Erinnerung",
-			"color": "Farbig"
+			"color": "Farbe"
 		},
 
 		"modal": {
@@ -129,7 +129,7 @@
 			},
 
 			"remove": {
-				"title": "Arzneimittel entfernen",
+				"title": "Medikament löschen",
 				"description": "Möchten Sie dieses Arzneimittel wirklich löschen? Diese Aktion ist unwiderruflich"
 			}
 		},
@@ -144,7 +144,7 @@
 		},
 
 		"types": {
-			"pill": "Pillen / Kapseln",
+			"pill": "Tabletten / Kapseln",
 			"liquid": "Tinktur / Sirup / Flüssigkeit",
 			"injection": "Injektion",
 			"cream": "Creme / Salbe / Gel",
@@ -164,13 +164,13 @@
 	"card": {
 		"date": {
 			"till": "Bis",
-			"from": "Seit"
+			"from": "Von"
 		},
 
 		"label": {
-			"active": "Aktiv",
-			"future": "Kommende",
-			"past": "Abgeschlossen"
+			"active": "Aktives",
+			"future": "Kommendes",
+			"past": "Abgeschlossenes"
 		}
 	},
 
@@ -198,21 +198,21 @@
 		"loading": "Laden...",
 		"removing": "Entnahme...",
 		"updating": "Aktualisieren...",
-		"uploading": "Hochladen..."
+		"uploading": "Laden..."
 	},
 
 	"notification": {
 		"medicine": {
-			"add": "Medizin wurde erfolgreich hinzugefügt",
-			"edit": "Medizin wurde erfolgreich aktualisiert",
-			"remove": "Medizin wurde erfolgreich entfernt",
-			"removeAll": "Alle Medikamente wurden erfolgreich entfernt",
+			"add": "Das Medikament ist erfolgreich hinzugefügt",
+			"edit": "Das Medikament ist erfolgreich aktualisiert",
+			"remove": "Das Medikament ist erfolgreich gelöscht",
+			"removeAll": "Alle Medikamente sind erfolgreich gelöscht",
 			"error": "Irgendwas ist schief gelaufen. Wir arbeiten an dem Problem"
 		}
 	},
 
 	"error": {
-		"title": "Irgendwas ist kaputt. Bitte kontaktieren Sie uns per E-Mail",
+		"title": "Irgendwas ist schief gelaufen. Bitte kontaktieren Sie uns per E-Mail",
 		"reset": "Fehler beim Zurücksetzen"
 	}
 }
