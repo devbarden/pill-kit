@@ -4,9 +4,14 @@ import { useEndpoints } from '@app/hooks'
 import { Navigator } from '@app/navigator'
 
 export const Initialization: FC = memo(() => {
-	const { useInitMedicines, useInitConfiguration, useInitNotificationChannel } =
-		useEndpoints()
+	const {
+		useInitFonts,
+		useInitMedicines,
+		useInitConfiguration,
+		useInitNotificationChannel,
+	} = useEndpoints()
 
+	const { isLoading: isInitializingFonts } = useInitFonts()
 	const { isLoading: isInitializingMedicines } = useInitMedicines()
 	const { isLoading: isInitializingConfiguration } = useInitConfiguration()
 	const { isLoading: isInitializingNotificationChannel } =
@@ -14,10 +19,12 @@ export const Initialization: FC = memo(() => {
 
 	const isInitializing = useMemo(
 		() =>
+			isInitializingFonts ||
 			isInitializingMedicines ||
 			isInitializingConfiguration ||
 			isInitializingNotificationChannel,
 		[
+			isInitializingFonts,
 			isInitializingMedicines,
 			isInitializingConfiguration,
 			isInitializingNotificationChannel,

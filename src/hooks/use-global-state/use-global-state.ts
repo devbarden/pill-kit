@@ -1,6 +1,4 @@
-import * as SplashScreen from 'expo-splash-screen'
-import { useCallback, useState, useMemo, useEffect } from 'react'
-import { Animated } from 'react-native'
+import { useCallback, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { isRTL } from '@app/utils'
@@ -28,8 +26,6 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 
 	const [activeTab, setActiveTab] = useState<EnumTabRoute>(DEFAULT_TAB_ROUTE)
 	const [isMedicineActionEnabled, setIsMedicineActionEnabled] = useState(true)
-
-	const opacity = useMemo(() => new Animated.Value(0), [])
 
 	const locale = useMemo(() => {
 		if (i18n.language.includes(EnumLanguageCode.ar)) {
@@ -76,27 +72,10 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 		[updateConfiguration, configuration],
 	)
 
-	const hideSplashScreen = useCallback(async () => {
-		if (!isConfigurationLoading) {
-			await SplashScreen.hideAsync()
-
-			Animated.timing(opacity, {
-				toValue: 1,
-				duration: 500,
-				useNativeDriver: true,
-			}).start()
-		}
-	}, [isConfigurationLoading, opacity])
-
-	useEffect(() => {
-		hideSplashScreen()
-	}, [hideSplashScreen])
-
 	return {
 		...configuration,
 
 		locale,
-		opacity,
 		activeTab,
 		globalStyleProps,
 

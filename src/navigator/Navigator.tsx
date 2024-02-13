@@ -1,4 +1,5 @@
-import { FC, useMemo } from 'react'
+import * as SplashScreen from 'expo-splash-screen'
+import { FC, useMemo, useCallback } from 'react'
 import { Animated } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import {
@@ -31,9 +32,9 @@ const screenOptions: StackNavigationOptions = {
 
 export const Navigator: FC = withErrorBoundary(() => {
 	const globalState = useGlobalState()
+	const opacity = useMemo(() => new Animated.Value(0), [])
 
 	const {
-		opacity,
 		isUserAcceptAppDocs,
 		isConfigurationLoading,
 		isMedicineActionEnabled,
@@ -53,12 +54,24 @@ export const Navigator: FC = withErrorBoundary(() => {
 		[isMedicineActionEnabled],
 	)
 
+	const hideSplashScreen = useCallback(async () => {
+		if (!isConfigurationLoading) {
+			await SplashScreen.hideAsync()
+
+			Animated.timing(opacity, {
+				toValue: 1,
+				duration: 500,
+				useNativeDriver: true,
+			}).start()
+		}
+	}, [isConfigurationLoading, opacity])
+
 	if (isConfigurationLoading) {
 		return null
 	}
 
 	return (
-		<Animated.View style={{ flex: 1, opacity }}>
+		<Animated.View style={{ flex: 1, opacity }} onLayout={hideSplashScreen}>
 			<GlobalStateContext.Provider value={globalState}>
 				<NavigationContainer>
 					<Stack.Navigator
