@@ -15,6 +15,7 @@ export enum EnumIconName {
 	sort = 'sort',
 	pill = 'pill',
 	data = 'data',
+	share = 'share',
 	chart = 'chart',
 	check = 'check',
 	error = 'error',

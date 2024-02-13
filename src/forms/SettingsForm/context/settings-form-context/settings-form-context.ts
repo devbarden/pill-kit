@@ -9,13 +9,14 @@ export const SettingsFormContext = createContext<TypeSettingsFormContextProps>({
 
 	selectedLanguage: FALLBACK_LANGUAGE_LABEL,
 
-	changeLanguageHandler: () => {},
+	isShareBtnAvailable: false,
 
 	mailHandler: () => {},
+	shareDataHandler: () => {},
 	termsOfUseHandler: () => {},
+	changeLanguageHandler: () => {},
 
 	openLanguageModal: () => {},
 	closeLanguageModal: () => {},
-
 	openRemoveDataModal: () => {},
 })

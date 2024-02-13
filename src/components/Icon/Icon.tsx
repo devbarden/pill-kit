@@ -71,6 +71,7 @@ const getIconByName = (
 				{...props}
 			/>
 		),
+		[EnumIconName.share]: <Ionicons name="share-outline" {...props} />,
 		[EnumIconName.analytic]: <Octicons name="graph" {...props} />,
 		[EnumIconName.language]: <Octicons name="globe" {...props} />,
 		[EnumIconName.sort]: <Octicons name="sort-desc" {...props} />,

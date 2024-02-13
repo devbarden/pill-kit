@@ -85,13 +85,14 @@ export type TypeSettingsFormContextProps = {
 
 	selectedLanguage: string
 
-	changeLanguageHandler: (locale: string) => void
+	isShareBtnAvailable: boolean
 
 	mailHandler: () => void
+	shareDataHandler: () => void
 	termsOfUseHandler: () => void
+	changeLanguageHandler: (locale: string) => void
 
 	openLanguageModal: () => void
 	closeLanguageModal: () => void
-
 	openRemoveDataModal: () => void
 }

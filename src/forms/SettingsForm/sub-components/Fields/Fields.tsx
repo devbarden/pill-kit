@@ -11,7 +11,10 @@ export const Fields: FC = memo(() => {
 	const {
 		selectedLanguage,
 
+		isShareBtnAvailable,
+
 		mailHandler,
+		shareDataHandler,
 		termsOfUseHandler,
 
 		openLanguageModal,
@@ -49,6 +52,21 @@ export const Fields: FC = memo(() => {
 			</Form.Wrapper>
 
 			<Form.Wrapper>
+				<Fragment>
+					{isShareBtnAvailable && (
+						<Fragment>
+							<Form.PressableItem
+								iconName={EnumIconName.share}
+								iconColor={EnumColor.black}
+								text={t('settings:field.share')}
+								handler={shareDataHandler}
+							/>
+
+							<Form.Separator />
+						</Fragment>
+					)}
+				</Fragment>
+
 				<Form.PressableItem
 					iconName={EnumIconName.remove}
 					iconColor={EnumColor.red}
