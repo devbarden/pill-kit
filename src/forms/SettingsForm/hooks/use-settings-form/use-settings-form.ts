@@ -1,4 +1,5 @@
 import { useMemo, useCallback, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Linking, Share } from 'react-native'
 
 import { useEndpoints, useGlobalContext } from '@app/hooks'
@@ -13,6 +14,7 @@ import {
 } from '@app/constants'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
+	const { t } = useTranslation()
 	const { useMedicines } = useEndpoints()
 	const { data: medicines = [] } = useMedicines()
 	const { locale, setLocale } = useGlobalContext()
@@ -44,16 +46,18 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	}, [])
 
 	const shareDataHandler = useCallback(async () => {
-		const message = medicineUtils
+		const title = t('history:sort.medicines')
+		const medicinesShortDescription = medicineUtils
 			.getSortedBy(medicines, CARD_SORT_TYPE.START_DATE, false)
 			.map(
 				({ name, startDate, endDate }) =>
 					`${name} ${dateToFormat(startDate, locale)} - ${dateToFormat(endDate, locale)}`,
 			)
-			.join('\r\n')
+
+		const message = [title, ...medicinesShortDescription].join('\r\n')
 
 		await Share.share({ message })
-	}, [medicines, locale])
+	}, [medicines, locale, t])
 
 	const termsOfUseHandler = useCallback(async () => {
 		await Linking.openURL(TERMS_OF_USE_LINK)
