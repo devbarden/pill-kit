@@ -40,7 +40,7 @@
 	"analytic": {
 		"title": "Analitik",
 		"empty": "Analitiklerinizi görmek için lütfen bir ilaç ekleyin",
-		"warning": "Şu anda aktif ilaç sayısı 20'nin üzerinde olduğu için ilerleme grafiği görüntülemek mümkün değil.",
+		"warning": "Şu anda aktif ilaç sayısı 20'nin üzerinde olduğu için ilerleme grafiği görüntülemek mümkün değil",
 
 		"progress": {
 			"title": "İlerlemek",

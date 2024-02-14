@@ -1,46 +1,46 @@
 {
 	"reminders": {
-		"takeMedicine": "Czas wziąć lekarstwo"
+		"takeMedicine": "Nadszedł czas, aby wziąć leki"
 	},
 
 	"welcome": {
-		"title": "Witamy! Przed użyciem aplikacji proszę przeczytać następujące dokumenty",
+		"title": "Witamy! Przed rozpoczęciem korzystania z aplikacji prosimy o zapoznanie się z następującymi dokumentami",
 		"agreement": "Przeczytałem i akceptuję",
 		"continue": "Kontynuować",
 
 		"modal": {
 			"validation": {
 				"title": "Uwaga",
-				"description": "Musisz przeczytać i zaakceptować wymagane dokumenty"
+				"description": "Należy przeczytać i zaakceptować wymagane dokumenty"
 			},
 
 			"notification": {
 				"title": "Powiadomienia",
-				"description": "Aby otrzymywać przypomnienia, zezwól aplikacji na wysyłanie powiadomień. W przeciwnym razie nie będziemy mogli przypomnieć Ci, kiedy należy wziąć leki"
+				"description": "Aby otrzymywać przypomnienia, należy zezwolić aplikacji na wysyłanie powiadomień. W przeciwnym razie nie będziemy mogli przypominać o konieczności przyjęcia leków"
 			}
 		}
 	},
 
 	"home": {
-		"add": "Dodać",
-		"empty": "Nie wykryto aktywnych lub nadchodzących leków. Proszę dodać lek, aby monitorować swoje leczenie"
+		"add": "Dodaj",
+		"empty": "Nie wykryto żadnych aktywnych ani nadchodzących leków. Dodaj lek, aby monitorować swoje leczenie"
 	},
 
 	"createMedicine": {
-		"title": "Dodać"
+		"title": "Dodaj"
 	},
 
 	"editMedicine": {
-		"title": "Redagować",
-		"notFound": "Nie znaleziono lekarstwa",
-		"back": "Wróć do",
+		"title": "Edytuj",
+		"notFound": "Nie znaleziono leku",
+		"back": "Wróć",
 		"remove": "Usuń lek"
 	},
 
 	"analytic": {
-		"title": "Analityk",
-		"empty": "Dodaj lekarstwo aby zobaczyć swoje analizy",
-		"warning": "Nie można wyświetlić wykresu postępu, ponieważ obecnie liczba aktywnych leków przekracza 20",
+		"title": "Analityka",
+		"empty": "Dodaj lek, aby zobaczyć swoje dane analityczne",
+		"warning": "Wyświetlenie wykresu postępu nie jest możliwe, ponieważ liczba aktywnych leków obecnie przekracza 20",
 
 		"progress": {
 			"title": "Postęp",
@@ -48,15 +48,15 @@
 		},
 
 		"bar": {
-			"title": "Liczba przyjmowanych leków w ciągu ostatnich 5 lat"
+			"title": "Liczba leków przyjmowanych w ciągu ostatnich 5 lat"
 		},
 
 		"pie": {
-			"title": "Wskaźnik stosowania różnych rodzajów leków"
+			"title": "Wskaźnik wykorzystania różnych rodzajów leków"
 		},
 
 		"contribution": {
-			"title": "Aktywność stosowania leków w ciągu ostatnich 2 miesięcy"
+			"title": "Wskaźnik wykorzystania leków w ciągu ostatnich 2 miesięcy"
 		}
 	},
 
@@ -65,45 +65,45 @@
 		"empty": "Nie znaleziono leków",
 
 		"filters": {
-			"title": "Filtr",
+			"title": "Filtry",
 			"items": {
 				"active": "Aktywny",
-				"future": "Przyszły",
-				"past": "Ubiegły"
+				"future": "Przyszłość",
+				"past": "Przeszłość"
 			}
 		},
 
 		"sort": {
-			"button": "Sortować",
-			"medicines": "Lek",
+			"button": "Sortuj",
+			"medicines": "Leki",
 
 			"modal": {
 				"title": "Sortuj według",
-				"apply": "Zastosować"
+				"apply": "Zastosuj"
 			},
 
 			"types": {
 				"name": "Nazwa",
-				"startDate": "Rozpoczęcie przyjmowania",
-				"endDate": "Koniec odbioru"
+				"startDate": "Rozpoczęcie przyjmowania leków",
+				"endDate": "Koniec przyjmowania leków"
 			}
 		}
 	},
 
 	"settings": {
-		"title": "Konfiguracja",
+		"title": "Ustawienia",
 
 		"field": {
 			"language": "Język",
-			"contact": "Kontakt z nami",
+			"contact": "Kontakt",
 			"clearAllData": "Usuń wszystkie dane",
-			"terms": "Warunki użytkowania i postanowienia"
+			"terms": "Warunki użytkowania i regulamin"
 		},
 
 		"modal": {
 			"clearAllData": {
 				"title": "Usuń wszystkie dane",
-				"description": "Czy naprawdę chcesz usunąć wszystkie dane? Działanie to jest nieodwracalne"
+				"description": "Czy naprawdę chcesz usunąć wszystkie dane? To działanie jest nieodwracalne"
 			}
 		}
 	},
@@ -111,30 +111,30 @@
 	"medicine": {
 		"field": {
 			"name": "Nazwa",
-			"type": "Rodzaj",
+			"type": "Typ",
 			"countPerUse": "Dawka",
-			"countPerDay": "Ile dziennie ?",
-			"startDate": "Rozpoczęcie przyjmowania",
-			"endDate": "Koniec odbioru",
-			"notification": "Powiadomienie",
-			"times": "Przypomnienie",
+			"countPerDay": "Ile razy dziennie ?",
+			"startDate": "Początek podawania",
+			"endDate": "Koniec dawki",
+			"notification": "Powiadomienia",
+			"times": "Przypomnienia",
 			"color": "Kolor"
 		},
 
 		"modal": {
 			"validation": {
-				"title": "Niektóre pola nie są wypełnione",
-				"description": "Proszę wypełnić następujące pola:"
+				"title": "Niektóre pola nie zostały wypełnione",
+				"description": "Uzupełnij następujące pola:"
 			},
 
 			"remove": {
 				"title": "Usuń lek",
-				"description": "Czy na pewno chcesz usunąć ten lek? Ta akcja jest nieodwracalna"
+				"description": "Czy naprawdę chcesz usunąć ten lek? To działanie jest nieodwracalne"
 			}
 		},
 
 		"warning": {
-			"past": "Zakres czasu w przeszłości. Nie zobaczysz tego leku na ekranie głównym",
+			"past": "Ramy czasowe należą już do przeszłości. Ten lek nie będzie widoczny na ekranie głównym",
 			"future": "Zakres czasu w przyszłości"
 		},
 
@@ -144,11 +144,11 @@
 
 		"types": {
 			"pill": "Tabletki / Kapsułki",
-			"liquid": "Nalewka / Syrop",
-			"injection": "Iniekcja",
+			"liquid": "Nalewka / Syrop / Zawiesina",
+			"injection": "Zastrzyk",
 			"cream": "Krem / Maść / Żel",
-			"drops": "Kropla",
-			"candles": "Świeca",
+			"drops": "Krople",
+			"candles": "Świece",
 			"pencil": "Ołówek Medyczny",
 			"powder": "Proszek",
 			"spray": "Aerozol / Spray",
@@ -157,7 +157,7 @@
 	},
 
 	"terms": {
-		"title": "Warunki użytkowania i postanowienia"
+		"title": "Warunki użytkowania i regulamin"
 	},
 
 	"card": {
@@ -175,19 +175,19 @@
 
 	"component": {
 		"button": {
-			"ok": "Okay",
-			"add": "Dodać",
-			"save": "Zachować",
-			"back": "Wrócić",
-			"cancel": "Cofnąć",
-			"delete": "Usunąć",
-			"close": "Zamknąć"
+			"ok": "Ok",
+			"add": "Dodaj",
+			"save": "Zapisz",
+			"back": "Powrót",
+			"cancel": "Anuluj",
+			"delete": "Usuń",
+			"close": "Zamknij"
 		},
 
 		"input": {
 			"placeholder": {
-				"required": "Obowiązkowy",
-				"optional": "Niekoniecznie",
+				"required": "Obowiązkowe",
+				"optional": "Opcjonalne",
 				"search": "Wyszukiwanie"
 			}
 		}
@@ -196,22 +196,22 @@
 	"actions": {
 		"loading": "Ładowanie...",
 		"removing": "Usuwanie...",
-		"updating": "Odnowienie...",
+		"updating": "Aktualizacja...",
 		"uploading": "Ładowanie..."
 	},
 
 	"notification": {
 		"medicine": {
-			"add": "Lek został pomyślnie dodany",
-			"edit": "Lek został pomyślnie zaktualizowany",
-			"remove": "Lek został pomyślnie usunięty",
-			"removeAll": "Wszystkie leki zostały pomyślnie usunięte",
-			"error": "Coś poszło nie tak. Pracujemy nad rozwiązaniem problemu"
+			"add": "Lek został dodany",
+			"edit": "Lek został zaktualizowany",
+			"remove": "Lek został usunięty",
+			"removeAll": "Wszystkie leki zostały usunięte",
+			"error": "Coś poszło nie tak. Pracujemy nad tym problemem"
 		}
 	},
 
 	"error": {
-		"title": "Coś się zepsuło. Proszę skontaktować się z nami drogą mailową",
+		"title": "Coś jest uszkodzone. Prosimy o kontakt przez e-mail",
 		"reset": "Zresetuj błąd"
 	}
 }

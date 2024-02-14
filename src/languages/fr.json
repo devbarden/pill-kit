@@ -23,7 +23,7 @@
 
 	"home": {
 		"add": "Ajouter",
-		"empty": "Aucun médicament actuel ou à venir n'a été détecté. Veuillez ajouter un médicament pour contrôler votre traitement."
+		"empty": "Aucun médicament actuel ou à venir n'a été détecté. Veuillez ajouter un médicament pour contrôler votre traitement"
 	},
 
 	"createMedicine": {
@@ -40,7 +40,7 @@
 	"analytic": {
 		"title": "Raport",
 		"empty": "Pour accéder à vos données analytiques, veuillez ajouter un médicament",
-		"warning": "Il est impossible d'afficher une représentation visuelle du progrès car actuellement le nombre de médicaments actuels est supérieur à 20.",
+		"warning": "Il est impossible d'afficher une représentation visuelle du progrès car actuellement le nombre de médicaments actuels est supérieur à 20",
 
 		"progress": {
 			"title": "Progrès",
