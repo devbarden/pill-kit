@@ -97,6 +97,7 @@
 		"field": {
 			"language": "Language",
 			"contact": "Contact",
+			"share": "Share data",
 			"clearAllData": "Clear all data",
 			"terms": "Terms And Conditions"
 		},

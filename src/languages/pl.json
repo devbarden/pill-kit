@@ -96,6 +96,7 @@
 		"field": {
 			"language": "Język",
 			"contact": "Kontakt",
+			"share": "Udostępnianie danych",
 			"clearAllData": "Usuń wszystkie dane",
 			"terms": "Warunki użytkowania i regulamin"
 		},
