@@ -7,6 +7,6 @@ import { styles } from './Spinner.styles'
 
 export const Spinner: FC = memo(() => (
 	<Box style={styles.wrapper}>
-		<BaseSpinner size={64} />
+		<BaseSpinner size={20} />
 	</Box>
 ))

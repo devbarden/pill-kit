@@ -112,7 +112,7 @@ export const Default: FC = memo(() => {
 			<Box style={style.actions}>
 				{isRequesting ? (
 					<Box style={style.spinner}>
-						<Spinner size={40} />
+						<Spinner size={12} />
 					</Box>
 				) : (
 					<Fragment>

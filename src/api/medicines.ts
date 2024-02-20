@@ -17,11 +17,11 @@ import {
 } from '@app/types'
 
 import {
-	setNotifications,
-	updateNotifications,
-	cancelAllNotifications,
-	cancelNotificationsById,
-} from './notification'
+	setCalendarEvent,
+	updateCalendarEvent,
+	cancelCalendarEvent,
+	cancelAllCalendarEvents,
+} from './calendar'
 
 export const initMedicines = async () => {
 	try {
@@ -87,7 +87,7 @@ export const setMedicine = async (
 
 		await delay(400)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
-		await setNotifications(newMedicine, subtitle)
+		await setCalendarEvent(newMedicine, subtitle)
 	} catch {}
 }
 
@@ -112,7 +112,7 @@ export const editMedicine = async (
 
 		await delay(400)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
-		await updateNotifications(updatedMedicine, subtitle)
+		await updateCalendarEvent(updatedMedicine, subtitle)
 	} catch {}
 }
 
@@ -126,7 +126,7 @@ export const removeMedicine = async (id: TypeMedicineId) => {
 
 		await delay(800)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
-		await cancelNotificationsById(id)
+		await cancelCalendarEvent(id)
 	} catch {}
 }
 
@@ -135,8 +135,9 @@ export const removeAllMedicines = async () => {
 		const newMedicines: TypeMedicine[] = []
 		const stringifiedMedicines = JSON.stringify(newMedicines)
 
+		await delay(400)
 		await AsyncStorage.setItem(EnumStorage.medicines, stringifiedMedicines)
-		await cancelAllNotifications()
+		await cancelAllCalendarEvents()
 	} catch {}
 }
 

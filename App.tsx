@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler'
 import * as SplashScreen from 'expo-splash-screen'
-import * as Notifications from 'expo-notifications'
 import Application from 'react-native-restart'
 import { FC, memo } from 'react'
 import { registerRootComponent } from 'expo'
@@ -27,14 +26,6 @@ if (Platform.OS === 'android') {
 	UIManager.setLayoutAnimationEnabledExperimental &&
 		UIManager.setLayoutAnimationEnabledExperimental(true)
 }
-
-Notifications.setNotificationHandler({
-	handleNotification: async () => ({
-		shouldShowAlert: true,
-		shouldPlaySound: true,
-		shouldSetBadge: false,
-	}),
-})
 
 const queryClient = new QueryClient()
 

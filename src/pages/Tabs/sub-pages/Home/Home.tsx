@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from 'react'
 
-import { useLocalNotification } from '@app/hooks'
+import { useDeviceCalendar } from '@app/hooks'
 import { Header, CardsList, ContentWrapper } from '@app/components'
 
 import { useHomeState } from './hooks'
@@ -14,7 +14,7 @@ export const Home: FC = memo(() => {
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
 
-	useLocalNotification(1000)
+	useDeviceCalendar(1000)
 
 	return (
 		<HomeContext.Provider value={state}>

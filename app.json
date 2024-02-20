@@ -22,7 +22,11 @@
 				"foregroundImage": "./assets/logo.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.devbarden.pillkit"
+			"package": "com.devbarden.pillkit",
+			"permissions": [
+				"android.permission.READ_CALENDAR",
+				"android.permission.WRITE_CALENDAR"
+			]
 		},
 		"locales": {
 			"en": "./src/languages/en.json",
@@ -47,14 +51,7 @@
 		"plugins": [
 			["./plugins/with-modified-gradle.js"],
 			["expo-localization"],
-			[
-				"expo-notifications",
-				{
-					"icon": "./assets/logo-without-bg.png",
-					"color": "#A4161A",
-					"backgroundColor": "#ffffff"
-				}
-			]
+			["expo-calendar"]
 		],
 		"extra": {
 			"eas": {

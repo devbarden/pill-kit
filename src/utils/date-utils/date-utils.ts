@@ -1,11 +1,20 @@
-import { TypeMedicine } from '@app/types'
 import { EnumLanguageCode } from '@app/enums'
+import { TypeMedicine, TypeMedicineTime } from '@app/types'
 
 export const getNextYear = (n: number = 1) => {
 	const date = new Date()
 	const currentYear = date.getFullYear()
 
 	date.setFullYear(currentYear + n)
+
+	return date
+}
+
+export const getPrevYear = (n: number = 1) => {
+	const date = new Date()
+	const currentYear = date.getFullYear()
+
+	date.setFullYear(currentYear - n)
 
 	return date
 }
@@ -45,6 +54,20 @@ export const getTimeByDate = (value: Date | number) => {
 	return time
 }
 
+export const getDateWithTime = (
+	value: number | string | Date,
+	{ hours, minutes }: TypeMedicineTime,
+) => {
+	const date = typeof value === 'object' ? value : new Date(value)
+
+	date.setHours(hours)
+	date.setMinutes(minutes)
+	date.setSeconds(0)
+	date.setMilliseconds(0)
+
+	return date
+}
+
 export const timeToFormat = (value: number, locale: string): string => {
 	const is12HourFormat =
 		locale.includes(EnumLanguageCode.en) ||
@@ -78,15 +101,7 @@ export const getDatesToNotify = ({
 	const dates: Date[] = days.reduce(
 		(acc: Date[], value) => [
 			...acc,
-			...times.map(({ hours, minutes }) => {
-				const date = new Date(value)
-
-				date.setHours(hours)
-				date.setMinutes(minutes)
-				date.setSeconds(0)
-
-				return date
-			}),
+			...times.map((time) => getDateWithTime(value, time)),
 		],
 		[],
 	)

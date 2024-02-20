@@ -47,9 +47,11 @@ export const MEDICINE_DEFAULT_COUNT_PER_DAY = getFirstValueFromSelectItems(
 
 export const MEDICINE_DEFAULT_NOTIFICATION = true
 
-export const MEDICINE_DEFAULT_START_DATE = Date.now()
+export const MEDICINE_DEFAULT_START_DATE = new Date().setHours(0, 0, 0, 0)
 
-export const MEDICINE_DEFAULT_END_DATE = addWeeks(new Date(), 2)
+export const MEDICINE_DEFAULT_END_DATE = new Date(
+	addWeeks(new Date(), 2),
+).setHours(23, 59, 59, 999)
 
 export const MEDICINE_DEFAULT_TIMES_MAP: Record<string, TypeMedicineTime[]> = {
 	'1': [{ id: uid(), hours: 12, minutes: 0 }],

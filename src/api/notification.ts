@@ -1,16 +1,12 @@
-import * as Notifications from 'expo-notifications'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import * as Notifications from 'expo-notifications'
 import { Platform } from 'react-native'
 import { map, filter } from 'lodash'
 
 import { EnumStorage } from '@app/enums'
 import { INITIAL_NOTIFICATION_STORAGE } from '@app/constants'
 import { TypeMedicine, TypeNotificationStorage } from '@app/types'
-import {
-	isNoDeserted,
-	getDatesToNotify,
-	scheduleNotificationCallback,
-} from '@app/utils'
+import { isNoDeserted, getDatesToNotify } from '@app/utils'
 
 export const initNotificationChannel = async () => {
 	try {
@@ -28,6 +24,32 @@ export const initNotificationChannel = async () => {
 	} catch {
 		return false
 	}
+}
+
+export const scheduleLocalNotification = async (
+	date: Date,
+	title: string,
+	subtitle: string,
+) => {
+	try {
+		const isAvailableToScheduleNotification = date.getTime() >= Date.now()
+
+		if (!isAvailableToScheduleNotification) {
+			return null
+		}
+
+		const notificationId = await Notifications.scheduleNotificationAsync({
+			content: {
+				title,
+				subtitle,
+			},
+			trigger: {
+				date,
+			},
+		})
+
+		return notificationId
+	} catch {}
 }
 
 const getNotificationStorage = async () => {
@@ -86,17 +108,17 @@ export const setNotifications = async (
 			return
 		}
 
-		const notificationStorage = await getNotificationStorage()
 		const dates = getDatesToNotify(medicine)
 
 		const response = await Promise.all(
-			map(dates, (date) => scheduleNotificationCallback(date, name, subtitle)),
+			map(dates, (date) => scheduleLocalNotification(date, name, subtitle)),
 		)
 
 		const notificationsIds = filter(response, (value) =>
 			isNoDeserted(value),
 		) as string[]
 
+		const notificationStorage = await getNotificationStorage()
 		const updatedNotificationsStorage = {
 			...notificationStorage,
 			[id]: notificationsIds,
@@ -116,4 +138,25 @@ export const updateNotifications = async (
 		await cancelNotificationsById(id)
 		await setNotifications(medicine, subtitle)
 	} catch {}
+}
+
+export const handleNotification = async ({
+	request,
+}: Notifications.Notification) => {
+	const { content } = request
+	const { data } = content
+	const { id, startDate, endDate } = data as TypeMedicine
+
+	const now = Date.now()
+	const shouldShowAlert = now >= startDate && now <= endDate
+
+	if (now > endDate) {
+		await cancelNotificationsById(id)
+	}
+
+	return {
+		shouldShowAlert,
+		shouldPlaySound: shouldShowAlert,
+		shouldSetBadge: false,
+	}
 }

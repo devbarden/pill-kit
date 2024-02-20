@@ -1,4 +1,5 @@
 export * from './preload'
+export * from './calendar'
 export * from './medicines'
 export * from './notification'
 export * from './configuration'

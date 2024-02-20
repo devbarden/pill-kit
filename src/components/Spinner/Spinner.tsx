@@ -1,5 +1,5 @@
-import LoaderKit from 'react-native-loader-kit'
 import { FC, memo } from 'react'
+import { DotIndicator } from 'react-native-indicators'
 
 import { EnumColor } from '@app/enums'
 
@@ -8,8 +8,7 @@ type TypeProps = {
 }
 
 export const Spinner: FC<TypeProps> = memo(({ size = 24 }) => (
-	<LoaderKit
-		name="BallPulse"
+	<DotIndicator
 		size={size}
 		style={{ width: size, height: size }}
 		color={EnumColor.red}

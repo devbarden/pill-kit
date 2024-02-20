@@ -70,7 +70,7 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 
 		spinner: {
 			flex: 1,
-			padding: 8,
+			paddingVertical: 28,
 			justifyContent: 'center',
 			alignItems: 'center',
 		},
