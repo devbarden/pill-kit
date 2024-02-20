@@ -1,6 +1,6 @@
 {
 	"reminders": {
-		"takeMedicine": "该吃药了"
+		"takeMedicine": "已到吃药时间"
 	},
 
 	"welcome": {
@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "通知",
-				"description": "要接收提醒，请允许应用程序发送通知。否则，我们将无法提醒您何时服药"
+				"description": "需要接收提醒，请允许应用程序发送通知。否则我们将无法提醒您何时服药"
 			}
 		}
 	},
@@ -33,13 +33,13 @@
 	"editMedicine": {
 		"title": "编辑",
 		"notFound": "未找到",
-		"back": "回去吧",
-		"remove": "移走"
+		"back": "返回",
+		"remove": "删除"
 	},
 
 	"analytic": {
-		"title": "分析法,分析法",
-		"empty": "请加药看看你的分析",
+		"title": "分析",
+		"empty": "请添加一种药物以查看您的分析",
 		"warning": "无法显示进度图，因为目前活性药物的数量超过20",
 
 		"progress": {
@@ -56,13 +56,13 @@
 		},
 
 		"contribution": {
-			"title": "过去两个月的药物使用活动"
+			"title": "过去两个月积极使用医疗药物的指标"
 		}
 	},
 
 	"history": {
 		"title": "历史",
-		"empty": "没有发现药物",
+		"empty": "未找到医疗制剂",
 
 		"filters": {
 			"title": "过滤器",
@@ -111,7 +111,7 @@
 
 	"medicine": {
 		"field": {
-			"name": "姓名",
+			"name": "标题",
 			"type": "类型",
 			"countPerUse": "剂量",
 			"countPerDay": "每天有多少？",
@@ -135,7 +135,7 @@
 		},
 
 		"warning": {
-			"past": "时间范围在过去。您将不会在主屏幕上看到这种药物",
+			"past": "过去的时间范围。你不会在主屏幕上看到这种药",
 			"future": "未来的时间范围"
 		},
 
@@ -213,6 +213,6 @@
 
 	"error": {
 		"title": "出了点问题。请通过电子邮件与我们联系",
-		"reset": "Reset error"
+		"reset": "重置错误"
 	}
 }
