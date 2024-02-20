@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 import { EnumColor } from '@app/enums'
-import { IS_ANDROID, SAFE_ANDROID_BAR_HEIGHT } from '@app/constants'
 
 export const styles = StyleSheet.create({
 	wrapper: {
@@ -14,7 +13,6 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderColor: EnumColor.transparentGrey,
 		backgroundColor: EnumColor.grey,
-		paddingTop: IS_ANDROID ? SAFE_ANDROID_BAR_HEIGHT : 8,
 	},
 
 	backAction: {

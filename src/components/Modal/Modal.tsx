@@ -2,6 +2,7 @@ import BaseModal, { ModalProps } from 'react-native-modal'
 import { forwardRef, useMemo, useImperativeHandle } from 'react'
 
 import { EnumModalType } from '@app/enums'
+import { DEVICE_HEIGHT, DEVICE_WIDTH } from '@app/constants'
 import { TypeModalProps, TypeModalHandlers } from '@app/types'
 
 import { useModalState } from './hooks'
@@ -67,6 +68,9 @@ export const Modal = forwardRef<TypeModalHandlers, TypeModalProps>(
 			<ModalContext.Provider value={state}>
 				<BaseModal
 					{...(config as ModalProps)}
+					statusBarTranslucent
+					deviceHeight={DEVICE_HEIGHT}
+					deviceWidth={DEVICE_WIDTH}
 					backdropTransitionOutTiming={0}
 					style={style}
 					isVisible={isVisible}

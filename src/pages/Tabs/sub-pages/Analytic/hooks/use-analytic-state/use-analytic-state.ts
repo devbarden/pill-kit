@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { Dimensions } from 'react-native'
 
 import { useEndpoints } from '@app/hooks'
 import { TypeAnalyticContextProps } from '@app/types'
@@ -9,8 +8,6 @@ import { ANALYTIC_FILTERS_OF_ACTIVE } from '@app/constants'
 export const useAnalyticState = (): TypeAnalyticContextProps => {
 	const { useMedicines } = useEndpoints()
 	const { data: allMedicines = [], isLoading } = useMedicines()
-
-	const screenWidth = useMemo(() => Dimensions.get('window').width, [])
 
 	const activeMedicines = useMemo(
 		() =>
@@ -28,8 +25,6 @@ export const useAnalyticState = (): TypeAnalyticContextProps => {
 	const isNoMedicines = useMemo(() => isDeserted(allMedicines), [allMedicines])
 
 	return {
-		screenWidth,
-
 		allMedicines,
 		activeMedicines,
 

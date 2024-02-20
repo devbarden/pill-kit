@@ -14,6 +14,7 @@ import {
 	toString,
 } from 'lodash'
 
+import { DEVICE_WIDTH } from '@app/constants'
 import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
 import { EnumColor, EnumLanguageCode } from '@app/enums'
@@ -25,7 +26,7 @@ import { styles } from './Bar.styles'
 export const Bar: FC = memo(() => {
 	const { t } = useTranslation()
 	const { locale } = useGlobalContext()
-	const { allMedicines, isLoading, screenWidth } = useContext(AnalyticContext)
+	const { allMedicines, isLoading } = useContext(AnalyticContext)
 
 	const isAvailableToShowValuesOnBars = useMemo(
 		() =>
@@ -37,8 +38,8 @@ export const Bar: FC = memo(() => {
 	const hiddenSpaceSize = useMemo(() => 80, [])
 
 	const chartWidth = useMemo(
-		() => screenWidth + hiddenSpaceSize / 2,
-		[screenWidth, hiddenSpaceSize],
+		() => DEVICE_WIDTH + hiddenSpaceSize / 2,
+		[hiddenSpaceSize],
 	)
 
 	const chartConfig = useMemo(
