@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Notificações",
-				"description": "Para receber lembretes, por favor permita que o aplicativo envie notificações. Caso contrário, não poderemos lembrá-lo de quando tomar seus medicamentos"
+				"description": "Para receber lembretes, por favor, permita que o aplicativo acesse o calendário. Caso contrário, não poderemos lembrá-lo quando tomar o medicamento"
 			}
 		}
 	},

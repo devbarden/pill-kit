@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Notifications",
-				"description": "Pour recevoir des rappels, veuillez autoriser l'application à envoyer des notifications. Sinon, nous ne serrons pas vous rappeler quand prendre vos médicaments"
+				"description": "Pour recevoir des rappels, veuillez autoriser l'application à accéder au calendrier. Sinon, nous ne pourrons pas vous rappeler quand prendre le médicament"
 			}
 		}
 	},

@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Notificaciones",
-				"description": "Para recibir recordatorios, permita que la aplicación acceda a enviar notificaciones. De lo contrario, no podremos recordarle cuándo tiene que tomar los medicamentos"
+				"description": "Para recibir recordatorios, por favor permita que la aplicación acceda al calendario. De lo contrario, no podremos recordarle cuándo tomar el medicamento"
 			}
 		}
 	},

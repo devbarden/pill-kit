@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Powiadomienia",
-				"description": "Aby otrzymywać przypomnienia, należy zezwolić aplikacji na wysyłanie powiadomień. W przeciwnym razie nie będziemy mogli przypominać o konieczności przyjęcia leków"
+				"description": "Aby otrzymywać przypomnienia, należy zezwolić aplikacji na dostęp do kalendarza. W przeciwnym razie nie będziemy w stanie przypomnieć o konieczności zażycia leku"
 			}
 		}
 	},

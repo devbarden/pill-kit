@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Bildirimler",
-				"description": "Hatırlatıcıları almak için, lütfen uygulamanın bildirim göndermesine izin verin. Aksi takdirde, ilaçlarınızı ne zaman almanız gerektiğini hatırlatamayız"
+				"description": "Hatırlatıcılar almak için lütfen uygulamanın takvime erişmesine izin verin. Aksi takdirde, ilacı ne zaman alacağınızı size hatırlatamayız"
 			}
 		}
 	},

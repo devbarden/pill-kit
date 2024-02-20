@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Benachrichtigungen",
-				"description": "Um Erinnerungen zu erhalten, erlauben Sie bitte der App, Benachrichtigungen zu senden. Andernfalls können wir Sie nicht daran erinnern, Ihre Medikamente einzunehmen"
+				"description": "Um Erinnerungen zu erhalten, erlauben Sie bitte der App den Zugriff auf den Kalender. Andernfalls können wir Sie nicht daran erinnern, das Medikament einzunehmen"
 			}
 		}
 	},

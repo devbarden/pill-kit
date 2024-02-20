@@ -16,7 +16,7 @@
 
 			"notification": {
 				"title": "Notifiche",
-				"description": "Per ricevere promemoria, si prega di consentire all'app di inviare notifiche. Altrimenti, non saremo in grado di ricordarti quando prendere i tuoi medicinali"
+				"description": "Per ricevere promemoria, Consenti all'app di accedere al calendario. Altrimenti, non saremo in grado di ricordarti quando prendere la medicina"
 			}
 		}
 	},
