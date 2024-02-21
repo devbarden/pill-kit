@@ -1,10 +1,8 @@
-import { Dimensions, Platform, StatusBar } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 
 export const IS_IOS = Platform.OS === 'ios'
 
 export const IS_ANDROID = Platform.OS === 'android'
-
-export const SAFE_ANDROID_BAR_HEIGHT = StatusBar.currentHeight
 
 export const DEVICE_DIMENSIONS = Dimensions.get('screen')
 

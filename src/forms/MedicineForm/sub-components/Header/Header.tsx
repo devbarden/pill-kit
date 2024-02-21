@@ -22,16 +22,16 @@ export const Header: FC = memo(() => {
 	return (
 		<Box style={styles.wrapper}>
 			<Pressable style={styles.backAction} onPress={backHandler}>
-				<Icon name={EnumIconName.back} size={32} />
+				<Icon name={EnumIconName.back} size={20} />
 				<Box style={styles.title}>
-					<Text fontSize="md" textAlign="left" numberOfLines={1}>
+					<Text fontSize="lg" textAlign="left" numberOfLines={1}>
 						{t('component:button.back')}
 					</Text>
 				</Box>
 			</Pressable>
 			<Pressable style={styles.saveAction} onPress={saveHandler}>
 				<Text
-					fontSize="md"
+					fontSize="lg"
 					fontWeight="bold"
 					numberOfLines={1}
 					color={btnTextColor}>

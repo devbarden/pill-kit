@@ -22,6 +22,17 @@ const getDefaultCalendarSource = async () => {
 	} as Calendar.Source
 }
 
+export const setCalendarId = async (
+	calendarId: string | undefined = undefined,
+) => {
+	try {
+		const data = await getConfiguration()
+		const dataWithNewCalendarId = { ...data, calendarId }
+
+		await setConfiguration(dataWithNewCalendarId)
+	} catch {}
+}
+
 export const initCalendar = async () => {
 	try {
 		const defaultCalendarSource = await getDefaultCalendarSource()
@@ -38,18 +49,17 @@ export const initCalendar = async () => {
 			accessLevel: Calendar.CalendarAccessLevel.OWNER,
 		})
 
-		const data = await getConfiguration()
-		const dataWithNewCalendarId = { ...data, calendarId }
-
-		await setConfiguration(dataWithNewCalendarId)
+		await setCalendarId(calendarId)
 
 		return calendarId
 	} catch {
+		await setCalendarId()
+
 		return undefined
 	}
 }
 
-export const getIsCalendarAlreadyExist = async () => {
+export const getCalendarExistingId = async (): Promise<string | undefined> => {
 	try {
 		const { calendarId } = await getConfiguration()
 
@@ -59,9 +69,15 @@ export const getIsCalendarAlreadyExist = async () => {
 
 		const calendar = calendars.find(({ id }) => id === calendarId)
 
-		return Boolean(calendar)
+		if (!calendar) {
+			await setCalendarId()
+
+			return undefined
+		}
+
+		return calendar.id
 	} catch {
-		return false
+		return undefined
 	}
 }
 
@@ -90,7 +106,7 @@ export const cancelAllCalendarEvents = async () => {
 	try {
 		await setCalendarStorage(INITIAL_CALENDAR_STORAGE)
 
-		const { calendarId } = await getConfiguration()
+		const calendarId = await getCalendarExistingId()
 
 		if (calendarId) {
 			await Calendar.deleteCalendarAsync(calendarId)
@@ -105,10 +121,6 @@ export const cancelCalendarEvent = async (id: string) => {
 		const calendarStorage = await getCalendarStorage()
 		const eventsIds: string[] = calendarStorage[id] ?? []
 
-		delete calendarStorage[id]
-
-		await setCalendarStorage(calendarStorage)
-
 		await Promise.all(
 			map(eventsIds, (eventId) =>
 				Calendar.deleteEventAsync(eventId, {
@@ -116,6 +128,10 @@ export const cancelCalendarEvent = async (id: string) => {
 				}),
 			),
 		)
+
+		delete calendarStorage[id]
+
+		await setCalendarStorage(calendarStorage)
 	} catch {}
 }
 
@@ -124,23 +140,23 @@ export const setCalendarEvent = async (
 	subtitle: string,
 ) => {
 	try {
-		const { calendarId } = await getConfiguration()
 		const { id, name, startDate, endDate, notification, times } = medicine
 
-		let newCalendarId = calendarId
+		const existingCalendarId = await getCalendarExistingId()
 
-		if (!calendarId) {
-			newCalendarId = await initCalendar()
+		let calendarId = existingCalendarId
+
+		if (!existingCalendarId) {
+			calendarId = await initCalendar()
 		}
 
-		if (!newCalendarId || !notification) {
+		if (!calendarId || !notification) {
 			return
 		}
 
-		const finalCalendarId: string = calendarId ?? newCalendarId
 		const response = await Promise.all(
 			map(times, (time) =>
-				Calendar.createEventAsync(finalCalendarId, {
+				Calendar.createEventAsync(calendarId as string, {
 					title: `${name} - ${subtitle}`,
 
 					allDay: false,

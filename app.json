@@ -28,6 +28,9 @@
 				"android.permission.WRITE_CALENDAR"
 			]
 		},
+		"androidStatusBar": {
+			"translucent": false
+		},
 		"locales": {
 			"en": "./src/languages/en.json",
 			"ru": "./src/languages/ru.json",

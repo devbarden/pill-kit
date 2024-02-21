@@ -2,7 +2,7 @@ import * as Calendar from 'expo-calendar'
 import { useCallback, useEffect } from 'react'
 
 import { delay } from '@app/utils'
-import { initCalendar, getIsCalendarAlreadyExist } from '@app/api'
+import { initCalendar, getCalendarExistingId } from '@app/api'
 
 export const useDeviceCalendar = (delayMs: number = 0) => {
 	const registerForDeviceCalendarAsync = useCallback(async () => {
@@ -11,9 +11,9 @@ export const useDeviceCalendar = (delayMs: number = 0) => {
 		const { status } = await Calendar.requestCalendarPermissionsAsync()
 
 		if (status === 'granted') {
-			const isCalendarAlreadyExist = await getIsCalendarAlreadyExist()
+			const calendarId = await getCalendarExistingId()
 
-			if (!isCalendarAlreadyExist) {
+			if (!calendarId) {
 				await initCalendar()
 			}
 		}

@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		paddingVertical: 8,
 		paddingHorizontal: 16,
 		borderBottomWidth: 1,
 		borderColor: EnumColor.lightGrey,
@@ -15,17 +16,16 @@ export const styles = StyleSheet.create({
 	},
 
 	back: {
-		paddingRight: 32,
+		paddingRight: 8,
 		height: '100%',
 	},
 
 	action: {
-		paddingLeft: 32,
+		paddingLeft: 8,
 		height: '100%',
 	},
 
 	title: {
 		flex: 1,
-		paddingBottom: 8,
 	},
 })
