@@ -26,15 +26,6 @@ export const initCalendar = async () => {
 	try {
 		const defaultCalendarSource = await getDefaultCalendarSource()
 
-		const calendars = await Calendar.getCalendarsAsync()
-		const existingCalendarByTitle = calendars.find(
-			({ title }) => title === APP_NAME,
-		)
-
-		if (existingCalendarByTitle) {
-			await Calendar.deleteCalendarAsync(existingCalendarByTitle.id)
-		}
-
 		const calendarId = await Calendar.createCalendarAsync({
 			title: APP_NAME,
 			name: APP_NAME,
@@ -62,7 +53,9 @@ export const getIsCalendarAlreadyExist = async () => {
 	try {
 		const { calendarId } = await getConfiguration()
 
-		const calendars = await Calendar.getCalendarsAsync()
+		const calendars = await Calendar.getCalendarsAsync(
+			Calendar.EntityTypes.EVENT,
+		)
 
 		const calendar = calendars.find(({ id }) => id === calendarId)
 
