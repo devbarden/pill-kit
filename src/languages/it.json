@@ -27,19 +27,19 @@
 	},
 
 	"createMedicine": {
-		"title": "Creare"
+		"title": "Aggiungere"
 	},
 
 	"editMedicine": {
 		"title": "Modificare",
-		"notFound": "Non trovato",
+		"notFound": "Medicinale non trovato",
 		"back": "Torna indietro",
-		"remove": "Rimuovere"
+		"remove": "Rimuovere medicinale"
 	},
 
 	"analytic": {
-		"title": "Analytics",
-		"empty": "Aggiungi un medicinale per visualizzare le tue analisi",
+		"title": "Analitica",
+		"empty": "Per favore, aggiungi un medicinale per visualizzare le tua analitica",
 		"warning": "Non è possibile visualizzare un grafico di avanzamento perché al momento il numero di farmaci attivi è superiore a 20",
 
 		"progress": {
@@ -56,12 +56,12 @@
 		},
 
 		"contribution": {
-			"title": "L'attività dei farmaci utilizzati negli ultimi 2 mesi"
+			"title": "Attività di utilizzo dei farmaci nei ultimi 2 mesi"
 		}
 	},
 
 	"history": {
-		"title": "Storia",
+		"title": "Cronologia",
 		"empty": "Nessun farmaco trovato",
 
 		"filters": {
@@ -75,8 +75,8 @@
 		},
 
 		"sort": {
-			"button": "Ordine",
-			"medicines": "Medicina",
+			"button": "Ordinare",
+			"medicines": "Medicinali",
 
 			"modal": {
 				"title": "Ordina per",
@@ -85,8 +85,8 @@
 
 			"types": {
 				"name": "Nome",
-				"startDate": "Data di inizio",
-				"endDate": "Data di fine"
+				"startDate": "Data inizio trattamento",
+				"endDate": "Data fine trattamento"
 			}
 		}
 	},
@@ -96,7 +96,7 @@
 
 		"field": {
 			"language": "Lingua",
-			"contact": "Contatto",
+			"contact": "Contatto con noi",
 			"share": "Condividi i dati",
 			"clearAllData": "Cancella tutti i dati",
 			"terms": "Termini e Condizioni"
@@ -116,8 +116,8 @@
 			"type": "Tipo",
 			"countPerUse": "Dose",
 			"countPerDay": "Quanti al giorno?",
-			"startDate": "Data d'inizio",
-			"endDate": "Data di fine",
+			"startDate": "Data inizio trattamento",
+			"endDate": "Data fine trattamento",
 			"notification": "Notifica",
 			"times": "Promemoria",
 			"color": "Colore"
@@ -136,7 +136,7 @@
 		},
 
 		"warning": {
-			"past": "L'intervallo di tempo è nel passato. Non vedrai questo medicinale nella schermata principale",
+			"past": "L'intervallo di tempo nel passato. Non vedrai questo medicinale nella schermata principale",
 			"future": "L'intervallo di tempo nel futuro"
 		},
 
@@ -183,14 +183,14 @@
 			"back": "Indietro",
 			"cancel": "Annulla",
 			"delete": "Eliminare",
-			"close": "Vicino"
+			"close": "Chiudere"
 		},
 
 		"input": {
 			"placeholder": {
-				"required": "Necessario",
-				"optional": "Opzionale",
-				"search": "Ricerca"
+				"required": "Obbligatorio",
+				"optional": "Non obbligatorio",
+				"search": "Cerca"
 			}
 		}
 	},
@@ -214,6 +214,6 @@
 
 	"error": {
 		"title": "Qualcosa si è rotto. Si prega di contattarci via email",
-		"reset": "Reimpostare l'errore"
+		"reset": "Ripristinare l'errore"
 	}
 }
