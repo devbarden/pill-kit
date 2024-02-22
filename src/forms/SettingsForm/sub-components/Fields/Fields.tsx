@@ -48,7 +48,7 @@ export const Fields: FC = memo(() => {
 
 				<Form.PressableItem
 					withoutChevronRight
-					text={t('medicine:field.theme')}
+					text={t('settings:field.theme')}
 					iconName={EnumIconName.theme}
 					handler={changeThemeHandler}
 					value={
