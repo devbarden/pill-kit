@@ -1,13 +1,15 @@
 import { FC, Fragment, memo, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Form } from '@app/components'
-import { EnumColor, EnumIconName } from '@app/enums'
+import { Form, Icon } from '@app/components'
+import { useGlobalContext } from '@app/hooks'
+import { EnumColor, EnumIconName, EnumTheme } from '@app/enums'
 
 import { SettingsFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
 	const { t } = useTranslation()
+	const { theme } = useGlobalContext()
 	const {
 		selectedLanguage,
 
@@ -16,9 +18,10 @@ export const Fields: FC = memo(() => {
 		mailHandler,
 		shareDataHandler,
 		termsOfUseHandler,
+		changeThemeHandler,
 
+		openRemoveModal,
 		openLanguageModal,
-		openRemoveDataModal,
 	} = useContext(SettingsFormContext)
 
 	return (
@@ -40,14 +43,23 @@ export const Fields: FC = memo(() => {
 					text={t('settings:field.contact')}
 					handler={mailHandler}
 				/>
-			</Form.Wrapper>
 
-			<Form.Wrapper>
+				<Form.Separator />
+
 				<Form.PressableItem
-					iconName={EnumIconName.docs}
-					iconColor={EnumColor.black}
-					text={t('settings:field.terms')}
-					handler={termsOfUseHandler}
+					withoutChevronRight
+					text={t('medicine:field.theme')}
+					iconName={EnumIconName.theme}
+					handler={changeThemeHandler}
+					value={
+						<Icon
+							size={20}
+							name={EnumIconName[theme]}
+							color={
+								theme === EnumTheme.dark ? EnumColor.darkBlue : EnumColor.yellow
+							}
+						/>
+					}
 				/>
 			</Form.Wrapper>
 
@@ -71,7 +83,16 @@ export const Fields: FC = memo(() => {
 					iconName={EnumIconName.remove}
 					iconColor={EnumColor.red}
 					text={t('settings:field.clearAllData')}
-					handler={openRemoveDataModal}
+					handler={openRemoveModal}
+				/>
+			</Form.Wrapper>
+
+			<Form.Wrapper>
+				<Form.PressableItem
+					iconName={EnumIconName.docs}
+					iconColor={EnumColor.black}
+					text={t('settings:field.terms')}
+					handler={termsOfUseHandler}
 				/>
 			</Form.Wrapper>
 		</Fragment>

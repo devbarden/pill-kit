@@ -12,14 +12,15 @@ import {
 	LANGUAGE_SELECT_ITEMS,
 	FALLBACK_LANGUAGE_LABEL,
 } from '@app/constants'
+import { EnumTheme } from '@app/enums'
 
 export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	const { t } = useTranslation()
 	const { useMedicines } = useEndpoints()
 	const { data: medicines = [] } = useMedicines()
-	const { locale, setLocale } = useGlobalContext()
+	const { theme, locale, setTheme, setLocale } = useGlobalContext()
 
-	const removeAlertRef = useRef<TypeModalHandlers>(null)
+	const modalRemoveRef = useRef<TypeModalHandlers>(null)
 	const modalLanguageRef = useRef<TypeModalHandlers>(null)
 
 	const isShareBtnAvailable = useMemo(() => medicines.length > 0, [medicines])
@@ -40,6 +41,16 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		},
 		[setLocale],
 	)
+
+	const changeThemeHandler = useCallback(() => {
+		if (theme === EnumTheme.light) {
+			setTheme(EnumTheme.dark)
+		}
+
+		if (theme === EnumTheme.dark) {
+			setTheme(EnumTheme.light)
+		}
+	}, [theme, setTheme])
 
 	const mailHandler = useCallback(async () => {
 		await Linking.openURL(MAIL_TO_LINK)
@@ -63,6 +74,14 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		await Linking.openURL(TERMS_OF_USE_LINK)
 	}, [])
 
+	const openRemoveModal = useCallback(() => {
+		modalRemoveRef.current?.open()
+	}, [])
+
+	const closeRemoveModal = useCallback(() => {
+		modalRemoveRef.current?.open()
+	}, [])
+
 	const openLanguageModal = useCallback(() => {
 		modalLanguageRef.current?.open()
 	}, [])
@@ -71,12 +90,8 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		modalLanguageRef.current?.close()
 	}, [])
 
-	const openRemoveDataModal = useCallback(() => {
-		removeAlertRef.current?.open()
-	}, [])
-
 	return {
-		removeAlertRef,
+		modalRemoveRef,
 		modalLanguageRef,
 
 		selectedLanguage,
@@ -86,10 +101,13 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 		mailHandler,
 		shareDataHandler,
 		termsOfUseHandler,
+		changeThemeHandler,
 		changeLanguageHandler,
+
+		openRemoveModal,
+		closeRemoveModal,
 
 		openLanguageModal,
 		closeLanguageModal,
-		openRemoveDataModal,
 	}
 }

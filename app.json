@@ -5,7 +5,7 @@
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/logo.png",
-		"userInterfaceStyle": "light",
+		"userInterfaceStyle": "automatic",
 		"platforms": ["ios", "android"],
 		"splash": {
 			"image": "./assets/logo-without-bg.png",
@@ -15,9 +15,11 @@
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
 			"supportsTablet": false,
+			"userInterfaceStyle": "automatic",
 			"bundleIdentifier": "com.devbarden.pillkit"
 		},
 		"android": {
+			"userInterfaceStyle": "automatic",
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/logo.png",
 				"backgroundColor": "#ffffff"

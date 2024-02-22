@@ -80,7 +80,7 @@ export type TypeMedicineFormContextProps = TypeMedicineFormProps & {
 }
 
 export type TypeSettingsFormContextProps = {
-	removeAlertRef: RefObject<TypeModalHandlers> | null
+	modalRemoveRef: RefObject<TypeModalHandlers> | null
 	modalLanguageRef: RefObject<TypeModalHandlers> | null
 
 	selectedLanguage: string
@@ -90,9 +90,12 @@ export type TypeSettingsFormContextProps = {
 	mailHandler: () => void
 	shareDataHandler: () => void
 	termsOfUseHandler: () => void
+	changeThemeHandler: () => void
 	changeLanguageHandler: (locale: string) => void
+
+	openRemoveModal: () => void
+	closeRemoveModal: () => void
 
 	openLanguageModal: () => void
 	closeLanguageModal: () => void
-	openRemoveDataModal: () => void
 }

@@ -4,7 +4,7 @@ import { Text } from 'native-base'
 
 import { EnumColor } from '@app/enums'
 
-export const ModalRemoveDataContent: FC = memo(() => {
+export const ModalRemoveContent: FC = memo(() => {
 	const { t } = useTranslation()
 
 	return (

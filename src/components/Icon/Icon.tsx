@@ -27,6 +27,8 @@ const getIconByName = (
 	props: TypeAdditionalProps,
 ): ReactElement =>
 	({
+		[EnumIconName.light]: <Ionicons name="sunny" {...props} />,
+		[EnumIconName.dark]: <Ionicons name="moon" {...props} />,
 		[EnumIconName.pill]: <MaterialCommunityIcons name="pill" {...props} />,
 		[EnumIconName.liquid]: (
 			<MaterialCommunityIcons name="cup-water" {...props} />
@@ -70,6 +72,9 @@ const getIconByName = (
 				name="chart-timeline-variant-shimmer"
 				{...props}
 			/>
+		),
+		[EnumIconName.theme]: (
+			<MaterialCommunityIcons name="theme-light-dark" {...props} />
 		),
 		[EnumIconName.share]: <Ionicons name="share-outline" {...props} />,
 		[EnumIconName.analytic]: <Octicons name="graph" {...props} />,
