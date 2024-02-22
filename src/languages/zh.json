@@ -97,6 +97,7 @@
 		"field": {
 			"language": "语言",
 			"contact": "联系我们",
+			"theme": "主题",
 			"share": "共享数据",
 			"clearAllData": "清除所有数据",
 			"terms": "条款及细则"

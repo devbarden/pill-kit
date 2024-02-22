@@ -97,6 +97,7 @@
 		"field": {
 			"language": "Langue",
 			"contact": "Nous contacter",
+			"theme": "Thème",
 			"share": "Partager des données",
 			"clearAllData": "Supprimer toutes les données",
 			"terms": "Conditions D'Utilisation"

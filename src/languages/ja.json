@@ -97,6 +97,7 @@
 		"field": {
 			"language": "言語",
 			"contact": "接触",
+			"theme": "テーマ",
 			"share": "データの共有",
 			"clearAllData": "すべてのデータをクリア",
 			"terms": "利用規約"
