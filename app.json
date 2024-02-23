@@ -33,6 +33,10 @@
 		"androidStatusBar": {
 			"translucent": false
 		},
+		"androidNavigationBar": {
+			"barStyle": "light-content",
+			"backgroundColor": "#000000"
+		},
 		"locales": {
 			"en": "./src/languages/en.json",
 			"ru": "./src/languages/ru.json",
