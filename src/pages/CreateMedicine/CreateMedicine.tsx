@@ -1,8 +1,21 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, Fragment, ReactElement, memo, useMemo } from 'react'
 
-import { useEndpoints, useGlobalContext } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
+import { SafeArea } from '@app/components'
+import { useEndpoints, useGlobalContext } from '@app/hooks'
+import { DEFAULT_EMPTY_MEDICINE, IS_ANDROID } from '@app/constants'
+
+type TypeProps = {
+	children: ReactElement
+}
+
+const Wrapper: FC<TypeProps> = memo(({ children }) => {
+	if (IS_ANDROID) {
+		return <SafeArea>{children}</SafeArea>
+	}
+
+	return <Fragment>{children}</Fragment>
+})
 
 export const CreateMedicine: FC = memo(() => {
 	const { globalStyleProps } = useGlobalContext()
@@ -18,10 +31,12 @@ export const CreateMedicine: FC = memo(() => {
 	)
 
 	return (
-		<MedicineForm
-			data={defaultEmptyMedicine}
-			submitHandler={save}
-			isSubmitting={isUploading}
-		/>
+		<Wrapper>
+			<MedicineForm
+				data={defaultEmptyMedicine}
+				submitHandler={save}
+				isSubmitting={isUploading}
+			/>
+		</Wrapper>
 	)
 })

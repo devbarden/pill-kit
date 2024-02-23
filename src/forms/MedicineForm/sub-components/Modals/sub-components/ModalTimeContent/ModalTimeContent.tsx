@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { TouchableWithoutFeedback } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { useGlobalContext } from '@app/hooks'
 import { TypeMedicineTime } from '@app/types'
 import { IS_ANDROID, IS_IOS } from '@app/constants'
 import { getNumberByLocale, uid } from '@app/utils'
@@ -13,7 +14,6 @@ import { EnumDateMode, EnumIconName } from '@app/enums'
 import { MedicineFormContext } from '../../../../context'
 
 import { styles } from './ModalTimeContent.styles'
-import { useGlobalContext } from '@app/hooks'
 
 export const ModalTimeContent: FC = memo(() => {
 	const { t } = useTranslation()
@@ -80,7 +80,7 @@ export const ModalTimeContent: FC = memo(() => {
 									is24hourSource="locale"
 									title={getDoseText(index + 1)}
 									mode={EnumDateMode.time}
-									theme={theme}
+									theme={IS_IOS ? theme : 'light'}
 									locale={locale}
 									open={mapOfRemindersToShow[time.id]}
 									date={new Date(getValue(time))}

@@ -9,10 +9,10 @@ import {
 } from '@react-navigation/stack'
 
 import { useGlobalState } from '@app/hooks'
-import { EnumStackRoute, EnumTheme } from '@app/enums'
 import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_STACK_ROUTE } from '@app/constants'
+import { EnumStackRoute, EnumTheme } from '@app/enums'
 import { TypeNavigatorStack, TypeNavigatorScreen } from '@app/types'
 import { Tabs, CreateMedicine, EditMedicine, Welcome } from '@app/pages'
 
@@ -37,6 +37,7 @@ export const Navigator: FC = withErrorBoundary(() => {
 
 	const {
 		theme,
+		globalStyleProps,
 		isUserAcceptAppDocs,
 		isConfigurationLoading,
 		isMedicineActionEnabled,
@@ -76,9 +77,11 @@ export const Navigator: FC = withErrorBoundary(() => {
 		<Animated.View style={{ flex: 1, opacity }} onLayout={hideSplashScreen}>
 			<GlobalStateContext.Provider value={globalState}>
 				<StatusBar
-					translucent
+					translucent={false}
 					style={theme === EnumTheme.dark ? 'light' : 'dark'}
+					backgroundColor={globalStyleProps.style.color.primary}
 				/>
+
 				<NavigationContainer>
 					<Stack.Navigator
 						initialRouteName={defaultRoute}

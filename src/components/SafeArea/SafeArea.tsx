@@ -1,5 +1,5 @@
 import { FC, ReactElement, memo, useMemo } from 'react'
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { styles } from './SafeArea.styles'
 import { useGlobalContext } from '@app/hooks'

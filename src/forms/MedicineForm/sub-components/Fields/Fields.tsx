@@ -147,14 +147,13 @@ export const Fields: FC = memo(() => {
 								modal
 								mode={EnumDateMode.date}
 								is24hourSource="locale"
-								androidVariant="iosClone"
 								title={t('medicine:field.startDate')}
 								open={isNeedToShowStartDateModal}
 								date={new Date(startDate)}
 								minimumDate={getPrevYear(10)}
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
-								theme={theme}
+								theme={IS_IOS ? theme : 'light'}
 								locale={locale}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}
@@ -176,14 +175,13 @@ export const Fields: FC = memo(() => {
 								modal
 								mode={EnumDateMode.date}
 								is24hourSource="locale"
-								androidVariant="iosClone"
 								title={t('medicine:field.endDate')}
 								open={isNeedToShowEndDateModal}
 								date={new Date(endDate)}
 								minimumDate={new Date(startDate)}
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
-								theme={theme}
+								theme={IS_IOS ? theme : 'light'}
 								locale={locale}
 								confirmText={t('component:button.save')}
 								cancelText={t('component:button.cancel')}

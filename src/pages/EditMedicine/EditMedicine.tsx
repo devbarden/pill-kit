@@ -1,12 +1,25 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, Fragment, ReactElement, memo, useMemo } from 'react'
 import { useRoute } from '@react-navigation/native'
 
 import { useEndpoints } from '@app/hooks'
 import { MedicineForm } from '@app/forms'
-import { DEFAULT_EMPTY_MEDICINE } from '@app/constants'
+import { SafeArea } from '@app/components'
+import { DEFAULT_EMPTY_MEDICINE, IS_ANDROID } from '@app/constants'
 import { TypeEditMedicineRouteProp, TypeMedicineWithoutId } from '@app/types'
 
 import { NotFound, RemoveAction } from './sub-components'
+
+type TypeProps = {
+	children: ReactElement
+}
+
+const Wrapper: FC<TypeProps> = memo(({ children }) => {
+	if (IS_ANDROID) {
+		return <SafeArea>{children}</SafeArea>
+	}
+
+	return <Fragment>{children}</Fragment>
+})
 
 export const EditMedicine: FC = memo(() => {
 	const { params } = useRoute<TypeEditMedicineRouteProp>()
@@ -25,25 +38,33 @@ export const EditMedicine: FC = memo(() => {
 
 	if (isLoading) {
 		return (
-			<MedicineForm
-				data={dataWhileLoading}
-				submitHandler={edit}
-				isSubmitting={isUpdating}
-				additionalActions={<RemoveAction />}
-			/>
+			<Wrapper>
+				<MedicineForm
+					data={dataWhileLoading}
+					submitHandler={edit}
+					isSubmitting={isUpdating}
+					additionalActions={<RemoveAction />}
+				/>
+			</Wrapper>
 		)
 	}
 
 	if (!data) {
-		return <NotFound />
+		return (
+			<Wrapper>
+				<NotFound />
+			</Wrapper>
+		)
 	}
 
 	return (
-		<MedicineForm
-			data={data}
-			submitHandler={edit}
-			isSubmitting={isUpdating}
-			additionalActions={<RemoveAction />}
-		/>
+		<Wrapper>
+			<MedicineForm
+				data={data}
+				submitHandler={edit}
+				isSubmitting={isUpdating}
+				additionalActions={<RemoveAction />}
+			/>
+		</Wrapper>
 	)
 })
