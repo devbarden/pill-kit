@@ -1,32 +1,31 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			width: '100%',
 			maxHeight: '50%',
 			borderRadius: 16,
-			backgroundColor: EnumColor.white,
+			backgroundColor: style.color.primary,
 		},
 
 		title: {
 			alignItems: 'center',
 			borderBottomWidth: 1,
-			borderColor: EnumColor.grey,
+			borderColor: style.color.secondary,
 		},
 
 		actions: {
 			flexDirection: 'row',
 			borderTopWidth: 1,
-			borderColor: EnumColor.grey,
+			borderColor: style.color.secondary,
 		},
 
 		separator: {
 			borderRightWidth: 1,
-			borderColor: EnumColor.grey,
+			borderColor: style.color.secondary,
 		},
 
 		fullScreen: {
@@ -49,11 +48,11 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 		},
 
 		pressedBg: {
-			backgroundColor: EnumColor.grey,
+			backgroundColor: style.color.secondary,
 		},
 
 		defaultBg: {
-			backgroundColor: EnumColor.white,
+			backgroundColor: style.color.primary,
 		},
 
 		bottomLeftRadius: {

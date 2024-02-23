@@ -15,6 +15,7 @@ export const Input: FC<IInputProps> = memo((props) => {
 			<BaseInput
 				isFullWidth
 				variant="unstyled"
+				color={globalStyleProps.style.color.invert}
 				textAlign={isLocaleRTL ? 'right' : 'left'}
 				flexDirection={isLocaleRTL ? 'row-reverse' : 'row'}
 				style={style.input}

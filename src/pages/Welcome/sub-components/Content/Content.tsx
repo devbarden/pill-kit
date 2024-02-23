@@ -15,9 +15,9 @@ import { Linking, Pressable, PressableStateCallbackType } from 'react-native'
 
 import { Modal } from '@app/components'
 import { Logo, PillKit } from '@app/svg'
+import { EnumStackRoute } from '@app/enums'
 import { TypeModalHandlers } from '@app/types'
 import { TERMS_OF_USE_LINK } from '@app/constants'
-import { EnumColor, EnumStackRoute } from '@app/enums'
 
 import { styles } from './Content.styles'
 import { useGlobalContext } from '@app/hooks'
@@ -42,9 +42,13 @@ export const Content: FC = memo(() => {
 	const getBtnStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
 			style.btn,
-			{ backgroundColor: pressed ? EnumColor.darkRed : EnumColor.red },
+			{
+				backgroundColor: pressed
+					? globalStyleProps.style.color.transparent
+					: globalStyleProps.style.color.main,
+			},
 		],
-		[style],
+		[style, globalStyleProps],
 	)
 
 	const openValidationModal = useCallback(() => {
@@ -92,14 +96,18 @@ export const Content: FC = memo(() => {
 					<PillKit />
 
 					<Box style={{ marginTop: 64 }}>
-						<Text textAlign="center">{t('welcome:title')}</Text>
+						<Text
+							textAlign="center"
+							color={globalStyleProps.style.color.invert}>
+							{t('welcome:title')}
+						</Text>
 					</Box>
 				</Box>
 
 				<Box style={style.agreement}>
 					<BouncyCheckbox
-						fillColor={EnumColor.red}
-						unfillColor={EnumColor.white}
+						fillColor={globalStyleProps.style.color.main}
+						unfillColor={globalStyleProps.style.color.primary}
 						isChecked={isChecked}
 						onPress={checkboxHandler}
 						style={style.checkbox}
@@ -107,7 +115,9 @@ export const Content: FC = memo(() => {
 							<Text
 								textAlign={isLocaleRTL ? 'right' : 'left'}
 								style={style.fullFlex}>
-								<Text>{t('welcome:agreement')}</Text>{' '}
+								<Text color={globalStyleProps.style.color.invert}>
+									{t('welcome:agreement')}
+								</Text>{' '}
 								<Text style={style.link} onPress={openTermsHandler}>
 									{t('terms:title')}
 								</Text>
@@ -117,7 +127,7 @@ export const Content: FC = memo(() => {
 				</Box>
 
 				<Pressable style={getBtnStyles} onPress={continueHandler}>
-					<Text numberOfLines={1} color={EnumColor.white}>
+					<Text numberOfLines={1} color={globalStyleProps.style.color.primary}>
 						{t('welcome:continue')}
 					</Text>
 				</Pressable>
@@ -125,14 +135,22 @@ export const Content: FC = memo(() => {
 
 			<Modal
 				title={t('welcome:modal.validation.title')}
-				content={<Text>{t('welcome:modal.validation.description')}</Text>}
+				content={
+					<Text color={globalStyleProps.style.color.invert}>
+						{t('welcome:modal.validation.description')}
+					</Text>
+				}
 				ref={modalValidationRef}
 				closeText={t('component:button.ok')}
 			/>
 
 			<Modal
 				title={t('welcome:modal.notification.title')}
-				content={<Text>{t('welcome:modal.notification.description')}</Text>}
+				content={
+					<Text color={globalStyleProps.style.color.invert}>
+						{t('welcome:modal.notification.description')}
+					</Text>
+				}
 				ref={modalNotificationRef}
 				onClose={navigateToTabsHandler}
 				closeWaitMs={250}

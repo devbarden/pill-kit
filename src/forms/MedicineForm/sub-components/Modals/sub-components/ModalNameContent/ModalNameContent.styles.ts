@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		action: {
 			padding: 8,
@@ -11,7 +10,7 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 
 		pressed: {
 			borderRadius: 24,
-			backgroundColor: EnumColor.lightGrey,
+			backgroundColor: style.color.tertiary,
 		},
 
 		inputWrapper: {

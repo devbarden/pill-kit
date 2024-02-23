@@ -2,7 +2,7 @@ import { FC, memo, useMemo, useCallback } from 'react'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Text } from 'native-base'
 
-import { EnumColor } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { styles } from './Action.styles'
 
@@ -14,19 +14,26 @@ type TypeProps = {
 
 export const Action: FC<TypeProps> = memo(
 	({ text, handler, isDisabled = false }) => {
+		const { globalStyleProps } = useGlobalContext()
+
 		const textColor = useMemo(
-			() => (isDisabled ? EnumColor.darkGrey : EnumColor.black),
-			[isDisabled],
+			() =>
+				isDisabled
+					? globalStyleProps.style.color.highlight
+					: globalStyleProps.style.color.invert,
+			[isDisabled, globalStyleProps],
 		)
 
 		const getPressableStyles = useCallback(
 			({ pressed }: PressableStateCallbackType) => [
 				styles.wrapper,
 				{
-					backgroundColor: pressed ? EnumColor.lightGrey : EnumColor.white,
+					backgroundColor: pressed
+						? globalStyleProps.style.color.tertiary
+						: globalStyleProps.style.color.primary,
 				},
 			],
-			[],
+			[globalStyleProps],
 		)
 
 		return (

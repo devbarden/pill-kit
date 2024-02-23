@@ -1,31 +1,32 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
+import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		width: '100%',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		paddingVertical: 8,
-		paddingHorizontal: 16,
-		borderBottomWidth: 1,
-		borderColor: EnumColor.lightGrey,
-		backgroundColor: EnumColor.white,
-	},
+export const styles = ({ style }: TypeGlobalStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			width: '100%',
+			flexDirection: 'row',
+			justifyContent: 'space-between',
+			alignItems: 'center',
+			paddingVertical: 8,
+			paddingHorizontal: 16,
+			borderBottomWidth: 1,
+			borderColor: style.color.tertiary,
+			backgroundColor: style.color.primary,
+		},
 
-	back: {
-		paddingRight: 8,
-		height: '100%',
-	},
+		back: {
+			paddingRight: 8,
+			height: '100%',
+		},
 
-	action: {
-		paddingLeft: 8,
-		height: '100%',
-	},
+		action: {
+			paddingLeft: 8,
+			height: '100%',
+		},
 
-	title: {
-		flex: 1,
-	},
-})
+		title: {
+			flex: 1,
+		},
+	})

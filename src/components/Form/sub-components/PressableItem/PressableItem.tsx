@@ -9,8 +9,9 @@ import {
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { TypeColor } from '@app/types'
+import { EnumIconName } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
-import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
@@ -21,7 +22,7 @@ type TypeProps = {
 	value?: ReactElement | string
 	handler?: () => void
 	iconName?: EnumIconName
-	iconColor?: EnumColor
+	iconColor?: TypeColor
 	withoutChevronRight?: boolean
 	isValueQuarterWidth?: boolean
 }
@@ -32,7 +33,7 @@ export const PressableItem: FC<TypeProps> = memo(
 		value,
 		handler,
 		iconName,
-		iconColor = EnumColor.darkGrey,
+		iconColor,
 		withoutChevronRight = false,
 		isValueQuarterWidth = false,
 	}) => {
@@ -58,19 +59,30 @@ export const PressableItem: FC<TypeProps> = memo(
 			({ pressed }: PressableStateCallbackType) => [
 				style.wrapper,
 				{
-					backgroundColor: pressed ? EnumColor.lightGrey : EnumColor.white,
+					backgroundColor: pressed
+						? globalStyleProps.style.color.tertiary
+						: globalStyleProps.style.color.primary,
 				},
 			],
-			[style],
+			[style, globalStyleProps],
 		)
 
 		return (
 			<Pressable style={getPressableStyles} onPress={handler}>
 				<Box style={style.fullFlex}>
 					<Box style={style.titleWrapper}>
-						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
+						{iconName && (
+							<Icon
+								name={iconName}
+								color={iconColor ?? globalStyleProps.style.color.highlight}
+								size={20}
+							/>
+						)}
 						<Box style={style.title}>
-							<Text numberOfLines={1} style={style.text}>
+							<Text
+								numberOfLines={1}
+								style={style.text}
+								color={globalStyleProps.style.color.invert}>
 								{text}
 							</Text>
 						</Box>
@@ -80,7 +92,11 @@ export const PressableItem: FC<TypeProps> = memo(
 				<Box style={value ? valueWidth : {}}>
 					<Box style={style.valueWrapper}>
 						{!withoutChevronRight && (
-							<Icon size={20} name={arrowIcon} color={EnumColor.darkGrey} />
+							<Icon
+								size={20}
+								name={arrowIcon}
+								color={globalStyleProps.style.color.highlight}
+							/>
 						)}
 						{isValidElement(value) && value}
 						{isValueString && (
@@ -88,8 +104,8 @@ export const PressableItem: FC<TypeProps> = memo(
 								<Text
 									numberOfLines={1}
 									textAlign="right"
-									color={EnumColor.darkGrey}
-									style={style.text}>
+									style={style.text}
+									color={globalStyleProps.style.color.highlight}>
 									{value}
 								</Text>
 							</Box>

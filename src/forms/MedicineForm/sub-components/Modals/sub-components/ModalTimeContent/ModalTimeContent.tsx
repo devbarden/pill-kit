@@ -54,9 +54,16 @@ export const ModalTimeContent: FC = memo(() => {
 					<Box style={style.item}>
 						<Box style={style.content}>
 							<Box style={style.info}>
-								<Icon name={EnumIconName.bell} size={18} />
+								<Icon
+									name={EnumIconName.bell}
+									color={globalStyleProps.style.color.invert}
+									size={18}
+								/>
 
-								<Text fontSize="lg" numberOfLines={1}>
+								<Text
+									fontSize="lg"
+									numberOfLines={1}
+									color={globalStyleProps.style.color.invert}>
 									{getDoseText(index + 1)}
 								</Text>
 							</Box>

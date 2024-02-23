@@ -21,11 +21,11 @@ export const Progress: FC = memo(() => {
 
 	const chartConfig = useMemo(
 		() => ({
-			backgroundGradientFrom: EnumColor.white,
-			backgroundGradientTo: EnumColor.white,
-			color: () => EnumColor.transparentGrey,
+			backgroundGradientFrom: globalStyleProps.style.color.primary,
+			backgroundGradientTo: globalStyleProps.style.color.primary,
+			color: () => globalStyleProps.style.color.transparent,
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const progressChartData = useMemo(
@@ -134,7 +134,11 @@ export const Progress: FC = memo(() => {
 				/>
 
 				<Box style={style.content}>
-					<Text fontSize="md" textAlign="center" numberOfLines={1}>
+					<Text
+						fontSize="md"
+						textAlign="center"
+						numberOfLines={1}
+						color={globalStyleProps.style.color.invert}>
 						{t('analytic:progress.title')}
 					</Text>
 
@@ -143,10 +147,18 @@ export const Progress: FC = memo(() => {
 							<Box key={uid()} style={style.item}>
 								<Box style={style.name}>
 									<Box style={getIndicatorStyles(index)} />
-									<Text numberOfLines={1}>{name}</Text>
+									<Text
+										numberOfLines={1}
+										color={globalStyleProps.style.color.invert}>
+										{name}
+									</Text>
 								</Box>
 
-								<Text numberOfLines={1}>{getProgressPercentage(index)}</Text>
+								<Text
+									numberOfLines={1}
+									color={globalStyleProps.style.color.invert}>
+									{getProgressPercentage(index)}
+								</Text>
 							</Box>
 						))}
 					</Box>

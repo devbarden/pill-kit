@@ -1,9 +1,10 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Text } from 'native-base'
 
 import { EMAIL } from '@app/constants'
-import { EnumColor, EnumIconName } from '@app/enums'
+import { EnumIconName } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { Icon } from '../Icon'
 
@@ -16,19 +17,33 @@ type TypeProps = {
 
 export const ErrorFallback: FC<TypeProps> = memo(({ error, resetError }) => {
 	const { t } = useTranslation()
+	const { globalStyleProps } = useGlobalContext()
+
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const resetHandler = useCallback(() => {
 		resetError()
 	}, [resetError])
 
 	return (
-		<Box style={styles.wrapper}>
-			<Icon name={EnumIconName.clear} color={EnumColor.red} size={36} />
-			<Text fontSize="xl" textAlign="center" color={EnumColor.red}>
+		<Box style={style.wrapper}>
+			<Icon
+				name={EnumIconName.clear}
+				color={globalStyleProps.style.color.remove}
+				size={36}
+			/>
+			<Text
+				fontSize="xl"
+				textAlign="center"
+				color={globalStyleProps.style.color.remove}>
 				{t('error:title')}: {EMAIL}
 			</Text>
-			<Text fontSize="sm">{error.message}</Text>
-			<Button colorScheme={EnumColor.red} onPress={resetHandler}>
+			<Text fontSize="sm" color={globalStyleProps.style.color.invert}>
+				{error.message}
+			</Text>
+			<Button
+				colorScheme={globalStyleProps.style.color.remove}
+				onPress={resetHandler}>
 				{t('error:reset')}
 			</Button>
 		</Box>

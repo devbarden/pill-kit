@@ -9,7 +9,7 @@ import { ContentWrapper, Header } from '@app/components'
 export const NotFound: FC = memo(() => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { activeTab } = useGlobalContext()
+	const { activeTab, globalStyleProps } = useGlobalContext()
 
 	const backHandler = useCallback(() => {
 		navigate(activeTab)
@@ -19,7 +19,9 @@ export const NotFound: FC = memo(() => {
 		<Fragment>
 			<Header title={t('editMedicine:title')} withGoBack />
 			<ContentWrapper withHorizontalPaddings withVerticalPaddings>
-				<Text>{t('editMedicine:notFound')}</Text>
+				<Text color={globalStyleProps.style.color.invert}>
+					{t('editMedicine:notFound')}
+				</Text>
 				<Button onPress={backHandler}>{t('editMedicine:back')}</Button>
 			</ContentWrapper>
 		</Fragment>

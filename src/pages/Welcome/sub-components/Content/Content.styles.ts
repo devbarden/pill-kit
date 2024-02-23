@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			flex: 1,
@@ -36,7 +35,7 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 
 		link: {
 			textDecorationLine: 'underline',
-			color: EnumColor.blue,
+			color: style.color.main,
 		},
 
 		btn: {

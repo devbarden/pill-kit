@@ -6,9 +6,9 @@ import { entries, groupBy, map, sumBy } from 'lodash'
 
 import { TypeMedicine } from '@app/types'
 import { useGlobalContext } from '@app/hooks'
+import { EnumMedicineType } from '@app/enums'
 import { getPercentageValue, uid } from '@app/utils'
 import { MEDICINE_TYPE_COLORS } from '@app/constants'
-import { EnumColor, EnumMedicineType } from '@app/enums'
 
 import { AnalyticContext } from '../../context'
 
@@ -23,11 +23,11 @@ export const Pie: FC = memo(() => {
 
 	const chartConfig = useMemo(
 		() => ({
-			backgroundGradientFrom: EnumColor.white,
-			backgroundGradientTo: EnumColor.white,
-			color: () => EnumColor.transparentGrey,
+			backgroundGradientFrom: globalStyleProps.style.color.primary,
+			backgroundGradientTo: globalStyleProps.style.color.primary,
+			color: () => globalStyleProps.style.color.transparent,
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const pieChartData = useMemo(() => {
@@ -77,12 +77,16 @@ export const Pie: FC = memo(() => {
 					width={180}
 					height={180}
 					hasLegend={false}
-					backgroundColor={EnumColor.white}
+					backgroundColor={globalStyleProps.style.color.primary}
 					data={pieChartData}
 					chartConfig={chartConfig}
 				/>
 				<Box style={style.title}>
-					<Text fontSize="md" textAlign="center" numberOfLines={6}>
+					<Text
+						fontSize="md"
+						textAlign="center"
+						numberOfLines={6}
+						color={globalStyleProps.style.color.invert}>
 						{t('analytic:pie.title')}
 					</Text>
 				</Box>
@@ -92,8 +96,12 @@ export const Pie: FC = memo(() => {
 				{pieChartData.map(({ name, length, color }) => (
 					<Box key={uid()} style={style.item}>
 						<Box style={getIndicatorStyles(color)} />
-						<Text numberOfLines={1}>{t(`medicine:types.${name}`)}</Text>
-						<Text>{getPercentageValue(length / commonCount, locale)}</Text>
+						<Text numberOfLines={1} color={globalStyleProps.style.color.invert}>
+							{t(`medicine:types.${name}`)}
+						</Text>
+						<Text color={globalStyleProps.style.color.invert}>
+							{getPercentageValue(length / commonCount, locale)}
+						</Text>
 					</Box>
 				))}
 			</Box>

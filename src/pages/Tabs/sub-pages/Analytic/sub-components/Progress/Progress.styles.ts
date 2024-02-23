@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native'
 import { EnumColor } from '@app/enums'
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			overflow: 'hidden',
 			flexDirection: 'row',
 			marginHorizontal: 16,
 			borderRadius: 12,
-			backgroundColor: EnumColor.white,
+			backgroundColor: style.color.primary,
 		},
 
 		label: {

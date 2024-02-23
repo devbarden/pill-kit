@@ -9,4 +9,5 @@ export const AnalyticContext = createContext<TypeAnalyticContextProps>({
 	isLoading: true,
 	isNoMedicines: false,
 	isProgressChartAvailable: false,
+	isProgressChartOverlimit: false,
 })

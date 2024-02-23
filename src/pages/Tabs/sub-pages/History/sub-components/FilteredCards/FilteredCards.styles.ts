@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
+import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = StyleSheet.create({
-	wrapper: {
-		flex: 1,
-		borderTopWidth: 1,
-		borderColor: EnumColor.transparentGrey,
-	},
-})
+export const styles = ({ style }: TypeGlobalStyleProps) =>
+	StyleSheet.create({
+		wrapper: {
+			flex: 1,
+			borderTopWidth: 1,
+			borderColor: style.color.transparent,
+		},
+	})

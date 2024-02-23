@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { CARD_MARGIN } from '@app/constants'
 import { TypeGlobalStyleProps } from '@app/types'
 
@@ -8,7 +7,7 @@ const SPACE = 16
 const HALF_SPACE = SPACE / 2
 const RADIUS = 12
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		card: {
 			flexDirection: isLocaleRTL ? 'row-reverse' : 'row',
@@ -19,16 +18,7 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 			marginTop: CARD_MARGIN,
 			marginHorizontal: CARD_MARGIN,
 			borderRadius: RADIUS,
-			backgroundColor: EnumColor.white,
-
-			shadowColor: EnumColor.darkGrey,
-			shadowOffset: {
-				width: 0,
-				height: 1,
-			},
-			shadowOpacity: 0.2,
-			shadowRadius: 1.41,
-			elevation: 2,
+			backgroundColor: style.color.primary,
 		},
 
 		iconWrapper: {
@@ -66,6 +56,5 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 			maxWidth: 160,
 			borderRadius: 4,
 			paddingHorizontal: HALF_SPACE,
-			backgroundColor: EnumColor.white,
 		},
 	})

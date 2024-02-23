@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Text } from 'native-base'
 
+import { EnumIconName } from '@app/enums'
 import { Form, Modal } from '@app/components'
-import { EnumColor, EnumIconName } from '@app/enums'
 import { useEndpoints, useGlobalContext } from '@app/hooks'
 import { TypeEditMedicineRouteProp, TypeModalHandlers } from '@app/types'
 
@@ -12,7 +12,7 @@ export const RemoveAction: FC = memo(() => {
 	const removeModalRef = useRef<TypeModalHandlers>(null)
 
 	const { t } = useTranslation()
-	const { activeTab } = useGlobalContext()
+	const { activeTab, globalStyleProps } = useGlobalContext()
 	const { navigate } = useNavigation()
 	const { params } = useRoute<TypeEditMedicineRouteProp>()
 	const { id } = params
@@ -33,14 +33,18 @@ export const RemoveAction: FC = memo(() => {
 		<Form.Wrapper>
 			<Form.PressableItem
 				iconName={EnumIconName.remove}
-				iconColor={EnumColor.red}
+				iconColor={globalStyleProps.style.color.remove}
 				text={t('editMedicine:remove')}
 				handler={openRemoveModal}
 			/>
 
 			<Modal
 				title={t('medicine:modal.remove.title')}
-				content={<Text>{t('medicine:modal.remove.description')}</Text>}
+				content={
+					<Text color={globalStyleProps.style.color.invert}>
+						{t('medicine:modal.remove.description')}
+					</Text>
+				}
 				closeText={t('component:button.cancel')}
 				submit={{
 					handler: deleteHandler,

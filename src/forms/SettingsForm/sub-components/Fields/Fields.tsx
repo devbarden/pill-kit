@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next'
 
 import { Form, Icon } from '@app/components'
 import { useGlobalContext } from '@app/hooks'
-import { EnumColor, EnumIconName, EnumTheme } from '@app/enums'
+import { EnumColor, EnumIconName } from '@app/enums'
 
 import { SettingsFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
 	const { t } = useTranslation()
-	const { theme } = useGlobalContext()
+	const { theme, globalStyleProps } = useGlobalContext()
 	const {
 		selectedLanguage,
 
@@ -39,7 +39,6 @@ export const Fields: FC = memo(() => {
 
 				<Form.PressableItem
 					iconName={EnumIconName.mail}
-					iconColor={EnumColor.darkGrey}
 					text={t('settings:field.contact')}
 					handler={mailHandler}
 				/>
@@ -55,9 +54,7 @@ export const Fields: FC = memo(() => {
 						<Icon
 							size={20}
 							name={EnumIconName[theme]}
-							color={
-								theme === EnumTheme.dark ? EnumColor.darkBlue : EnumColor.yellow
-							}
+							color={globalStyleProps.style.color.theme}
 						/>
 					}
 				/>
@@ -69,7 +66,6 @@ export const Fields: FC = memo(() => {
 						<Fragment>
 							<Form.PressableItem
 								iconName={EnumIconName.share}
-								iconColor={EnumColor.black}
 								text={t('settings:field.share')}
 								handler={shareDataHandler}
 							/>
@@ -81,7 +77,7 @@ export const Fields: FC = memo(() => {
 
 				<Form.PressableItem
 					iconName={EnumIconName.remove}
-					iconColor={EnumColor.red}
+					iconColor={globalStyleProps.style.color.remove}
 					text={t('settings:field.clearAllData')}
 					handler={openRemoveModal}
 				/>
@@ -90,7 +86,6 @@ export const Fields: FC = memo(() => {
 			<Form.Wrapper>
 				<Form.PressableItem
 					iconName={EnumIconName.docs}
-					iconColor={EnumColor.black}
 					text={t('settings:field.terms')}
 					handler={termsOfUseHandler}
 				/>

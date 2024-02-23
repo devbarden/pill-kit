@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { EnumIconName } from '@app/enums'
 import { Icon, Modal } from '@app/components'
 import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
-import { EnumColor, EnumIconName } from '@app/enums'
 
 import { HistoryContext } from '../../context'
 import { SortModalContent } from './sub-components'
@@ -45,16 +45,23 @@ export const SortSection: FC = memo(() => {
 			<Text
 				fontSize="lg"
 				numberOfLines={1}
-				color={EnumColor.darkGrey}
+				color={globalStyleProps.style.color.highlight}
 				style={style.maxWidthHalfOfRow}>
 				{t('history:sort.medicines')} : {medicinesCount}
 			</Text>
 
 			<Pressable style={getPressableStyles} onPress={pressHandler}>
-				<Text fontSize="lg" numberOfLines={1} color={EnumColor.darkGrey}>
+				<Text
+					fontSize="lg"
+					numberOfLines={1}
+					color={globalStyleProps.style.color.highlight}>
 					{t('history:sort.button')}
 				</Text>
-				<Icon name={EnumIconName.sort} size={24} color={EnumColor.darkGrey} />
+				<Icon
+					name={EnumIconName.sort}
+					size={24}
+					color={globalStyleProps.style.color.highlight}
+				/>
 			</Pressable>
 
 			<Modal

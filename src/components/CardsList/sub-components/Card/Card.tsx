@@ -40,11 +40,11 @@ export const Card: FC<TypeProps> = memo(({ data, mode, drag }) => {
 
 	const baseTextProps: ITextProps = useMemo(
 		() => ({
-			color: EnumColor.black,
+			color: globalStyleProps.style.color.invert,
 			numberOfLines: 1,
 			ellipsizeMode: 'tail',
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])

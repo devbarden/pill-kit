@@ -2,8 +2,8 @@ import { FC, memo, useMemo, useCallback, useRef } from 'react'
 import { Box, Text } from 'native-base'
 import { useTranslation } from 'react-i18next'
 
-import { useEndpoints } from '@app/hooks'
-import { EnumColor, EnumIconName } from '@app/enums'
+import { EnumIconName } from '@app/enums'
+import { useEndpoints, useGlobalContext } from '@app/hooks'
 import { TypeMedicine, TypeModalHandlers } from '@app/types'
 
 import { Icon } from '../../../Icon'
@@ -21,6 +21,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 
 	const { t } = useTranslation()
 	const { id, name } = useMemo(() => data, [data])
+	const { globalStyleProps } = useGlobalContext()
 	const { useRemoveMedicine } = useEndpoints()
 	const { mutateAsync: remove } = useRemoveMedicine()
 
@@ -37,7 +38,7 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 			<Modal
 				title={name}
 				content={
-					<Text color={EnumColor.black}>
+					<Text color={globalStyleProps.style.color.invert}>
 						{t('medicine:modal.remove.description')}
 					</Text>
 				}
@@ -50,7 +51,11 @@ export const SwipeActions: FC<TypeProps> = memo(({ data }) => {
 			/>
 			<Action
 				icon={
-					<Icon name={EnumIconName.remove} size={24} color={EnumColor.red} />
+					<Icon
+						name={EnumIconName.remove}
+						size={24}
+						color={globalStyleProps.style.color.remove}
+					/>
 				}
 				style={styles.rightAction}
 				handler={openRemoveModal}

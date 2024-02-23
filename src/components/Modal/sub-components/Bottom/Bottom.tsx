@@ -1,7 +1,7 @@
 import { FC, memo, useContext, useMemo } from 'react'
 import { Box, Text } from 'native-base'
 
-import { EnumColor } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { ModalContext } from '../../context'
 import { ScrollContent } from '../../../ScrollContent'
@@ -10,34 +10,37 @@ import { styles } from './Bottom.styles'
 
 export const Bottom: FC = memo(() => {
 	const { title, content, withGreyBackgroundColor } = useContext(ModalContext)
+	const { globalStyleProps } = useGlobalContext()
+
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const wrapperStyles = useMemo(
 		() => [
-			styles.wrapper,
+			style.wrapper,
 			{
 				backgroundColor: withGreyBackgroundColor
-					? EnumColor.grey
-					: EnumColor.white,
+					? globalStyleProps.style.color.secondary
+					: globalStyleProps.style.color.primary,
 			},
 		],
-		[withGreyBackgroundColor],
+		[withGreyBackgroundColor, style, globalStyleProps],
 	)
 
 	return (
 		<Box style={wrapperStyles}>
-			<Box style={styles.content}>
-				<Box style={styles.dash} />
+			<Box style={style.content}>
+				<Box style={style.dash} />
 
 				<Text
 					fontSize="lg"
 					textAlign="center"
 					fontWeight="bold"
 					numberOfLines={2}
-					color={EnumColor.black}>
+					color={globalStyleProps.style.color.invert}>
 					{title}
 				</Text>
 
-				<Box style={styles.children}>
+				<Box style={style.children}>
 					<ScrollContent>{content}</ScrollContent>
 				</Box>
 			</Box>

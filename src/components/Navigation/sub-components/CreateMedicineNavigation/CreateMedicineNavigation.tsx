@@ -1,18 +1,22 @@
 import * as Haptics from 'expo-haptics'
-import { FC, memo, useMemo, useCallback } from 'react'
+import { FC, memo, useCallback } from 'react'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { EnumStackRoute } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
+import { EnumIconName, EnumStackRoute } from '@app/enums'
 
-import { getIcon } from '../../utils'
+import { Icon } from '../../../Icon'
 
 import { styles } from './CreateMedicineNavigation.styles'
 
-export const CreateMedicineNavigation: FC = memo(() => {
-	const { navigate } = useNavigation()
+type TypeProps = {
+	name: EnumIconName
+}
 
-	const Icon = useMemo(() => getIcon(EnumStackRoute.createMedicine, false), [])
+export const CreateMedicineNavigation: FC<TypeProps> = memo(({ name }) => {
+	const { navigate } = useNavigation()
+	const { globalStyleProps } = useGlobalContext()
 
 	const navigateToRoute = useCallback(() => {
 		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
@@ -21,7 +25,11 @@ export const CreateMedicineNavigation: FC = memo(() => {
 
 	return (
 		<Pressable onPressIn={navigateToRoute} style={styles.wrapper}>
-			{Icon}
+			<Icon
+				name={name}
+				size={24}
+				color={globalStyleProps.style.color.highlight}
+			/>
 		</Pressable>
 	)
 })

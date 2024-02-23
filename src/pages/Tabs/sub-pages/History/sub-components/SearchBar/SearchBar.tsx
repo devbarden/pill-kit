@@ -5,11 +5,11 @@ import { values, filter, size } from 'lodash'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
+import { EnumIconName } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
 import { TypeModalHandlers } from '@app/types'
 import { Form, Icon, Modal } from '@app/components'
-import { EnumColor, EnumIconName } from '@app/enums'
 import { MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
 import { HistoryContext } from '../../context'
@@ -19,17 +19,19 @@ import { styles } from './SearchBar.styles'
 
 export const SearchBar: FC = memo(() => {
 	const { t } = useTranslation()
-	const { locale } = useGlobalContext()
+	const { locale, globalStyleProps } = useGlobalContext()
 	const { searchValue, setSearchValue, filters } = useContext(HistoryContext)
 
 	const filtersModalRef = useRef<TypeModalHandlers>(null)
 
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
+
 	const commonIconProps = useMemo(
 		() => ({
 			size: 20,
-			color: EnumColor.darkGrey,
+			color: globalStyleProps.style.color.highlight,
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const activeFilters = useMemo(
@@ -43,10 +45,10 @@ export const SearchBar: FC = memo(() => {
 
 	const getPressableStyles = useCallback(
 		({ pressed }: PressableStateCallbackType) => [
-			styles.action,
-			pressed ? styles.pressed : {},
+			style.action,
+			pressed ? style.pressed : {},
 		],
-		[],
+		[style],
 	)
 
 	const onChangeSearchValueHandler = useCallback(
@@ -75,15 +77,15 @@ export const SearchBar: FC = memo(() => {
 				placeholder={t('component:input.placeholder.search')}
 				leftElement={<Icon name={EnumIconName.search} {...commonIconProps} />}
 				rightElement={
-					<Box style={styles.actionsWrapper}>
+					<Box style={style.actionsWrapper}>
 						{searchValue && (
 							<Pressable onPress={clearSearchValue} style={getPressableStyles}>
 								<Icon name={EnumIconName.clear} {...commonIconProps} />
 							</Pressable>
 						)}
 						<Pressable onPress={openFiltersModal} style={getPressableStyles}>
-							<Box style={styles.badge}>
-								<Text style={styles.badgeText}>{activeFilters}</Text>
+							<Box style={style.badge}>
+								<Text style={style.badgeText}>{activeFilters}</Text>
 							</Box>
 							<Icon name={EnumIconName.options} {...commonIconProps} />
 						</Pressable>

@@ -3,7 +3,6 @@ import { FC, Fragment, memo, useCallback, useContext, useMemo } from 'react'
 import { Pressable, PressableStateCallbackType } from 'react-native'
 import { Box, Text } from 'native-base'
 
-import { EnumColor } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
 
 import { Spinner } from '../../../Spinner'
@@ -49,11 +48,11 @@ export const Default: FC = memo(() => {
 			isFullScreen ? style.fullFlex : {},
 			{
 				backgroundColor: withGreyBackgroundColor
-					? EnumColor.grey
-					: EnumColor.white,
+					? globalStyleProps.style.color.secondary
+					: globalStyleProps.style.color.primary,
 			},
 		],
-		[style, isFullScreen, withGreyBackgroundColor],
+		[style, isFullScreen, withGreyBackgroundColor, globalStyleProps],
 	)
 
 	const getCommonBtnStyles = useCallback(
@@ -96,7 +95,7 @@ export const Default: FC = memo(() => {
 					textAlign="center"
 					fontWeight="bold"
 					numberOfLines={2}
-					color={EnumColor.black}>
+					color={globalStyleProps.style.color.invert}>
 					{title}
 				</Text>
 			</Box>
@@ -117,7 +116,10 @@ export const Default: FC = memo(() => {
 				) : (
 					<Fragment>
 						<Pressable onPress={closeInside} style={getCloseBtnStyles}>
-							<Text fontSize="md" textAlign="center" color={EnumColor.red}>
+							<Text
+								fontSize="md"
+								textAlign="center"
+								color={globalStyleProps.style.color.main}>
 								{closeBtnText}
 							</Text>
 						</Pressable>
@@ -131,7 +133,7 @@ export const Default: FC = memo(() => {
 										fontSize="md"
 										textAlign="center"
 										fontWeight="bold"
-										color={EnumColor.red}>
+										color={globalStyleProps.style.color.main}>
 										{submitBtnText}
 									</Text>
 								</Pressable>

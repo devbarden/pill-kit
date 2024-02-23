@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Calendar from 'expo-calendar'
 import { map, filter } from 'lodash'
 
-import { EnumColor, EnumStorage } from '@app/enums'
+import { EnumStorage } from '@app/enums'
 import { isNoDeserted, getDateWithTime } from '@app/utils'
 import { TypeMedicine, TypeCalendarStorage } from '@app/types'
 import { INITIAL_CALENDAR_STORAGE, IS_IOS, APP_NAME } from '@app/constants'
@@ -40,7 +40,7 @@ export const initCalendar = async () => {
 		const calendarId = await Calendar.createCalendarAsync({
 			title: APP_NAME,
 			name: APP_NAME,
-			color: EnumColor.red,
+			color: 'red',
 			entityType: Calendar.EntityTypes.EVENT,
 			source: defaultCalendarSource,
 			sourceId: defaultCalendarSource.id,

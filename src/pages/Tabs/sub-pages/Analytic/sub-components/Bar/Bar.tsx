@@ -15,9 +15,9 @@ import {
 } from 'lodash'
 
 import { DEVICE_WIDTH } from '@app/constants'
+import { EnumLanguageCode } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
 import { getNumberByLocale } from '@app/utils'
-import { EnumColor, EnumLanguageCode } from '@app/enums'
 
 import { AnalyticContext } from '../../context'
 
@@ -25,8 +25,10 @@ import { styles } from './Bar.styles'
 
 export const Bar: FC = memo(() => {
 	const { t } = useTranslation()
-	const { locale } = useGlobalContext()
+	const { locale, globalStyleProps } = useGlobalContext()
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
+
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const isAvailableToShowValuesOnBars = useMemo(
 		() =>
@@ -44,11 +46,11 @@ export const Bar: FC = memo(() => {
 
 	const chartConfig = useMemo(
 		() => ({
-			backgroundGradientFrom: EnumColor.white,
-			backgroundGradientTo: EnumColor.white,
-			color: () => EnumColor.red,
+			backgroundGradientFrom: globalStyleProps.style.color.primary,
+			backgroundGradientTo: globalStyleProps.style.color.primary,
+			color: () => globalStyleProps.style.color.main,
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const barChartData = useMemo(() => {
@@ -103,15 +105,19 @@ export const Bar: FC = memo(() => {
 
 	if (isLoading) {
 		return (
-			<Box style={styles.wrapper}>
+			<Box style={style.wrapper}>
 				<Skeleton h={240} />
 			</Box>
 		)
 	}
 
 	return (
-		<Box style={styles.wrapper}>
-			<Text fontSize="md" textAlign="center" numberOfLines={2}>
+		<Box style={style.wrapper}>
+			<Text
+				fontSize="md"
+				textAlign="center"
+				numberOfLines={2}
+				color={globalStyleProps.style.color.invert}>
 				{t('analytic:bar.title')}
 			</Text>
 			<BarChart

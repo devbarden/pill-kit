@@ -2,7 +2,7 @@ import { FC, Fragment, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Skeleton } from 'native-base'
 
-import { EnumColor } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 import { ContentWrapper, Header } from '@app/components'
 
 import { useHistoryState } from './hooks'
@@ -13,6 +13,8 @@ export const History: FC = memo(() => {
 	const state = useHistoryState()
 
 	const { t } = useTranslation()
+	const { globalStyleProps } = useGlobalContext()
+
 	const { isLoading } = useMemo(() => state, [state])
 
 	if (isLoading) {
@@ -23,15 +25,15 @@ export const History: FC = memo(() => {
 					<Skeleton
 						h={200}
 						borderRadius={12}
-						startColor={EnumColor.white}
-						endColor={EnumColor.grey}
+						startColor={globalStyleProps.style.color.primary}
+						endColor={globalStyleProps.style.color.secondary}
 					/>
 
 					<Skeleton
 						h={600}
 						borderRadius={12}
-						startColor={EnumColor.white}
-						endColor={EnumColor.grey}
+						startColor={globalStyleProps.style.color.primary}
+						endColor={globalStyleProps.style.color.secondary}
 					/>
 				</ContentWrapper>
 			</Fragment>

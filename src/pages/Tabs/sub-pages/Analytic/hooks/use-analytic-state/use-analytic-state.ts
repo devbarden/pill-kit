@@ -22,6 +22,12 @@ export const useAnalyticState = (): TypeAnalyticContextProps => {
 		() => activeMedicines.length > 0 && activeMedicines.length <= 20,
 		[activeMedicines],
 	)
+
+	const isProgressChartOverlimit = useMemo(
+		() => activeMedicines.length > 20,
+		[activeMedicines],
+	)
+
 	const isNoMedicines = useMemo(() => isDeserted(allMedicines), [allMedicines])
 
 	return {
@@ -31,5 +37,6 @@ export const useAnalyticState = (): TypeAnalyticContextProps => {
 		isLoading,
 		isNoMedicines,
 		isProgressChartAvailable,
+		isProgressChartOverlimit,
 	}
 }

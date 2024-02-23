@@ -5,6 +5,8 @@ import { isRTL } from '@app/utils'
 import { EnumLanguageCode, EnumTabRoute, EnumTheme } from '@app/enums'
 import { TypeGlobalStateContextProps, TypeGlobalStyleProps } from '@app/types'
 import {
+	DARK_THEME,
+	LIGHT_THEME,
 	DEFAULT_TAB_ROUTE,
 	ARABIC_NUMBER_CODE,
 	INITIAL_APP_CONFIGURATION,
@@ -37,12 +39,25 @@ export const useGlobalState = (): TypeGlobalStateContextProps => {
 
 	const isLocaleRTL = useMemo(() => isRTL(locale), [locale])
 
+	const themeStyle = useMemo(() => {
+		if (configuration.theme === EnumTheme.light) {
+			return LIGHT_THEME
+		}
+
+		if (configuration.theme === EnumTheme.dark) {
+			return DARK_THEME
+		}
+
+		return LIGHT_THEME
+	}, [configuration.theme])
+
 	const globalStyleProps: TypeGlobalStyleProps = useMemo(
 		() => ({
 			theme: configuration.theme,
+			style: themeStyle,
 			isLocaleRTL,
 		}),
-		[configuration.theme, isLocaleRTL],
+		[configuration.theme, isLocaleRTL, themeStyle],
 	)
 
 	const setTheme = useCallback(

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			flexDirection: isLocaleRTL ? 'row-reverse' : 'row',
@@ -34,5 +34,6 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 
 		text: {
 			fontSize: 16,
+			color: style.color.invert,
 		},
 	})

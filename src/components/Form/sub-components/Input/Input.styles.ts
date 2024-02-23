@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = (globalStyleProps: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			paddingVertical: 8,

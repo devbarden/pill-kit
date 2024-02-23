@@ -3,6 +3,7 @@ import { createContext } from 'react'
 import { EnumTheme } from '@app/enums'
 import { TypeGlobalStateContextProps } from '@app/types'
 import {
+	LIGHT_THEME,
 	DEFAULT_TAB_ROUTE,
 	FALLBACK_LANGUAGE_CODE,
 	INITIAL_APP_CONFIGURATION,
@@ -15,6 +16,7 @@ export const GlobalStateContext = createContext<TypeGlobalStateContextProps>({
 	activeTab: DEFAULT_TAB_ROUTE,
 	globalStyleProps: {
 		theme: EnumTheme.light,
+		style: LIGHT_THEME,
 		isLocaleRTL: false,
 	},
 

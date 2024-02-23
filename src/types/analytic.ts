@@ -7,4 +7,5 @@ export type TypeAnalyticContextProps = {
 	isLoading: boolean
 	isNoMedicines: boolean
 	isProgressChartAvailable: boolean
+	isProgressChartOverlimit: boolean
 }

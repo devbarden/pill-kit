@@ -19,7 +19,7 @@ import { MedicineFormContext } from '../../context'
 
 export const Fields: FC = memo(() => {
 	const { t } = useTranslation()
-	const { theme, locale } = useGlobalContext()
+	const { theme, locale, globalStyleProps } = useGlobalContext()
 	const {
 		openNameModal,
 		openTypeModal,
@@ -104,7 +104,7 @@ export const Fields: FC = memo(() => {
 					value={
 						<Icon
 							name={EnumIconName[type]}
-							color={EnumColor.darkGrey}
+							color={globalStyleProps.style.color.highlight}
 							size={20}
 						/>
 					}

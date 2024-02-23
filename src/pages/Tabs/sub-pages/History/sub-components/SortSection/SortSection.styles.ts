@@ -1,9 +1,8 @@
 import { StyleSheet } from 'react-native'
 
-import { EnumColor } from '@app/enums'
 import { TypeGlobalStyleProps } from '@app/types'
 
-export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
+export const styles = ({ style, isLocaleRTL }: TypeGlobalStyleProps) =>
 	StyleSheet.create({
 		wrapper: {
 			flexDirection: isLocaleRTL ? 'row-reverse' : 'row',
@@ -23,10 +22,10 @@ export const styles = ({ isLocaleRTL }: TypeGlobalStyleProps) =>
 			paddingVertical: 6,
 			paddingHorizontal: 12,
 			borderRadius: 12,
-			backgroundColor: EnumColor.white,
+			backgroundColor: style.color.primary,
 		},
 
 		pressed: {
-			backgroundColor: EnumColor.lightGrey,
+			backgroundColor: style.color.tertiary,
 		},
 	})

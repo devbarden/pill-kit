@@ -1,7 +1,9 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { Box, Text } from 'native-base'
 
-import { EnumColor, EnumIconName } from '@app/enums'
+import { TypeColor } from '@app/types'
+import { EnumIconName } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 
 import { Icon } from '../Icon'
 
@@ -10,18 +12,24 @@ import { styles } from './NotificationLabel.styles'
 type TypeProps = {
 	text: string
 	iconName: EnumIconName
-	iconColor: EnumColor
+	iconColor: TypeColor
 }
 
 export const NotificationLabel: FC<TypeProps> = memo(
-	({ text, iconName, iconColor }) => (
-		<Box style={styles.wrapper}>
-			<Icon name={iconName} color={iconColor} size={24} />
-			<Box style={styles.text}>
-				<Text fontSize="md" color={EnumColor.black}>
-					{text}
-				</Text>
+	({ text, iconName, iconColor }) => {
+		const { globalStyleProps } = useGlobalContext()
+
+		const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
+
+		return (
+			<Box style={style.wrapper}>
+				<Icon name={iconName} color={iconColor} size={24} />
+				<Box style={style.text}>
+					<Text fontSize="md" color={globalStyleProps.style.color.invert}>
+						{text}
+					</Text>
+				</Box>
 			</Box>
-		</Box>
-	),
+		)
+	},
 )

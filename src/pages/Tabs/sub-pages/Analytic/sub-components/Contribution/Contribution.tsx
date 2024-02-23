@@ -5,7 +5,7 @@ import { Box, Text, Skeleton } from 'native-base'
 import { RectProps } from 'react-native-svg'
 import { entries, flatten, map, reduce } from 'lodash'
 
-import { EnumColor } from '@app/enums'
+import { useGlobalContext } from '@app/hooks'
 import { getDaysArrayInRange, transformRGBToRGBA } from '@app/utils'
 
 import { AnalyticContext } from '../../context'
@@ -15,6 +15,9 @@ import { styles } from './Contribution.styles'
 export const Contribution: FC = memo(() => {
 	const { t } = useTranslation()
 	const { allMedicines, isLoading } = useContext(AnalyticContext)
+	const { globalStyleProps } = useGlobalContext()
+
+	const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
 
 	const contributionEndDate = useMemo(() => {
 		return new Date()
@@ -22,14 +25,14 @@ export const Contribution: FC = memo(() => {
 
 	const chartConfig = useMemo(
 		() => ({
-			backgroundGradientFrom: EnumColor.white,
-			backgroundGradientTo: EnumColor.white,
+			backgroundGradientFrom: globalStyleProps.style.color.primary,
+			backgroundGradientTo: globalStyleProps.style.color.primary,
 			color: (opacity: number) =>
 				opacity <= 0.15
-					? EnumColor.grey
-					: transformRGBToRGBA(EnumColor.red, opacity),
+					? globalStyleProps.style.color.secondary
+					: transformRGBToRGBA(globalStyleProps.style.color.main, opacity),
 		}),
-		[],
+		[globalStyleProps],
 	)
 
 	const contributionChartData = useMemo(() => {
@@ -62,17 +65,20 @@ export const Contribution: FC = memo(() => {
 
 	if (isLoading) {
 		return (
-			<Box style={styles.wrapper}>
+			<Box style={style.wrapper}>
 				<Skeleton h={180} />
 			</Box>
 		)
 	}
 
 	return (
-		<Box style={styles.wrapper}>
-			<Box style={styles.content}>
-				<Box style={styles.info}>
-					<Text textAlign="center" fontSize="md">
+		<Box style={style.wrapper}>
+			<Box style={style.content}>
+				<Box style={style.info}>
+					<Text
+						textAlign="center"
+						fontSize="md"
+						color={globalStyleProps.style.color.invert}>
 						{t('analytic:contribution.title')}
 					</Text>
 				</Box>

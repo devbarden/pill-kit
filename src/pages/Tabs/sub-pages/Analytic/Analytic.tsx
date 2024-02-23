@@ -17,10 +17,8 @@ export const Analytic: FC = memo(() => {
 	const state = useAnalyticState()
 
 	const { t } = useTranslation()
-	const { isNoMedicines, isProgressChartAvailable } = useMemo(
-		() => state,
-		[state],
-	)
+	const { isNoMedicines, isProgressChartAvailable, isProgressChartOverlimit } =
+		useMemo(() => state, [state])
 
 	if (isNoMedicines) {
 		return <Empty />
@@ -32,9 +30,8 @@ export const Analytic: FC = memo(() => {
 			<ContentWrapper>
 				<ScrollContent>
 					<Fragment>
-						{isProgressChartAvailable ? (
-							<Progress />
-						) : (
+						{isProgressChartAvailable && <Progress />}
+						{isProgressChartOverlimit && (
 							<ContentWrapper withHorizontalPaddings>
 								<NotificationLabel
 									iconName={EnumIconName.warning}

@@ -5,17 +5,12 @@ import { useNavigation } from '@react-navigation/native'
 import { TypeMedicine } from '@app/types'
 import { useGlobalContext } from '@app/hooks'
 import { dateToFormat, getNumberByLocale, medicineUtils } from '@app/utils'
-import {
-	EnumColor,
-	EnumStackRoute,
-	EnumCardListMode,
-	EnumMedicineType,
-} from '@app/enums'
+import { EnumStackRoute, EnumCardListMode, EnumMedicineType } from '@app/enums'
 
 export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 	const { t } = useTranslation()
 	const { navigate } = useNavigation()
-	const { locale, isLocaleRTL } = useGlobalContext()
+	const { locale, isLocaleRTL, globalStyleProps } = useGlobalContext()
 	const { isActive, isFuture, isPast } = useMemo(
 		() => medicineUtils.getMedicineStatusByDate(data),
 		[data],
@@ -108,15 +103,15 @@ export const useCardState = (data: TypeMedicine, mode: EnumCardListMode) => {
 
 	const cardColor = useMemo(() => {
 		if (isPast) {
-			return EnumColor.darkGrey
+			return globalStyleProps.style.color.highlight
 		}
 
 		if (isFuture || isActive) {
 			return color
 		}
 
-		return EnumColor.red
-	}, [isPast, isFuture, isActive, color])
+		return globalStyleProps.style.color.main
+	}, [isPast, isFuture, isActive, color, globalStyleProps])
 
 	const onCardPress = useCallback(() => {
 		navigate(EnumStackRoute.editMedicine, { id })

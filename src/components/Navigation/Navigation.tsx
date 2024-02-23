@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from 'react'
 import { Box } from 'native-base'
 
-import { EnumTabRoute } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
+import { EnumIconName, EnumTabRoute } from '@app/enums'
 
 import { NavigationItem, CreateMedicineNavigation } from './sub-components'
 
@@ -15,11 +15,20 @@ export const Navigation: FC = memo(() => {
 
 	return (
 		<Box style={style.wrapper}>
-			<NavigationItem route={EnumTabRoute.home} />
-			<NavigationItem route={EnumTabRoute.analytic} />
-			<CreateMedicineNavigation />
-			<NavigationItem route={EnumTabRoute.history} />
-			<NavigationItem route={EnumTabRoute.settings} />
+			<NavigationItem name={EnumIconName.home} route={EnumTabRoute.home} />
+			<NavigationItem
+				name={EnumIconName.analytic}
+				route={EnumTabRoute.analytic}
+			/>
+			<CreateMedicineNavigation name={EnumIconName.plus} />
+			<NavigationItem
+				name={EnumIconName.history}
+				route={EnumTabRoute.history}
+			/>
+			<NavigationItem
+				name={EnumIconName.settings}
+				route={EnumTabRoute.settings}
+			/>
 		</Box>
 	)
 })

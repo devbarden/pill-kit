@@ -12,9 +12,9 @@ import { TextInput, Pressable, PressableStateCallbackType } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { Box, Input } from 'native-base'
 
+import { EnumIconName } from '@app/enums'
 import { Icon, Form } from '@app/components'
 import { useGlobalContext } from '@app/hooks'
-import { EnumColor, EnumIconName } from '@app/enums'
 import { IS_ANDROID, IS_IOS, MEDICINE_MAX_LENGTH_OF_NAME } from '@app/constants'
 
 import { MedicineFormContext } from '../../../../context'
@@ -60,14 +60,15 @@ export const ModalNameContent: FC = memo(() => {
 					autoFocus={IS_IOS}
 					ref={inputRef}
 					value={form.name}
+					color={globalStyleProps.style.color.invert}
 					onChangeText={changeNameHandler}
 					maxLength={MEDICINE_MAX_LENGTH_OF_NAME}
 					onSubmitEditing={closeNameModal}
-					placeholder={t('component:input.placeholder.required')}
+					placeholder={t('medicine:field.name')}
 					leftElement={
 						<Icon
 							name={EnumIconName.text}
-							color={EnumColor.darkGrey}
+							color={globalStyleProps.style.color.highlight}
 							size={20}
 						/>
 					}
@@ -78,7 +79,7 @@ export const ModalNameContent: FC = memo(() => {
 								style={getPressableStyles}>
 								<Icon
 									name={EnumIconName.clear}
-									color={EnumColor.darkGrey}
+									color={globalStyleProps.style.color.highlight}
 									size={20}
 								/>
 							</Pressable>

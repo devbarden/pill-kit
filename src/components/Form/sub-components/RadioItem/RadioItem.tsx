@@ -7,8 +7,9 @@ import {
 } from 'react-native'
 import { Box, Radio, Text } from 'native-base'
 
+import { TypeColor } from '@app/types'
+import { EnumIconName } from '@app/enums'
 import { useGlobalContext } from '@app/hooks'
-import { EnumColor, EnumIconName } from '@app/enums'
 
 import { Icon } from '../../../Icon'
 
@@ -19,11 +20,11 @@ type TypeProps = {
 	value: string
 	handler: () => void
 	iconName?: EnumIconName
-	iconColor?: EnumColor
+	iconColor?: TypeColor
 }
 
 export const RadioItem: FC<TypeProps> = memo(
-	({ text, value, handler, iconName, iconColor = EnumColor.darkGrey }) => {
+	({ text, value, handler, iconName, iconColor }) => {
 		const { globalStyleProps } = useGlobalContext()
 
 		const style = useMemo(() => styles(globalStyleProps), [globalStyleProps])
@@ -32,10 +33,12 @@ export const RadioItem: FC<TypeProps> = memo(
 			({ pressed }: PressableStateCallbackType) => [
 				style.wrapper,
 				{
-					backgroundColor: pressed ? EnumColor.lightGrey : EnumColor.white,
+					backgroundColor: pressed
+						? globalStyleProps.style.color.tertiary
+						: globalStyleProps.style.color.primary,
 				},
 			],
-			[style],
+			[style, globalStyleProps],
 		)
 
 		const pressHandler = useCallback(() => {
@@ -47,7 +50,13 @@ export const RadioItem: FC<TypeProps> = memo(
 			<Pressable style={getPressableStyles} onPress={pressHandler}>
 				<Box style={style.fullFlex}>
 					<Box style={style.titleWrapper}>
-						{iconName && <Icon name={iconName} color={iconColor} size={20} />}
+						{iconName && (
+							<Icon
+								name={iconName}
+								color={iconColor ?? globalStyleProps.style.color.highlight}
+								size={20}
+							/>
+						)}
 						<Box style={style.title}>
 							<Text numberOfLines={1} style={style.text}>
 								{text}
@@ -57,7 +66,12 @@ export const RadioItem: FC<TypeProps> = memo(
 				</Box>
 
 				<TouchableWithoutFeedback style={style.children} onPress={pressHandler}>
-					<Radio colorScheme="green" value={value} accessibilityLabel={value} />
+					<Radio
+						colorScheme="green"
+						bgColor={globalStyleProps.style.color.tertiary}
+						value={value}
+						accessibilityLabel={value}
+					/>
 				</TouchableWithoutFeedback>
 			</Pressable>
 		)

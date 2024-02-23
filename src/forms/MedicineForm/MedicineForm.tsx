@@ -8,16 +8,24 @@ import { ScrollContent, ContentWrapper } from '@app/components'
 import { useMedicineForm } from './hooks'
 import { MedicineFormContext } from './context'
 import { Modals, Header, Fields, Actions, Spinner } from './sub-components'
+import { EnumTheme } from '@app/enums'
 
 export const MedicineForm: FC<TypeMedicineFormProps> = memo((props) => {
 	const state = useMedicineForm(props)
 
-	const { isMedicineActionEnabled } = useGlobalContext()
+	const { theme, isMedicineActionEnabled } = useGlobalContext()
 	const { additionalActions } = useMemo(() => props, [props])
 
 	const styleOpacity = useMemo(
-		() => ({ flex: 1, opacity: !isMedicineActionEnabled ? 0.5 : 1 }),
-		[isMedicineActionEnabled],
+		() => ({
+			flex: 1,
+			opacity: !isMedicineActionEnabled
+				? theme === EnumTheme.light
+					? 0.5
+					: 0.9
+				: 1,
+		}),
+		[isMedicineActionEnabled, theme],
 	)
 
 	const pointerEvents = useMemo(
