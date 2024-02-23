@@ -1,3 +1,4 @@
+import switchTheme from 'react-native-theme-switch-animation'
 import { useMemo, useCallback, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Linking, Share } from 'react-native'
@@ -43,13 +44,21 @@ export const useSettingsForm = (): TypeSettingsFormContextProps => {
 	)
 
 	const changeThemeHandler = useCallback(() => {
-		if (theme === EnumTheme.light) {
-			setTheme(EnumTheme.dark)
-		}
+		switchTheme({
+			switchThemeFunction: () => {
+				if (theme === EnumTheme.light) {
+					setTheme(EnumTheme.dark)
+				}
 
-		if (theme === EnumTheme.dark) {
-			setTheme(EnumTheme.light)
-		}
+				if (theme === EnumTheme.dark) {
+					setTheme(EnumTheme.light)
+				}
+			},
+			animationConfig: {
+				type: 'fade',
+				duration: 600,
+			},
+		})
 	}, [theme, setTheme])
 
 	const mailHandler = useCallback(async () => {
