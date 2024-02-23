@@ -31,7 +31,7 @@
 			]
 		},
 		"androidStatusBar": {
-			"translucent": false
+			"translucent": true
 		},
 		"locales": {
 			"en": "./src/languages/en.json",

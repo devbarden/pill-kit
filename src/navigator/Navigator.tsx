@@ -1,6 +1,7 @@
 import * as SplashScreen from 'expo-splash-screen'
 import { FC, useMemo, useCallback } from 'react'
 import { Animated } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 import { NavigationContainer } from '@react-navigation/native'
 import {
 	createStackNavigator,
@@ -8,7 +9,7 @@ import {
 } from '@react-navigation/stack'
 
 import { useGlobalState } from '@app/hooks'
-import { EnumStackRoute } from '@app/enums'
+import { EnumStackRoute, EnumTheme } from '@app/enums'
 import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
 import { DEFAULT_STACK_ROUTE } from '@app/constants'
@@ -35,6 +36,7 @@ export const Navigator: FC = withErrorBoundary(() => {
 	const opacity = useMemo(() => new Animated.Value(0), [])
 
 	const {
+		theme,
 		isUserAcceptAppDocs,
 		isConfigurationLoading,
 		isMedicineActionEnabled,
@@ -73,6 +75,10 @@ export const Navigator: FC = withErrorBoundary(() => {
 	return (
 		<Animated.View style={{ flex: 1, opacity }} onLayout={hideSplashScreen}>
 			<GlobalStateContext.Provider value={globalState}>
+				<StatusBar
+					translucent
+					style={theme === EnumTheme.dark ? 'light' : 'dark'}
+				/>
 				<NavigationContainer>
 					<Stack.Navigator
 						initialRouteName={defaultRoute}
