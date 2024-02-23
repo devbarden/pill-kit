@@ -31,10 +31,10 @@
 	},
 
 	"editMedicine": {
-		"title": "Düzenlemek",
+		"title": "Düzenle",
 		"notFound": "Bulunamadı",
-		"back": "Geri gitmek",
-		"remove": "Kaldırmak"
+		"back": "Geri",
+		"remove": "Sil"
 	},
 
 	"analytic": {
@@ -43,7 +43,7 @@
 		"warning": "Şu anda aktif ilaç sayısı 20'nin üzerinde olduğu için ilerleme grafiği görüntülemek mümkün değil",
 
 		"progress": {
-			"title": "İlerlemek",
+			"title": "İlerle",
 			"label": "Aktif ilaçlar"
 		},
 
@@ -75,7 +75,7 @@
 		},
 
 		"sort": {
-			"button": "Düzenlemek",
+			"button": "Düzenle",
 			"medicines": "İlaçlar",
 
 			"modal": {
@@ -96,7 +96,7 @@
 
 		"field": {
 			"language": "Dil",
-			"contact": "Temas etmek",
+			"contact": "İletişim",
 			"theme": "Tema",
 			"share": "Verileri paylaş",
 			"clearAllData": "Tüm verileri temizle",
@@ -198,7 +198,7 @@
 
 	"actions": {
 		"loading": "Yükleniyor...",
-		"removing": "Kaldırılıyor...",
+		"removing": "Siliniyor...",
 		"updating": "Güncelleniyor...",
 		"uploading": "Yükleniyor..."
 	},
@@ -207,14 +207,14 @@
 		"medicine": {
 			"add": "İlaç başarıyla eklendi",
 			"edit": "İlaç başarıyla güncellendi",
-			"remove": "İlaç başarıyla kaldırıldı",
-			"removeAll": "Tüm ilaçlar başarıyla kaldırıldı",
+			"remove": "İlaç başarıyla silindi",
+			"removeAll": "Tüm ilaçlar başarıyla silindi",
 			"error": "Bir şeyler ters gitti. Sorun üzerinde çalışıyoruz"
 		}
 	},
 
 	"error": {
-		"title": "Bir şeyler kırıldı. Lütfen e-posta yoluyla bize ulaşın",
+		"title": "Bir şeyler yolunda değil. Lütfen e-posta yoluyla bize ulaşın",
 		"reset": "Hatayı sıfırla"
 	}
 }
