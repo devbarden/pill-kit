@@ -5,7 +5,12 @@ import { useTranslation } from 'react-i18next'
 import { useGlobalContext } from '@app/hooks'
 import { IS_ANDROID, IS_IOS } from '@app/constants'
 import { EnumColor, EnumDateMode, EnumIconName } from '@app/enums'
-import { medicineUtils, getNumberByLocale, getPrevYear } from '@app/utils'
+import {
+	getPrevYear,
+	getNextYear,
+	medicineUtils,
+	getNumberByLocale,
+} from '@app/utils'
 import {
 	Form,
 	Icon,
@@ -150,7 +155,7 @@ export const Fields: FC = memo(() => {
 								title={t('medicine:field.startDate')}
 								open={isNeedToShowStartDateModal}
 								date={new Date(startDate)}
-								minimumDate={getPrevYear(10)}
+								minimumDate={getPrevYear(5)}
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
 								theme={IS_IOS ? theme : 'light'}
@@ -179,6 +184,7 @@ export const Fields: FC = memo(() => {
 								open={isNeedToShowEndDateModal}
 								date={new Date(endDate)}
 								minimumDate={new Date(startDate)}
+								maximumDate={getNextYear(5)}
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
 								theme={IS_IOS ? theme : 'light'}
