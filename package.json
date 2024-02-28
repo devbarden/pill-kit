@@ -57,7 +57,7 @@
 		"react-native-swipeable-item": "2.0.9",
 		"react-native-theme-switch-animation": "^0.6.0",
 		"react-native-web": "~0.19.6"
-  },
+	},
 	"devDependencies": {
 		"@babel/core": "^7.20.0",
 		"@tanstack/eslint-plugin-query": "^4.29.25",

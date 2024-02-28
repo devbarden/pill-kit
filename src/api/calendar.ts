@@ -44,6 +44,8 @@ export const initCalendar = async () => {
 			entityType: Calendar.EntityTypes.EVENT,
 			source: defaultCalendarSource,
 			sourceId: defaultCalendarSource.id,
+			isSynced: true,
+			isVisible: true,
 			allowsModifications: true,
 			ownerAccount: 'personal',
 			accessLevel: Calendar.CalendarAccessLevel.OWNER,
@@ -160,6 +162,7 @@ export const setCalendarEvent = async (
 					title: `${name} - ${subtitle}`,
 
 					allDay: false,
+					availability: Calendar.Availability.FREE,
 					alarms: [
 						{
 							relativeOffset: 0,
