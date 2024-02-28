@@ -11,8 +11,8 @@ import {
 import { useGlobalState } from '@app/hooks'
 import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
-import { DEFAULT_STACK_ROUTE } from '@app/constants'
 import { EnumStackRoute, EnumTheme } from '@app/enums'
+import { DEFAULT_STACK_ROUTE, IS_ANDROID } from '@app/constants'
 import { TypeNavigatorStack, TypeNavigatorScreen } from '@app/types'
 import { Tabs, CreateMedicine, EditMedicine, Welcome } from '@app/pages'
 
@@ -57,6 +57,30 @@ export const Navigator: FC = withErrorBoundary(() => {
 		[isMedicineActionEnabled],
 	)
 
+	const statusBarStyle = useMemo(() => {
+		if (IS_ANDROID) {
+			return 'light'
+		}
+
+		if (theme === EnumTheme.dark) {
+			return 'light'
+		}
+
+		if (theme === EnumTheme.light) {
+			return 'dark'
+		}
+
+		return 'dark'
+	}, [theme])
+
+	const statusBarBackground = useMemo(() => {
+		if (IS_ANDROID) {
+			return '#000000'
+		}
+
+		return globalStyleProps.style.color.primary
+	}, [globalStyleProps])
+
 	const hideSplashScreen = useCallback(async () => {
 		if (!isConfigurationLoading) {
 			await SplashScreen.hideAsync()
@@ -78,8 +102,8 @@ export const Navigator: FC = withErrorBoundary(() => {
 			<GlobalStateContext.Provider value={globalState}>
 				<StatusBar
 					translucent={false}
-					style={theme === EnumTheme.dark ? 'light' : 'dark'}
-					backgroundColor={globalStyleProps.style.color.primary}
+					style={statusBarStyle}
+					backgroundColor={statusBarBackground}
 				/>
 
 				<NavigationContainer>
