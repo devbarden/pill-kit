@@ -33,8 +33,31 @@ export const setCalendarId = async (
 	} catch {}
 }
 
+export const removeOldCalendars = async () => {
+	try {
+		const calendars = await Calendar.getCalendarsAsync(
+			Calendar.EntityTypes.EVENT,
+		)
+
+		const calendarsWithTheSameName = filter(
+			calendars,
+			({ title }) => title === APP_NAME,
+		)
+
+		if (calendarsWithTheSameName) {
+			await Promise.all(
+				map(calendarsWithTheSameName, ({ id }) =>
+					Calendar.deleteCalendarAsync(id),
+				),
+			)
+		}
+	} catch {}
+}
+
 export const initCalendar = async () => {
 	try {
+		await removeOldCalendars()
+
 		const defaultCalendarSource = await getDefaultCalendarSource()
 
 		const calendarId = await Calendar.createCalendarAsync({
