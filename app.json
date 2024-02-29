@@ -4,24 +4,44 @@
 		"slug": "pill-kit",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/logo.png",
+		"icon": "./assets/icon-ios-light.png",
 		"userInterfaceStyle": "automatic",
 		"platforms": ["ios", "android"],
 		"splash": {
-			"image": "./assets/logo-without-bg.png",
+			"image": "./assets/splash-light.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
+			"splash": {
+				"image": "./assets/splash-light.png",
+				"resizeMode": "contain",
+				"backgroundColor": "#ffffff",
+				"dark": {
+					"image": "./assets/splash-dark.png",
+					"resizeMode": "contain",
+					"backgroundColor": "#353535"
+				}
+			},
 			"supportsTablet": false,
 			"userInterfaceStyle": "automatic",
 			"bundleIdentifier": "com.devbarden.pillkit"
 		},
 		"android": {
+			"splash": {
+				"image": "./assets/splash-light.png",
+				"resizeMode": "contain",
+				"backgroundColor": "#ffffff",
+				"dark": {
+					"image": "./assets/splash-dark.png",
+					"resizeMode": "contain",
+					"backgroundColor": "#353535"
+				}
+			},
 			"userInterfaceStyle": "automatic",
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/logo.png",
+				"foregroundImage": "./assets/icon-android-light.png",
 				"backgroundColor": "#ffffff"
 			},
 			"package": "com.devbarden.pillkit",
