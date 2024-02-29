@@ -8,28 +8,17 @@
 			"distribution": "internal"
 		},
 		"preview": {
-			"distribution": "internal",
-			"ios": {
-				"simulator": true
-			},
-			"android": {
-				"buildType": "apk"
-			}
-		},
-		"preview2": {
-			"android": {
-				"gradleCommand": ":app:assembleRelease"
-			}
-		},
-		"preview3": {
-			"developmentClient": true
-		},
-		"preview4": {
 			"distribution": "internal"
 		},
 		"production": {}
 	},
 	"submit": {
-		"production": {}
+		"production": {
+			"ios": {
+				"appleId": "denis.bar1997@gmail.com",
+				"ascAppId": "6478666800",
+				"appleTeamId": "8L4CRBVNV4"
+			}
+		}
 	}
 }
