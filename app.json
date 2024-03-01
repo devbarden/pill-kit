@@ -24,7 +24,7 @@
 					"backgroundColor": "#353535"
 				}
 			},
-			"supportsTablet": false,
+			"supportsTablet": true,
 			"userInterfaceStyle": "automatic",
 			"bundleIdentifier": "com.devbarden.pillkit"
 		},

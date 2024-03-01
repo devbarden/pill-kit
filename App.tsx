@@ -2,7 +2,6 @@ import 'react-native-gesture-handler'
 import * as SplashScreen from 'expo-splash-screen'
 import Application from 'react-native-restart'
 import { FC, memo } from 'react'
-import { registerRootComponent } from 'expo'
 import { NativeBaseProvider } from 'native-base'
 import { RootSiblingParent } from 'react-native-root-siblings'
 import { Platform, UIManager, I18nManager } from 'react-native'
@@ -41,7 +40,5 @@ const App: FC = memo(() => (
 		</SafeAreaProvider>
 	</QueryClientProvider>
 ))
-
-registerRootComponent(App)
 
 export default App

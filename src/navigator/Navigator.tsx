@@ -8,6 +8,7 @@ import {
 	StackNavigationOptions,
 } from '@react-navigation/stack'
 
+import { delay } from '@app/utils'
 import { useGlobalState } from '@app/hooks'
 import { withErrorBoundary } from '@app/hocs'
 import { GlobalStateContext } from '@app/context'
@@ -83,6 +84,7 @@ export const Navigator: FC = withErrorBoundary(() => {
 
 	const hideSplashScreen = useCallback(async () => {
 		if (!isConfigurationLoading) {
+			await delay(500)
 			await SplashScreen.hideAsync()
 
 			Animated.timing(opacity, {

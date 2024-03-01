@@ -14,7 +14,7 @@ export const Home: FC = memo(() => {
 
 	const rerenderKey = useMemo(() => JSON.stringify(medicines), [medicines])
 
-	useDeviceCalendar(1000)
+	useDeviceCalendar(600)
 
 	return (
 		<HomeContext.Provider value={state}>
