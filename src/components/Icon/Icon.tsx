@@ -104,7 +104,7 @@ const getIconByName = (
 			<MaterialCommunityIcons name="flask-empty-plus-outline" {...props} />
 		),
 		[EnumIconName.paint]: <Foundation name="paint-bucket" {...props} />,
-		[EnumIconName.warning]: <MaterialIcons name="warning" {...props} />,
+		[EnumIconName.warning]: <Ionicons name="warning" {...props} />,
 		[EnumIconName.error]: <MaterialIcons name="error" {...props} />,
 		[EnumIconName.plus]: <Octicons name="plus-circle" {...props} />,
 		[EnumIconName.medical]: <Ionicons name="medical-outline" {...props} />,
