@@ -11,8 +11,10 @@ import {
 	isDeserted,
 	removeWeeks,
 	getTimeByDate,
+	getDateFromEnd,
 	isAnyFieldEmpty,
 	getNumberByLocale,
+	getDateFromBeginning,
 	getSelectNumberItemsByLocale,
 	getFirstValueFromSelectItems,
 	getMedicineWithoutCountPerUseField,
@@ -274,7 +276,10 @@ export const useMedicineForm = (
 			setForm((prev) => ({
 				...prev,
 				startDate,
-				endDate: startDate > prev.endDate ? addWeeks(date, 2) : prev.endDate,
+				endDate:
+					startDate > prev.endDate
+						? getDateFromEnd(addWeeks(date, 2))
+						: prev.endDate,
 			}))
 		},
 		[closeStartDateModal],
@@ -289,7 +294,9 @@ export const useMedicineForm = (
 			setForm((prev) => ({
 				...prev,
 				startDate:
-					endDate < prev.startDate ? removeWeeks(date, 2) : prev.startDate,
+					endDate < prev.startDate
+						? getDateFromBeginning(removeWeeks(date, 2))
+						: prev.startDate,
 				endDate,
 			}))
 		},

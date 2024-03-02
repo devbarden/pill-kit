@@ -1,8 +1,19 @@
 import { EnumLanguageCode } from '@app/enums'
 import { TypeMedicine, TypeMedicineTime } from '@app/types'
 
+export const removeWeeks = (date: Date, weeks: number): number => {
+	return date.setDate(date.getDate() - 7 * weeks)
+}
+
+export const addWeeks = (date: Date, weeks: number): number => {
+	return date.setDate(date.getDate() + 7 * weeks)
+}
+
 export const getNextYear = (n: number = 1) => {
 	const date = new Date()
+
+	date.setHours(23, 59, 59, 999)
+
 	const currentYear = date.getFullYear()
 
 	date.setFullYear(currentYear + n)
@@ -12,6 +23,9 @@ export const getNextYear = (n: number = 1) => {
 
 export const getPrevYear = (n: number = 1) => {
 	const date = new Date()
+
+	date.setHours(0, 0, 0, 0)
+
 	const currentYear = date.getFullYear()
 
 	date.setFullYear(currentYear - n)
@@ -66,6 +80,22 @@ export const getDateWithTime = (
 	date.setMilliseconds(0)
 
 	return date
+}
+
+export const getDateFromBeginning = (value?: number) => {
+	const date = value ? new Date(value) : new Date()
+
+	date.setHours(0, 0, 0, 0)
+
+	return date.getTime()
+}
+
+export const getDateFromEnd = (value?: number) => {
+	const date = value ? new Date(value) : new Date()
+
+	date.setHours(23, 59, 59, 999)
+
+	return date.getTime()
 }
 
 export const timeToFormat = (value: number, locale: string): string => {

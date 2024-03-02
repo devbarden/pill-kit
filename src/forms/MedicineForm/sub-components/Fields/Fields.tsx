@@ -60,7 +60,7 @@ export const Fields: FC = memo(() => {
 		notification,
 	} = useMemo(() => form, [form])
 
-	const { isPast, isFuture } = useMemo(
+	const { isPast } = useMemo(
 		() => medicineUtils.getMedicineStatusByDate(form),
 		[form],
 	)
@@ -156,6 +156,7 @@ export const Fields: FC = memo(() => {
 								open={isNeedToShowStartDateModal}
 								date={new Date(startDate)}
 								minimumDate={getPrevYear(5)}
+								maximumDate={getNextYear(5)}
 								onConfirm={changeStartDateHandler}
 								onCancel={closeStartDateModal}
 								theme={IS_IOS ? theme : 'light'}
@@ -183,7 +184,7 @@ export const Fields: FC = memo(() => {
 								title={t('medicine:field.endDate')}
 								open={isNeedToShowEndDateModal}
 								date={new Date(endDate)}
-								minimumDate={new Date(startDate)}
+								minimumDate={getPrevYear(5)}
 								maximumDate={getNextYear(5)}
 								onConfirm={changeEndDateHandler}
 								onCancel={closeEndDateModal}
@@ -204,14 +205,6 @@ export const Fields: FC = memo(() => {
 					iconName={EnumIconName.warning}
 					iconColor={EnumColor.yellow}
 					text={t('medicine:warning.past')}
-				/>
-			)}
-
-			{isFuture && (
-				<NotificationLabel
-					iconName={EnumIconName.warning}
-					iconColor={EnumColor.yellow}
-					text={t('medicine:warning.future')}
 				/>
 			)}
 

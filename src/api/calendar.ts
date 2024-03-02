@@ -3,9 +3,14 @@ import * as Calendar from 'expo-calendar'
 import { map, filter } from 'lodash'
 
 import { EnumStorage } from '@app/enums'
-import { isNoDeserted, getDateWithTime } from '@app/utils'
 import { TypeMedicine, TypeCalendarStorage } from '@app/types'
-import { INITIAL_CALENDAR_STORAGE, IS_IOS, APP_NAME } from '@app/constants'
+import { isNoDeserted, getDateWithTime, getDateFromBeginning } from '@app/utils'
+import {
+	IS_IOS,
+	APP_NAME,
+	IS_ANDROID,
+	INITIAL_CALENDAR_STORAGE,
+} from '@app/constants'
 
 import { getConfiguration, setConfiguration } from './configuration'
 
@@ -167,6 +172,11 @@ export const setCalendarEvent = async (
 	try {
 		const { id, name, startDate, endDate, notification, times } = medicine
 
+		const currentDateFromBeginning = getDateFromBeginning()
+		const eventStartDate =
+			IS_ANDROID && startDate < currentDateFromBeginning
+				? currentDateFromBeginning
+				: startDate
 		const existingCalendarId = await getCalendarExistingId()
 
 		let calendarId = existingCalendarId
@@ -176,6 +186,10 @@ export const setCalendarEvent = async (
 		}
 
 		if (!calendarId || !notification) {
+			return
+		}
+
+		if (eventStartDate >= endDate) {
 			return
 		}
 
@@ -198,8 +212,8 @@ export const setCalendarEvent = async (
 						endDate: new Date(endDate),
 					},
 
-					startDate: getDateWithTime(startDate, time),
-					endDate: getDateWithTime(startDate + 3600, time),
+					startDate: getDateWithTime(eventStartDate, time),
+					endDate: getDateWithTime(eventStartDate + 3600, time),
 				}),
 			),
 		)
