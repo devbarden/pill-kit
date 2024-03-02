@@ -12,6 +12,7 @@ import { EnumColor, EnumIconName } from '@app/enums'
 import { useAnalyticState } from './hooks'
 import { AnalyticContext } from './context'
 import { Empty, Progress, Bar, Pie, Contribution } from './sub-components'
+import { IS_PHONE } from '@app/constants'
 
 export const Analytic: FC = memo(() => {
 	const state = useAnalyticState()
@@ -40,7 +41,7 @@ export const Analytic: FC = memo(() => {
 								/>
 							</ContentWrapper>
 						)}
-						<Bar />
+						{IS_PHONE && <Bar />}
 						<Pie />
 						<Contribution />
 					</Fragment>
