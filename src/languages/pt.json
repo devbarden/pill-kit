@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "O aplicativo utiliza acesso ao seu calendário para gerenciar lembretes sobre seus medicamentos. Após adicionar um medicamento, eventos serão definidos em seu calendário que o notificarão sobre a necessidade de tomar o medicamento em um determinado momento.",
+	"NSCalendarsFullAccessUsageDescription": "O aplicativo utiliza acesso ao seu calendário para gerenciar lembretes sobre seus medicamentos. Após adicionar um medicamento, eventos serão definidos em seu calendário que o notificarão sobre a necessidade de tomar o medicamento em um determinado momento.",
+
 	"reminders": {
 		"takeMedicine": "É hora de tomar seu remédio"
 	},

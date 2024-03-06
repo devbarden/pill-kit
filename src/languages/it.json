@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "L'app utilizza l'accesso al tuo calendario per gestire promemoria riguardanti i tuoi farmaci. Dopo l'aggiunta di un medicinale, verranno impostati eventi nel tuo calendario che ti avviseranno di prendere il farmaco in un determinato momento.",
+	"NSCalendarsFullAccessUsageDescription": "L'app utilizza l'accesso al tuo calendario per gestire promemoria riguardanti i tuoi farmaci. Dopo l'aggiunta di un medicinale, verranno impostati eventi nel tuo calendario che ti avviseranno di prendere il farmaco in un determinato momento.",
+
 	"reminders": {
 		"takeMedicine": "È ora di prendere la medicina"
 	},

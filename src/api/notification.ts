@@ -1,16 +1,15 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Notifications from 'expo-notifications'
-import { Platform } from 'react-native'
 import { map, filter } from 'lodash'
 
 import { EnumStorage } from '@app/enums'
-import { INITIAL_NOTIFICATION_STORAGE } from '@app/constants'
-import { TypeMedicine, TypeNotificationStorage } from '@app/types'
 import { isNoDeserted, getDatesToNotify } from '@app/utils'
+import { TypeMedicine, TypeNotificationStorage } from '@app/types'
+import { INITIAL_NOTIFICATION_STORAGE, IS_ANDROID } from '@app/constants'
 
 export const initNotificationChannel = async () => {
 	try {
-		if (Platform.OS === 'android') {
+		if (IS_ANDROID) {
 			await Notifications.setNotificationChannelAsync('default', {
 				name: 'default',
 				importance: Notifications.AndroidImportance.MAX,

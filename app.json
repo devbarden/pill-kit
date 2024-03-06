@@ -27,7 +27,11 @@
 			"supportsTablet": true,
 			"userInterfaceStyle": "automatic",
 			"bundleIdentifier": "com.devbarden.pillkit",
-			"buildNumber": "2"
+			"buildNumber": "3",
+			"infoPlist": {
+				"NSCalendarsUsageDescription": "The app uses access to your calendar to manage reminders about your medicines. After adding a medicine, events will be set in your calendar that will notify you about taking the medicine at a certain time.",
+				"NSCalendarsFullAccessUsageDescription": "The app uses access to your calendar to manage reminders about your medicines. After adding a medicine, events will be set in your calendar that will notify you about taking the medicine at a certain time."
+			}
 		},
 		"android": {
 			"splash": {

@@ -3,13 +3,14 @@ import * as SplashScreen from 'expo-splash-screen'
 import Application from 'react-native-restart'
 import { FC, memo } from 'react'
 import { NativeBaseProvider } from 'native-base'
+import { UIManager, I18nManager } from 'react-native'
 import { RootSiblingParent } from 'react-native-root-siblings'
-import { Platform, UIManager, I18nManager } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import '@app/i18n'
 import { registerLogs } from '@app/utils'
+import { IS_ANDROID } from '@app/constants'
 import { Initialization } from '@app/initialization'
 
 registerLogs()
@@ -22,7 +23,7 @@ if (I18nManager.isRTL) {
 	Application.restart()
 }
 
-if (Platform.OS === 'android') {
+if (IS_ANDROID) {
 	UIManager.setLayoutAnimationEnabledExperimental &&
 		UIManager.setLayoutAnimationEnabledExperimental(true)
 }

@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "Aplikacja korzysta z dostępu do twojego kalendarza, aby zarządzać przypomnieniami o lekach. Po dodaniu leku, wydarzenia zostaną ustawione w twoim kalendarzu, które powiadomią cię o konieczności wzięcia leku o określonej porze.",
+	"NSCalendarsFullAccessUsageDescription": "Aplikacja korzysta z dostępu do twojego kalendarza, aby zarządzać przypomnieniami o lekach. Po dodaniu leku, wydarzenia zostaną ustawione w twoim kalendarzu, które powiadomią cię o konieczności wzięcia leku o określonej porze.",
+
 	"reminders": {
 		"takeMedicine": "Nadszedł czas, aby wziąć leki"
 	},

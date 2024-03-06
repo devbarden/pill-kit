@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "Die App verwendet den Zugriff auf Ihren Kalender, um Erinnerungen bezüglich Ihrer Medikamente zu verwalten. Nach dem Hinzufügen eines Medikaments werden Ereignisse in Ihrem Kalender eingetragen, die Sie zu bestimmten Zeiten über die Einnahme des Medikaments benachrichtigen.",
+	"NSCalendarsFullAccessUsageDescription": "Die App verwendet den Zugriff auf Ihren Kalender, um Erinnerungen bezüglich Ihrer Medikamente zu verwalten. Nach dem Hinzufügen eines Medikaments werden Ereignisse in Ihrem Kalender eingetragen, die Sie zu bestimmten Zeiten über die Einnahme des Medikaments benachrichtigen.",
+
 	"reminders": {
 		"takeMedicine": "Es ist Zeit Medizin zu einzunehmen"
 	},

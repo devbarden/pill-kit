@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "Uygulama, ilaçlarınızla ilgili hatırlatmaları yönetmek için takviminize erişim kullanır. Bir ilaç ekledikten sonra, ilacı belirli bir zamanda almanızı bildirecek olaylar takviminizde ayarlanacaktır.",
+	"NSCalendarsFullAccessUsageDescription": "Uygulama, ilaçlarınızla ilgili hatırlatmaları yönetmek için takviminize erişim kullanır. Bir ilaç ekledikten sonra, ilacı belirli bir zamanda almanızı bildirecek olaylar takviminizde ayarlanacaktır.",
+
 	"reminders": {
 		"takeMedicine": "İlacını almanın zamanı geldi"
 	},

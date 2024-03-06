@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "L'application utilise l'accès à votre calendrier pour gérer les rappels concernant vos médicaments. Après avoir ajouté un médicament, des événements seront définis dans votre calendrier pour vous notifier de prendre le médicament à un certain moment.",
+	"NSCalendarsFullAccessUsageDescription": "L'application utilise l'accès à votre calendrier pour gérer les rappels concernant vos médicaments. Après avoir ajouté un médicament, des événements seront définis dans votre calendrier pour vous notifier de prendre le médicament à un certain moment.",
+
 	"reminders": {
 		"takeMedicine": "L'heure de prendre vos medicaments!"
 	},

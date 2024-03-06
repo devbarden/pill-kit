@@ -1,4 +1,7 @@
 {
+	"NSCalendarsUsageDescription": "该应用程序使用对您日历的访问权限来管理有关药物的提醒。添加药物后，将在您的日历中设置事件，以通知您在特定时间服用药物。",
+	"NSCalendarsFullAccessUsageDescription": "该应用程序使用对您日历的访问权限来管理有关药物的提醒。添加药物后，将在您的日历中设置事件，以通知您在特定时间服用药物。",
+
 	"reminders": {
 		"takeMedicine": "已到吃药时间"
 	},
